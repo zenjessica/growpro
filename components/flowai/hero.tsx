@@ -1,6 +1,7 @@
 import Link from "next/link"
 import { Button } from "@/components/ui/button"
 import { cn } from "@/lib/utils"
+import { Network, Smartphone, Award } from "lucide-react"
 
 export function Hero() {
   return (
@@ -30,34 +31,43 @@ export function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-3xl text-center">
-        <div className="mb-5 flex items-center justify-center gap-2">
-          <span className="rounded-full border bg-white/70 px-2.5 py-1 text-xs font-medium shadow-sm">New</span>
-          <span className="rounded-full border bg-white/70 px-3 py-1 text-xs text-muted-foreground shadow-sm">
-            Smarter Project Planning
-          </span>
+        <div className="mb-5 flex flex-wrap items-center justify-center gap-2 sm:gap-3">
+          <div className="flex items-center gap-1.5 rounded-full border bg-white/70 px-3 py-1.5 text-xs font-medium shadow-sm">
+            <Network className="h-3 w-3 text-rose-600" />
+            <span>LegitScript Certified Pharmacy Network</span>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-full border bg-white/70 px-3 py-1.5 text-xs font-medium shadow-sm">
+            <Smartphone className="h-3 w-3 text-rose-600" />
+            <span>SOC2 Certified Telehealth Platform</span>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-full border bg-white/70 px-3 py-1.5 text-xs font-medium shadow-sm">
+            <Award className="h-3 w-3 text-rose-600" />
+            <span>LegitScript Certified Physician Corporation</span>
+          </div>
         </div>
 
         <h1 className="text-balance text-4xl font-extrabold tracking-tight sm:text-5xl md:text-6xl">
-          Everything you need to launch, run & grow your GLP-1 business
+          Everything you need to launch, run & scale your GLP-1 business
         </h1>
 
         <p className="mt-4 text-pretty text-base leading-relaxed text-muted-foreground sm:text-lg">
           Learn why GrowPro is the #1 choice for brands offering GLP-1s
         </p>
 
-        <div className="mt-7 flex items-center justify-center gap-3">
+        <div className="mt-7 flex items-center justify-center">
           <Button
             asChild
             className={cn(
-              "rounded-full px-5 py-5 sm:py-6 text-sm sm:text-base",
-              "bg-neutral-900 hover:bg-neutral-800 text-white shadow",
+              "rounded-full px-6 py-5 sm:py-6 text-sm sm:text-base",
+              "bg-rose-600 hover:bg-rose-700 text-white shadow-lg",
               "shadow-[inset_0_1px_0_rgba(255,255,255,.15)]",
             )}
           >
-            <Link href="/signup">Try FlowAI for Free</Link>
-          </Button>
-          <Button asChild variant="outline" className="rounded-full border-foreground/10 bg-white/80 backdrop-blur">
-            <Link href="#how-it-works" aria-label="See how FlowAI works">
+            <Link
+              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               See How It Works
             </Link>
           </Button>

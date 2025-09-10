@@ -57,7 +57,7 @@ export function DashboardPreview() {
     setProjects((prev) => [{ id: Date.now(), name: newName.trim(), status: "ongoing", paid: false }, ...prev])
     setNewName("")
     setOpen(false)
-    toast({ title: "Project added", description: "Your new project was created." })
+    toast({ title: "Patient added", description: "Your new patient was created." }) // Updated toast message
   }
 
   function toggleStatus(id: number) {
@@ -93,14 +93,15 @@ export function DashboardPreview() {
             <Input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search projects"
+              placeholder="Search patients" // Changed from "Search projects" to "Search patients"
               className="h-6 border-0 bg-transparent p-0 text-sm focus-visible:ring-0"
             />
           </div>
 
           <div className="flex items-center gap-2">
             <Button size="sm" variant="secondary" className="rounded-full" onClick={() => setOpen(true)}>
-              <Plus className="mr-1 h-4 w-4" /> Add new project
+              <Plus className="mr-1 h-4 w-4" /> Add new patient{" "}
+              {/* Changed from "Add new project" to "Add new patient" */}
             </Button>
             <div className="h-7 w-7 rounded-full bg-muted" aria-hidden />
           </div>
@@ -154,12 +155,14 @@ export function DashboardPreview() {
       <Dialog open={open} onOpenChange={setOpen}>
         <DialogContent className="sm:max-w-md">
           <DialogHeader>
-            <DialogTitle>Add new project</DialogTitle>
+            <DialogTitle>Add new patient</DialogTitle> {/* Changed from "Add new project" to "Add new patient" */}
           </DialogHeader>
           <div className="grid gap-3">
-            <Input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Project name" autoFocus />
+            <Input value={newName} onChange={(e) => setNewName(e.target.value)} placeholder="Patient name" autoFocus />{" "}
+            {/* Changed placeholder from "Project name" to "Patient name" */}
             <p className="text-xs text-muted-foreground">
-              Projects start as “ongoing”. You can cycle status and mark as paid from the list.
+              Patients start as "ongoing". You can cycle status and mark as paid from the list.{" "}
+              {/* Changed from "Projects" to "Patients" */}
             </p>
           </div>
           <DialogFooter>
@@ -167,7 +170,7 @@ export function DashboardPreview() {
               Cancel
             </Button>
             <Button onClick={addProject} className="rounded-full">
-              <Plus className="mr-1 h-4 w-4" /> Add project
+              <Plus className="mr-1 h-4 w-4" /> Add patient {/* Changed from "Add project" to "Add patient" */}
             </Button>
           </DialogFooter>
         </DialogContent>

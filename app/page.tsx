@@ -4,11 +4,14 @@ import { DashboardPreview } from "@/components/flowai/dashboard-preview"
 import ProductShowcaseSection from "@/components/flowai/sections/product-showcase"
 import ProductCategoriesSection from "@/components/flowai/sections/product-categories"
 import FormularyAccessSection from "@/components/flowai/sections/formulary-access"
+import ServicesBreakdownSection from "@/components/flowai/sections/services-breakdown"
 import WhyChooseUsSection from "@/components/flowai/sections/why-choose-us"
 import MedicationSliderSection from "@/components/flowai/sections/medication-slider"
 import EarningsCalculatorSection from "@/components/flowai/sections/earnings-calculator"
 import PricingSection from "@/components/flowai/sections/pricing"
 import JessicaSection from "@/components/flowai/sections/jessica-section"
+import FAQSection from "@/components/flowai/sections/faq-section"
+import Footer from "@/components/flowai/footer"
 
 export default function Page() {
   return (
@@ -25,11 +28,14 @@ export default function Page() {
       <ProductShowcaseSection />
       <ProductCategoriesSection />
       <FormularyAccessSection />
+      <ServicesBreakdownSection />
       <WhyChooseUsSection />
       <MedicationSliderSection />
       <EarningsCalculatorSection />
       <PricingSection />
       <JessicaSection />
+      <FAQSection />
+      <Footer />
     </main>
   )
 }

@@ -1,10 +1,29 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
+import Link from "next/link"
 
 export default function JessicaSection() {
   return (
     <section className="py-16 bg-gradient-to-br from-rose-50 to-orange-50">
       <div className="mx-auto max-w-7xl px-4">
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <h2 className="text-2xl font-bold tracking-tight mb-4">Book Your Consultation</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto">
+              Schedule a call with Jessica to discuss how GrowPro can help launch your GLP-1 telehealth business
+            </p>
+          </div>
+          <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-4 md:p-6">
+            <iframe
+              src="https://link.lumifunnels.com/widget/booking/N4Ur2Qli6NkaOI69quvk"
+              style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "900px" }}
+              scrolling="no"
+              id="TvtEp4B8wwmeTy21SQwx_1757545036927"
+            />
+            <script src="https://link.lumifunnels.com/js/form_embed.js" type="text/javascript"></script>
+          </div>
+        </div>
+
         <div className="text-center mb-12">
           <h2 className="text-3xl font-bold tracking-tight mb-4">Why Work with GrowPro and Jessica Lynne White</h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
@@ -74,12 +93,18 @@ export default function JessicaSection() {
                   and her telehealth launch blueprint alongside industry titans like Carmen Electra, Allen Iverson, and
                   Floyd Mayweather.
                 </p>
-                <Button
-                  variant="outline"
-                  className="w-full border-orange-200 text-orange-700 hover:bg-orange-50 bg-transparent"
+                <Link
+                  href="https://www.legacymakerstv.com/jessica-lynne-white"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Watch Now
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-orange-200 text-orange-700 hover:bg-orange-50 bg-transparent"
+                  >
+                    Watch Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
 
@@ -102,12 +127,18 @@ export default function JessicaSection() {
                   helps entrepreneurs turn telehealth ideas into thriving, scalable brands. Learn the real steps to
                   launch from the ground up.
                 </p>
-                <Button
-                  variant="outline"
-                  className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                <Link
+                  href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODYwMzEzNTY4NDUxODE3?story_media_id=3680905877427839756&igsh=aXRpajliNmtzZXhm"
+                  target="_blank"
+                  rel="noopener noreferrer"
                 >
-                  Listen Now
-                </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                  >
+                    Listen Now
+                  </Button>
+                </Link>
               </CardContent>
             </Card>
           </div>
@@ -118,7 +149,7 @@ export default function JessicaSection() {
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/ST200896.JPG-oQa3rC5sZCaU9uSQhoLj6a5xo0VCJn.jpeg"
                 alt="Jessica Lynne White professional headshot"
-                className="w-32 h-32 rounded-full object-cover shadow-lg"
+                className="w-32 h-32 rounded-full object-cover object-top shadow-lg"
               />
             </div>
             <h4 className="text-xl font-bold mb-4">Jessica Lynne White, BS, MSPT</h4>

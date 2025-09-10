@@ -6,6 +6,16 @@ import { ArrowRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 export function Navbar() {
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId)
+    if (element) {
+      element.scrollIntoView({
+        behavior: "smooth",
+        block: "start",
+      })
+    }
+  }
+
   return (
     <header>
       <nav
@@ -25,29 +35,40 @@ export function Navbar() {
 
         <ul className="hidden items-center gap-6 text-sm text-muted-foreground md:flex">
           <li>
-            <Link href="#features" className="transition-colors hover:text-foreground">
+            <button
+              onClick={() => scrollToSection("what-is-growpro")}
+              className="transition-colors hover:text-foreground cursor-pointer"
+            >
               Features
-            </Link>
+            </button>
           </li>
           <li>
-            <Link href="#how-it-works" className="transition-colors hover:text-foreground">
-              How it Works
-            </Link>
+            <button
+              onClick={() => scrollToSection("treatments")}
+              className="transition-colors hover:text-foreground cursor-pointer"
+            >
+              Treatments
+            </button>
           </li>
           <li>
-            <Link href="#pricing" className="transition-colors hover:text-foreground">
-              Pricing
-            </Link>
+            <button
+              onClick={() => scrollToSection("earnings-calculator")}
+              className="transition-colors hover:text-foreground cursor-pointer"
+            >
+              Revenue
+            </button>
+          </li>
+          <li>
+            <button
+              onClick={() => scrollToSection("services-breakdown")}
+              className="transition-colors hover:text-foreground cursor-pointer"
+            >
+              What's Included
+            </button>
           </li>
         </ul>
 
         <div className="flex items-center gap-2">
-          <Link
-            href="/login"
-            className="hidden text-sm text-muted-foreground transition-colors hover:text-foreground md:inline"
-          >
-            Login
-          </Link>
           <Button
             asChild
             size="sm"
@@ -57,7 +78,11 @@ export function Navbar() {
               "shadow-[inset_0_1px_0_0_rgba(255,255,255,.15)]",
             )}
           >
-            <Link href="/signup" aria-label="Speak to an Expert">
+            <Link
+              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              target="_blank"
+              aria-label="Speak to an Expert"
+            >
               <span className="mr-1">Speak to an Expert</span>
               <ArrowRight className="h-4 w-4" />
             </Link>

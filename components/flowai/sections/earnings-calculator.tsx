@@ -23,7 +23,7 @@ export default function EarningsCalculatorSection() {
   }
 
   return (
-    <section className="py-16 bg-gradient-to-b from-rose-50 to-orange-50">
+    <section id="earnings-calculator" className="py-16 bg-gradient-to-b from-rose-50 to-orange-50">
       <div className="mx-auto max-w-6xl px-4 text-center">
         <h2 className="text-3xl font-bold tracking-tight mb-4">Visualize Your Potential Earnings</h2>
         <p className="text-muted-foreground mb-12 max-w-3xl mx-auto">

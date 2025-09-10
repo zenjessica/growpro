@@ -7,6 +7,8 @@ export default function ProductCategoriesSection() {
     "Wellness Companies",
     "Digital Health Companies",
     "Gyms Fitness Studios",
+    "Salon Owners",
+    "Entrepreneurs",
   ]
 
   return (
