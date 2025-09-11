@@ -76,6 +76,7 @@ export function Navbar() {
               "rounded-full px-4",
               "bg-neutral-900 hover:bg-neutral-800 text-white",
               "shadow-[inset_0_1px_0_0_rgba(255,255,255,.15)]",
+              "min-h-[44px] touch-manipulation",
             )}
           >
             <Link

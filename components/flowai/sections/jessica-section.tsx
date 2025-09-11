@@ -15,7 +15,7 @@ export default function JessicaSection() {
               Schedule a call with Jessica to discuss how GrowPro can help launch your GLP-1 telehealth business
             </p>
           </div>
-          <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-4 md:p-6">
+          <div className="max-w-6xl mx-auto bg-white rounded-2xl shadow-lg p-2 sm:p-4 md:p-6">
             <iframe
               src="https://link.lumifunnels.com/widget/booking/N4Ur2Qli6NkaOI69quvk"
               style={{ width: "100%", border: "none", overflow: "hidden", minHeight: "900px" }}
@@ -60,7 +60,15 @@ export default function JessicaSection() {
                 </p>
               </div>
               <div className="mt-8">
-                <Button className="bg-rose-600 hover:bg-rose-700 text-white">Start Your Journey Today</Button>
+                <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white">
+                  <a
+                    href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    Start Your Journey Today
+                  </a>
+                </Button>
               </div>
             </div>
             <div className="order-1 lg:order-2">

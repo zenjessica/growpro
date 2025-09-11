@@ -61,6 +61,7 @@ export function Hero() {
               "rounded-full px-6 py-5 sm:py-6 text-sm sm:text-base",
               "bg-rose-600 hover:bg-rose-700 text-white shadow-lg",
               "shadow-[inset_0_1px_0_rgba(255,255,255,.15)]",
+              "min-h-[48px] touch-manipulation",
             )}
           >
             <Link
