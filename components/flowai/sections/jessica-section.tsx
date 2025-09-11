@@ -1,11 +1,13 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
+import { ExternalLink, Newspaper, Tv, Mic } from "lucide-react"
 
 export default function JessicaSection() {
   return (
     <section className="py-16 bg-gradient-to-br from-rose-50 to-orange-50">
       <div className="mx-auto max-w-7xl px-4">
+        {/* Calendar Booking Section */}
         <div className="mb-16">
           <div className="text-center mb-8">
             <h2 className="text-2xl font-bold tracking-tight mb-4">Book Your Consultation</h2>
@@ -73,7 +75,7 @@ export default function JessicaSection() {
           </div>
 
           {/* Media Features Grid */}
-          <div className="grid gap-8 md:grid-cols-2 lg:gap-12">
+          <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 lg:gap-8">
             {/* Legacy Makers TV */}
             <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <CardContent className="p-6">
@@ -85,6 +87,7 @@ export default function JessicaSection() {
                   />
                 </div>
                 <div className="inline-block px-3 py-1 bg-orange-100 text-orange-700 rounded-full text-sm font-medium mb-3">
+                  <Tv className="w-3 h-3 inline mr-1" />
                   Television Feature
                 </div>
                 <h4 className="text-xl font-bold mb-3">Legacy Makers TV Debut</h4>
@@ -119,13 +122,13 @@ export default function JessicaSection() {
                   />
                 </div>
                 <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
+                  <Mic className="w-3 h-3 inline mr-1" />
                   Podcast Feature
                 </div>
                 <h4 className="text-xl font-bold mb-3">Dropping Bombs Podcast</h4>
                 <p className="text-gray-600 mb-4">
                   Featured on Brad Lea's influential Dropping Bombs podcast, Jessica broke down exactly how GrowPro
-                  helps entrepreneurs turn telehealth ideas into thriving, scalable brands. Learn the real steps to
-                  launch from the ground up.
+                  helps entrepreneurs turn telehealth ideas into thriving, scalable brands.
                 </p>
                 <Link
                   href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODYwMzEzNTY4NDUxODE3?story_media_id=3680905877427839756&igsh=aXRpajliNmtzZXhm"
@@ -141,6 +144,178 @@ export default function JessicaSection() {
                 </Link>
               </CardContent>
             </Card>
+
+            {/* The Medspa Club Podcast */}
+            <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
+              <CardContent className="p-6">
+                <div className="relative mb-6">
+                  <img
+                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FDITJm9UqGevFUmZC1XIcz2O6EjREH.png"
+                    alt="Jessica Lynne White on The Medspa Club Podcast with Monica Swint"
+                    className="rounded-lg w-full h-48 object-cover"
+                  />
+                </div>
+                <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
+                  <Mic className="w-3 h-3 inline mr-1" />
+                  Podcast Feature
+                </div>
+                <h4 className="text-xl font-bold mb-3">The Medspa Club Podcast</h4>
+                <p className="text-gray-600 mb-4">
+                  Jessica shares insights on scaling telehealth businesses and building successful GLP-1 practices with
+                  The Medspa Club audience, discussing proven strategies for healthcare entrepreneurs.
+                </p>
+                <Link href="https://www.youtube.com/watch?v=ihab2uxrdOY" target="_blank" rel="noopener noreferrer">
+                  <Button
+                    variant="outline"
+                    className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                  >
+                    Watch Now
+                  </Button>
+                </Link>
+              </CardContent>
+            </Card>
+          </div>
+
+          {/* Comprehensive Press Coverage Section */}
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-100">
+            <div className="text-center mb-8">
+              <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-4">
+                <Newspaper className="w-3 h-3 inline mr-1" />
+                Press Coverage
+              </div>
+              <h3 className="text-2xl font-bold mb-4">Featured In Major Publications</h3>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Jessica's expertise and success story have been recognized by leading media outlets and publications
+              </p>
+            </div>
+
+            <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+              <Link
+                href="https://ktla.com/business/press-releases/ein-presswire/811942259/jessica-lynne-white-joins-legacy-makers-tv-to-share-insights-on-healthcare-innovation-and-building-a-lasting-business/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          KTLA
+                        </h5>
+                        <p className="text-sm text-gray-600">Healthcare Innovation Feature</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://voyagela.com/interview/daily-inspiration-meet-jessica-lynne-white-pt/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          Voyage LA
+                        </h5>
+                        <p className="text-sm text-gray-600">Entrepreneur Interview</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://finance.yahoo.com/news/kickstartsocial-co-digital-marketing-agency-041100626.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          Yahoo Finance
+                        </h5>
+                        <p className="text-sm text-gray-600">Agency Success Story</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://www.femalefirst.co.uk/features/jessica-lynne-white-successful-balancing-motherhood-scaling-digital-marketing-agency-1324648.html"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          Female First
+                        </h5>
+                        <p className="text-sm text-gray-600">Motherhood & Business</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://thefrisky.com/jessica-lynne-physical-therapist-fueled-career-in-digital-marketing/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          The Frisky
+                        </h5>
+                        <p className="text-sm text-gray-600">Career Transition Story</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://londondailypost.com/build-a-personal-brand-youll-love-and-get-paid-to-post-with-kickstart-my-influence-a-four-week-online-mastermind-workshop-by-jessica-lynne-white/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          London Daily Post
+                        </h5>
+                        <p className="text-sm text-gray-600">Kickstart My Influence Workshop</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+            </div>
           </div>
 
           {/* Professional Credibility */}
