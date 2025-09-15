@@ -88,6 +88,25 @@ export default function PricingSection() {
           </a>
         </Button>
       </div>
+
+      <div className="mt-16 text-center max-w-4xl mx-auto">
+        <div className="bg-white/90 backdrop-blur-sm rounded-2xl p-8 shadow-lg border border-rose-100">
+          <h3 className="text-2xl font-bold text-gray-900 mb-4">Financing Available</h3>
+          <p className="text-gray-600 mb-6 leading-relaxed">
+            Don't let upfront costs hold you back from starting your telehealth business. We offer flexible financing
+            options to help you launch your GLP-1 practice with manageable monthly payments.
+          </p>
+          <Button asChild className="bg-orange-600 hover:bg-orange-700 text-white px-8 py-3 rounded-full">
+            <a
+              href="https://preferredfundinggroup.wufoo.com/forms/z1159fqo1foe9db/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Apply for Financing
+            </a>
+          </Button>
+        </div>
+      </div>
     </section>
   )
 }
