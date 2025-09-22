@@ -323,6 +323,90 @@ export default function JessicaSection() {
                   </CardContent>
                 </Card>
               </Link>
+
+              <Link
+                href="https://apnews.com/press-release/ein-presswire-newsmatics/medical-technology-florida-ce14ec4b28737268d33068a0b61d984e"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          AP News
+                        </h5>
+                        <p className="text-sm text-gray-600">Medical Technology Feature</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://www.benzinga.com/content/45363261/jessica-lynne-white-joins-legacy-makers-tv-to-share-insights-on-healthcare-innovation-and-building-a"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          Benzinga
+                        </h5>
+                        <p className="text-sm text-gray-600">Healthcare Innovation Story</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://fox5sandiego.com/business/press-releases/ein-presswire/811942259/jessica-lynne-white-joins-legacy-makers-tv-to-share-insights-on-healthcare-innovation-and-building-a-lasting-business/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          Fox 5 San Diego
+                        </h5>
+                        <p className="text-sm text-gray-600">Business Innovation Feature</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
+
+              <Link
+                href="https://www.americanbusinesstimes.com/article/811942259-jessica-lynne-white-joins-legacy-makers-tv-to-share-insights-on-healthcare-innovation-and-building-a-lasting-business"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <Card className="border border-rose-100 hover:border-rose-300 transition-colors cursor-pointer">
+                  <CardContent className="p-4">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h5 className="font-semibold text-gray-900 group-hover:text-rose-700 transition-colors">
+                          American Business Times
+                        </h5>
+                        <p className="text-sm text-gray-600">Legacy Makers TV Feature</p>
+                      </div>
+                      <ExternalLink className="w-4 h-4 text-gray-400 group-hover:text-rose-600" />
+                    </div>
+                  </CardContent>
+                </Card>
+              </Link>
             </div>
           </div>
 
