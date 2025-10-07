@@ -48,7 +48,13 @@ export default function ServicesBreakdownSection() {
         {/* Total Value & CTA */}
         <div className="text-center bg-gradient-to-r from-rose-600 to-orange-600 rounded-3xl p-12 text-white">
           <h3 className="text-3xl font-bold mb-4 text-white">You don't need to be a medical provider</h3>
-          <p className="text-xl mb-8 text-white">Get everything you need to build a successful telehealth business</p>
+          <p className="text-lg md:text-xl mb-8 text-white leading-relaxed max-w-4xl mx-auto">
+            It's not too late to get started with the GLP-1 telemedicine game, you just need to get on the playing
+            field. We've been launching successful Weight Loss Practices and Telemed brands all over the nation, and
+            we're ready to help you compete in crowded online channels where everyone is vying for the same customer's
+            attention. This is not a course or a DIY how to, it's a robust turnkey service where I hand you the keys to
+            your fully operational and compliant telehealth business.
+          </p>
           <Button asChild size="lg" className="bg-white text-rose-600 hover:bg-rose-50 font-semibold px-8 py-6 text-lg">
             <a
               href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
