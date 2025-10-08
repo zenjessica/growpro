@@ -1,7 +1,7 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { ExternalLink, Newspaper, Tv, Mic } from "lucide-react"
+import { ExternalLink, Newspaper, Tv, Mic, Play } from "lucide-react"
 
 export default function JessicaSection() {
   return (
@@ -77,6 +77,37 @@ export default function JessicaSection() {
                   src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BU0A0048.jpg-qwnxYrbAdCeapD23BR5b5RMKqTINit.jpeg"
                   alt="Jessica Lynne White in medical scrubs"
                   className="rounded-2xl shadow-lg max-w-md mx-auto"
+                />
+              </div>
+            </div>
+          </div>
+
+          {/* Featured Video Section */}
+          <div className="bg-gradient-to-br from-white to-rose-50/30 rounded-3xl p-8 md:p-12 border border-rose-100 shadow-xl">
+            <div className="text-center mb-8">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-rose-500 to-orange-500 text-white rounded-full text-sm font-medium mb-4">
+                <Play className="w-4 h-4" />
+                Featured Video
+              </div>
+              <h3 className="text-2xl md:text-3xl font-bold mb-3">Watch Jessica's Story</h3>
+              <p className="text-gray-600 max-w-2xl mx-auto">
+                Discover how Jessica is revolutionizing the telehealth industry and helping entrepreneurs build
+                successful GLP-1 practices
+              </p>
+            </div>
+
+            <div className="max-w-4xl mx-auto">
+              <div
+                className="relative rounded-2xl overflow-hidden shadow-2xl bg-black"
+                style={{ paddingBottom: "56.25%" }}
+              >
+                <iframe
+                  src="https://www.youtube.com/embed/mgqnZDA1D3o"
+                  title="Jessica Lynne White Featured Video"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  className="absolute top-0 left-0 w-full h-full"
+                  style={{ border: "none" }}
                 />
               </div>
             </div>
