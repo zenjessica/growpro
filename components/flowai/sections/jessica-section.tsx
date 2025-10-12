@@ -220,7 +220,7 @@ export default function JessicaSection() {
                 <div className="relative mb-6">
                   <img
                     src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-10-12%20115438-00XrDRa2AlZWNfOu3zLkvJ1kEi96hU.png"
-                    alt="Jessica Lynne White on The Digital Live Streaming Podcast with Dr. Enrico Dolcecore"
+                    alt="Jessica Lynne White on The Digital Coach Podcast with Dr. Enrico Dolcecore"
                     className="rounded-lg w-full h-48 object-cover"
                   />
                 </div>
@@ -228,7 +228,7 @@ export default function JessicaSection() {
                   <Mic className="w-3 h-3 inline mr-1" />
                   Podcast Feature
                 </div>
-                <h4 className="text-xl font-bold mb-3">Business Innovators Podcast</h4>
+                <h4 className="text-xl font-bold mb-3">The Digital Coach Podcast (Chiropractics + GLP-1)</h4>
                 <p className="text-gray-600 mb-4">
                   If you've wondered whether GLP‑1s belong in a rehab‑centric clinic, this conversation shows how to do
                   it cleanly: branded to your practice, compliant across channels, and largely automated from intake to
