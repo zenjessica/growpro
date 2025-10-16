@@ -34,11 +34,6 @@ const faqs = [
       "No medical background is required. Our platform connects you with licensed, credentialed physicians who handle all medical consultations and prescriptions. You focus on business operations and marketing while our medical network ensures proper patient care and compliance.",
   },
   {
-    question: "What's included in the $139,000+ value package?",
-    answer:
-      "Our comprehensive program includes everything you need: custom website development, social media marketing systems, lead generation funnels, compliance templates, provider network access, brand development, and marketing campaigns. Here's the best part - our program is a fraction of this cost because we want to make selling these life-changing medications accessible for all types of business models and entrepreneurs. The exact investment depends on your specific needs and goals, which we'll discuss during your free consultation.",
-  },
-  {
     question: "How do I access the compounded medications and pharmacy network?",
     answer:
       "GrowPro provides instant access to our vetted formulary featuring hundreds of Rx products from 50+ licensed pharmacies. This includes GLP-1, GLP-1/GIP, NAD+, and Sermorelin compounds. All pharmacies are credentialed and offer preferred pricing to maximize your profit margins.",
