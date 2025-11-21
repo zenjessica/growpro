@@ -79,11 +79,7 @@ export function Navbar() {
               "min-h-[44px] touch-manipulation",
             )}
           >
-            <Link
-              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
-              target="_blank"
-              aria-label="Speak to an Expert"
-            >
+            <Link href="https://www.videoask.com/fsiwk0673" target="_blank" aria-label="Speak to an Expert">
               <span className="mr-1">Speak to an Expert</span>
               <ArrowRight className="h-4 w-4" />
             </Link>

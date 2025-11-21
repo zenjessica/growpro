@@ -7,25 +7,8 @@ export default function JessicaSection() {
   return (
     <section className="py-16 bg-gradient-to-br from-rose-50 to-orange-50">
       <div className="mx-auto max-w-7xl px-4">
-        {/* Calendar Booking Section */}
-        <div className="mb-16">
-          <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold tracking-tight mb-4">Book Your Free Consultation</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto">
-              Schedule a call with Jessica to discuss how GrowPro can help you launch your GLP-1 telehealth business
-            </p>
-          </div>
-          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-lg p-4 md:p-8">
-            <iframe
-              src="https://link.lumifunnels.com/widget/bookings/jessicawhite"
-              style={{ width: "100%", height: "800px", border: "none" }}
-              title="Book a consultation with Jessica Lynne White"
-            />
-          </div>
-        </div>
-
-        {/* Header */}
-        <div className="text-center mb-12">
+        {/* Introduction */}
+        <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold tracking-tight mb-4">Why Work with GrowPro and Jessica Lynne White</h2>
           <p className="text-muted-foreground max-w-3xl mx-auto text-lg">
             From Physical Therapist to telehealth entrepreneur, Jessica has cracked the code on building successful
@@ -58,11 +41,7 @@ export default function JessicaSection() {
             </div>
             <div className="order-1 lg:order-2">
               <div className="relative aspect-square overflow-hidden rounded-2xl shadow-xl">
-                <img
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/BU0A0048-GbhdMnQqpOth4TlTdNSyVqXrrxGuwB.jpg"
-                  alt="Jessica Lynne White"
-                  className="object-cover w-full h-full"
-                />
+                <img src="/images/bu0a0048.jpg" alt="Jessica Lynne White" className="object-cover w-full h-full" />
               </div>
             </div>
           </div>
@@ -98,7 +77,7 @@ export default function JessicaSection() {
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-aFrXrohHp24zM2VdBlvvH8nRvieqSs.png"
+                    src="/images/image.png"
                     alt="Jessica Lynne White on Legacy Makers TV"
                     className="rounded-lg w-full h-48 object-cover"
                   />
@@ -132,7 +111,7 @@ export default function JessicaSection() {
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-Qk8TurTAmM0dGM4ciVhjtw91CqC2Br.png"
+                    src="/images/image.png"
                     alt="Jessica Lynne White on Dropping Bombs Podcast"
                     className="rounded-lg w-full h-48 object-cover"
                   />
@@ -167,7 +146,7 @@ export default function JessicaSection() {
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-FDITJm9UqGevFUmZC1XIcz2O6EjREH.png"
+                    src="/images/image.png"
                     alt="Jessica Lynne White on The Medspa Club Podcast"
                     className="rounded-lg w-full h-48 object-cover"
                   />
@@ -197,7 +176,7 @@ export default function JessicaSection() {
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
-                    src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/Screenshot%202025-10-12%20115438-00XrDRa2AlZWNfOu3zLkvJ1kEi96hU.png"
+                    src="/images/screenshot-202025-10-12-20115438.png"
                     alt="Jessica Lynne White on The Digital Coach Podcast with Dr. Enrico Dolcecore"
                     className="rounded-lg w-full h-48 object-cover"
                   />

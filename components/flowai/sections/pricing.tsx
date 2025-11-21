@@ -83,7 +83,7 @@ export default function PricingSection() {
           preferred choice for healthcare entrepreneurs and established practices expanding their telehealth offerings.
         </p>
         <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-3 rounded-full">
-          <a href="https://link.lumifunnels.com/widget/bookings/jessicawhite" target="_blank" rel="noopener noreferrer">
+          <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
             Speak to an Expert
           </a>
         </Button>

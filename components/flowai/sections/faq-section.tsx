@@ -117,11 +117,7 @@ export default function FAQSection() {
               about building your GLP-1 telehealth business.
             </p>
             <Button asChild size="lg" className="bg-white text-rose-600 hover:bg-rose-50 font-semibold px-8 py-3">
-              <a
-                href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
+              <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
                 Schedule Free Consultation
               </a>
             </Button>

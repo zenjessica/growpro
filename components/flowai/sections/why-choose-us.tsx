@@ -74,7 +74,11 @@ export default function WhyChooseUsSection() {
                           </div>
                           <h3 className="text-3xl font-bold mb-4 text-gray-900">{benefit.title}</h3>
                           <p className="text-gray-600 text-lg leading-relaxed mb-6">{benefit.description}</p>
-                          <Button className="bg-rose-600 hover:bg-rose-700 text-white">Learn More</Button>
+                          <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white">
+                            <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+                              Learn More
+                            </a>
+                          </Button>
                         </div>
                         <div className="order-1 lg:order-2 flex items-center justify-center">
                           <div className="w-80 h-80 bg-gradient-to-br from-rose-100 to-orange-100 rounded-2xl flex items-center justify-center shadow-lg">

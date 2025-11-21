@@ -13,7 +13,11 @@ export default function ProductShowcaseSection() {
               carefully vetted options and accelerate your business growth through improved patient outcomes and
               increased revenue potential.
             </p>
-            <Button className="bg-rose-600 hover:bg-rose-700 text-white">Learn More</Button>
+            <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white">
+              <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+                Learn More
+              </a>
+            </Button>
           </div>
           <div className="relative">
             <img
