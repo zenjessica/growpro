@@ -1,12 +1,35 @@
 import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import Link from "next/link"
-import { Mic, Tv, Newspaper, Award, Users, TrendingUp } from "lucide-react"
+import { Mic, Tv, Newspaper, Award, Users, TrendingUp, Calendar } from "lucide-react"
 
 export default function JessicaSection() {
   return (
     <section className="py-16 bg-gradient-to-br from-rose-50 to-orange-50">
       <div className="mx-auto max-w-7xl px-4">
+        {/* Calendar Booking Section */}
+        <div className="mb-16">
+          <div className="text-center mb-8">
+            <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-4">
+              <Calendar className="w-3 h-3 inline mr-1" />
+              Book Your Call
+            </div>
+            <h2 className="text-3xl font-bold mb-4">Ready to Start Your GLP-1 Business?</h2>
+            <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
+              Schedule a free consultation with Jessica to discuss how GrowPro can help you launch your telehealth
+              business
+            </p>
+          </div>
+          <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
+            <iframe
+              src="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              className="w-full h-[700px]"
+              frameBorder="0"
+              title="Schedule a call with Jessica Lynne White"
+            />
+          </div>
+        </div>
+
         {/* Introduction */}
         <div className="text-center mb-12 max-w-3xl mx-auto">
           <h2 className="text-3xl font-bold tracking-tight mb-4">Why Work with GrowPro and Jessica Lynne White</h2>
