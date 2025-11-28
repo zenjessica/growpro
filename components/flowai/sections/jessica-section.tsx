@@ -158,7 +158,7 @@ export default function JessicaSection() {
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
-                    src="/images/image.png"
+                    src="/images/1.jpeg"
                     alt="Jessica Lynne White on Dropping Bombs Podcast"
                     className="rounded-lg w-full h-48 object-cover"
                   />
@@ -173,16 +173,12 @@ export default function JessicaSection() {
                   telehealth businesses and helps entrepreneurs turn telehealth ideas into thriving, scalable brands.
                   Learn the real steps to launch from the ground up.
                 </p>
-                <Link
-                  href="https://www.instagram.com/s/aGlnaGxpZ2h0OjE3ODYwMzEzNTY4NDUxODE3?story_media_id=3680905877427839756&igsh=aXRpajliNmtzZXhm"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="https://youtu.be/7sh5CxVYgqw" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
                     className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
                   >
-                    Listen Now
+                    Watch Now
                   </Button>
                 </Link>
               </CardContent>
