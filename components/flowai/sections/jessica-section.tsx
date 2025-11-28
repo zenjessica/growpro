@@ -124,9 +124,9 @@ export default function JessicaSection() {
               <CardContent className="p-6">
                 <div className="relative mb-6">
                   <img
-                    src="/images/image.png"
+                    src="/images/capture.jpeg"
                     alt="Jessica Lynne White on Legacy Makers TV"
-                    className="rounded-lg w-full h-48 object-cover"
+                    className="rounded-lg w-full h-48 object-cover object-top"
                   />
                 </div>
                 <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
@@ -138,11 +138,7 @@ export default function JessicaSection() {
                   Jessica shares her journey from physical therapist to successful telehealth entrepreneur, revealing
                   the strategies that helped her build multiple seven-figure businesses.
                 </p>
-                <Link
-                  href="https://www.legacymakerstv.com/jessica-lynne-white"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
+                <Link href="https://youtu.be/jJ0HXPEgoDQ?si=ii1R4k1rz9I4M-gd" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
                     className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
