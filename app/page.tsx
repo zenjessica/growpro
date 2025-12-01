@@ -25,10 +25,10 @@ export default function Page() {
         </div>
       </div>
 
+      <ServicesBreakdownSection />
       <ProductShowcaseSection />
       <ProductCategoriesSection />
       <FormularyAccessSection />
-      <ServicesBreakdownSection />
       <WhyChooseUsSection />
       <MedicationSliderSection />
       <EarningsCalculatorSection />
