@@ -198,7 +198,11 @@ export default function MedicationSliderSection() {
 
                       <div className="flex gap-4">
                         <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-full">
-                          <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+                          <a
+                            href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             Learn More
                           </a>
                         </Button>
@@ -207,7 +211,11 @@ export default function MedicationSliderSection() {
                           variant="outline"
                           className="border-rose-600 text-rose-600 hover:bg-rose-50 px-6 py-3 rounded-full bg-transparent"
                         >
-                          <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+                          <a
+                            href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          >
                             Get Started
                           </a>
                         </Button>
@@ -260,7 +268,7 @@ export default function MedicationSliderSection() {
           </div>
           <div className="text-center p-4 bg-white rounded-lg shadow-sm">
             <a
-              href="https://www.videoask.com/fsiwk0673"
+              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
               target="_blank"
               rel="noopener noreferrer"
               className="text-rose-600 font-semibold text-sm hover:text-rose-700 transition-colors cursor-pointer"

@@ -64,7 +64,11 @@ export function Hero() {
               "min-h-[48px] touch-manipulation",
             )}
           >
-            <Link href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+            <Link
+              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               See How It Works
             </Link>
           </Button>

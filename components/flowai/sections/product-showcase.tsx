@@ -14,7 +14,11 @@ export default function ProductShowcaseSection() {
               increased revenue potential.
             </p>
             <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white">
-              <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+              <a
+                href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
                 Learn More
               </a>
             </Button>

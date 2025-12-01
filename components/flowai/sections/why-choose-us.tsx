@@ -75,7 +75,11 @@ export default function WhyChooseUsSection() {
                           <h3 className="text-3xl font-bold mb-4 text-gray-900">{benefit.title}</h3>
                           <p className="text-gray-600 text-lg leading-relaxed mb-6">{benefit.description}</p>
                           <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white">
-                            <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+                            <a
+                              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                              target="_blank"
+                              rel="noopener noreferrer"
+                            >
                               Learn More
                             </a>
                           </Button>

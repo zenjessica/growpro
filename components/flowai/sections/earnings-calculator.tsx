@@ -96,7 +96,11 @@ export default function EarningsCalculatorSection() {
 
         <div className="mt-8">
           <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-3">
-            <a href="https://www.videoask.com/fsiwk0673" target="_blank" rel="noopener noreferrer">
+            <a
+              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               Speak to an Expert
             </a>
           </Button>
