@@ -27,7 +27,7 @@ export function Navbar() {
         aria-label="Primary"
       >
         <div className="flex items-center gap-2">
-          <div className="grid h-7 w-7 place-items-center rounded-full bg-rose-500 text-white text-xs font-semibold">
+          <div className="grid h-7 w-7 place-items-center rounded-full bg-primary text-white text-xs font-semibold">
             {"✺"}
           </div>
           <span className="font-semibold">GrowPro</span>
@@ -74,7 +74,7 @@ export function Navbar() {
             size="sm"
             className={cn(
               "rounded-full px-4",
-              "bg-neutral-900 hover:bg-neutral-800 text-white",
+              "bg-foreground hover:bg-foreground/90 text-background",
               "shadow-[inset_0_1px_0_0_rgba(255,255,255,.15)]",
               "min-h-[44px] touch-manipulation",
             )}
