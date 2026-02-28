@@ -65,6 +65,32 @@ export default function ServicesBreakdownSection() {
             </a>
           </Button>
         </div>
+
+        {/* Testimonial Video */}
+        <div className="mt-16">
+          <Card className="max-w-4xl mx-auto border-0 shadow-2xl bg-gradient-to-br from-white to-rose-50/50 backdrop-blur-sm">
+            <CardContent className="p-8">
+              <div className="text-center mb-6">
+                <div className="inline-flex items-center gap-2 mb-4">
+                  <Play className="h-5 w-5 text-rose-600" />
+                  <Badge className="bg-orange-500 text-white">Client Testimonial</Badge>
+                </div>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2">Hear From Our Successful Clients</h3>
+                <p className="text-gray-600">Real results from real entrepreneurs who launched with GrowPro</p>
+              </div>
+
+              <div className="relative aspect-video rounded-2xl overflow-hidden shadow-lg bg-gray-100">
+                <iframe
+                  src="https://www.youtube.com/embed/QZl1pG6vtD0"
+                  title="GrowPro Client Testimonial"
+                  className="absolute inset-0 w-full h-full"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                />
+              </div>
+            </CardContent>
+          </Card>
+        </div>
       </div>
     </section>
   )

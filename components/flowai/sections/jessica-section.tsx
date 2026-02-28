@@ -5,12 +5,12 @@ import { Mic, Tv, Newspaper, Award, Users, TrendingUp, Calendar } from "lucide-r
 
 export default function JessicaSection() {
   return (
-    <section className="py-16 bg-gradient-to-br from-rose-50 to-orange-50">
+    <section className="py-16 bg-gradient-to-br from-primary/5 to-accent-secondary/5">
       <div className="mx-auto max-w-7xl px-4">
         {/* Calendar Booking Section */}
         <div className="mb-16">
           <div className="text-center mb-8">
-            <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-4">
+            <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
               <Calendar className="w-3 h-3 inline mr-1" />
               Book Your Call
             </div>
@@ -72,10 +72,10 @@ export default function JessicaSection() {
           {/* Featured Video Section */}
           <div className="my-12">
             <div className="max-w-4xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-rose-100 to-orange-100 p-1">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary/10 to-accent-secondary/10 p-1">
                 <div className="bg-white rounded-xl overflow-hidden">
                   <div className="absolute top-4 left-4 z-10">
-                    <div className="inline-block px-3 py-1 bg-rose-600 text-white rounded-full text-sm font-medium shadow-lg">
+                    <div className="inline-block px-3 py-1 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow-lg">
                       Featured Video
                     </div>
                   </div>
@@ -96,10 +96,10 @@ export default function JessicaSection() {
           {/* Featured Podcast Section */}
           <div className="my-12">
             <div className="max-w-4xl mx-auto">
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-orange-100 to-rose-100 p-1">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-accent-secondary/10 to-primary/10 p-1">
                 <div className="bg-white rounded-xl overflow-hidden">
                   <div className="absolute top-4 left-4 z-10">
-                    <div className="inline-block px-3 py-1 bg-orange-600 text-white rounded-full text-sm font-medium shadow-lg">
+                    <div className="inline-block px-3 py-1 bg-accent-secondary text-accent-secondary-foreground rounded-full text-sm font-medium shadow-lg">
                       Featured Podcast
                     </div>
                   </div>
@@ -129,19 +129,19 @@ export default function JessicaSection() {
                     className="rounded-lg w-full h-48 object-cover object-top"
                   />
                 </div>
-                <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-3">
                   <Tv className="w-3 h-3 inline mr-1" />
                   TV Feature
                 </div>
                 <h4 className="text-xl font-bold mb-3">Legacy Makers TV</h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-muted-foreground mb-4">
                   Jessica shares her journey from physical therapist to successful telehealth entrepreneur, revealing
                   the strategies that helped her build multiple seven-figure businesses.
                 </p>
                 <Link href="https://youtu.be/jJ0HXPEgoDQ?si=ii1R4k1rz9I4M-gd" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
-                    className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                    className="w-full border-primary/20 text-primary hover:bg-primary/5 bg-transparent"
                   >
                     Watch Now
                   </Button>
@@ -159,12 +159,12 @@ export default function JessicaSection() {
                     className="rounded-lg w-full h-48 object-cover"
                   />
                 </div>
-                <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-3">
                   <Mic className="w-3 h-3 inline mr-1" />
                   Podcast Feature
                 </div>
                 <h4 className="text-xl font-bold mb-3">Dropping Bombs Podcast</h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-muted-foreground mb-4">
                   In this powerful episode, Jessica breaks down the exact framework she uses to launch profitable
                   telehealth businesses and helps entrepreneurs turn telehealth ideas into thriving, scalable brands.
                   Learn the real steps to launch from the ground up.
@@ -172,7 +172,7 @@ export default function JessicaSection() {
                 <Link href="https://youtu.be/7sh5CxVYgqw" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
-                    className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                    className="w-full border-primary/20 text-primary hover:bg-primary/5 bg-transparent"
                   >
                     Watch Now
                   </Button>
@@ -190,19 +190,19 @@ export default function JessicaSection() {
                     className="rounded-lg w-full h-48 object-cover"
                   />
                 </div>
-                <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-3">
                   <Mic className="w-3 h-3 inline mr-1" />
                   Podcast Feature
                 </div>
                 <h4 className="text-xl font-bold mb-3">The Medspa Club Podcast</h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-muted-foreground mb-4">
                   Jessica discusses innovative strategies for integrating GLP-1 services into existing medspa practices,
                   creating new revenue streams while maintaining clinical excellence.
                 </p>
                 <Link href="https://www.youtube.com/watch?v=ihab2uxrdOY" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
-                    className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                    className="w-full border-primary/20 text-primary hover:bg-primary/5 bg-transparent"
                   >
                     Watch Now
                   </Button>
@@ -220,12 +220,12 @@ export default function JessicaSection() {
                     className="rounded-lg w-full h-48 object-cover"
                   />
                 </div>
-                <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-3">
+                <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-3">
                   <Mic className="w-3 h-3 inline mr-1" />
                   Podcast Feature
                 </div>
                 <h4 className="text-xl font-bold mb-3">The Digital Coach Podcast (Chiropractics + GLP-1)</h4>
-                <p className="text-gray-600 mb-4">
+                <p className="text-muted-foreground mb-4">
                   If you've wondered whether GLP‑1s belong in a rehab‑centric clinic, this conversation shows how to do
                   it cleanly: branded to your practice, compliant across channels, and largely automated from intake to
                   doorstep. You keep the relationship and the standards; the telehealth layer handles the logistics.
@@ -234,7 +234,7 @@ export default function JessicaSection() {
                 <Link href="https://www.youtube.com/watch?v=oy59tHScn18" target="_blank" rel="noopener noreferrer">
                   <Button
                     variant="outline"
-                    className="w-full border-rose-200 text-rose-700 hover:bg-rose-50 bg-transparent"
+                    className="w-full border-primary/20 text-primary hover:bg-primary/5 bg-transparent"
                   >
                     Watch Now
                   </Button>
@@ -244,9 +244,9 @@ export default function JessicaSection() {
           </div>
 
           {/* Comprehensive Press Coverage Section */}
-          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-rose-100">
+          <div className="bg-white/60 backdrop-blur-sm rounded-2xl p-8 border border-primary/20">
             <div className="text-center mb-8">
-              <div className="inline-block px-3 py-1 bg-rose-100 text-rose-700 rounded-full text-sm font-medium mb-4">
+              <div className="inline-block px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium mb-4">
                 <Newspaper className="w-3 h-3 inline mr-1" />
                 As Featured In
               </div>
@@ -263,11 +263,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">KTLA</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">KTLA</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Healthcare Innovation & Building a Lasting Business</p>
                   </CardContent>
@@ -280,11 +280,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">Voyage LA</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">Voyage LA</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Daily Inspiration: Meet Jessica Lynne White, PT</p>
                   </CardContent>
@@ -297,11 +297,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">Yahoo Finance</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">Yahoo Finance</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">
                       KickstartSocial.co: Digital Marketing Agency Success
@@ -316,11 +316,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">Female First</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">Female First</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">
                       Balancing Motherhood & Scaling a Digital Marketing Agency
@@ -335,11 +335,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">The Frisky</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">The Frisky</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">From Physical Therapist to Digital Marketing Leader</p>
                   </CardContent>
@@ -352,13 +352,13 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">
                         London Daily Post
                       </h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Build a Personal Brand with Kickstart My Influence</p>
                   </CardContent>
@@ -371,11 +371,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">AP News</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">AP News</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Medical Technology Innovation in Florida</p>
                   </CardContent>
@@ -388,11 +388,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">Benzinga</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">Benzinga</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Healthcare Innovation & Business Building</p>
                   </CardContent>
@@ -405,11 +405,11 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">Fox 5 San Diego</h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">Fox 5 San Diego</h4>
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Healthcare Innovation Story</p>
                   </CardContent>
@@ -422,13 +422,13 @@ export default function JessicaSection() {
                 rel="noopener noreferrer"
                 className="group"
               >
-                <Card className="border border-rose-100 hover:border-rose-300 transition-all hover:shadow-lg">
+                <Card className="border border-primary/20 hover:border-primary/40 transition-all hover:shadow-lg">
                   <CardContent className="p-6">
                     <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-lg group-hover:text-rose-600 transition-colors">
+                      <h4 className="font-bold text-lg group-hover:text-primary transition-colors">
                         American Business Times
                       </h4>
-                      <Newspaper className="w-5 h-5 text-rose-600" />
+                      <Newspaper className="w-5 h-5 text-primary" />
                     </div>
                     <p className="text-sm text-muted-foreground">Building a Lasting Healthcare Business</p>
                   </CardContent>
@@ -439,9 +439,9 @@ export default function JessicaSection() {
 
           {/* Professional Credibility Section */}
           <div className="grid gap-6 md:grid-cols-3">
-            <Card className="border-rose-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-primary/20 bg-white/80 backdrop-blur-sm">
               <CardContent className="p-6 text-center">
-                <Award className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+                <Award className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h4 className="font-bold mb-2">Licensed Healthcare Professional</h4>
                 <p className="text-sm text-muted-foreground">
                   BS, MSPT with deep understanding of clinical operations and compliance
@@ -449,9 +449,9 @@ export default function JessicaSection() {
               </CardContent>
             </Card>
 
-            <Card className="border-rose-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-primary/20 bg-white/80 backdrop-blur-sm">
               <CardContent className="p-6 text-center">
-                <Users className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+                <Users className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h4 className="font-bold mb-2">Digital Marketing Expert</h4>
                 <p className="text-sm text-muted-foreground">
                   Founder of Kickstart Social, specializing in health & wellness brands
@@ -459,9 +459,9 @@ export default function JessicaSection() {
               </CardContent>
             </Card>
 
-            <Card className="border-rose-100 bg-white/80 backdrop-blur-sm">
+            <Card className="border-primary/20 bg-white/80 backdrop-blur-sm">
               <CardContent className="p-6 text-center">
-                <TrendingUp className="w-12 h-12 text-rose-600 mx-auto mb-4" />
+                <TrendingUp className="w-12 h-12 text-primary mx-auto mb-4" />
                 <h4 className="font-bold mb-2">Proven Track Record</h4>
                 <p className="text-sm text-muted-foreground">
                   Successfully launched multiple seven-figure telehealth businesses nationwide
