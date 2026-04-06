@@ -231,14 +231,14 @@ export default function JessicaSection() {
                   doorstep. You keep the relationship and the standards; the telehealth layer handles the logistics.
                   Ready to turn trust into outcomes and a resilient revenue line?
                 </p>
-                <Link href="https://www.youtube.com/watch?v=oy59tHScn18" target="_blank" rel="noopener noreferrer">
-                  <Button
-                    variant="outline"
-                    className="w-full border-primary/20 text-primary hover:bg-primary/5 bg-transparent"
-                  >
-                    Watch Now
-                  </Button>
-                </Link>
+<Link href="https://www.youtube.com/watch?v=vm250GQQMiA" target="_blank" rel="noopener noreferrer">
+  <Button
+  variant="outline"
+  className="w-full border-primary/20 text-primary hover:bg-primary/5 bg-transparent"
+  >
+  Watch Now
+  </Button>
+  </Link>
               </CardContent>
             </Card>
           </div>
