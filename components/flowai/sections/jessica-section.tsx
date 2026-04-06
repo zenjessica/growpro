@@ -117,6 +117,30 @@ export default function JessicaSection() {
             </div>
           </div>
 
+          {/* Additional Featured Video */}
+          <div className="my-12">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gradient-to-br from-primary/10 to-accent-secondary/10 p-1">
+                <div className="bg-white rounded-xl overflow-hidden">
+                  <div className="absolute top-4 left-4 z-10">
+                    <div className="inline-block px-3 py-1 bg-primary text-primary-foreground rounded-full text-sm font-medium shadow-lg">
+                      Featured Video
+                    </div>
+                  </div>
+                  <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+                    <iframe
+                      src="https://www.youtube.com/embed/llDaIcB_vSw"
+                      title="Jessica Lynne White Featured Video"
+                      className="absolute top-0 left-0 w-full h-full"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
           {/* Media Features Grid */}
           <div className="grid gap-8 md:grid-cols-2 xl:grid-cols-4">
             {/* Legacy Makers TV */}
