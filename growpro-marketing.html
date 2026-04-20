@@ -221,6 +221,26 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 </div>
 
+<div class="gh">Meta Marketing</div>
+<div class="grid">
+<div class="c csm" data-addon="meta_marketing" data-price="4000" data-type="monthly" onclick="togAddon(this)">
+<div class="ck">✓</div><span class="bdg b-rec">Recommended</span>
+<h3 class="ct">Meta Marketing — Managed Ads</h3>
+<p class="cd">Full Meta (Facebook + Instagram) ad management. We use <strong>warmed-up ad accounts</strong> (not your brand account) so ads activation is expedited — no warm-up period needed. ~4 week onboarding. Highly recommend adding a landing page for best results.</p>
+<div class="cp"><span class="ap">+$4,000</span><span class="sx">/mo</span></div>
+</div>
+</div>
+<div id="adSpendWrap" class="hid" style="margin-top:12px;padding:20px 24px;background:#F8F6F3;border:1px solid #E2DDD5;border-radius:12px">
+<label style="font-weight:600;font-size:15px;color:var(--dark);display:block;margin-bottom:8px">Monthly Ad Spend Budget</label>
+<p style="font-size:13px;color:#666;margin-bottom:12px">Minimum $3,000/mo. Meta only. Ad spend is collected separately via ACH — not included in checkout.</p>
+<div style="display:flex;align-items:center;gap:8px">
+<span style="font-size:20px;font-weight:700;color:var(--dark)">$</span>
+<input type="number" id="adSpendInput" min="3000" step="500" value="3000" style="width:160px;padding:10px 14px;border:1px solid #D1C9BE;border-radius:8px;font-size:18px;font-weight:600;font-family:Inter,sans-serif" oninput="updateAdSpend()">
+<span style="font-size:14px;color:#666">/mo via ACH</span>
+</div>
+<p id="adSpendErr" class="hid" style="color:#E74C3C;font-size:12px;margin-top:6px">Minimum ad spend is $3,000/mo</p>
+</div>
+
 <div class="gh">Email &amp; Automation</div>
 <div class="grid">
 <div class="c csm" data-addon="email_marketing" data-price="3000" data-type="monthly" data-onetime="1500" onclick="togAddon(this)">
@@ -393,8 +413,10 @@ var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
 var addons=[],step=1,isFullStack=false;
 var corePrice=3500;
 var fullStackMonthly=16550;
+var adSpend=0;
 var addonNames={
 extra_influencers:"Extra Influencers (+7 more)",secondary_ads:"Secondary Ad Platform",
+meta_marketing:"Meta Marketing \u2014 Managed Ads",
 email_marketing:"Full Funnel Email Marketing",social_management:"Comprehensive Social Management",
 seo_blog:"SEO Blog Writing (30/mo)",quiz_single:"Single Lifestyle Quiz",
 quiz_dual:"Dual Quiz Bundle",quiz_triple:"Triple Quiz Bundle",
@@ -407,11 +429,22 @@ var supportAddons=['welliemd','lumi_funnels'];
 function togAddon(card){
   var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
   if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
-  if(isSel){card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});updatePrice();return}
+  if(isSel){
+    card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});
+    if(a==='meta_marketing'){document.getElementById('adSpendWrap').classList.add('hid');adSpend=0}
+    updatePrice();return;
+  }
   if(gr==='quiz'){document.querySelectorAll('[data-group="quiz"]').forEach(function(c){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})})}
-  
   card.classList.add('sel');addons.push(a);
+  if(a==='meta_marketing'){document.getElementById('adSpendWrap').classList.remove('hid');adSpend=3000;document.getElementById('adSpendInput').value='3000'}
   if(isFullStack){checkFullStackState()}
+  updatePrice();
+}
+
+function updateAdSpend(){
+  var v=parseInt(document.getElementById('adSpendInput').value)||0;
+  if(v<3000){document.getElementById('adSpendErr').classList.remove('hid');adSpend=0}
+  else{document.getElementById('adSpendErr').classList.add('hid');adSpend=v}
   updatePrice();
 }
 
@@ -477,6 +510,7 @@ function updateSB(){
     h+='<div class="sl"><span class="lb">'+addonNames[a]+'</span><span class="vl">'+fmt(price)+suffix+'</span></div>';
     if(card.dataset.onetime&&!isFullStack){h+='<div class="sl"><span class="lb" style="font-size:12px;color:#888">↳ Design fee</span><span class="vl" style="font-size:12px">$'+card.dataset.onetime+'</span></div>'}
   });
+  if(adSpend>0){h+='<div class="sl" style="border-top:1px dashed #E2DDD5;padding-top:8px;margin-top:8px"><span class="lb" style="color:#888">Ad Spend (ACH)</span><span class="vl" style="color:#888">'+fmt(adSpend)+'/mo</span></div>'}
   document.getElementById('sbC').innerHTML=h;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
 }
@@ -535,7 +569,12 @@ function buildSum(){
   h+='<div class="sudv"></div>';
   h+='<div class="sutr"><span>ONE-TIME TOTAL</span><span class="vl">'+fmt(t.ot)+'</span></div>';
   h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">'+fmt(t.mo)+'/mo</span></div>';
-  h+='<p class="sufp">Ad spend not included. 90-day minimum on all marketing packages. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>';
+  if(adSpend>0){
+    h+='<div class="suse" style="background:#FFF8E7;border:1px solid #E8D5B7;border-radius:12px;padding:16px 20px"><div class="sust" style="color:#6B4226">Ad Spend (Collected Separately via ACH)</div>';
+    h+='<div class="sui"><span>Meta Monthly Ad Budget</span><span><strong>'+fmt(adSpend)+'/mo</strong></span></div>';
+    h+='<div style="font-size:12px;color:#888;margin-top:4px;font-style:italic">Not included in checkout total. Billed separately via ACH.</div></div>';
+  }
+  h+='<p class="sufp">Ad spend not included in checkout. 90-day minimum on all marketing packages. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>';
   document.getElementById('sumC').innerHTML=h;
 }
 
@@ -558,6 +597,7 @@ function submitForm(){
     package_type:isFullStack?'Full Stack':'Brand Activation Core',
     addons_selected:addons.filter(function(a){return supportAddons.indexOf(a)===-1}).map(function(a){return addonNames[a]}),
     support_selected:supSelected,
+    ad_spend_monthly:adSpend,
     is_full_stack:isFullStack,
     total_one_time:t.ot,total_monthly:t.mo,
     configurator_type:'marketing',
