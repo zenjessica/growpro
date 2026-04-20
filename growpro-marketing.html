@@ -158,7 +158,7 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <body>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Builder</div></div></div></header>
 <nav class="pbar"><div class="wrap"><div class="psteps">
-<div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Core Package</span></div><div class="pcon"></div>
+<div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Choose Base</span></div><div class="pcon"></div>
 <div class="pst" data-step="2"><div class="pdot">2</div><span class="plbl">Add-Ons</span></div><div class="pcon"></div>
 <div class="pst" data-step="3"><div class="pdot">3</div><span class="plbl">Review</span></div><div class="pcon"></div>
 <div class="pst" data-step="4"><div class="pdot">4</div><span class="plbl">Get Started</span></div>
@@ -171,14 +171,17 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 
 <div class="wrap"><div class="main"><div class="ca">
 
-<!-- STEP 1: Core Package -->
+<!-- STEP 1: Choose Your Base -->
 <div class="sec active" id="step1">
-<h1 class="h1">Start with the Foundation</h1>
-<p class="sub">Every marketing engagement begins with our Brand Activation Core. This is your launchpad — then stack add-ons to match your goals.</p>
-<div class="core-box">
-<span class="bdg b-core">Required Base Package</span>
-<h3 class="ct">Brand Activation Core</h3>
-<p class="cs">Social setup, 5 micro-influencers, UGC content library, Meta ad warm-up, posting 5x/week — the full foundation.</p>
+<h1 class="h1">Choose Your Marketing Base</h1>
+<p class="sub">Select one or both to get started. Then stack add-ons to build your custom marketing plan.</p>
+
+<div class="grid g2" style="margin-bottom:24px">
+<div class="c" id="baseCore" style="padding:28px;cursor:pointer" onclick="toggleBase('core')">
+<div class="ck">✓</div>
+<span class="bdg b-core">Full-Service Marketing</span>
+<h3 class="ct" style="font-size:24px">Brand Activation Core</h3>
+<p class="cd">Social setup, 5 micro-influencers, UGC content library, Meta ad warm-up, posting 5x/week — the full foundation.</p>
 <div class="cp">$3,500 <span class="sx">/mo (90-day minimum)</span></div>
 <ul class="cl">
 <li>Instagram + TikTok setup &amp; optimization</li>
@@ -192,14 +195,43 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <li>Onboarding meeting with creative team</li>
 </ul>
 </div>
-<div class="note-box">This is your required base. On the next step, you'll stack add-ons to build your custom marketing plan. Recommended ad spend: $150-200/day.</div>
-<div class="bnav"><div></div><button class="btn btn-p" onclick="goTo(2)">Choose Add-Ons →</button></div>
+
+<div class="c" id="baseMeta" style="padding:28px;cursor:pointer" onclick="toggleBase('meta')">
+<div class="ck">✓</div>
+<span class="bdg b-rec">Standalone Meta Ads</span>
+<h3 class="ct" style="font-size:24px">Meta Marketing — Managed Ads</h3>
+<p class="cd">Full Meta (Facebook + Instagram) ad management. We use <strong>warmed-up ad accounts</strong> (not your brand account) so activation is expedited — no warm-up period needed. ~4 week onboarding.</p>
+<div class="cp">$4,000 <span class="sx">/mo</span></div>
+<ul class="cl">
+<li>Dedicated warmed-up ad accounts</li>
+<li>Facebook + Instagram campaign management</li>
+<li>Ad creative, copy, and A/B testing</li>
+<li>Audience targeting + retargeting setup</li>
+<li>Weekly reporting + optimization</li>
+<li>Highly recommend adding a landing page</li>
+</ul>
+<div id="adSpendWrap" class="hid" style="margin-top:16px;padding:16px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px">
+<label style="font-weight:600;font-size:14px;color:var(--dark);display:block;margin-bottom:6px">Monthly Ad Spend Budget</label>
+<p style="font-size:12px;color:#666;margin-bottom:10px">Minimum $3,000/mo. Meta only. Collected separately via ACH.</p>
+<div style="display:flex;align-items:center;gap:8px">
+<span style="font-size:18px;font-weight:700;color:var(--n)">$</span>
+<input type="number" id="adSpendInput" min="3000" step="500" value="3000" style="width:140px;padding:8px 12px;border:1px solid #D1C9BE;border-radius:8px;font-size:16px;font-weight:600;font-family:Inter,sans-serif" oninput="updateAdSpend()" onclick="event.stopPropagation()">
+<span style="font-size:13px;color:#666">/mo via ACH</span>
+</div>
+<p id="adSpendErr" class="hid" style="color:#E74C3C;font-size:12px;margin-top:6px">Minimum ad spend is $3,000/mo</p>
+</div>
+</div>
+</div>
+
+<div id="baseErr" class="hid" style="background:#FFF0F0;border:1px solid #FFCDD2;border-radius:8px;padding:12px 16px;font-size:14px;color:#C62828;margin-bottom:16px">Please select at least one base package to continue.</div>
+<div class="note-box">Select one or both bases. On the next step, you'll stack add-ons to customize your plan. Ad spend for Meta is collected separately via ACH.</div>
+<div class="bnav"><div></div><button class="btn btn-p" onclick="goToFromBase()">Choose Add-Ons →</button></div>
 </div>
 
 <!-- STEP 2: Add-Ons -->
 <div class="sec" id="step2">
 <h1 class="h1">Stack Your Marketing Add-Ons</h1>
-<p class="sub">Select any combination. All pricing is in addition to the $3,500/mo core. Price updates live.</p>
+<p class="sub" id="step2Sub">Select any combination. All pricing is in addition to your selected base. Price updates live.</p>
 
 <div class="gh">Influencer &amp; Content</div>
 <div class="grid">
@@ -219,26 +251,6 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <p class="cd">Google, Pinterest, or X. Account setup, landing page, pixel mapping, campaign structure, optimization + reporting, ad creation &amp; testing. 90-day minimum.</p>
 <div class="cp"><span class="ap">+$1,800</span><span class="sx">/mo per platform</span></div>
 </div>
-</div>
-
-<div class="gh">Meta Marketing</div>
-<div class="grid">
-<div class="c csm" data-addon="meta_marketing" data-price="4000" data-type="monthly" onclick="togAddon(this)">
-<div class="ck">✓</div><span class="bdg b-rec">Recommended</span>
-<h3 class="ct">Meta Marketing — Managed Ads</h3>
-<p class="cd">Full Meta (Facebook + Instagram) ad management. We use <strong>warmed-up ad accounts</strong> (not your brand account) so ads activation is expedited — no warm-up period needed. ~4 week onboarding. Highly recommend adding a landing page for best results.</p>
-<div class="cp"><span class="ap">+$4,000</span><span class="sx">/mo</span></div>
-</div>
-</div>
-<div id="adSpendWrap" class="hid" style="margin-top:12px;padding:20px 24px;background:#F8F6F3;border:1px solid #E2DDD5;border-radius:12px">
-<label style="font-weight:600;font-size:15px;color:var(--dark);display:block;margin-bottom:8px">Monthly Ad Spend Budget</label>
-<p style="font-size:13px;color:#666;margin-bottom:12px">Minimum $3,000/mo. Meta only. Ad spend is collected separately via ACH — not included in checkout.</p>
-<div style="display:flex;align-items:center;gap:8px">
-<span style="font-size:20px;font-weight:700;color:var(--dark)">$</span>
-<input type="number" id="adSpendInput" min="3000" step="500" value="3000" style="width:160px;padding:10px 14px;border:1px solid #D1C9BE;border-radius:8px;font-size:18px;font-weight:600;font-family:Inter,sans-serif" oninput="updateAdSpend()">
-<span style="font-size:14px;color:#666">/mo via ACH</span>
-</div>
-<p id="adSpendErr" class="hid" style="color:#E74C3C;font-size:12px;margin-top:6px">Minimum ad spend is $3,000/mo</p>
 </div>
 
 <div class="gh">Email &amp; Automation</div>
@@ -383,11 +395,11 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 <aside class="side" id="sidebar"><div class="sc">
 <div class="sct">Your Marketing Plan</div>
-<div id="sbC"><div class="sl"><span class="lb">Brand Activation Core</span><span class="vl">$3,500/mo</span></div></div>
+<div id="sbC"><div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select a base...</span></div></div>
 <div class="sdv"></div>
 <div class="stot"><span>One-Time</span><span class="vl" id="sOT">$0</span></div>
-<div class="stot"><span>Monthly</span><span class="vl" id="sMO">$3,500/mo</span></div>
-<div class="ssi" id="sSI">Step 1 of 5</div>
+<div class="stot"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
+<div class="ssi" id="sSI">Step 1 of 4</div>
 </div></aside>
 </div></div>
 
@@ -395,7 +407,7 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="mbc" onclick="togMB()">
 <div class="mbt">
 <div class="mbi"><div class="am" id="mOT">$0</div><div class="lb">One-Time</div></div>
-<div class="mbi"><div class="am" id="mMO">$3,500/mo</div><div class="lb">Monthly</div></div>
+<div class="mbi"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly</div></div>
 </div>
 <div class="mbx">▲</div>
 </div>
@@ -411,12 +423,12 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
 var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
 var addons=[],step=1,isFullStack=false;
-var corePrice=3500;
+var hasCore=false,hasMeta=false;
+var corePrice=3500,metaPrice=4000;
 var fullStackMonthly=16550;
 var adSpend=0;
 var addonNames={
 extra_influencers:"Extra Influencers (+7 more)",secondary_ads:"Secondary Ad Platform",
-meta_marketing:"Meta Marketing \u2014 Managed Ads",
 email_marketing:"Full Funnel Email Marketing",social_management:"Comprehensive Social Management",
 seo_blog:"SEO Blog Writing (30/mo)",quiz_single:"Single Lifestyle Quiz",
 quiz_dual:"Dual Quiz Bundle",quiz_triple:"Triple Quiz Bundle",
@@ -426,17 +438,34 @@ welliemd:"WellieMD",lumi_funnels:"Lumi Funnels"
 var fullStackAddons=['extra_influencers','secondary_ads','email_marketing','social_management','seo_blog'];
 var supportAddons=['welliemd','lumi_funnels'];
 
+function toggleBase(which){
+  if(which==='core'){
+    hasCore=!hasCore;
+    document.getElementById('baseCore').classList.toggle('sel');
+  } else {
+    hasMeta=!hasMeta;
+    document.getElementById('baseMeta').classList.toggle('sel');
+    if(hasMeta){document.getElementById('adSpendWrap').classList.remove('hid');adSpend=3000;document.getElementById('adSpendInput').value='3000'}
+    else{document.getElementById('adSpendWrap').classList.add('hid');adSpend=0}
+  }
+  document.getElementById('baseErr').classList.add('hid');
+  updatePrice();
+}
+
+function goToFromBase(){
+  if(!hasCore&&!hasMeta){document.getElementById('baseErr').classList.remove('hid');return}
+  goTo(2);
+}
+
 function togAddon(card){
   var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
   if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
   if(isSel){
     card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});
-    if(a==='meta_marketing'){document.getElementById('adSpendWrap').classList.add('hid');adSpend=0}
     updatePrice();return;
   }
   if(gr==='quiz'){document.querySelectorAll('[data-group="quiz"]').forEach(function(c){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})})}
   card.classList.add('sel');addons.push(a);
-  if(a==='meta_marketing'){document.getElementById('adSpendWrap').classList.remove('hid');adSpend=3000;document.getElementById('adSpendInput').value='3000'}
   if(isFullStack){checkFullStackState()}
   updatePrice();
 }
@@ -449,6 +478,7 @@ function updateAdSpend(){
 }
 
 function selectFullStack(){
+  if(!hasCore){hasCore=true;document.getElementById('baseCore').classList.add('sel')}
   if(isFullStack){
     isFullStack=false;
     fullStackAddons.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');if(c){c.classList.remove('sel','lck');c.onclick=function(){togAddon(c)};addons=addons.filter(function(x){return x!==a})}});
@@ -464,10 +494,24 @@ function checkFullStackState(){
   if(!allSel&&isFullStack){isFullStack=false;fullStackAddons.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');if(c){c.classList.remove('lck');c.onclick=function(){togAddon(c)}}})}
 }
 
+function getBasePrice(){
+  var bp=0;
+  if(hasCore) bp+=corePrice;
+  if(hasMeta) bp+=metaPrice;
+  return bp;
+}
+
+function getBaseName(){
+  if(hasCore&&hasMeta) return 'Brand Activation Core + Meta Marketing';
+  if(hasCore) return 'Brand Activation Core';
+  if(hasMeta) return 'Meta Marketing \u2014 Managed Ads';
+  return 'No base selected';
+}
+
 function calcTotals(){
-  var ot=0,mo=corePrice;
-  if(isFullStack){
-    mo=fullStackMonthly;
+  var ot=0,mo=getBasePrice();
+  if(isFullStack&&hasCore){
+    mo=mo-corePrice+fullStackMonthly;
     addons.forEach(function(a){
       if(fullStackAddons.indexOf(a)!==-1) return;
       var card=document.querySelector('[data-addon="'+a+'"]');if(!card) return;
@@ -498,9 +542,16 @@ function updatePrice(){
 }
 
 function updateSB(){
-  var h='<div class="sl"><span class="lb">Brand Activation Core</span><span class="vl">$3,500/mo</span></div>';
-  if(isFullStack){
-    h='<div class="sl"><span class="lb">Full Stack (All Add-Ons)</span><span class="vl">'+fmt(fullStackMonthly)+'/mo</span></div>';
+  var h='';
+  if(hasCore){
+    if(isFullStack){h+='<div class="sl"><span class="lb">Full Stack (All Add-Ons)</span><span class="vl">'+fmt(fullStackMonthly)+'/mo</span></div>'}
+    else{h+='<div class="sl"><span class="lb">Brand Activation Core</span><span class="vl">'+fmt(corePrice)+'/mo</span></div>'}
+  }
+  if(hasMeta){
+    h+='<div class="sl"><span class="lb">Meta Marketing</span><span class="vl">'+fmt(metaPrice)+'/mo</span></div>';
+  }
+  if(!hasCore&&!hasMeta){
+    h='<div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select a base...</span></div>';
   }
   addons.forEach(function(a){
     if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
@@ -508,7 +559,7 @@ function updateSB(){
     var price=parseInt(card.dataset.price),type=card.dataset.type;
     var suffix=type==='monthly'?'/mo':'';
     h+='<div class="sl"><span class="lb">'+addonNames[a]+'</span><span class="vl">'+fmt(price)+suffix+'</span></div>';
-    if(card.dataset.onetime&&!isFullStack){h+='<div class="sl"><span class="lb" style="font-size:12px;color:#888">↳ Design fee</span><span class="vl" style="font-size:12px">$'+card.dataset.onetime+'</span></div>'}
+    if(card.dataset.onetime&&!isFullStack){h+='<div class="sl"><span class="lb" style="font-size:12px;color:#888">\u21b3 Design fee</span><span class="vl" style="font-size:12px">$'+card.dataset.onetime+'</span></div>'}
   });
   if(adSpend>0){h+='<div class="sl" style="border-top:1px dashed #E2DDD5;padding-top:8px;margin-top:8px"><span class="lb" style="color:#888">Ad Spend (ACH)</span><span class="vl" style="color:#888">'+fmt(adSpend)+'/mo</span></div>'}
   document.getElementById('sbC').innerHTML=h;
@@ -521,7 +572,7 @@ function goTo(s){
   document.querySelectorAll('.pst').forEach(function(ps,i){
     var n=i+1;ps.classList.remove('active','completed');
     if(n===s) ps.classList.add('active');
-    else if(n<s){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓'}
+    else if(n<s){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'}
     else ps.querySelector('.pdot').textContent=n;
   });
   document.querySelectorAll('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
@@ -538,8 +589,11 @@ function togMB(){document.getElementById('mBar').classList.toggle('exp')}
 function buildSum(){
   var t=calcTotals(),h='';
   h+='<div class="suse"><div class="sust">Base Package</div>';
-  if(isFullStack){h+='<div class="sui"><span>Full Stack (All Add-Ons)</span><span>'+fmt(fullStackMonthly)+'/mo</span></div>'}
-  else{h+='<div class="sui"><span>Brand Activation Core</span><span>$3,500/mo</span></div>'}
+  if(hasCore){
+    if(isFullStack){h+='<div class="sui"><span>Full Stack (All Add-Ons)</span><span>'+fmt(fullStackMonthly)+'/mo</span></div>'}
+    else{h+='<div class="sui"><span>Brand Activation Core</span><span>'+fmt(corePrice)+'/mo</span></div>'}
+  }
+  if(hasMeta){h+='<div class="sui"><span>Meta Marketing \u2014 Managed Ads</span><span>'+fmt(metaPrice)+'/mo</span></div>'}
   h+='</div>';
   var moA=addons.filter(function(a){if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return false;if(supportAddons.indexOf(a)!==-1) return false;var c=document.querySelector('[data-addon="'+a+'"]');return c&&c.dataset.type==='monthly'});
   var otA=addons.filter(function(a){var c=document.querySelector('[data-addon="'+a+'"]');return c&&c.dataset.type==='onetime'});
@@ -594,10 +648,11 @@ function submitForm(){
     first_name:fn,last_name:document.getElementById('lastName').value.trim(),
     email:em,phone:document.getElementById('phone').value.trim(),
     business_name:bn,source:document.getElementById('source').value,
-    package_type:isFullStack?'Full Stack':'Brand Activation Core',
+    package_type:getBaseName(),
     addons_selected:addons.filter(function(a){return supportAddons.indexOf(a)===-1}).map(function(a){return addonNames[a]}),
     support_selected:supSelected,
     ad_spend_monthly:adSpend,
+    has_core:hasCore,has_meta:hasMeta,
     is_full_stack:isFullStack,
     total_one_time:t.ot,total_monthly:t.mo,
     configurator_type:'marketing',
@@ -615,35 +670,34 @@ function submitForm(){
   buildSum();
   document.getElementById('confSum').innerHTML=document.getElementById('sumC').innerHTML;
   var stripeItems=[];
-  if(isFullStack){
-    stripeItems.push({name:'Full Stack — All Add-Ons',amount_cents:fullStackMonthly*100,recurring:true});
-    addons.forEach(function(a){
-      if(fullStackAddons.indexOf(a)!==-1) return;
-      var card=document.querySelector('[data-addon="'+a+'"');if(!card) return;
-      var price=parseInt(card.dataset.price),type=card.dataset.type;
-      if(type==='monthly') stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:true});
-      else if(price>0) stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:false});
-    });
-  } else {
-    stripeItems.push({name:'Brand Activation Core',amount_cents:corePrice*100,recurring:true});
-    addons.forEach(function(a){
-      var card=document.querySelector('[data-addon="'+a+'"');if(!card) return;
-      var price=parseInt(card.dataset.price),type=card.dataset.type;
-      if(type==='monthly') stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:true});
-      else if(price>0) stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:false});
-    });
+  if(hasCore){
+    if(isFullStack){
+      stripeItems.push({name:'Full Stack \u2014 All Add-Ons',amount_cents:fullStackMonthly*100,recurring:true});
+    } else {
+      stripeItems.push({name:'Brand Activation Core',amount_cents:corePrice*100,recurring:true});
+    }
   }
+  if(hasMeta){
+    stripeItems.push({name:'Meta Marketing \u2014 Managed Ads',amount_cents:metaPrice*100,recurring:true});
+  }
+  addons.forEach(function(a){
+    if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
+    var card=document.querySelector('[data-addon="'+a+'"');if(!card) return;
+    var price=parseInt(card.dataset.price),type=card.dataset.type;
+    if(type==='monthly') stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:true});
+    else if(price>0) stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:false});
+  });
   var hasRecurring=stripeItems.some(function(i){return i.recurring});
   var checkoutMode=hasRecurring?'subscription':'payment';
   var payBtn=document.getElementById('stripePayBtn');
-  payBtn.textContent='Pay Now — '+fmt(t.mo)+'/mo →';
+  payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';
   payBtn.onclick=function(e){
     e.preventDefault();payBtn.textContent='Creating checkout...';payBtn.style.opacity='0.7';
     fetch(STRIPE_API_URL,{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
         email:em,
-        description:'GrowPro Marketing — '+(isFullStack?'Full Stack':'Brand Activation Core')+' — '+bn,
+        description:'GrowPro Marketing \u2014 '+getBaseName()+' \u2014 '+bn,
         metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value},
         line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
         success_url:window.location.origin+'/marketing?success=true',
@@ -651,12 +705,12 @@ function submitForm(){
       })
     }).then(function(r){return r.json()}).then(function(d){
       if(d.url){window.location.href=d.url}
-      else{payBtn.textContent='Pay Now — '+fmt(t.mo)+'/mo →';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
+      else{payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
     }).catch(function(err){
-      payBtn.textContent='Pay Now — '+fmt(t.mo)+'/mo →';payBtn.style.opacity='1';alert('Connection error. Please try again.');
+      payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Connection error. Please try again.');
     });
   };
-  document.querySelectorAll('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓'});
+  document.querySelectorAll('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'});
   document.querySelectorAll('.pcon').forEach(function(c){c.classList.add('completed')});
 }
 
