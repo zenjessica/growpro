@@ -32,7 +32,7 @@ var pkgPrices={template:8500,custom:25000,operator:35000};
 var pkgNames={template:'Template Launch',custom:'Custom Build',operator:'Operator Suite'};
 var treatPrices={hrt:2500,branded_med:2500,peptide_pkg:5000};
 var treatNames={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',peptide_pkg:'Peptide Package'};
-var operatorIncludes=['fast_track'];
+var operatorIncludes=[];
 var operatorIncludesTreat=['hrt','branded_med','peptide_pkg'];
 var addonNames={
 fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Standard (8 weeks)",
@@ -75,8 +75,7 @@ card.onclick=function(){togAddon(card)};
 }
 });
 var fts=$i('ftsCard');
-if(isOp){fts.classList.add('dis');fts.classList.remove('sel');addons=addons.filter(function(a){return a!=='fast_track_standard'})}
-else{fts.classList.remove('dis')}
+if(fts){fts.classList.remove('dis')}
 }
 function togTreat(card){
 if(card.classList.contains('lck')) return;
