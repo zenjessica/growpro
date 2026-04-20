@@ -39,9 +39,7 @@ fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Sta
 elec_labs:"Elective Labs",additional_page:"Additional Product Page",
 lumi_funnels:"Lumi Funnels",post_launch:"Post-Launch Support Package",
 consulting:"GrowPro Consulting ($500/hr)",
-web_support_mini:"Web Support — Mini",web_support_max:"Web Support — Max",
-ghl_support_mini:"GHL Support — Mini",ghl_support_max:"GHL Support — Max",
-pharmacy_support_mini:"Pharmacy Support — Mini",pharmacy_support_max:"Pharmacy Support — Max"
+
 };
 function selPkg(p){
 pkg=p;
@@ -92,7 +90,7 @@ if(card.classList.contains('lck')||card.classList.contains('dis')) return;
 var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
 if(isSel){card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});updatePrice();return}
 if(gr==='fasttrack'){$q('[data-group="fasttrack"]').forEach(function(c){if(!c.classList.contains('lck')){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})}})}
-if(gr==='web_support'||gr==='ghl_support'||gr==='pharmacy_support'){$q('[data-group="'+gr+'"]').forEach(function(c){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})})}
+
 card.classList.add('sel');addons.push(a);updatePrice();
 }
 function hasPromo(type,target){

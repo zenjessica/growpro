@@ -5,7 +5,7 @@ var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
 var tier=null,step=1;
 var activePromos=[];
 var payPlan='pif';
-var upgrades=[];
+
 
 var TIERS={
   elite:{
@@ -85,18 +85,8 @@ var TIERS={
 // Included support (all tiers)
 var INCLUDED_SUPPORT=[
   {name:'WellieMD Platform',price:1000},
-  {name:'Lumi Funnels',price:499},
-  {name:'Web Support — Mini',price:499},
-  {name:'GHL Support — Mini',price:499},
-  {name:'Pharmacy Support — Mini',price:499}
+  {name:'Lumi Funnels',price:499}
 ];
-
-// Max upgrade pricing
-var UPGRADE_PRICES={
-  web_max:{name:'Web Support — Max',price:1500,upgrade:1500},
-  ghl_max:{name:'GHL Support — Max',price:1500,upgrade:1500},
-  pharmacy_max:{name:'Pharmacy Support — Max',price:1500,upgrade:1500}
-};
 
 var PROMO_CODES={
   'SETUP50':{type:'setup_discount',pct:50,desc:'50% off setup fee',savings:12500},
@@ -113,17 +103,7 @@ function getPromo(type){
   return null;
 }
 
-function togUpgrade(card){
-  var u=card.dataset.upgrade;
-  if(card.classList.contains('sel')){
-    card.classList.remove('sel');
-    upgrades=upgrades.filter(function(x){return x!==u});
-  } else {
-    card.classList.add('sel');
-    upgrades.push(u);
-  }
-  updatePrice();
-}
+
 
 function calcTotals(){
   if(!tier) return{setup:0,mo:0};
@@ -138,9 +118,6 @@ function calcTotals(){
   if(mp) mo=Math.round(mo*(1-mp.promo.pct/100));
   var fp=getPromo('monthly_flat');
   if(fp) mo=Math.max(0,mo-fp.promo.amount);
-  upgrades.forEach(function(u){
-    if(UPGRADE_PRICES[u]) mo+=UPGRADE_PRICES[u].upgrade;
-  });
   return{setup:setup,mo:mo};
 }
 
@@ -177,10 +154,7 @@ function updateSB(){
   } else if(t.setup>0){
     h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(t.setup)+'</s> <span style="color:#34C759;font-weight:700">FREE</span></span></div>';
   }
-  upgrades.forEach(function(u){
-    var up=UPGRADE_PRICES[u];
-    if(up) h+='<div class="sl"><span class="lb">'+up.name+' upgrade</span><span class="vl">+'+fmt(up.upgrade)+'/mo</span></div>';
-  });
+
   document.getElementById('sbC').innerHTML=h;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
 }
@@ -272,13 +246,13 @@ function goTo(s){
     else ps.querySelector('.pdot').textContent=n;
   });
   document.querySelectorAll('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
-  document.getElementById('sSI').textContent='Step '+s+' of 4';
+  document.getElementById('sSI').textContent='Step '+s+' of 3';
   var sb=document.getElementById('sidebar'),mb=document.getElementById('mBar');
   if(s===1){sb.style.display='none';mb.style.display='none'}
   else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
   step=s;
-  if(s===3) buildSum();
-  if(s===4){updatePayPlans();setTimeout(initSig,100)}
+  if(s===2) buildSum();
+  if(s===3){updatePayPlans();setTimeout(initSig,100)}
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -306,25 +280,11 @@ function buildSum(){
     h+='<div class="sui"><span>'+m.name+'</span><span class="inc">'+fmt(m.value)+(tier==='accelerator'?' value':'/mo')+'</span></div>';
   });
   h+='</div>';
-  h+='<div class="suse"><div class="sust">Platform & Support (Included)</div>';
+  h+='<div class="suse"><div class="sust">Platform (Included)</div>';
   INCLUDED_SUPPORT.forEach(function(s){
-    var upgraded=false;
-    if(s.name==='Web Support — Mini'&&upgrades.indexOf('web_max')!==-1) upgraded=true;
-    if(s.name==='GHL Support — Mini'&&upgrades.indexOf('ghl_max')!==-1) upgraded=true;
-    if(s.name==='Pharmacy Support — Mini'&&upgrades.indexOf('pharmacy_max')!==-1) upgraded=true;
-    if(!upgraded){
-      h+='<div class="sui"><span>'+s.name+'</span><span class="inc">Included</span></div>';
-    }
+    h+='<div class="sui"><span>'+s.name+'</span><span class="inc">Included</span></div>';
   });
   h+='</div>';
-  if(upgrades.length>0){
-    h+='<div class="suse"><div class="sust">Support Upgrades (Monthly)</div>';
-    upgrades.forEach(function(u){
-      var up=UPGRADE_PRICES[u];
-      if(up) h+='<div class="sui"><span>'+up.name+'</span><span>+'+fmt(up.upgrade)+'/mo</span></div>';
-    });
-    h+='</div>';
-  }
   h+='<div class="suse"><div class="sust">What\'s Included</div>';
   t.includes.forEach(function(inc){
     h+='<div class="sui"><span>'+inc+'</span><span class="inc">Included</span></div>';
@@ -365,7 +325,7 @@ function submitForm(){
   if(!ok) return;
 
   var t=TIERS[tier],tots=calcTotals();
-  var upgradeNames=upgrades.map(function(u){return UPGRADE_PRICES[u]?UPGRADE_PRICES[u].name:'unknown'});
+
   var planInfo=getPayPlanInfo(tots);
   var payload={
     first_name:fn,last_name:document.getElementById('lastName').value.trim(),
@@ -375,7 +335,7 @@ function submitForm(){
     tier:t.name,setup_fee:tots.setup,monthly_rate:tots.mo,
     term:t.term,
     payment_plan:payPlan==='pif'?'Pay in Full':payPlan==='split15'?'$15K Down - 5%':'$10K Down - 15%',
-    support_upgrades:upgradeNames,
+
     total_one_time:tots.setup,total_monthly:tots.mo,
     configurator_type:'operator_suite',
     agreement_accepted:true,
@@ -430,7 +390,7 @@ function submitForm(){
     var fetchBody={
       email:em,
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planDesc,
-      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planDesc,support_upgrades:upgradeNames.join(',')||'none'},
+      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planDesc,support_upgrades:'none'},
       success_url:window.location.origin+'/operator?success=true',
       cancel_url:window.location.href
     };
