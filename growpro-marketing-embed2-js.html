@@ -1,0 +1,319 @@
+<script>
+var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
+var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
+var addons=[],step=1,isFullStack=false;
+var hasCore=false,hasMeta=false;
+var corePrice=3500,metaPrice=4000;
+var fullStackMonthly=16550;
+var adSpend=0;
+var addonNames={
+extra_influencers:"Extra Influencers (+7 more)",secondary_ads:"Secondary Ad Platform",
+email_marketing:"Full Funnel Email Marketing",social_management:"Comprehensive Social Management",
+seo_blog:"SEO Blog Writing (30/mo)",quiz_single:"Single Lifestyle Quiz",
+quiz_dual:"Dual Quiz Bundle",quiz_triple:"Triple Quiz Bundle",
+extra_quiz:"Additional Quiz Form",extra_landing:"Additional Landing Page",
+welliemd:"WellieMD",lumi_funnels:"Lumi Funnels"
+};
+var fullStackAddons=['extra_influencers','secondary_ads','email_marketing','social_management','seo_blog'];
+var supportAddons=['welliemd','lumi_funnels'];
+
+function toggleBase(which){
+  if(which==='core'){
+    hasCore=!hasCore;
+    document.getElementById('baseCore').classList.toggle('sel');
+  } else {
+    hasMeta=!hasMeta;
+    document.getElementById('baseMeta').classList.toggle('sel');
+    if(hasMeta){document.getElementById('adSpendWrap').classList.remove('hid');adSpend=3000;document.getElementById('adSpendInput').value='3000'}
+    else{document.getElementById('adSpendWrap').classList.add('hid');adSpend=0}
+  }
+  document.getElementById('baseErr').classList.add('hid');
+  updatePrice();
+}
+
+function goToFromBase(){
+  if(!hasCore&&!hasMeta){document.getElementById('baseErr').classList.remove('hid');return}
+  goTo(2);
+}
+
+function togAddon(card){
+  var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
+  if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
+  if(isSel){
+    card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});
+    updatePrice();return;
+  }
+  if(gr==='quiz'){document.querySelectorAll('[data-group="quiz"]').forEach(function(c){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})})}
+  card.classList.add('sel');addons.push(a);
+  if(isFullStack){checkFullStackState()}
+  updatePrice();
+}
+
+function updateAdSpend(){
+  var v=parseInt(document.getElementById('adSpendInput').value)||0;
+  if(v<3000){document.getElementById('adSpendErr').classList.remove('hid');adSpend=0}
+  else{document.getElementById('adSpendErr').classList.add('hid');adSpend=v}
+  updatePrice();
+}
+
+function selectFullStack(){
+  if(!hasCore){hasCore=true;document.getElementById('baseCore').classList.add('sel')}
+  if(isFullStack){
+    isFullStack=false;
+    fullStackAddons.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');if(c){c.classList.remove('sel','lck');c.onclick=function(){togAddon(c)};addons=addons.filter(function(x){return x!==a})}});
+  } else {
+    isFullStack=true;
+    fullStackAddons.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');if(c){c.classList.add('sel','lck');c.onclick=null;if(addons.indexOf(a)===-1) addons.push(a)}});
+  }
+  updatePrice();
+}
+
+function checkFullStackState(){
+  var allSel=fullStackAddons.every(function(a){return addons.indexOf(a)!==-1});
+  if(!allSel&&isFullStack){isFullStack=false;fullStackAddons.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');if(c){c.classList.remove('lck');c.onclick=function(){togAddon(c)}}})}
+}
+
+function getBasePrice(){
+  var bp=0;
+  if(hasCore) bp+=corePrice;
+  if(hasMeta) bp+=metaPrice;
+  return bp;
+}
+
+function getBaseName(){
+  if(hasCore&&hasMeta) return 'Brand Activation Core + Meta Marketing';
+  if(hasCore) return 'Brand Activation Core';
+  if(hasMeta) return 'Meta Marketing \u2014 Managed Ads';
+  return 'No base selected';
+}
+
+function calcTotals(){
+  var ot=0,mo=getBasePrice();
+  if(isFullStack&&hasCore){
+    mo=mo-corePrice+fullStackMonthly;
+    addons.forEach(function(a){
+      if(fullStackAddons.indexOf(a)!==-1) return;
+      var card=document.querySelector('[data-addon="'+a+'"]');if(!card) return;
+      var price=parseInt(card.dataset.price),type=card.dataset.type;
+      if(type==='monthly') mo+=price; else ot+=price;
+    });
+  } else {
+    addons.forEach(function(a){
+      var card=document.querySelector('[data-addon="'+a+'"]');if(!card) return;
+      var price=parseInt(card.dataset.price),type=card.dataset.type;
+      var otp=card.dataset.onetime?parseInt(card.dataset.onetime):0;
+      if(type==='monthly'){mo+=price;if(otp) ot+=otp}
+      else ot+=price;
+    });
+  }
+  return{ot:ot,mo:mo};
+}
+
+function fmt(n){return '$'+n.toLocaleString('en-US')}
+
+function updatePrice(){
+  var t=calcTotals();
+  document.getElementById('sOT').textContent=fmt(t.ot);
+  document.getElementById('sMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('mOT').textContent=fmt(t.ot);
+  document.getElementById('mMO').textContent=fmt(t.mo)+'/mo';
+  updateSB();
+}
+
+function updateSB(){
+  var h='';
+  if(hasCore){
+    if(isFullStack){h+='<div class="sl"><span class="lb">Full Stack (All Add-Ons)</span><span class="vl">'+fmt(fullStackMonthly)+'/mo</span></div>'}
+    else{h+='<div class="sl"><span class="lb">Brand Activation Core</span><span class="vl">'+fmt(corePrice)+'/mo</span></div>'}
+  }
+  if(hasMeta){
+    h+='<div class="sl"><span class="lb">Meta Marketing</span><span class="vl">'+fmt(metaPrice)+'/mo</span></div>';
+  }
+  if(!hasCore&&!hasMeta){
+    h='<div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select a base...</span></div>';
+  }
+  addons.forEach(function(a){
+    if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
+    var card=document.querySelector('[data-addon="'+a+'"]');if(!card) return;
+    var price=parseInt(card.dataset.price),type=card.dataset.type;
+    var suffix=type==='monthly'?'/mo':'';
+    h+='<div class="sl"><span class="lb">'+addonNames[a]+'</span><span class="vl">'+fmt(price)+suffix+'</span></div>';
+    if(card.dataset.onetime&&!isFullStack){h+='<div class="sl"><span class="lb" style="font-size:12px;color:#888">\u21b3 Design fee</span><span class="vl" style="font-size:12px">$'+card.dataset.onetime+'</span></div>'}
+  });
+  if(adSpend>0){h+='<div class="sl" style="border-top:1px dashed #E2DDD5;padding-top:8px;margin-top:8px"><span class="lb" style="color:#888">Ad Spend (ACH)</span><span class="vl" style="color:#888">'+fmt(adSpend)+'/mo</span></div>'}
+  document.getElementById('sbC').innerHTML=h;
+  document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
+}
+
+function goTo(s){
+  document.querySelectorAll('.sec').forEach(function(x){x.classList.remove('active')});
+  document.getElementById('step'+s).classList.add('active');
+  document.querySelectorAll('.pst').forEach(function(ps,i){
+    var n=i+1;ps.classList.remove('active','completed');
+    if(n===s) ps.classList.add('active');
+    else if(n<s){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'}
+    else ps.querySelector('.pdot').textContent=n;
+  });
+  document.querySelectorAll('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
+  document.getElementById('sSI').textContent='Step '+s+' of 4';
+  var sb=document.getElementById('sidebar'),mb=document.getElementById('mBar');
+  if(s===1){sb.style.display='none';mb.style.display='none'}
+  else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
+  step=s;if(s===3) buildSum();if(s===4) setTimeout(initSig,100);
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function togMB(){document.getElementById('mBar').classList.toggle('exp')}
+
+function buildSum(){
+  var t=calcTotals(),h='';
+  h+='<div class="suse"><div class="sust">Base Package</div>';
+  if(hasCore){
+    if(isFullStack){h+='<div class="sui"><span>Full Stack (All Add-Ons)</span><span>'+fmt(fullStackMonthly)+'/mo</span></div>'}
+    else{h+='<div class="sui"><span>Brand Activation Core</span><span>'+fmt(corePrice)+'/mo</span></div>'}
+  }
+  if(hasMeta){h+='<div class="sui"><span>Meta Marketing \u2014 Managed Ads</span><span>'+fmt(metaPrice)+'/mo</span></div>'}
+  h+='</div>';
+  var moA=addons.filter(function(a){if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return false;if(supportAddons.indexOf(a)!==-1) return false;var c=document.querySelector('[data-addon="'+a+'"]');return c&&c.dataset.type==='monthly'});
+  var otA=addons.filter(function(a){var c=document.querySelector('[data-addon="'+a+'"]');return c&&c.dataset.type==='onetime'});
+  var supA=addons.filter(function(a){return supportAddons.indexOf(a)!==-1});
+  if(isFullStack){
+    h+='<div class="suse"><div class="sust">Included in Full Stack</div>';
+    fullStackAddons.forEach(function(a){h+='<div class="sui"><span>'+addonNames[a]+'</span><span class="inc">Included</span></div>'});
+    h+='</div>';
+  }
+  if(moA.length>0){
+    h+='<div class="suse"><div class="sust">Monthly Add-Ons</div>';
+    moA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(parseInt(c.dataset.price))+'/mo</span></div>'});
+    h+='</div>';
+  }
+  if(otA.length>0){
+    h+='<div class="suse"><div class="sust">One-Time Add-Ons</div>';
+    otA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(parseInt(c.dataset.price))+'</span></div>'});
+    h+='</div>';
+  }
+  var hasEmailOT=addons.indexOf('email_marketing')!==-1&&!isFullStack;
+  if(hasEmailOT){h+='<div class="suse"><div class="sust">Design Fees</div><div class="sui"><span>Email Design Fee</span><span>$1,500</span></div></div>'}
+  if(supA.length>0){
+    h+='<div class="suse"><div class="sust">Platform & Support (Monthly)</div>';
+    supA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(parseInt(c.dataset.price))+'/mo</span></div>'});
+    h+='</div>';
+  }
+  h+='<div class="sudv"></div>';
+  h+='<div class="sutr"><span>ONE-TIME TOTAL</span><span class="vl">'+fmt(t.ot)+'</span></div>';
+  h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">'+fmt(t.mo)+'/mo</span></div>';
+  if(adSpend>0){
+    h+='<div class="suse" style="background:#FFF8E7;border:1px solid #E8D5B7;border-radius:12px;padding:16px 20px"><div class="sust" style="color:#6B4226">Ad Spend (Collected Separately via ACH)</div>';
+    h+='<div class="sui"><span>Meta Monthly Ad Budget</span><span><strong>'+fmt(adSpend)+'/mo</strong></span></div>';
+    h+='<div style="font-size:12px;color:#888;margin-top:4px;font-style:italic">Not included in checkout total. Billed separately via ACH.</div></div>';
+  }
+  h+='<p class="sufp">Ad spend not included in checkout. 90-day minimum on all marketing packages. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>';
+  document.getElementById('sumC').innerHTML=h;
+}
+
+function submitForm(){
+  var fn=document.getElementById('firstName').value.trim(),em=document.getElementById('email').value.trim(),bn=document.getElementById('bizName').value.trim(),ok=true;
+  document.getElementById('firstName').classList.remove('err');document.getElementById('email').classList.remove('err');document.getElementById('bizName').classList.remove('err');
+  document.getElementById('fnE').classList.remove('show');document.getElementById('emE').classList.remove('show');document.getElementById('bnE').classList.remove('show');
+  if(!fn){document.getElementById('firstName').classList.add('err');document.getElementById('fnE').classList.add('show');ok=false}
+  if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){document.getElementById('email').classList.add('err');document.getElementById('emE').classList.add('show');ok=false}
+  if(!bn){document.getElementById('bizName').classList.add('err');document.getElementById('bnE').classList.add('show');ok=false}
+  if(!sigHasData){document.getElementById('sigErr').classList.add('show');ok=false}else{document.getElementById('sigErr').classList.remove('show')}
+  if(!document.getElementById('agreeCheck').checked){document.getElementById('sigErr').classList.add('show');ok=false}
+  if(!ok) return;
+  var t=calcTotals();
+  var supSelected=addons.filter(function(a){return supportAddons.indexOf(a)!==-1}).map(function(a){return addonNames[a]});
+  var payload={
+    first_name:fn,last_name:document.getElementById('lastName').value.trim(),
+    email:em,phone:document.getElementById('phone').value.trim(),
+    business_name:bn,source:document.getElementById('source').value,
+    package_type:getBaseName(),
+    addons_selected:addons.filter(function(a){return supportAddons.indexOf(a)===-1}).map(function(a){return addonNames[a]}),
+    support_selected:supSelected,
+    ad_spend_monthly:adSpend,
+    has_core:hasCore,has_meta:hasMeta,
+    is_full_stack:isFullStack,
+    total_one_time:t.ot,total_monthly:t.mo,
+    configurator_type:'marketing',
+    agreement_accepted:true,agreement_version:'v1.0',
+    date_signed:new Date().toISOString(),
+    signature:getSigData()
+  };
+  if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
+    fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)});
+  } else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
+  document.getElementById('formV').classList.add('hid');
+  document.getElementById('confV').classList.remove('hid');
+  document.getElementById('sidebar').style.display='none';
+  document.getElementById('mBar').style.display='none';
+  buildSum();
+  document.getElementById('confSum').innerHTML=document.getElementById('sumC').innerHTML;
+  var stripeItems=[];
+  if(hasCore){
+    if(isFullStack){
+      stripeItems.push({name:'Full Stack \u2014 All Add-Ons',amount_cents:fullStackMonthly*100,recurring:true});
+    } else {
+      stripeItems.push({name:'Brand Activation Core',amount_cents:corePrice*100,recurring:true});
+    }
+  }
+  if(hasMeta){
+    stripeItems.push({name:'Meta Marketing \u2014 Managed Ads',amount_cents:metaPrice*100,recurring:true});
+  }
+  addons.forEach(function(a){
+    if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
+    var card=document.querySelector('[data-addon="'+a+'"');if(!card) return;
+    var price=parseInt(card.dataset.price),type=card.dataset.type;
+    if(type==='monthly') stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:true});
+    else if(price>0) stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:false});
+  });
+  var hasRecurring=stripeItems.some(function(i){return i.recurring});
+  var checkoutMode=hasRecurring?'subscription':'payment';
+  var payBtn=document.getElementById('stripePayBtn');
+  payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';
+  payBtn.onclick=function(e){
+    e.preventDefault();payBtn.textContent='Creating checkout...';payBtn.style.opacity='0.7';
+    fetch(STRIPE_API_URL,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:em,
+        description:'GrowPro Marketing \u2014 '+getBaseName()+' \u2014 '+bn,
+        metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value},
+        line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
+        success_url:window.location.origin+'/marketing?success=true',
+        cancel_url:window.location.href
+      })
+    }).then(function(r){return r.json()}).then(function(d){
+      if(d.url){window.location.href=d.url}
+      else{payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
+    }).catch(function(err){
+      payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Connection error. Please try again.');
+    });
+  };
+  document.querySelectorAll('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'});
+  document.querySelectorAll('.pcon').forEach(function(c){c.classList.add('completed')});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('sidebar').style.display='none';
+  document.getElementById('mBar').style.display='none';
+  updatePrice();initSig();
+});
+
+var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;
+function initSig(){
+sigCanvas=document.getElementById('sigCanvas');if(!sigCanvas) return;
+sigCtx=sigCanvas.getContext('2d');var wrap=document.getElementById('sigWrap');
+function resize(){var r=wrap.getBoundingClientRect();sigCanvas.width=r.width;sigCanvas.height=150;sigCtx.strokeStyle='#0D1B2A';sigCtx.lineWidth=2;sigCtx.lineCap='round';sigCtx.lineJoin='round'}
+resize();window.addEventListener('resize',resize);
+function getPos(e){var r=sigCanvas.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}
+sigCanvas.addEventListener('mousedown',function(e){sigDrawing=true;var p=getPos(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y)});
+sigCanvas.addEventListener('mousemove',function(e){if(!sigDrawing)return;var p=getPos(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();sigHasData=true;document.getElementById('sigPlaceholder').style.display='none'});
+sigCanvas.addEventListener('mouseup',function(){sigDrawing=false});
+sigCanvas.addEventListener('mouseleave',function(){sigDrawing=false});
+sigCanvas.addEventListener('touchstart',function(e){e.preventDefault();sigDrawing=true;var p=getPos(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y)},{passive:false});
+sigCanvas.addEventListener('touchmove',function(e){e.preventDefault();if(!sigDrawing)return;var p=getPos(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();sigHasData=true;document.getElementById('sigPlaceholder').style.display='none'},{passive:false});
+sigCanvas.addEventListener('touchend',function(){sigDrawing=false});
+}
+function clearSig(){if(!sigCanvas)return;sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);sigHasData=false;document.getElementById('sigPlaceholder').style.display='block'}
+function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('image/png')}
+</script>
