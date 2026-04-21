@@ -959,14 +959,21 @@ sigCanvas=document.getElementById('sigCanvas');
 if(!sigCanvas) return;
 sigCtx=sigCanvas.getContext('2d');
 var wrap=document.getElementById('sigWrap');
+var lastSigW=0;
 function resize(){
+if(sigDrawing)return;
 var r=wrap.getBoundingClientRect();
-sigCanvas.width=r.width;
+var newW=Math.round(r.width);
+if(newW===lastSigW)return;
+lastSigW=newW;
+var savedData=sigHasData?sigCanvas.toDataURL('image/png'):null;
+sigCanvas.width=newW;
 sigCanvas.height=150;
 sigCtx.strokeStyle='#0D1B2A';
 sigCtx.lineWidth=2;
 sigCtx.lineCap='round';
 sigCtx.lineJoin='round';
+if(savedData){var img=new Image();img.onload=function(){sigCtx.drawImage(img,0,0)};img.src=savedData}
 }
 resize();
 window.addEventListener('resize',resize);
