@@ -266,3 +266,39 @@ Each configurator goes into a Webflow page as **TWO sequential Embed blocks**:
 5. Local render test (concatenate embed1 + embed2 in a `<body>`) shows proper layout + correct totals?
 6. Stripe `line_items` totals match the on-screen Review summary?
 7. GHL webhook payload includes the changed field?
+
+---
+
+## 11. CHECKPOINT — Apr 21, 2026 — WEBFLOW EMBED PATTERN LOCKED ✅
+
+**This is the ONLY pattern to use for GrowPro Webflow embeds going forward.** Confirmed working by Jessica.
+
+### The standard snippet (one per page)
+
+```html
+<iframe src="https://zenjessica.github.io/growpro/PAGE.html" style="width:100%;height:2400px;border:0;display:block" allow="payment"></iframe>
+```
+
+Where `PAGE` = `launch`, `marketing`, or `operator`.
+
+### Why this is the answer
+- Fixed **2400px height** = configurator content (~1400-2000px) fits with safety room → buttons NEVER clip
+- **`width:100%`** respects the Webflow container — no viewport-breakout drama
+- **`allow="payment"`** lets Stripe Checkout fire from inside the iframe
+- Source files served from GitHub Pages → every commit auto-updates the live site (no copy-paste)
+- If a future page is taller, bump 2400 → 3000. One number change.
+
+### What did NOT work (do not retry)
+- ❌ `width:100vw; margin-left:calc(50% - 50vw)` viewport breakouts → caused button clipping at bottom
+- ❌ postMessage height-reporter auto-resize scripts → unreliable inside Webflow Embed blocks
+- ❌ Multi-step style+div wrappers with `100vh` math → overcomplicated, fragile
+
+### Delivery rules locked (see DELIVERY_RULES.md)
+1. **Simplest working solution first** — no overengineering
+2. **One snippet per page**, copy-paste ready, no setup steps required
+3. **Inline styles inside the snippet only** — no external CSS
+4. **Code blocks formatted as: label + code block** — no essays
+5. If something fails, **change one number/character**, never rebuild from scratch
+6. **Don't propose alternatives** unless the primary approach fails 3x
+7. Jessica is busy — ship code that just works, no instructions she has to interpret
+
