@@ -44,9 +44,11 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 .stat .num{font-size:42px;font-weight:800;color:var(--p);letter-spacing:-1px}
 .stat .lbl{font-size:13px;color:#888;text-transform:uppercase;letter-spacing:1px;font-weight:600}
 @media(max-width:600px){.stats{gap:24px}.stat .num{font-size:32px}}
-.img-banner{width:100%;max-width:960px;margin:0 auto 48px;display:flex;gap:16px;padding:0 24px;justify-content:center}
-.img-banner img{border-radius:16px;object-fit:contain;height:220px;flex:1;max-width:300px;background:#f8f8fa;padding:12px}
-@media(max-width:768px){.img-banner{flex-direction:column;align-items:center}.img-banner img{width:100%;max-width:400px;height:160px}}
+.img-banner{width:100%;max-width:960px;margin:0 auto 48px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:20px;padding:0 24px;align-items:stretch}
+.img-banner .card{border-radius:20px;overflow:hidden;height:280px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,#E8E4F5 0%,#F5E0EC 50%,#FCE4EC 100%);box-shadow:0 4px 20px rgba(13,27,42,0.08);transition:transform .3s ease}
+.img-banner .card:hover{transform:translateY(-4px)}
+.img-banner .card img{max-width:90%;max-height:90%;object-fit:contain}
+@media(max-width:768px){.img-banner{grid-template-columns:1fr;max-width:400px}.img-banner .card{height:240px}}
 .paths{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:960px;margin:0 auto;padding:0 24px 80px}
 @media(max-width:768px){.op-banner h2{font-size:22px!important}}
 @media(max-width:768px){.paths{grid-template-columns:1fr;gap:24px}}
@@ -99,9 +101,9 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 </div></div>
 
 <div class="img-banner">
-<img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361679442/TUNQPqbORwdREYFi.webp" alt="PauseRx Personalized GLP-1">
-<img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361679442/hfHznKVlgisInwtX.webp" alt="PauseRx GLP-1/GIP+B12">
-<img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361679442/UnXgKQQOOwbbCtdU.webp" alt="KinMeds Personalized GLP-1">
+<div class="card"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361679442/TUNQPqbORwdREYFi.webp" alt="PauseRx Personalized GLP-1"></div>
+<div class="card"><img src="hero-pill-hand.png" alt="Personalized telehealth medication" style="max-width:100%;max-height:100%;object-fit:cover;width:100%;height:100%"></div>
+<div class="card"><img src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361679442/UnXgKQQOOwbbCtdU.webp" alt="KinMeds Personalized GLP-1"></div>
 </div>
 
 <!-- Operator Suite Premium Banner -->
