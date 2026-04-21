@@ -417,27 +417,53 @@ $1('[data-plan="'+plan+'"]').classList.add('pp-sel');
 }
 function updatePayPlans(){
 var t=calcTotals();
-var ot=t.ot;
+var ot=t.ot,mo=t.mo;
 var ppSec=$i('ppSection');
-if(pkg!=='custom'){ppSec.style.display='none';payPlan='pif';return}
+// Show payment plan for any build with setup >= 15000 (template, custom, operator)
+if(!pkg||ot<15000){ppSec.style.display='none';payPlan='pif';return}
 ppSec.style.display='block';
+
+// Card 1: Pay Build in Full
 $i('ppPifAmt').textContent=fmt(ot);
-$i('ppPifTotal').textContent='Total: '+fmt(ot);
-var bal15=ot-15000;
-var bal15Fee=Math.round(bal15*1.05);
-var inst15=Math.ceil(bal15Fee/2);
-$i('ppSplit15Amt').textContent='2 x '+fmt(inst15);
-$i('ppSplit15Total').textContent='Total: '+fmt(15000+bal15Fee);
-var bal10=ot-10000;
-var bal10Fee=Math.round(bal10*1.15);
-var inst10=Math.ceil(bal10Fee/2);
-$i('ppSplit10Amt').textContent='2 x '+fmt(inst10);
-$i('ppSplit10Total').textContent='Total: '+fmt(10000+bal10Fee);
+if($i('ppPifMo')) $i('ppPifMo').textContent=fmt(mo);
+if($i('ppPifToday')) $i('ppPifToday').textContent=fmt(ot+mo);
+$i('ppPifTotal').textContent='Build total: '+fmt(ot);
+
+// Card 2: $15K Down
+var c15=$1('[data-plan="split15"]');
+if(ot>15000){
+  if(c15) c15.classList.remove('hid');
+  var bal15=ot-15000;
+  var bal15Fee=Math.round(bal15*1.05);
+  var inst15=Math.ceil(bal15Fee/2);
+  $i('ppSplit15Amt').textContent='$'+inst15.toLocaleString();
+  if($i('ppS15Mo')) $i('ppS15Mo').textContent=fmt(mo);
+  if($i('ppS15Today')) $i('ppS15Today').textContent=fmt(15000+mo);
+  $i('ppSplit15Total').textContent='Build total: '+fmt(15000+bal15Fee);
+} else { if(c15) c15.classList.add('hid'); if(payPlan==='split15') payPlan='pif'; }
+
+// Card 3: $10K Down
+var c10=$1('[data-plan="split10"]');
+if(ot>10000){
+  if(c10) c10.classList.remove('hid');
+  var bal10=ot-10000;
+  var bal10Fee=Math.round(bal10*1.15);
+  var inst10=Math.ceil(bal10Fee/2);
+  $i('ppSplit10Amt').textContent='$'+inst10.toLocaleString();
+  if($i('ppS10Mo')) $i('ppS10Mo').textContent=fmt(mo);
+  if($i('ppS10Today')) $i('ppS10Today').textContent=fmt(10000+mo);
+  $i('ppSplit10Total').textContent='Build total: '+fmt(10000+bal10Fee);
+} else { if(c10) c10.classList.add('hid'); if(payPlan==='split10') payPlan='pif'; }
+
+// Re-apply selection visual
+document.querySelectorAll('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});
+var sel=$1('[data-plan="'+payPlan+'"]');
+if(sel) sel.classList.add('pp-sel');
 }
 function getStripeItemsForPlan(t,em,fn,bn){
 var ot=t.ot;
-if(payPlan==='pif'||pkg!=='custom'){
-return null; // use default logic
+if(payPlan==='pif'||!pkg||ot<15000){
+return null; // use default logic (PIF) for small builds or no package
 }
 var down=payPlan==='split15'?15000:10000;
 var bal=ot-down;

@@ -110,9 +110,9 @@ function calcTotals(){
   var t=TIERS[tier];
   var setup=t.setup;
   var mo=t.monthly;
-  if(hasPromo('setup_free')) setup=0;
+  if(hasPromo('setup_free')) setup=500; // $500 minimum on full waiver
   var sp=getPromo('setup_discount');
-  if(sp) setup=Math.round(setup*(1-sp.promo.pct/100));
+  if(sp) setup=Math.max(500,Math.round(setup*(1-sp.promo.pct/100)));
   if(hasPromo('month_free')){/* first month free handled at Stripe level */}
   var mp=getPromo('monthly_discount');
   if(mp) mo=Math.round(mo*(1-mp.promo.pct/100));
@@ -160,25 +160,26 @@ function updateSB(){
 }
 
 function renderAppliedPromos(){
-  var el=document.getElementById('appliedPromos');
-  if(activePromos.length===0){el.innerHTML='';return}
+  var els=[document.getElementById('appliedPromos'),document.getElementById('appliedPromos3')];
   var h='';
-  activePromos.forEach(function(ap,i){
-    h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 12px;background:#F0FFF4;border:1px solid #34C759;border-radius:8px;margin-top:6px">';
-    h+='<span style="font-size:13px;font-weight:600;color:#34C759;flex:1">'+ap.code+': '+ap.promo.desc+'</span>';
-    h+='<a href="#" onclick="event.preventDefault();removePromo('+i+')" style="color:#E53935;font-size:12px;font-weight:600;text-decoration:none">Remove</a>';
-    h+='</div>';
-  });
-  el.innerHTML=h;
+  if(activePromos.length>0){
+    activePromos.forEach(function(ap,i){
+      h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 12px;background:#F0FFF4;border:1px solid #34C759;border-radius:8px;margin-top:6px">';
+      h+='<span style="font-size:13px;font-weight:600;color:#34C759;flex:1">'+ap.code+': '+ap.promo.desc+'</span>';
+      h+='<a href="#" onclick="event.preventDefault();removePromo('+i+')" style="color:#E53935;font-size:12px;font-weight:600;text-decoration:none">Remove</a>';
+      h+='</div>';
+    });
+  }
+  els.forEach(function(el){if(el) el.innerHTML=h});
 }
 function removePromo(idx){
   activePromos.splice(idx,1);
   renderAppliedPromos();
   updatePrice();
 }
-function applyPromo(){
-  var code=document.getElementById('promoInput').value.trim().toUpperCase();
-  var msg=document.getElementById('promoMsg');
+function _applyPromoCore(inputId,msgId){
+  var code=document.getElementById(inputId).value.trim().toUpperCase();
+  var msg=document.getElementById(msgId);
   if(!code){msg.style.color='#E53935';msg.textContent='Enter a code';return}
   var promo=PROMO_CODES[code];
   if(!promo){msg.style.color='#E53935';msg.textContent='Invalid code';return}
@@ -191,11 +192,14 @@ function applyPromo(){
   }
   activePromos.push({code:code,promo:promo});
   msg.style.color='#34C759';msg.textContent='Applied!';
-  document.getElementById('promoInput').value='';
+  document.getElementById(inputId).value='';
   setTimeout(function(){msg.textContent=''},2000);
   renderAppliedPromos();
   updatePrice();
+  if(typeof updatePayPlans==='function') updatePayPlans();
 }
+function applyPromo(){_applyPromoCore('promoInput','promoMsg')}
+function applyPromo3(){_applyPromoCore('promoInput3','promoMsg3')}
 
 function selPlan(plan){
   payPlan=plan;
@@ -204,28 +208,81 @@ function selPlan(plan){
 }
 
 function updatePayPlans(){
-  var tots=calcTotals();
-  var setup=tots.setup;
+  if(!tier) return;
+  var t=TIERS[tier],tots=calcTotals();
+  var setup=tots.setup,mo=tots.mo,termMonths=t.termMonths||6;
   var ppSec=document.getElementById('ppSection');
-  if(setup<=0){ppSec.style.display='none';payPlan='pif';return}
   ppSec.style.display='block';
+  var sixMoTotal=setup+(mo*termMonths);
+
+  // Card 1: Pay Setup in Full
   document.getElementById('ppPifAmt').textContent=fmt(setup);
-  document.getElementById('ppPifTotal').textContent='Total: '+fmt(setup);
-  var bal15=setup-15000;
-  var bal15Fee=Math.round(bal15*1.05);
-  var inst15=Math.ceil(bal15Fee/2);
-  document.getElementById('ppSplit15Amt').textContent='2 x '+fmt(inst15);
-  document.getElementById('ppSplit15Total').textContent='Total: '+fmt(15000+bal15Fee);
-  var bal10=setup-10000;
-  var bal10Fee=Math.round(bal10*1.15);
-  var inst10=Math.ceil(bal10Fee/2);
-  document.getElementById('ppSplit10Amt').textContent='2 x '+fmt(inst10);
-  document.getElementById('ppSplit10Total').textContent='Total: '+fmt(10000+bal10Fee);
+  document.getElementById('ppPifMo').textContent=fmt(mo);
+  document.getElementById('ppPifToday').textContent=fmt(setup+mo);
+  document.getElementById('ppPifTotal').textContent=termMonths+'-mo total: '+fmt(sixMoTotal);
+
+  // Card 2: $15K Down (only valid if setup > 15000)
+  var card15=document.querySelector('[data-plan="split15"]');
+  if(setup>15000){
+    card15.classList.remove('hid');
+    var bal15=setup-15000;
+    var bal15Fee=Math.round(bal15*1.05);
+    var inst15=Math.ceil(bal15Fee/2);
+    document.getElementById('ppSplit15Amt').textContent='$'+inst15.toLocaleString();
+    document.getElementById('ppS15Mo').textContent=fmt(mo);
+    document.getElementById('ppS15Today').textContent=fmt(15000+mo);
+    document.getElementById('ppSplit15Total').textContent=termMonths+'-mo total: '+fmt(15000+bal15Fee+(mo*termMonths));
+  } else {
+    card15.classList.add('hid');
+    if(payPlan==='split15') payPlan='pif';
+  }
+
+  // Card 3: $10K Down (only valid if setup > 10000)
+  var card10=document.querySelector('[data-plan="split10"]');
+  if(setup>10000){
+    card10.classList.remove('hid');
+    var bal10=setup-10000;
+    var bal10Fee=Math.round(bal10*1.15);
+    var inst10=Math.ceil(bal10Fee/2);
+    document.getElementById('ppSplit10Amt').textContent='$'+inst10.toLocaleString();
+    document.getElementById('ppS10Mo').textContent=fmt(mo);
+    document.getElementById('ppS10Today').textContent=fmt(10000+mo);
+    document.getElementById('ppSplit10Total').textContent=termMonths+'-mo total: '+fmt(10000+bal10Fee+(mo*termMonths));
+  } else {
+    card10.classList.add('hid');
+    if(payPlan==='split10') payPlan='pif';
+  }
+
+  // Card 4: Pay Everything in Full (Accelerator only)
+  var cardFull=document.getElementById('ppFullPifCard');
+  if(tier==='accelerator'){
+    cardFull.classList.remove('hid');
+    var pif=t.payInFull;
+    if(hasPromo('setup_free')) pif=pif-(t.setup-500);
+    var sp2=getPromo('setup_discount');
+    if(sp2) pif=pif-(t.setup-Math.max(500,Math.round(t.setup*(1-sp2.promo.pct/100))));
+    var mp2=getPromo('monthly_discount');
+    if(mp2) pif=pif-(t.monthly-Math.round(t.monthly*(1-mp2.promo.pct/100)))*termMonths;
+    var fp2=getPromo('monthly_flat');
+    if(fp2) pif=pif-fp2.promo.amount*termMonths;
+    document.getElementById('ppFullPifAmt').textContent=fmt(pif);
+    document.getElementById('ppFullPifSave').textContent=fmt(Math.max(0,sixMoTotal-pif));
+    document.getElementById('ppFullPifSplit').textContent=fmt(Math.ceil(pif/2));
+    document.getElementById('ppFullPifTotal').textContent='Total: '+fmt(pif);
+  } else {
+    cardFull.classList.add('hid');
+    if(payPlan==='fullpif') payPlan='pif';
+  }
+
+  // Re-apply selection visual
+  document.querySelectorAll('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});
+  var sel=document.querySelector('[data-plan="'+payPlan+'"]');
+  if(sel) sel.classList.add('pp-sel');
 }
 
 function getPayPlanInfo(tots){
   var setup=tots.setup;
-  if(payPlan==='pif'||setup<=0) return null;
+  if(payPlan==='pif'||payPlan==='fullpif'||setup<=0) return null;
   var down=payPlan==='split15'?15000:10000;
   var bal=setup-down;
   var feeRate=payPlan==='split10'?0.15:0.05;
@@ -233,6 +290,21 @@ function getPayPlanInfo(tots){
   var installment=Math.ceil(balWithFee/2);
   var planLabel=payPlan==='split15'?'$15K Down — 5% Fee':'$10K Down — 15% Financing';
   return{down:down,installment:installment,planLabel:planLabel,totalWithFee:down+balWithFee};
+}
+
+// Compute the $195K Pay-Everything-In-Full price for Accelerator (with promo discounts)
+function getFullPifPrice(){
+  if(!tier||tier!=='accelerator') return 0;
+  var t=TIERS[tier],termMonths=t.termMonths||6;
+  var pif=t.payInFull;
+  if(hasPromo('setup_free')) pif=pif-(t.setup-500);
+  var sp2=getPromo('setup_discount');
+  if(sp2) pif=pif-(t.setup-Math.max(500,Math.round(t.setup*(1-sp2.promo.pct/100))));
+  var mp2=getPromo('monthly_discount');
+  if(mp2) pif=pif-(t.monthly-Math.round(t.monthly*(1-mp2.promo.pct/100)))*termMonths;
+  var fp2=getPromo('monthly_flat');
+  if(fp2) pif=pif-fp2.promo.amount*termMonths;
+  return pif;
 }
 
 function goTo(s){
@@ -334,7 +406,7 @@ function submitForm(){
     source:document.getElementById('source').value,
     tier:t.name,setup_fee:tots.setup,monthly_rate:tots.mo,
     term:t.term,
-    payment_plan:payPlan==='pif'?'Pay in Full':payPlan==='split15'?'$15K Down - 5%':'$10K Down - 15%',
+    payment_plan:payPlan==='fullpif'?'Pay Everything In Full':payPlan==='pif'?'Setup Pay in Full':payPlan==='split15'?'$15K Down - 5%':'$10K Down - 15%',
 
     total_one_time:tots.setup,total_monthly:tots.mo,
     configurator_type:'operator_suite',
@@ -368,9 +440,17 @@ function submitForm(){
 
   var stripeItems=[];
   var checkoutMode='subscription';
+  // Handle Pay Everything In Full (Accelerator only) — single one-time charge
+  if(payPlan==='fullpif'&&tier==='accelerator'){
+    var fullPif=getFullPifPrice();
+    stripeItems.push({name:t.name+' — Pay In Full ('+t.term+')',amount_cents:fullPif*100,recurring:false});
+    checkoutMode='payment';
+  }
   var firstPay=tots.setup+tots.mo;
 
-  if(planInfo){
+  if(payPlan==='fullpif'&&tier==='accelerator'){
+    firstPay=getFullPifPrice();
+  } else if(planInfo){
     stripeItems.push({name:t.name+' — Down Payment ('+planInfo.planLabel+')',amount_cents:planInfo.down*100,recurring:false});
     stripeItems.push({name:t.name+' — Setup Installment ('+planInfo.planLabel+')',amount_cents:planInfo.installment*100,recurring:true});
     stripeItems.push({name:t.name+' — Monthly',amount_cents:tots.mo*100,recurring:true});
@@ -386,7 +466,7 @@ function submitForm(){
     e.preventDefault();
     payBtn.textContent='Creating checkout...';
     payBtn.style.opacity='0.7';
-    var planDesc=payPlan==='pif'?'Pay in Full':payPlan==='split15'?'$15K Down 5%':'$10K Down 15%';
+    var planDesc=payPlan==='fullpif'?'Pay Everything In Full':payPlan==='pif'?'Setup Pay in Full':payPlan==='split15'?'$15K Down 5%':'$10K Down 15%';
     var fetchBody={
       email:em,
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planDesc,
@@ -394,7 +474,10 @@ function submitForm(){
       success_url:window.location.origin+'/operator?success=true',
       cancel_url:window.location.href
     };
-    if(planInfo){
+    if(payPlan==='fullpif'&&tier==='accelerator'){
+      fetchBody.line_items=stripeItems;
+      fetchBody.mode='payment';
+    } else if(planInfo){
       fetchBody.payment_plan={down_payment_cents:planInfo.down*100,installment_cents:planInfo.installment*100,installment_count:2,interval_days:28,plan_label:planInfo.planLabel};
       fetchBody.line_items=[{name:t.name+' — Monthly',amount_cents:tots.mo*100,recurring:true}];
       fetchBody.mode='subscription';

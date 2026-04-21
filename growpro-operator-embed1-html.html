@@ -333,37 +333,57 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <h1 class="h1">Let's Get Started.</h1>
 <p class="sub">Enter your details to finalize your growth partnership and proceed to checkout.</p>
 
-<!-- Payment Plan for Setup Fee -->
+<!-- Promo Code (Step 3) -->
+<div class="promo-box" style="margin-bottom:24px">
+<div style="font-size:14px;font-weight:600;margin-bottom:8px">Have a promo code?</div>
+<div class="promo-row">
+<input type="text" id="promoInput3" placeholder="Enter promo code" style="text-transform:uppercase">
+<button onclick="applyPromo3()">Apply</button>
+</div>
+<div id="promoMsg3" style="font-size:13px;margin-top:6px;min-height:18px"></div>
+<div id="appliedPromos3"></div>
+</div>
+
+<!-- Payment Plan -->
 <div class="pp-section" id="ppSection">
-<div class="pp-title">Setup Fee Payment Plan</div>
-<div class="pp-sub">Choose how to pay your $25,000 setup fee.</div>
-<div class="pp-grid">
+<div class="pp-title">Choose Your Payment Plan</div>
+<div class="pp-sub" id="ppSub">Pick how you'd like to pay. The total due today includes your setup fee plus your first month.</div>
+<div class="pp-grid" id="ppGrid">
 <div class="pp-card pp-best pp-sel" data-plan="pif" onclick="selPlan('pif')">
 <div class="pp-ck">&#10003;</div>
 <div class="pp-badge pp-b-best">Best Value</div>
-<div class="pp-name">Pay in Full</div>
+<div class="pp-name">Pay Setup in Full</div>
 <div class="pp-amount" id="ppPifAmt">$25,000</div>
-<div class="pp-detail">Pay today</div>
-<div class="pp-fee">No fees</div>
-<div class="pp-total" id="ppPifTotal">Total: $25,000</div>
+<div class="pp-detail">Setup today<br>+ <strong id="ppPifMo">$33,500</strong> first month<br><span style="color:#34C759;font-weight:700">= <span id="ppPifToday">$58,500</span> due today</span></div>
+<div class="pp-fee">No financing fees</div>
+<div class="pp-total" id="ppPifTotal">6-mo total: $226,000</div>
 </div>
 <div class="pp-card" data-plan="split15" onclick="selPlan('split15')">
 <div class="pp-ck">&#10003;</div>
 <div class="pp-badge pp-b-flex">5% Fee</div>
 <div class="pp-name">$15K Down</div>
 <div class="pp-amount">$15,000</div>
-<div class="pp-detail">Down today, then<br><strong id="ppSplit15Amt">2 x $5,250</strong><br>every 4 weeks</div>
-<div class="pp-fee">5% fee on balance</div>
-<div class="pp-total" id="ppSplit15Total">Total: $25,500</div>
+<div class="pp-detail">$15K setup down<br>+ <strong id="ppS15Mo">$33,500</strong> first month<br><span style="color:#34C759;font-weight:700">= <span id="ppS15Today">$48,500</span> due today</span><br><span style="font-size:11px;color:#888">then 2 x <strong id="ppSplit15Amt">$5,250</strong> every 4 weeks</span></div>
+<div class="pp-fee">5% fee on setup balance</div>
+<div class="pp-total" id="ppSplit15Total">6-mo total: $226,500</div>
 </div>
 <div class="pp-card" data-plan="split10" onclick="selPlan('split10')">
 <div class="pp-ck">&#10003;</div>
 <div class="pp-badge pp-b-fin">Financing</div>
 <div class="pp-name">$10K Down</div>
 <div class="pp-amount">$10,000</div>
-<div class="pp-detail">Down today, then<br><strong id="ppSplit10Amt">2 x $8,625</strong><br>every 4 weeks</div>
-<div class="pp-fee">15% fee on balance</div>
-<div class="pp-total" id="ppSplit10Total">Total: $27,250</div>
+<div class="pp-detail">$10K setup down<br>+ <strong id="ppS10Mo">$33,500</strong> first month<br><span style="color:#34C759;font-weight:700">= <span id="ppS10Today">$43,500</span> due today</span><br><span style="font-size:11px;color:#888">then 2 x <strong id="ppSplit10Amt">$8,625</strong> every 4 weeks</span></div>
+<div class="pp-fee">15% fee on setup balance</div>
+<div class="pp-total" id="ppSplit10Total">6-mo total: $228,250</div>
+</div>
+<div class="pp-card hid" data-plan="fullpif" id="ppFullPifCard" onclick="selPlan('fullpif')" style="border-color:#D4A843;background:linear-gradient(135deg,#FFF8E7,#FFFDF5)">
+<div class="pp-ck">&#10003;</div>
+<div class="pp-badge" style="background:#D4A843;color:#fff">PAY IN FULL</div>
+<div class="pp-name">Pay Everything Up Front</div>
+<div class="pp-amount" id="ppFullPifAmt">$195,000</div>
+<div class="pp-detail"><span style="color:#34C759;font-weight:700">Save <span id="ppFullPifSave">$31,000</span> vs. monthly</span><br><span style="font-size:11px;color:#888">All 6 months covered. Nothing else due.</span><br><span style="font-size:11px;color:#888">Or 2 payments of <strong id="ppFullPifSplit">$97,500</strong></span></div>
+<div class="pp-fee">Locks pricing &amp; everything done up front</div>
+<div class="pp-total" id="ppFullPifTotal">Total: $195,000</div>
 </div>
 </div>
 </div>
