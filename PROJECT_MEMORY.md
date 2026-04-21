@@ -302,3 +302,68 @@ Where `PAGE` = `launch`, `marketing`, or `operator`.
 6. **Don't propose alternatives** unless the primary approach fails 3x
 7. Jessica is busy — ship code that just works, no instructions she has to interpret
 
+
+
+---
+
+## 12. CHECKPOINT — Apr 21, 2026 (Session #2): Operator 4-Card Payment Model + Marketing Ad-Spend Disclosure
+
+**Live as of commit `805e28c` (53 commits on main).**
+
+### Operator: 4-card payment plans on Step 3 (replaced old 3-card setup-only model)
+
+For each tier, standard 6-mo total = `setup ($25K) + monthly × 6`:
+- Elite: $25K + $18.5K×6 = $136,000
+- Founder: $25K + $28.5K×6 = $196,000
+- Accelerator: $25K + $33.5K×6 = $226,000
+
+| # | Plan | Math | Stripe Mode |
+|---|---|---|---|
+| 1 | 🟡 **PAY IN FULL — Save 14%** (default) | total × 0.86, all today | one-time `payment` |
+| 2 | 🔵 **TWO PAYMENTS** (no fee) | total ÷ 2, today + 30 days | one-time `payment` (2nd invoiced manually) |
+| 3 | 🟠 **QUARTERLY** (5% on full) | total × 1.05 ÷ 3, every 90 days | one-time `payment` (rest scheduled) |
+| 4 | 🟣 **MONTHLY** (15% on full) | setup today + ((total×1.15 − setup)÷6)/mo for 6 mo | `subscription` |
+
+Per-tier Accelerator example numbers:
+- PIF: **$194,360** · Two-Pay: **2 × $113,000** · Quarterly: **3 × $79,100 = $237,300** · Monthly: **$25K setup + $37,575/mo × 6 = $250,450**
+
+**Old plan names retired:** `split15`, `split10`, `fullpif` → auto-migrated to `pif` on load (operator embed2 lines 248-249).
+
+### Marketing + Operator: Ad-Spend Disclosure callout
+
+Added gold callout in Step 3/4 above payment plans:
+> ⚡ **Ad Spend (Required, Billed Separately)** — required and billed separately up front before launch. **Min $3,000/mo**. Recommended **$10,000–$15,000/mo**. After month 1 converts to **monthly ACH** at chosen amount, increasable anytime.
+
+Ad spend NEVER bundled into Stripe checkout. Configurator only collects setup + monthly (or PIF/twopay/quarterly equivalent).
+
+### Key business decisions captured
+
+1. At $200K+ commitment, payment plans on setup-only felt small-bore — fund the WHOLE 6-mo commitment instead.
+2. PIF saves 14% (clean round number, looks generous, doesn't give away too much).
+3. Quarterly fee 5%, Monthly fee 15% — both on **full balance** not just setup.
+4. Two Payments = no fee (frictionless option for clients who want to split but don't need long financing).
+5. Setup-waiver promo codes have $500 minimum (not free) — protects margin.
+6. Ad spend always separate from configurator payment.
+
+### Files changed this session
+
+| File | Change |
+|---|---|
+| `growpro-operator-embed1-html.html` | New 4-card payment plan grid + ad-spend disclosure |
+| `growpro-operator-embed2-js.html` | Rewrote `updatePayPlans` / `getPayPlanInfo` / `getFullPifPrice` + Stripe checkout for pif/twopay/quarterly/monthly |
+| `growpro-marketing-embed1-html.html` | Ad-spend disclosure callout in Step 4 |
+| `operator.html` / `marketing.html` / `launch.html` | Rebuilt via `build-iframe-pages.sh` |
+
+### Still working from earlier checkpoints
+
+- 2400px iframe pattern (Webflow embed snippets in `WEBFLOW-LAUNCH/MARKETING/OPERATOR.html`)
+- Anti-scroll fix (`history.scrollRestoration='manual'` injected by build script)
+- Promo codes intact: WELLIE500, FREELABS, FREEHRT, PEPTIDE50, BUILD5K, SETUP50, SETUP0, MONTH1FREE, PARTNER10, PARTNER15, VIP5K
+- Stripe checkout endpoint, GHL webhook, signature canvas, agreement gating
+
+### Lessons added to DELIVERY_RULES (for future sessions)
+
+- When making payment plan changes, ALWAYS update both `getPayPlanInfo` (math/labels) AND the Stripe checkout block (`payPlan===` branches + `fetchBody.mode`) — they reference each other.
+- After plan-name changes, add a migration line at top of `updatePayPlans()` to silently coerce old saved values to current ones (avoid stale localStorage breaks).
+- Always rebuild combined `*.html` via `build-iframe-pages.sh` before pushing — never edit combined files directly.
+- Validate JS via `node -e "new Function(scriptText)"` before pushing.

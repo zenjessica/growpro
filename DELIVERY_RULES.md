@@ -62,3 +62,33 @@ For any GrowPro configurator (or future) Webflow page, deliver ONE iframe per pa
 3. DocuSign double-sig + PDF email
 4. WellieMD $1,500 setup + $1,000/mo prominence on tally
 5. Client portal (purchases/billing/deliverables/ClickUp)
+
+
+---
+
+## ADDITIONS — Apr 21, 2026 (Session #2)
+
+### When changing payment plan logic
+1. **Always update BOTH** `getPayPlanInfo()` (math/labels) AND the Stripe checkout block (`payPlan===` branches + `fetchBody.mode`). They reference each other — one without the other = silent breakage at checkout.
+2. **Add a migration line** at top of `updatePayPlans()` to coerce old saved values to current names (avoid stale localStorage breaks for prospects who visited before the change):
+   ```js
+   if(['old1','old2','old3'].indexOf(payPlan)>=0) payPlan='newDefault';
+   ```
+3. **Always rebuild combined `*.html`** via `bash build-iframe-pages.sh` before pushing — never edit combined files directly. They get overwritten.
+4. **Validate JS** before pushing: `node -e "['operator.html','marketing.html','launch.html'].forEach(f=>{var c=require('fs').readFileSync(f,'utf8');var m=c.match(/<script>[\s\S]*?<\/script>/g)||[];m.forEach(s=>new Function(s.replace(/<\/?script>/g,'')))})"`
+
+### When delivering pricing/payment changes
+- **Show the user the actual math per tier** before deploying (table of "today / total / savings" per tier). Catches business-logic errors fast.
+- **Default to the most generous-looking option** (e.g. PIF saves 14% positions Pay-In-Full as obvious value).
+- **Use round-feeling fee numbers** (5%, 15%) — easier to explain to prospects than oddly-precise ones.
+- **Apply financing fees on the FULL balance**, not setup-only — at $200K commitment, fee on setup is too small-bore.
+
+### When dealing with required-but-separate fees (like ad spend)
+- **Disclose prominently** in a gold callout above the payment plans
+- **Never bundle** into Stripe checkout
+- **State explicitly**: amount min, recommended target, when it's billed (up-front), how it converts after month 1 (ACH monthly)
+
+### Process lessons
+- **Browser upload of duplicate filenames** sometimes drops one — re-add explicitly if file count is short.
+- **GH CLI auth** = read-only on `zenjessica/*` (logged in as `jessicaciernia-cyber`). Use browser upload to push.
+- **GitHub Pages cache** ~60s after commit. Hard refresh (Ctrl+Shift+R) if user reports stale content.
