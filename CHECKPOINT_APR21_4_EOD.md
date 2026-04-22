@@ -103,3 +103,101 @@ Status: **Iframe + configurator fully working.** Stripe → ClickUp/email/SMS we
 ## 💤 Sleep tight, Jessica.
 
 All the working code is locked in GitHub. Iframes work, signature pad works, site flows correctly. Webhook code is written and deployed waiting only for credentials. Pick this up tomorrow with: **"I'm back — here's my ClickUp token: pk_..."**
+
+
+---
+
+## 📋 TOMORROW'S ROADMAP — Analytics + Email Capture (added end of day)
+
+Resume in this exact order:
+
+### 🥇 PRIORITY 1 — Finish Stripe webhook (30 min)
+Already written and deployed. Just needs credentials from Jess:
+1. ClickUp API token + list URL
+2. Twilio SID / Token / From number (or skip SMS for now)
+3. Manus adds env vars to Vercel
+4. Manus registers webhook in Stripe
+5. Test with real $0.50 charge
+
+### 🥈 PRIORITY 2 — Analytics install (10 min)
+
+**Google Analytics 4** — paste GA4 measurement ID tracking script in Webflow → Project Settings → Custom Code → Head Code.
+- Setup: [analytics.google.com](https://analytics.google.com) → create property for `launch.kickstartsocial.co`
+- Gives: page views, traffic sources, device breakdown, scroll depth, funnel drop-offs
+
+**Microsoft Clarity** — paste Clarity tracking script in same Head Code.
+- Setup: [clarity.microsoft.com](https://clarity.microsoft.com) → new project
+- Gives: **session recordings** (watch real users click through), heatmaps, rage click detection, dead click detection
+- **This is the highest-ROI tool — literally watch 3 prospects and you'll know exactly where conversion breaks**
+
+### 🥉 PRIORITY 3 — Funnel event tracking inside iframes (15 min)
+
+Add `window.parent.postMessage({type:"gp-event",name:"...",data:{...}})` inside launch/marketing/operator HTMLs at key moments:
+- `gp-event: page-viewed`
+- `gp-event: package-selected` (with tier + price)
+- `gp-event: addons-selected` (with list + total)
+- `gp-event: signed`
+- `gp-event: checkout-initiated`
+- `gp-event: checkout-completed` (from Stripe webhook)
+
+Parent Webflow footer script catches these and fires `gtag('event', ...)` to GA4 + Clarity. Result: full conversion funnel visibility.
+
+### 🎁 PRIORITY 4 — Email Capture (45 min total)
+
+Three strategic moments, not an annoying front-end popup:
+
+**A) Exit-intent modal on home + pricing pages**
+- Triggers when mouse moves toward closing the tab
+- Copy: "Not ready? Grab a free 10-min strategy call with Jessica"
+- Captures email + phone → creates ClickUp lead task + adds to email list
+
+**B) Slide-in on wizard after 60s idle**
+- Copy: "Save your configuration? I'll email you the PDF so you can come back later"
+- Captures email only → generates PDF from current wizard state → emails via Resend
+
+**C) Abandoned checkout recovery (FREE - uses Stripe built-in)**
+- Stripe webhook on `checkout.session.expired` event
+- We already have their email from Stripe session
+- Automated email: "Still want to launch your telehealth brand? Your build is saved — finish in 2 minutes" + one-click resume link
+- Also creates ClickUp task for Jess to follow up if no action in 48h
+
+### 🏗️ PRIORITY 5 — Email list tool decision
+
+**Option A: ConvertKit** — $0 up to 1K subs, direct Webflow integration, drip campaigns
+**Option B: Beehiiv** — $0 up to 2.5K subs, modern, creator-focused, great analytics
+**Option C: Just ClickUp leads** — free, tasks auto-created from email captures, Jess works them manually (fine for first 50 leads while brand is new)
+
+Recommendation: **Start with Option C** (ClickUp leads only) since we're building the webhook infrastructure anyway. Graduate to ConvertKit when we cross 50 captured leads and need drip automation.
+
+### 🎯 PRIORITY 6 — "Strategy call" booking CTA
+
+Most exit-intent captures will offer a free strategy call. Need a booking link:
+- **Cal.com** (free, better than Calendly) or **Calendly** (you may already have one)
+- Embed as button in Webflow + as auto-reply in capture emails
+- Calendar syncs to Google Calendar → ClickUp task auto-created for Jess
+
+### 💎 STRETCH — Jessica's personal touch
+
+Post-purchase email template ideas to write tomorrow:
+- **Immediate auto:** "Welcome! Here's what's next + your ClickUp portal link" (from Resend)
+- **Day 1:** "Hey, Jessica here — just recorded you a Loom walkthrough of next steps" (personal, manual Loom)
+- **Day 3:** "Your kickoff call is scheduled. Here's what to bring."
+- **Day 7:** Progress update with screenshot from ClickUp
+
+---
+
+## 🗓️ Tomorrow's time estimate
+
+| Priority | Time |
+|---|---|
+| Finish Stripe webhook | 30 min |
+| GA4 + Clarity install | 10 min |
+| Funnel event tracking | 15 min |
+| Email capture (3 moments) | 45 min |
+| Cal.com booking link | 15 min |
+| Email template copy | 20 min |
+| **Total** | **~2.5 hours** |
+
+**By tomorrow evening: full acquisition funnel live, analytics tracking every step, every lead captured, every purchase triggers ClickUp + email + SMS.**
+
+Sleep tight. 🌙
