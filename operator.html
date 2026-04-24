@@ -228,8 +228,8 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="pst" data-step="3"><div class="pdot">3</div><span class="plbl">Get Started</span></div>
 </div></div></nav>
 <div class="tbar"><div class="tbi">
-<span class="ti">Jessica-Led Brand Launches</span><span class="ti">70+ Brands Launched</span><span class="ti">Full Compliance Infrastructure</span><span class="ti">4% Processing No Reserves</span><span class="ti">WellieMD Platform Included</span><span class="ti">LegitScript Certified</span>
-<span class="ti">Jessica-Led Brand Launches</span><span class="ti">70+ Brands Launched</span><span class="ti">Full Compliance Infrastructure</span><span class="ti">4% Processing No Reserves</span><span class="ti">WellieMD Platform Included</span><span class="ti">LegitScript Certified</span>
+<span class="ti">Jessica-Led Brand Launches</span><span class="ti">70+ Brands Launched</span><span class="ti">Full Compliance Infrastructure</span><span class="ti">4% Processing No Reserves</span><span class="ti">LegitScript Certified</span>
+<span class="ti">Jessica-Led Brand Launches</span><span class="ti">70+ Brands Launched</span><span class="ti">Full Compliance Infrastructure</span><span class="ti">4% Processing No Reserves</span><span class="ti">LegitScript Certified</span>
 </div></div>
 
 <div class="wrap"><div class="main">
@@ -238,7 +238,7 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <!-- STEP 1: Choose Tier -->
 <div class="sec active" id="step1">
 <h1 class="h1">Choose Your Growth Partnership</h1>
-<p class="sub">Built for founders who want to build it right, not just build it fast. Every tier includes your full GrowPro platform launch, WellieMD, compliance, and marketing — all under one roof.</p>
+<p class="sub">Built for founders who want to build it right, not just build it fast. Every tier includes your full GrowPro brand launch, compliance, and marketing — all under one roof. <span style="display:block;margin-top:8px;font-size:13px;color:#888;font-style:italic">WellieMD platform &amp; Lumi Funnels are sold separately.</span></p>
 
 <div class="grid g3">
 <!-- Elite -->
@@ -251,7 +251,7 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="tsetup">+ $25,000 setup</div>
 <div class="tterm">6-month minimum commitment</div>
 <ul class="tlist">
-<li>Full GrowPro brand launch on WellieMD</li>
+<li>Full GrowPro brand launch</li>
 <li>LegitScript application + compliance setup</li>
 <li>Pharmacy partner introductions</li>
 <li>Payment processing setup</li>
@@ -259,9 +259,9 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <li>Google Ads management</li>
 <li>GHL email + automation</li>
 <li>Advanced social + support</li>
-<li>WellieMD + Lumi Funnels included</li>
 <li>Priority team support</li>
 </ul>
+<div class="tnote" style="font-size:11px;color:#999;margin-top:6px">WellieMD platform &amp; Lumi Funnels sold separately.</div>
 <div class="tnote">+ $15-20k/mo ad spend (client funded, not included)</div>
 </div>
 
@@ -497,7 +497,7 @@ var TIERS={
       {name:'Jessica Operator Fee',value:7700}
     ],
     includes:[
-      'Full GrowPro brand launch on WellieMD',
+      'Full GrowPro brand launch',
       'LegitScript application + compliance setup',
       'Pharmacy partner introductions',
       'Payment processing setup',
@@ -557,11 +557,8 @@ var TIERS={
   }
 };
 
-// Included support (all tiers)
-var INCLUDED_SUPPORT=[
-  {name:'WellieMD Platform',price:1000},
-  {name:'Lumi Funnels',price:499}
-];
+// NOTE: WellieMD platform and Lumi Funnels are SEPARATE add-ons, NOT bundled into any tier.
+var INCLUDED_SUPPORT=[];
 
 var PROMO_CODES={
   'SETUP50':{type:'setup_discount',pct:50,desc:'50% off setup fee',savings:12500},
@@ -805,11 +802,13 @@ function buildSum(){
     h+='<div class="sui"><span>'+m.name+'</span><span class="inc">'+fmt(m.value)+(tier==='accelerator'?' value':'/mo')+'</span></div>';
   });
   h+='</div>';
-  h+='<div class="suse"><div class="sust">Platform (Included)</div>';
-  INCLUDED_SUPPORT.forEach(function(s){
-    h+='<div class="sui"><span>'+s.name+'</span><span class="inc">Included</span></div>';
-  });
-  h+='</div>';
+  if(INCLUDED_SUPPORT&&INCLUDED_SUPPORT.length){
+    h+='<div class="suse"><div class="sust">Platform (Included)</div>';
+    INCLUDED_SUPPORT.forEach(function(s){
+      h+='<div class="sui"><span>'+s.name+'</span><span class="inc">Included</span></div>';
+    });
+    h+='</div>';
+  }
   h+='<div class="suse"><div class="sust">What\'s Included</div>';
   t.includes.forEach(function(inc){
     h+='<div class="sui"><span>'+inc+'</span><span class="inc">Included</span></div>';
