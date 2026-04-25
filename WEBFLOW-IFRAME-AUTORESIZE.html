@@ -1,0 +1,41 @@
+<!--
+  GROWPRO IFRAME AUTO-RESIZE SNIPPET
+  ==================================
+  PASTE THIS in Webflow:
+    Project Settings (gear icon) → Custom Code tab → FOOTER CODE section → Save → Publish
+
+  WHAT IT DOES
+  ------------
+  Listens for height messages from any embedded GrowPro iframe and resizes
+  it automatically to fit the content. Works for operator.html, launch.html,
+  and marketing.html — one paste covers all three pages forever.
+
+  WHY YOU NEED IT
+  ---------------
+  Without this, the Webflow iframe stays a fixed pixel height and content
+  overflows or gets cut off when steps are added. With this, the iframe
+  always matches its content automatically.
+
+  SAFETY
+  ------
+  - Only resizes iframes whose src includes "zenjessica.github.io/growpro"
+  - Hard-capped between 1500px (min) and 6000px (max)
+  - Self-guarded against double-install
+  - Listens only for the specific message type "growpro:resize"
+  - No external dependencies, ~600 bytes
+-->
+<script>
+(function(){
+  if (window.__growproResizeInstalled) return;
+  window.__growproResizeInstalled = true;
+  window.addEventListener('message', function(e){
+    if (!e.data || e.data.type !== 'growpro:resize' || typeof e.data.height !== 'number') return;
+    document.querySelectorAll('iframe').forEach(function(ifr){
+      if (ifr.src && ifr.src.indexOf('zenjessica.github.io/growpro') !== -1) {
+        var h = Math.max(1500, Math.min(6000, e.data.height + 40));
+        ifr.style.height = h + 'px';
+      }
+    });
+  });
+})();
+</script>

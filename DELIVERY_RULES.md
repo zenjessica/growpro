@@ -25,8 +25,9 @@ For any GrowPro configurator (or future) Webflow page, deliver ONE iframe per pa
 
 **OPERATOR** (`launch.kickstartsocial.co/operator`):
 ```html
-<iframe src="https://zenjessica.github.io/growpro/operator.html" style="width:100%;height:2400px;border:0;display:block" allow="payment"></iframe>
+<iframe src="https://zenjessica.github.io/growpro/operator.html" style="width:100%;height:3600px;border:0;display:block" allow="payment"></iframe>
 ```
+_Bumped from 2400 → 3600 on Apr 25, 2026 after adding Treatments Step 2. Desktop max is ~2422px (Step 4 form), mobile stacks to ~3500px. 3600 gives a small buffer._
 
 ## DELIVERY RULES (apply to every future request)
 
@@ -43,7 +44,7 @@ For any GrowPro configurator (or future) Webflow page, deliver ONE iframe per pa
 
 ## WHAT NOT TO DO
 - ❌ `width:100vw; margin-left:calc(50% - 50vw)` viewport breakouts (caused last bug)
-- ❌ postMessage height-reporter scripts (fragile, unreliable in Webflow embeds)
+- ❌ ~~postMessage height-reporter scripts~~ — **REVERSED Apr 25, 2026.** Now the locked solution. See "Apr 25 update" below.
 - ❌ Multiple files for one fix
 - ❌ Long instructions when a snippet will do
 - ❌ Asking the user to choose between options when one is clearly better
@@ -92,3 +93,45 @@ For any GrowPro configurator (or future) Webflow page, deliver ONE iframe per pa
 - **Browser upload of duplicate filenames** sometimes drops one — re-add explicitly if file count is short.
 - **GH CLI auth** = read-only on `zenjessica/*` (logged in as `jessicaciernia-cyber`). Use browser upload to push.
 - **GitHub Pages cache** ~60s after commit. Hard refresh (Ctrl+Shift+R) if user reports stale content.
+
+---
+
+## ADDITIONS — Apr 25, 2026 (iframe auto-resize architecture LOCKED)
+
+### Why the old fixed-height rule was reversed
+After adding Treatments Step 2 to operator.html, content height grew past 2400px. Bumping to 3600px buffered desktop but mobile (where 3-column grids stack) overflowed past even that. Manual height management is no longer viable as configurators evolve.
+
+### The new locked architecture
+1. **Each configurator broadcasts its content height** via `postMessage({type:'growpro:resize',height:N})` on load, resize, and step change.
+2. **Webflow has ONE site-wide listener** in Custom Code Footer that resizes any matching iframe. Paste-once, covers all current and future configurators.
+3. **The listener snippet** lives at `WEBFLOW-IFRAME-AUTORESIZE.html` in this repo. Source of truth.
+4. **Iframe height in Webflow embeds becomes irrelevant** — the listener overrides it. But keep `height:1500px` as a sensible initial render before the first postMessage arrives.
+
+### The locked Webflow snippet (paste in Project Settings → Custom Code → Footer)
+```html
+<script>
+(function(){
+  if (window.__growproResizeInstalled) return;
+  window.__growproResizeInstalled = true;
+  window.addEventListener('message', function(e){
+    if (!e.data || e.data.type !== 'growpro:resize' || typeof e.data.height !== 'number') return;
+    document.querySelectorAll('iframe').forEach(function(ifr){
+      if (ifr.src && ifr.src.indexOf('zenjessica.github.io/growpro') !== -1) {
+        var h = Math.max(1500, Math.min(6000, e.data.height + 40));
+        ifr.style.height = h + 'px';
+      }
+    });
+  });
+})();
+</script>
+```
+
+### When adding a new configurator page
+- Include `reportHeightToParent()` function (copy from launch/marketing/operator embed2 sources).
+- Wire it into: every step transition, `window.load`, `window.resize`, and a `ResizeObserver(document.body)`.
+- Once the Webflow Custom Code listener is installed, the iframe will auto-fit. No height tuning needed.
+
+### Why the original "no postMessage" rule existed (and why it doesn't apply now)
+- Original concern: postMessage was fragile WITH a parent script that wasn't installed. We were asking users to put scripts in embed blocks (easy to forget/lose).
+- Resolution: Project Settings Footer Code is **site-wide and persistent**. One paste, never touch again. The fragility concern was about deployment, not the technique itself.
+- Live-tested Apr 25, 2026: iframe successfully auto-grew from 1500px → 6000px on Step 1 of operator.html. 4 height-report messages received. Full content visible without internal scrollbar.
