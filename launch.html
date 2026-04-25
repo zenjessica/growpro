@@ -5,11 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrowPro Launch Configurator</title>
 <meta name="robots" content="noindex">
-<base target="_top">
-<style>html,body{margin:0;padding:0;background:#FFFFFF;font-family:Inter,system-ui,sans-serif}</style>
-<script>if("scrollRestoration" in history){history.scrollRestoration="manual"}
-(function(){var lastH=0;function reportH(){try{var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);if(h!==lastH&&window.parent&&window.parent!==window){lastH=h;window.parent.postMessage({type:"growpro-resize",height:h},"*")}}catch(e){}}
-window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}reportH();setInterval(reportH,500);if(window.ResizeObserver){new ResizeObserver(reportH).observe(document.body)}document.addEventListener("click",function(ev){var t=ev.target;var btn=t&&t.closest?t.closest("button,a"):null;if(btn){var txt=(btn.textContent||"").toLowerCase();if(txt.indexOf("continue")>-1||txt.indexOf("next")>-1||txt.indexOf("back")>-1||txt.indexOf("add-on")>-1||txt.indexOf("review")>-1||txt.indexOf("get started")>-1||txt.indexOf("choose")>-1||txt.indexOf("submit")>-1||txt.indexOf("→")>-1||txt.indexOf("←")>-1){try{window.parent.postMessage({type:"growpro-step-change"},"*")}catch(e){}}}setTimeout(reportH,50);setTimeout(reportH,300);setTimeout(reportH,600)},true)});})();</script>
+<style>html,body{margin:0;padding:0;background:#fff;font-family:Inter,system-ui,sans-serif}</style>
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual"}window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}});</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -47,18 +44,6 @@ window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.par
 .gal-counter{text-align:center;margin:16px 0;font-size:15px;color:#666}
 .gal-counter strong{color:var(--p);font-size:20px}
 .gal-note{text-align:center;padding:16px;background:var(--pb);border-radius:var(--r);border:1px solid var(--pl);margin-top:16px;font-size:14px;color:#555;line-height:1.6}
-.pep-toggle{display:inline-block;margin:6px 0 4px;padding:6px 10px;background:transparent;border:1px solid var(--gold);border-radius:6px;color:#8B6914;font-size:12px;font-weight:700;letter-spacing:.3px;cursor:pointer;font-family:'DM Sans',sans-serif}
-.pep-toggle:hover{background:var(--gl)}
-.pep-toggle[aria-expanded="true"]{background:var(--gl)}
-.pep-details{margin:12px 0 8px;padding:14px 16px;background:#FFFDF5;border:1px solid #E8D5B7;border-radius:10px}
-.pep-group{margin-bottom:12px}
-.pep-group:last-of-type{margin-bottom:8px}
-.pep-when{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#8B6914;margin-bottom:6px}
-.pep-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 16px}
-@media(max-width:480px){.pep-list{grid-template-columns:1fr}}
-.pep-list li{font-size:13px;color:#5C4A3A;padding:2px 0;display:flex;align-items:flex-start;gap:6px}
-.pep-list li::before{content:'•';color:var(--gold);font-weight:700}
-.pep-foot{font-size:11px;color:#8B6914;font-style:italic;border-top:1px dashed #E8D5B7;padding-top:8px;margin-top:6px;line-height:1.5}
 </style>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Build Your Telehealth Brand</div></div></div></header>
 <nav class="pbar"><div class="wrap"><div class="psteps">
@@ -182,14 +167,7 @@ window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.par
 <span class="bdg b-hv">High Value</span>
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="ai">+</span></div>
 <h3 class="ct">Peptide Package</h3>
-<p class="cd">Full peptide infrastructure for the <strong>12 peptides</strong> currently scheduled for FDA PCAC review. Be ready the moment the regulatory window opens.</p>
-<button type="button" class="pep-toggle" onclick="event.stopPropagation();togPepDetails()" aria-expanded="false" aria-controls="pepDetails">View 12 peptides &amp; review schedule ▾</button>
-<div id="pepDetails" class="pep-details" hidden>
-<div class="pep-group"><div class="pep-when">PCAC Meeting — July 23, 2026</div><ul class="pep-list"><li>BPC-157</li><li>KPV</li><li>MOTS-C</li><li>TB-500 (Thymosin Beta-4 fragment)</li></ul></div>
-<div class="pep-group"><div class="pep-when">PCAC Meeting — July 24, 2026</div><ul class="pep-list"><li>DSIP (Emideltide)</li><li>Epitalon</li><li>Semax</li></ul></div>
-<div class="pep-group"><div class="pep-when">Future PCAC Meetings (by February 2027)</div><ul class="pep-list"><li>LL-37 (Cathelicidin)</li><li>Dihexa</li><li>PEG-MGF</li><li>Melanotan II</li><li>GHK-Cu (incl. injectable forms)</li></ul></div>
-<div class="pep-foot">Schedule per the FDA Pharmacy Compounding Advisory Committee. Dates and outcomes are set by the FDA and may change.</div>
-</div>
+<p class="cd">Full peptide infrastructure for up to 18 reclassifying peptides. Be ready when the regulatory window opens.</p>
 <div class="cp"><span class="ap">+$5,000</span></div>
 </div>
 </div>
@@ -451,12 +429,6 @@ card.classList.add('sel');treats.push(t);
 }
 updatePrice();
 }
-function togPepDetails(){
-var d=document.getElementById('pepDetails');if(!d) return;
-var btn=document.querySelector('.pep-toggle');var open=!d.hasAttribute('hidden');
-if(open){d.setAttribute('hidden','');if(btn){btn.setAttribute('aria-expanded','false');btn.innerHTML='View 12 peptides &amp; review schedule \u25be'}}
-else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true');btn.innerHTML='Hide peptide schedule \u25b4'}}
-}
 function togAddon(card){
 if(card.classList.contains('lck')||card.classList.contains('dis')) return;
 var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
@@ -594,6 +566,7 @@ if(window.innerWidth>=1024) sb.style.display='block';
 if(window.innerWidth<1024) mb.style.display='block';
 step='1b';
 window.scrollTo({top:0,behavior:'smooth'});
+reportHeightToParent();
 return;
 }
 if(s===2&&!pkg) return;
@@ -614,7 +587,22 @@ step=s;
 if(s===4) buildSum();
 if(s===5){updatePayPlans();setTimeout(initSig,100);}
 window.scrollTo({top:0,behavior:'smooth'});
+reportHeightToParent();
 }
+
+// IFRAME-FIT (Apr 25, 2026): broadcast content height to parent so a Webflow site-wide listener can auto-resize the iframe.
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'launch',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+
 function togMB(){$i('mBar').classList.toggle('exp')}
 function buildSum(){
 var t=calcTotals(),h='';
@@ -861,21 +849,14 @@ sigCanvas=$i('sigCanvas');
 if(!sigCanvas) return;
 sigCtx=sigCanvas.getContext('2d');
 var wrap=$i('sigWrap');
-var lastSigW=0;
 function resize(){
-if(sigDrawing)return;
 var r=wrap.getBoundingClientRect();
-var newW=Math.round(r.width);
-if(newW===lastSigW)return;
-lastSigW=newW;
-var savedData=sigHasData?sigCanvas.toDataURL('image/png'):null;
-sigCanvas.width=newW;
+sigCanvas.width=r.width;
 sigCanvas.height=150;
 sigCtx.strokeStyle='#0D1B2A';
 sigCtx.lineWidth=2;
 sigCtx.lineCap='round';
 sigCtx.lineJoin='round';
-if(savedData){var img=new Image();img.onload=function(){sigCtx.drawImage(img,0,0)};img.src=savedData}
 }
 resize();
 window.addEventListener('resize',resize);

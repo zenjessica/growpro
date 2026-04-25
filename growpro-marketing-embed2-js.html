@@ -161,7 +161,21 @@ function goTo(s){
   else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
   step=s;if(s===3) buildSum();if(s===4) setTimeout(initSig,100);
   window.scrollTo({top:0,behavior:'smooth'});
+  reportHeightToParent();
 }
+
+// IFRAME-FIT (Apr 25, 2026): broadcast content height to parent so a Webflow site-wide listener can auto-resize the iframe.
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'marketing',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
 
 function togMB(){document.getElementById('mBar').classList.toggle('exp')}
 
