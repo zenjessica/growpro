@@ -22,7 +22,7 @@ var TIERS={
       {name:'Jessica Operator Fee',value:7700}
     ],
     includes:[
-      'Full GrowPro brand launch on WellieMD',
+      'Full GrowPro brand launch',
       'LegitScript application + compliance setup',
       'Pharmacy partner introductions',
       'Payment processing setup',
@@ -82,11 +82,28 @@ var TIERS={
   }
 };
 
-// Included support (all tiers)
-var INCLUDED_SUPPORT=[
-  {name:'WellieMD Platform',price:1000},
-  {name:'Lumi Funnels',price:499}
-];
+// NOTE: WellieMD platform and Lumi Funnels are SEPARATE add-ons (sub-account + separate billing).
+// They are NOT bundled into any tier.
+var INCLUDED_SUPPORT=[];
+
+// Treatments (opt-in add-ons on Step 2). One-time setup fees added to tier setup.
+var treats=[];
+var TREAT_PRICES={hrt:2500,branded_med:2500,elec_labs:2500,peptide_pkg:5000};
+var TREAT_NAMES={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',elec_labs:'Elective Labs',peptide_pkg:'Peptide Package (12 peptides)'};
+function treatsTotal(){var s=0;treats.forEach(function(k){s+=(TREAT_PRICES[k]||0)});return s;}
+function togTreat(card){
+  if(card.classList.contains('lck')) return;
+  var k=card.dataset.treatment;
+  if(card.classList.contains('sel')){card.classList.remove('sel');treats=treats.filter(function(x){return x!==k});}
+  else{card.classList.add('sel');treats.push(k);}
+  updatePrice();
+}
+function togPepDetails(){
+  var d=document.getElementById('pepDetails');if(!d) return;
+  var btn=document.querySelector('.pep-toggle');var open=!d.hasAttribute('hidden');
+  if(open){d.setAttribute('hidden','');if(btn){btn.setAttribute('aria-expanded','false');btn.innerHTML='View 12 peptides &amp; review schedule \u25be'}}
+  else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true');btn.innerHTML='Hide peptide schedule \u25b4'}}
+}
 
 var PROMO_CODES={
   'SETUP50':{type:'setup_discount',pct:50,desc:'50% off setup fee',savings:12500},
@@ -143,20 +160,30 @@ function updatePrice(){
 function updateSB(){
   if(!tier){document.getElementById('sbC').innerHTML='<div class="sl"><span class="lb">Select a tier...</span></div>';return}
   var t=TIERS[tier],tots=calcTotals();
+  var tT=treatsTotal();
   var h='<div class="sl"><span class="lb">'+t.name+'</span><span class="vl">'+fmt(tots.mo)+'/mo</span></div>';
   if(tots.setup>0){
     var origSetup=t.setup;
     if(tots.setup<origSetup){
-      h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(origSetup)+'</s> '+(tots.setup===0?'<span style="color:#34C759;font-weight:700">FREE</span>':fmt(tots.setup))+'</span></div>';
+      h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(origSetup)+'</s> '+(tots.setup===0?'<span style="color:#34C759;font-weight:700">FREE</span>':fmt(tots.setup))+'</span></div>';
     } else {
-      h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
+      h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
     }
   } else if(t.setup>0){
-    h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(t.setup)+'</s> <span style="color:#34C759;font-weight:700">FREE</span></span></div>';
+    h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(t.setup)+'</s> <span style="color:#34C759;font-weight:700">FREE</span></span></div>';
+  }
+  if(treats.length){
+    treats.forEach(function(k){
+      h+='<div class="sl"><span class="lb">+ '+(TREAT_NAMES[k]||k)+'</span><span class="vl">'+fmt(TREAT_PRICES[k]||0)+'</span></div>';
+    });
+    h+='<div class="sl"><span class="lb" style="font-weight:600">Treatments Subtotal</span><span class="vl">'+fmt(tT)+'</span></div>';
   }
 
   document.getElementById('sbC').innerHTML=h;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
+  // Update sidebar totals to include treatments
+  document.getElementById('sOT').textContent=fmt(tots.setup+tT);
+  document.getElementById('mOT').textContent=fmt(tots.setup+tT);
 }
 
 function renderAppliedPromos(){
@@ -211,7 +238,7 @@ function selPlan(plan){
 function updatePayPlans(){
   if(!tier) return;
   var t=TIERS[tier],tots=calcTotals();
-  var setup=tots.setup,mo=tots.mo,termMonths=t.termMonths||6;
+  var setup=tots.setup+treatsTotal(),mo=tots.mo,termMonths=t.termMonths||6;
   var ppSec=document.getElementById('ppSection');
   ppSec.style.display='block';
 
@@ -257,7 +284,7 @@ function updatePayPlans(){
 // Returns the up-front amount + plan label for the selected plan
 function getPayPlanInfo(tots){
   var t=TIERS[tier],termMonths=t.termMonths||6;
-  var setup=tots.setup,mo=tots.mo;
+  var setup=tots.setup+treatsTotal(),mo=tots.mo;
   var stdTotal=setup+(mo*termMonths);
   if(payPlan==='pif'){
     var pifPrice=Math.round(stdTotal*0.86);
@@ -286,7 +313,7 @@ function getFullPifPrice(){
 }
 
 function goTo(s){
-  if(s===2&&!tier) return;
+  if(s>=2&&!tier) return;
   document.querySelectorAll('.sec').forEach(function(x){x.classList.remove('active')});
   document.getElementById('step'+s).classList.add('active');
   document.querySelectorAll('.pst').forEach(function(ps,i){
@@ -296,13 +323,13 @@ function goTo(s){
     else ps.querySelector('.pdot').textContent=n;
   });
   document.querySelectorAll('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
-  document.getElementById('sSI').textContent='Step '+s+' of 3';
+  document.getElementById('sSI').textContent='Step '+s+' of 4';
   var sb=document.getElementById('sidebar'),mb=document.getElementById('mBar');
   if(s===1){sb.style.display='none';mb.style.display='none'}
   else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
   step=s;
-  if(s===2) buildSum();
-  if(s===3){updatePayPlans();setTimeout(initSig,100)}
+  if(s===3) buildSum();
+  if(s===4){updatePayPlans();setTimeout(initSig,100)}
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -330,11 +357,22 @@ function buildSum(){
     h+='<div class="sui"><span>'+m.name+'</span><span class="inc">'+fmt(m.value)+(tier==='accelerator'?' value':'/mo')+'</span></div>';
   });
   h+='</div>';
-  h+='<div class="suse"><div class="sust">Platform (Included)</div>';
-  INCLUDED_SUPPORT.forEach(function(s){
-    h+='<div class="sui"><span>'+s.name+'</span><span class="inc">Included</span></div>';
-  });
-  h+='</div>';
+  if(INCLUDED_SUPPORT&&INCLUDED_SUPPORT.length){
+    h+='<div class="suse"><div class="sust">Platform (Included)</div>';
+    INCLUDED_SUPPORT.forEach(function(s){
+      h+='<div class="sui"><span>'+s.name+'</span><span class="inc">Included</span></div>';
+    });
+    h+='</div>';
+  }
+  if(treats.length){
+    var tT=treatsTotal();
+    h+='<div class="suse"><div class="sust">Treatments Added</div>';
+    treats.forEach(function(k){
+      h+='<div class="sui"><span>'+(TREAT_NAMES[k]||k)+'</span><span>'+fmt(TREAT_PRICES[k]||0)+'</span></div>';
+    });
+    h+='<div class="sui" style="font-weight:700"><span>Treatments Subtotal</span><span>'+fmt(tT)+'</span></div>';
+    h+='</div>';
+  }
   h+='<div class="suse"><div class="sust">What\'s Included</div>';
   t.includes.forEach(function(inc){
     h+='<div class="sui"><span>'+inc+'</span><span class="inc">Included</span></div>';
@@ -343,7 +381,13 @@ function buildSum(){
   h+='<div class="sudv"></div>';
   h+='<div class="sutr"><span>SETUP</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
   h+='<div class="sutr"><span>MONTHLY</span><span class="vl">'+fmt(tots.mo)+'/mo</span></div>';
-  var sixMoTotal=tots.setup+(tots.mo*t.termMonths);
+  var tT2=treatsTotal();
+  if(tT2>0){
+    h+='<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:#666"><span>Tier Setup</span><span>'+fmt(tots.setup)+'</span></div>';
+    h+='<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:#666"><span>+ Treatments</span><span>'+fmt(tT2)+'</span></div>';
+    h+='<div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;padding:4px 0;color:var(--p)"><span>Total Setup (one-time)</span><span>'+fmt(tots.setup+tT2)+'</span></div>';
+  }
+  var sixMoTotal=(tots.setup+tT2)+(tots.mo*t.termMonths);
   h+='<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:#888"><span>'+t.termMonths+'-Month Total</span><span>'+fmt(sixMoTotal)+'</span></div>';
   h+='<p class="sufp">Ad spend not included ($15-20k/mo, client funded). '+t.term+'. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>';
   document.getElementById('sumC').innerHTML=h;
@@ -385,8 +429,10 @@ function submitForm(){
     tier:t.name,setup_fee:tots.setup,monthly_rate:tots.mo,
     term:t.term,
     payment_plan:planInfo.planLabel,
+    treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',
+    treatments_total:treatsTotal(),
 
-    total_one_time:tots.setup,total_monthly:tots.mo,
+    total_one_time:tots.setup+treatsTotal(),total_monthly:tots.mo,
     configurator_type:'operator_suite',
     agreement_accepted:true,
     agreement_version:'v1.0',
@@ -437,6 +483,9 @@ function submitForm(){
     checkoutMode='payment';
   } else { // monthly
     if(tots.setup>0) stripeItems.push({name:t.name+' — Setup Fee',amount_cents:tots.setup*100,recurring:false});
+    treats.forEach(function(k){
+      stripeItems.push({name:'Treatment Add-On: '+(TREAT_NAMES[k]||k),amount_cents:(TREAT_PRICES[k]||0)*100,recurring:false});
+    });
     stripeItems.push({name:t.name+' — Monthly ('+t.term+')',amount_cents:planInfo.monthly*100,recurring:true});
     checkoutMode='subscription';
   }
@@ -450,7 +499,7 @@ function submitForm(){
     var fetchBody={
       email:em,
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planInfo.planLabel,
-      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planInfo.planLabel,support_upgrades:'none'},
+      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planInfo.planLabel,treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',treatments_total:treatsTotal(),support_upgrades:'none'},
       success_url:window.location.origin+'/operator?success=true',
       cancel_url:window.location.href,
       line_items:stripeItems,

@@ -5,11 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrowPro Operator Configurator</title>
 <meta name="robots" content="noindex">
-<base target="_top">
-<style>html,body{margin:0;padding:0;background:#FFFFFF;font-family:Inter,system-ui,sans-serif}</style>
-<script>if("scrollRestoration" in history){history.scrollRestoration="manual"}
-(function(){var lastH=0;function reportH(){try{var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);if(h!==lastH&&window.parent&&window.parent!==window){lastH=h;window.parent.postMessage({type:"growpro-resize",height:h},"*")}}catch(e){}}
-window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}reportH();setInterval(reportH,500);if(window.ResizeObserver){new ResizeObserver(reportH).observe(document.body)}document.addEventListener("click",function(ev){var t=ev.target;var btn=t&&t.closest?t.closest("button,a"):null;if(btn){var txt=(btn.textContent||"").toLowerCase();if(txt.indexOf("continue")>-1||txt.indexOf("next")>-1||txt.indexOf("back")>-1||txt.indexOf("add-on")>-1||txt.indexOf("review")>-1||txt.indexOf("get started")>-1||txt.indexOf("choose")>-1||txt.indexOf("submit")>-1||txt.indexOf("→")>-1||txt.indexOf("←")>-1){try{window.parent.postMessage({type:"growpro-step-change"},"*")}catch(e){}}}setTimeout(reportH,50);setTimeout(reportH,300);setTimeout(reportH,600)},true)});})();</script>
+<style>html,body{margin:0;padding:0;background:#fff;font-family:Inter,system-ui,sans-serif}</style>
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual"}window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}});</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -224,8 +221,9 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Exclusive Growth Partner Suite</div></div></div></header>
 <nav class="pbar"><div class="wrap"><div class="psteps">
 <div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Choose Tier</span></div><div class="pcon"></div>
-<div class="pst" data-step="2"><div class="pdot">2</div><span class="plbl">Review</span></div><div class="pcon"></div>
-<div class="pst" data-step="3"><div class="pdot">3</div><span class="plbl">Get Started</span></div>
+<div class="pst" data-step="2"><div class="pdot">2</div><span class="plbl">Treatments</span></div><div class="pcon"></div>
+<div class="pst" data-step="3"><div class="pdot">3</div><span class="plbl">Review</span></div><div class="pcon"></div>
+<div class="pst" data-step="4"><div class="pdot">4</div><span class="plbl">Get Started</span></div>
 </div></div></nav>
 <div class="tbar"><div class="tbi">
 <span class="ti">Jessica-Led Brand Launches</span><span class="ti">70+ Brands Launched</span><span class="ti">Full Compliance Infrastructure</span><span class="ti">4% Processing No Reserves</span><span class="ti">LegitScript Certified</span>
@@ -322,13 +320,59 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div id="appliedPromos"></div>
 </div>
 
-<div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goTo(2)">Review My Build &rarr;</button></div>
+<div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goTo(2)">Continue to Treatments &rarr;</button></div>
 </div>
 
-<!-- STEP 2: Review -->
+<!-- STEP 2: Treatments (NEW) -->
 <div class="sec" id="step2">
+<h1 class="h1">Add Treatments to Your Brand</h1>
+<p class="sub">Your Core 4 are included free with every Growth Partnership. Expand your menu — each treatment is a one-time setup billed alongside your tier.</p>
+<div class="grid g3">
+<div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Semaglutide GLP-1</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
+<div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Tirzepatide GLP-1/GIP</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
+<div class="c csm lck"><div class="ck">✓</div><h3 class="ct">NAD+</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
+<div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Sermorelin</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
+<div class="c csm" data-treatment="hrt" onclick="togTreat(this)">
+<div class="ck">✓</div>
+<h3 class="ct">HRT (Men &amp; Women)</h3>
+<p class="cd">Testosterone, ED, Progesterone, Estradiol — full hormone therapy menu.</p>
+<div class="cp"><span class="ap">+$2,500</span></div>
+</div>
+<div class="c csm" data-treatment="branded_med" onclick="togTreat(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Brand Name Medication Pathway</h3>
+<p class="cd">Your own branded medication names, packaging language, and provider protocol setup.</p>
+<div class="cp"><span class="ap">+$2,500</span></div>
+</div>
+<div class="c csm" data-treatment="elec_labs" onclick="togTreat(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Elective Labs</h3>
+<p class="cd">Comprehensive elective lab panel pathway: hormone, metabolic, and longevity markers.</p>
+<div class="cp"><span class="ap">+$2,500</span></div>
+</div>
+<div class="c csm pep" data-treatment="peptide_pkg" onclick="togTreat(this)">
+<div class="ck">✓</div>
+<span class="bdg b-hv">High Value</span>
+<h3 class="ct">Peptide Package</h3>
+<p class="cd">Full peptide infrastructure for the <strong>12 peptides</strong> currently scheduled for FDA PCAC review. Be ready the moment the regulatory window opens.</p>
+<button type="button" class="pep-toggle" onclick="event.stopPropagation();togPepDetails()" aria-expanded="false" aria-controls="pepDetails">View 12 peptides &amp; review schedule ▾</button>
+<div id="pepDetails" class="pep-details" hidden>
+<div class="pep-group"><div class="pep-when">PCAC Meeting — July 23, 2026</div><ul class="pep-list"><li>BPC-157</li><li>KPV</li><li>MOTS-C</li><li>TB-500 (Thymosin Beta-4 fragment)</li></ul></div>
+<div class="pep-group"><div class="pep-when">PCAC Meeting — July 24, 2026</div><ul class="pep-list"><li>DSIP (Emideltide)</li><li>Epitalon</li><li>Semax</li></ul></div>
+<div class="pep-group"><div class="pep-when">Future PCAC Meetings (by February 2027)</div><ul class="pep-list"><li>LL-37 (Cathelicidin)</li><li>Dihexa</li><li>PEG-MGF</li><li>Melanotan II</li><li>GHK-Cu (incl. injectable forms)</li></ul></div>
+<div class="pep-foot">Schedule per the FDA Pharmacy Compounding Advisory Committee. Dates and outcomes are set by the FDA and may change.</div>
+</div>
+<div class="cp"><span class="ap">+$5,000</span></div>
+</div>
+</div>
+<div style="font-size:13px;color:#888;margin-top:16px;font-style:italic">Note: WellieMD platform &amp; Lumi Funnels are billed separately so we can provision your sub-accounts directly.</div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">&larr; Edit Tier</button><button class="btn btn-p" onclick="goTo(3)">Continue to Review &rarr;</button></div>
+</div>
+
+<!-- STEP 3: Review -->
+<div class="sec" id="step3">
 <h1 class="h1">Your Growth Partnership</h1>
-<p class="sub">Review your selected tier and pricing before submitting.</p>
+<p class="sub">Review your selected tier, treatments, and pricing before submitting.</p>
 <div class="suc" id="sumC"></div>
 
 <!-- Pay-in-full callout for Accelerator -->
@@ -339,11 +383,11 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div style="font-size:12px;color:#888;margin-top:8px">Or 2 payments of <strong id="pifSplit">$113,000</strong></div>
 </div>
 
-<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">&larr; Edit Tier</button><button class="btn btn-p" onclick="goTo(3)">Continue to Submit &rarr;</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(2)">&larr; Edit Treatments</button><button class="btn btn-p" onclick="goTo(4)">Continue to Submit &rarr;</button></div>
 </div>
 
-<!-- STEP 3: Get Started -->
-<div class="sec" id="step3">
+<!-- STEP 4: Get Started -->
+<div class="sec" id="step4">
 <div id="formV">
 <h1 class="h1">Let's Get Started.</h1>
 <p class="sub">Enter your details to finalize your growth partnership and proceed to checkout.</p>
@@ -432,7 +476,7 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 <div class="sig-err" id="sigErr">Please sign above and check the agreement box to continue</div>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(2)">&larr; Back</button><button class="btn btn-p" onclick="submitForm()">Submit &amp; Pay &rarr;</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(3)">&larr; Back</button><button class="btn btn-p" onclick="submitForm()">Submit &amp; Pay &rarr;</button></div>
 </div>
 <div class="conf hid" id="confV">
 <div class="conf-i">&#10003;</div>
@@ -455,6 +499,30 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="stot"><span>Setup</span><span class="vl" id="sOT">$0</span></div>
 <div class="stot"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
 <div class="ssi" id="sSI">Step 1 of 4</div>
+<style>
+.c.csm{padding:20px;display:flex;flex-direction:column}
+.c.lck{background:#F0FFF0;border-color:#C8E6C9;cursor:default;opacity:.92}
+.c.lck:hover{transform:none;box-shadow:var(--sh)}
+.c.lck .ck{background:var(--g);display:flex}
+.c.csm:not(.lck) .ck{display:none}
+.c.csm.sel .ck{display:flex;background:var(--p);color:#fff}
+.c.pep{background:var(--gl);border:2px solid var(--gold)}
+.c.pep.sel{background:#FFF3D0;border-color:var(--gold)}
+.c.pep.sel .ck{background:var(--gold)}
+.b-hv{display:inline-block;background:var(--gl);color:#8B6914;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:12px;border:1px solid #E8D5B7;width:fit-content}
+.pep-toggle{display:inline-block;margin:6px 0 4px;padding:6px 10px;background:transparent;border:1px solid var(--gold);border-radius:6px;color:#8B6914;font-size:12px;font-weight:700;letter-spacing:.3px;cursor:pointer;font-family:'Inter',sans-serif}
+.pep-toggle:hover{background:var(--gl)}
+.pep-toggle[aria-expanded="true"]{background:var(--gl)}
+.pep-details{margin:12px 0 8px;padding:14px 16px;background:#FFFDF5;border:1px solid #E8D5B7;border-radius:10px}
+.pep-group{margin-bottom:12px}
+.pep-group:last-of-type{margin-bottom:8px}
+.pep-when{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#8B6914;margin-bottom:6px}
+.pep-list{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:1fr 1fr;gap:2px 16px}
+@media(max-width:480px){.pep-list{grid-template-columns:1fr}}
+.pep-list li{font-size:13px;color:#5C4A3A;padding:2px 0;display:flex;align-items:flex-start;gap:6px}
+.pep-list li::before{content:'•';color:var(--gold);font-weight:700}
+.pep-foot{font-size:11px;color:#8B6914;font-style:italic;border-top:1px dashed #E8D5B7;padding-top:8px;margin-top:6px;line-height:1.5}
+</style>
 </div></aside>
 </div></div>
 
@@ -557,8 +625,28 @@ var TIERS={
   }
 };
 
-// NOTE: WellieMD platform and Lumi Funnels are SEPARATE add-ons, NOT bundled into any tier.
+// NOTE: WellieMD platform and Lumi Funnels are SEPARATE add-ons (sub-account + separate billing).
+// They are NOT bundled into any tier.
 var INCLUDED_SUPPORT=[];
+
+// Treatments (opt-in add-ons on Step 2). One-time setup fees added to tier setup.
+var treats=[];
+var TREAT_PRICES={hrt:2500,branded_med:2500,elec_labs:2500,peptide_pkg:5000};
+var TREAT_NAMES={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',elec_labs:'Elective Labs',peptide_pkg:'Peptide Package (12 peptides)'};
+function treatsTotal(){var s=0;treats.forEach(function(k){s+=(TREAT_PRICES[k]||0)});return s;}
+function togTreat(card){
+  if(card.classList.contains('lck')) return;
+  var k=card.dataset.treatment;
+  if(card.classList.contains('sel')){card.classList.remove('sel');treats=treats.filter(function(x){return x!==k});}
+  else{card.classList.add('sel');treats.push(k);}
+  updatePrice();
+}
+function togPepDetails(){
+  var d=document.getElementById('pepDetails');if(!d) return;
+  var btn=document.querySelector('.pep-toggle');var open=!d.hasAttribute('hidden');
+  if(open){d.setAttribute('hidden','');if(btn){btn.setAttribute('aria-expanded','false');btn.innerHTML='View 12 peptides &amp; review schedule \u25be'}}
+  else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true');btn.innerHTML='Hide peptide schedule \u25b4'}}
+}
 
 var PROMO_CODES={
   'SETUP50':{type:'setup_discount',pct:50,desc:'50% off setup fee',savings:12500},
@@ -615,20 +703,30 @@ function updatePrice(){
 function updateSB(){
   if(!tier){document.getElementById('sbC').innerHTML='<div class="sl"><span class="lb">Select a tier...</span></div>';return}
   var t=TIERS[tier],tots=calcTotals();
+  var tT=treatsTotal();
   var h='<div class="sl"><span class="lb">'+t.name+'</span><span class="vl">'+fmt(tots.mo)+'/mo</span></div>';
   if(tots.setup>0){
     var origSetup=t.setup;
     if(tots.setup<origSetup){
-      h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(origSetup)+'</s> '+(tots.setup===0?'<span style="color:#34C759;font-weight:700">FREE</span>':fmt(tots.setup))+'</span></div>';
+      h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(origSetup)+'</s> '+(tots.setup===0?'<span style="color:#34C759;font-weight:700">FREE</span>':fmt(tots.setup))+'</span></div>';
     } else {
-      h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
+      h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
     }
   } else if(t.setup>0){
-    h+='<div class="sl"><span class="lb">Setup Fee</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(t.setup)+'</s> <span style="color:#34C759;font-weight:700">FREE</span></span></div>';
+    h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(t.setup)+'</s> <span style="color:#34C759;font-weight:700">FREE</span></span></div>';
+  }
+  if(treats.length){
+    treats.forEach(function(k){
+      h+='<div class="sl"><span class="lb">+ '+(TREAT_NAMES[k]||k)+'</span><span class="vl">'+fmt(TREAT_PRICES[k]||0)+'</span></div>';
+    });
+    h+='<div class="sl"><span class="lb" style="font-weight:600">Treatments Subtotal</span><span class="vl">'+fmt(tT)+'</span></div>';
   }
 
   document.getElementById('sbC').innerHTML=h;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
+  // Update sidebar totals to include treatments
+  document.getElementById('sOT').textContent=fmt(tots.setup+tT);
+  document.getElementById('mOT').textContent=fmt(tots.setup+tT);
 }
 
 function renderAppliedPromos(){
@@ -683,7 +781,7 @@ function selPlan(plan){
 function updatePayPlans(){
   if(!tier) return;
   var t=TIERS[tier],tots=calcTotals();
-  var setup=tots.setup,mo=tots.mo,termMonths=t.termMonths||6;
+  var setup=tots.setup+treatsTotal(),mo=tots.mo,termMonths=t.termMonths||6;
   var ppSec=document.getElementById('ppSection');
   ppSec.style.display='block';
 
@@ -729,7 +827,7 @@ function updatePayPlans(){
 // Returns the up-front amount + plan label for the selected plan
 function getPayPlanInfo(tots){
   var t=TIERS[tier],termMonths=t.termMonths||6;
-  var setup=tots.setup,mo=tots.mo;
+  var setup=tots.setup+treatsTotal(),mo=tots.mo;
   var stdTotal=setup+(mo*termMonths);
   if(payPlan==='pif'){
     var pifPrice=Math.round(stdTotal*0.86);
@@ -758,7 +856,7 @@ function getFullPifPrice(){
 }
 
 function goTo(s){
-  if(s===2&&!tier) return;
+  if(s>=2&&!tier) return;
   document.querySelectorAll('.sec').forEach(function(x){x.classList.remove('active')});
   document.getElementById('step'+s).classList.add('active');
   document.querySelectorAll('.pst').forEach(function(ps,i){
@@ -768,13 +866,13 @@ function goTo(s){
     else ps.querySelector('.pdot').textContent=n;
   });
   document.querySelectorAll('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
-  document.getElementById('sSI').textContent='Step '+s+' of 3';
+  document.getElementById('sSI').textContent='Step '+s+' of 4';
   var sb=document.getElementById('sidebar'),mb=document.getElementById('mBar');
   if(s===1){sb.style.display='none';mb.style.display='none'}
   else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
   step=s;
-  if(s===2) buildSum();
-  if(s===3){updatePayPlans();setTimeout(initSig,100)}
+  if(s===3) buildSum();
+  if(s===4){updatePayPlans();setTimeout(initSig,100)}
   window.scrollTo({top:0,behavior:'smooth'});
 }
 
@@ -809,6 +907,15 @@ function buildSum(){
     });
     h+='</div>';
   }
+  if(treats.length){
+    var tT=treatsTotal();
+    h+='<div class="suse"><div class="sust">Treatments Added</div>';
+    treats.forEach(function(k){
+      h+='<div class="sui"><span>'+(TREAT_NAMES[k]||k)+'</span><span>'+fmt(TREAT_PRICES[k]||0)+'</span></div>';
+    });
+    h+='<div class="sui" style="font-weight:700"><span>Treatments Subtotal</span><span>'+fmt(tT)+'</span></div>';
+    h+='</div>';
+  }
   h+='<div class="suse"><div class="sust">What\'s Included</div>';
   t.includes.forEach(function(inc){
     h+='<div class="sui"><span>'+inc+'</span><span class="inc">Included</span></div>';
@@ -817,7 +924,13 @@ function buildSum(){
   h+='<div class="sudv"></div>';
   h+='<div class="sutr"><span>SETUP</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
   h+='<div class="sutr"><span>MONTHLY</span><span class="vl">'+fmt(tots.mo)+'/mo</span></div>';
-  var sixMoTotal=tots.setup+(tots.mo*t.termMonths);
+  var tT2=treatsTotal();
+  if(tT2>0){
+    h+='<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:#666"><span>Tier Setup</span><span>'+fmt(tots.setup)+'</span></div>';
+    h+='<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:#666"><span>+ Treatments</span><span>'+fmt(tT2)+'</span></div>';
+    h+='<div style="display:flex;justify-content:space-between;font-size:16px;font-weight:700;padding:4px 0;color:var(--p)"><span>Total Setup (one-time)</span><span>'+fmt(tots.setup+tT2)+'</span></div>';
+  }
+  var sixMoTotal=(tots.setup+tT2)+(tots.mo*t.termMonths);
   h+='<div style="display:flex;justify-content:space-between;font-size:14px;padding:4px 0;color:#888"><span>'+t.termMonths+'-Month Total</span><span>'+fmt(sixMoTotal)+'</span></div>';
   h+='<p class="sufp">Ad spend not included ($15-20k/mo, client funded). '+t.term+'. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>';
   document.getElementById('sumC').innerHTML=h;
@@ -859,8 +972,10 @@ function submitForm(){
     tier:t.name,setup_fee:tots.setup,monthly_rate:tots.mo,
     term:t.term,
     payment_plan:planInfo.planLabel,
+    treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',
+    treatments_total:treatsTotal(),
 
-    total_one_time:tots.setup,total_monthly:tots.mo,
+    total_one_time:tots.setup+treatsTotal(),total_monthly:tots.mo,
     configurator_type:'operator_suite',
     agreement_accepted:true,
     agreement_version:'v1.0',
@@ -911,6 +1026,9 @@ function submitForm(){
     checkoutMode='payment';
   } else { // monthly
     if(tots.setup>0) stripeItems.push({name:t.name+' — Setup Fee',amount_cents:tots.setup*100,recurring:false});
+    treats.forEach(function(k){
+      stripeItems.push({name:'Treatment Add-On: '+(TREAT_NAMES[k]||k),amount_cents:(TREAT_PRICES[k]||0)*100,recurring:false});
+    });
     stripeItems.push({name:t.name+' — Monthly ('+t.term+')',amount_cents:planInfo.monthly*100,recurring:true});
     checkoutMode='subscription';
   }
@@ -924,7 +1042,7 @@ function submitForm(){
     var fetchBody={
       email:em,
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planInfo.planLabel,
-      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planInfo.planLabel,support_upgrades:'none'},
+      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planInfo.planLabel,treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',treatments_total:treatsTotal(),support_upgrades:'none'},
       success_url:window.location.origin+'/operator?success=true',
       cancel_url:window.location.href,
       line_items:stripeItems,
@@ -958,21 +1076,14 @@ sigCanvas=document.getElementById('sigCanvas');
 if(!sigCanvas) return;
 sigCtx=sigCanvas.getContext('2d');
 var wrap=document.getElementById('sigWrap');
-var lastSigW=0;
 function resize(){
-if(sigDrawing)return;
 var r=wrap.getBoundingClientRect();
-var newW=Math.round(r.width);
-if(newW===lastSigW)return;
-lastSigW=newW;
-var savedData=sigHasData?sigCanvas.toDataURL('image/png'):null;
-sigCanvas.width=newW;
+sigCanvas.width=r.width;
 sigCanvas.height=150;
 sigCtx.strokeStyle='#0D1B2A';
 sigCtx.lineWidth=2;
 sigCtx.lineCap='round';
 sigCtx.lineJoin='round';
-if(savedData){var img=new Image();img.onload=function(){sigCtx.drawImage(img,0,0)};img.src=savedData}
 }
 resize();
 window.addEventListener('resize',resize);
