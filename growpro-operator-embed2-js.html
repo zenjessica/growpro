@@ -331,7 +331,26 @@ function goTo(s){
   if(s===3) buildSum();
   if(s===4){updatePayPlans();setTimeout(initSig,100)}
   window.scrollTo({top:0,behavior:'smooth'});
+  // IFRAME-FIT: scroll parent page to iframe top + report new height
+  reportHeightToParent();
+  try{if(window.parent && window.parent!==window){
+    var iframe=window.frameElement;
+    if(iframe && iframe.scrollIntoView) iframe.scrollIntoView({behavior:'smooth',block:'start'});
+  }}catch(e){/* cross-origin: parent will not scroll, that's ok */}
 }
+
+// IFRAME-FIT: report content height to parent on every render so a parent listener (if installed) can resize the iframe
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'operator',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
 
 function togMB(){document.getElementById('mBar').classList.toggle('exp')}
 

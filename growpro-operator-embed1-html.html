@@ -204,6 +204,11 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .sig-check label{font-size:13px;color:#555;cursor:pointer;line-height:1.5}
 .sig-err{font-size:12px;color:#E53935;margin-top:8px;display:none}
 .sig-err.show{display:block}
+/* IFRAME-FIT (Apr 25, 2026): Webflow embed iframe is fixed at 1500px. Make body internally scrollable so all 4 steps are reachable without changing the Webflow snippet. */
+html,body{height:auto;min-height:100%}
+body{overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch}
+/* Sticky bottom nav inside iframe at narrow widths so Continue button is always visible */
+@media (max-width:1100px){.bnav{position:sticky;bottom:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);padding:14px;margin-left:-16px;margin-right:-16px;border-top:1px solid #eee;z-index:50}}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Exclusive Growth Partner Suite</div></div></div></header>
