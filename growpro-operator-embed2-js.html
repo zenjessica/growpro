@@ -339,23 +339,26 @@ function goTo(s){
   }}catch(e){/* cross-origin: parent will not scroll, that's ok */}
 }
 
-// IFRAME-FIT v3: report content height to parent on every render so a parent listener (if installed) can resize the iframe; ALSO detect when trapped in a too-small iframe and enable internal scrolling as fallback
+// IFRAME-FIT v4 (Apr 26, 2026): report content height; only enable internal-scroll fallback if parent listener fails to resize iframe within 2 seconds (prevents double-scrollbar when listener IS installed and working)
+var __iframeTrapTimer=null;
 function reportHeightToParent(){
   try{
     var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
     if(window.parent && window.parent!==window){
       window.parent.postMessage({type:'growpro:resize',page:'operator',height:h},'*');
-    }
-    // IFRAME-TRAPPED detection: if we're in an iframe AND viewport (iframe height) is smaller than content, enable internal scroll fallback
-    if(window.parent && window.parent!==window){
-      var vh=window.innerHeight;
-      if(h>vh+50){ // content overflows iframe by more than 50px
-        document.documentElement.classList.add('iframe-trapped');
-        document.body.classList.add('iframe-trapped');
-      } else {
-        document.documentElement.classList.remove('iframe-trapped');
-        document.body.classList.remove('iframe-trapped');
-      }
+      // IFRAME-TRAPPED detection: if we're in an iframe, check if iframe is too small AFTER giving the listener 2s to resize
+      if(__iframeTrapTimer) clearTimeout(__iframeTrapTimer);
+      __iframeTrapTimer=setTimeout(function(){
+        var vh=window.innerHeight;
+        var ch=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight);
+        if(ch>vh+80){ // content STILL overflows after 2s -> no listener installed, enable internal scroll
+          document.documentElement.classList.add('iframe-trapped');
+          document.body.classList.add('iframe-trapped');
+        } else {
+          document.documentElement.classList.remove('iframe-trapped');
+          document.body.classList.remove('iframe-trapped');
+        }
+      },2000);
     }
   }catch(e){}
 }
