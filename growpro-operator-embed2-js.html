@@ -331,12 +331,11 @@ function goTo(s){
   if(s===3) buildSum();
   if(s===4){updatePayPlans();setTimeout(initSig,100)}
   window.scrollTo({top:0,behavior:'smooth'});
-  // IFRAME-FIT: scroll parent page to iframe top + report new height
+  // IFRAME-FIT: report new height + ask parent to scroll iframe into view (cross-origin safe)
   reportHeightToParent();
   try{if(window.parent && window.parent!==window){
-    var iframe=window.frameElement;
-    if(iframe && iframe.scrollIntoView) iframe.scrollIntoView({behavior:'smooth',block:'start'});
-  }}catch(e){/* cross-origin: parent will not scroll, that's ok */}
+    window.parent.postMessage({type:'growpro:scrollTop',page:'operator'},'*');
+  }}catch(e){}
 }
 
 // IFRAME-FIT v4 (Apr 26, 2026): report content height; only enable internal-scroll fallback if parent listener fails to resize iframe within 2 seconds (prevents double-scrollbar when listener IS installed and working)
