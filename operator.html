@@ -216,24 +216,11 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .sig-check label{font-size:13px;color:#555;cursor:pointer;line-height:1.5}
 .sig-err{font-size:12px;color:#E53935;margin-top:8px;display:none}
 .sig-err.show{display:block}
-/* IFRAME-FIT v2 (Apr 26, 2026): Webflow embed iframe is fixed at 1500px with scrolling="no". Force ALL content to fit inside that 1500px window by making a fixed-viewport layout: header at top, scrollable content area in middle, sticky nav at bottom. This works regardless of iframe scrolling attribute because we're using internal div overflow, not iframe overflow. */
-html,body{height:100%;margin:0;padding:0;overflow:hidden}
-body{display:flex;flex-direction:column;overflow-x:hidden}
-.hdr{flex-shrink:0}
-.pbar{flex-shrink:0;position:static}
-.tbar{flex-shrink:0}
-.main{flex:1 1 auto;min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;padding:24px 0 24px;margin:0}
-.main::-webkit-scrollbar{width:8px}
-.main::-webkit-scrollbar-track{background:#f5f5f7}
-.main::-webkit-scrollbar-thumb{background:#cfcfd6;border-radius:4px}
-.main::-webkit-scrollbar-thumb:hover{background:#a8a8b3}
-.main .wrap{padding-bottom:80px}
-/* Sticky bottom nav at iframe bottom always visible */
-.bnav{position:sticky;bottom:0;background:rgba(255,255,255,0.97);backdrop-filter:blur(8px);padding:14px 24px;margin-left:-24px;margin-right:-24px;border-top:1px solid #eee;z-index:50;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
-@media (max-width:1100px){.bnav{margin-left:-16px;margin-right:-16px;padding:12px 16px}}
-/* Stripe iframe parent allows full content access via Stripe redirect */
-body.stripe-loading{overflow:visible}
-body.stripe-loading,body.stripe-loading .main{overflow:visible}
+/* IFRAME-FIT v3 (Apr 26, 2026): Reverted to natural document flow. The previous viewport-locked layout broke Step 3 by clipping the footer. Now we just let the page render its natural height and rely on (a) the parent Webflow page being scrollable AND (b) the postMessage height-reporter to grow the iframe when the parent listener is installed. */
+html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.bnav{margin-top:24px;padding:14px 0;border-top:1px solid #eee;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap}
+/* IFRAME-FIT v3 fallback: when trapped in a too-small iframe with scrolling=no, force internal scrolling on body */
+html.iframe-trapped,body.iframe-trapped{height:100vh;max-height:100vh;overflow-y:scroll!important;overflow-x:hidden}
 </style>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Exclusive Growth Partner Suite</div></div></div></header>
@@ -900,12 +887,23 @@ function goTo(s){
   }}catch(e){/* cross-origin: parent will not scroll, that's ok */}
 }
 
-// IFRAME-FIT: report content height to parent on every render so a parent listener (if installed) can resize the iframe
+// IFRAME-FIT v3: report content height to parent on every render so a parent listener (if installed) can resize the iframe; ALSO detect when trapped in a too-small iframe and enable internal scrolling as fallback
 function reportHeightToParent(){
   try{
     var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
     if(window.parent && window.parent!==window){
       window.parent.postMessage({type:'growpro:resize',page:'operator',height:h},'*');
+    }
+    // IFRAME-TRAPPED detection: if we're in an iframe AND viewport (iframe height) is smaller than content, enable internal scroll fallback
+    if(window.parent && window.parent!==window){
+      var vh=window.innerHeight;
+      if(h>vh+50){ // content overflows iframe by more than 50px
+        document.documentElement.classList.add('iframe-trapped');
+        document.body.classList.add('iframe-trapped');
+      } else {
+        document.documentElement.classList.remove('iframe-trapped');
+        document.body.classList.remove('iframe-trapped');
+      }
     }
   }catch(e){}
 }
