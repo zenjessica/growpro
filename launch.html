@@ -232,21 +232,6 @@
 <div class="cp"><span class="ap">+$500</span></div>
 </div>
 </div>
-<div class="gh">Consulting</div>
-<div class="grid" style="gap:16px">
-<div class="c csm" data-addon="post_launch" data-price="1000" data-type="onetime" onclick="togAddon(this)">
-<div class="ck">✓</div>
-<h3 class="ct">Post-Launch Support Package</h3>
-<p class="cd">4 weekly calls in your first 30 days post-launch.</p>
-<div class="cp"><span class="ap">+$1,000</span></div>
-</div>
-<div class="c csm" data-addon="consulting" data-price="500" data-type="hourly" onclick="togAddon(this)">
-<div class="ck">✓</div>
-<h3 class="ct">GrowPro Consulting</h3>
-<p class="cd">Strategic consulting with Jessica.</p>
-<div class="cp"><span class="ap">$500</span><span class="sx">/hr</span></div>
-</div>
-</div>
 <div class="bnav"><button class="btn btn-s" onclick="goTo(2)">← Back</button><button class="btn btn-p" onclick="goTo(4)">Review My Build →</button></div>
 </div>
 <div class="sec" id="step4">
@@ -400,8 +385,7 @@ var operatorIncludesTreat=['hrt','branded_med','peptide_pkg'];
 var addonNames={
 fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Standard (8 weeks)",
 elec_labs:"Elective Labs",additional_page:"Additional Product Page",
-lumi_funnels:"Lumi Funnels",post_launch:"Post-Launch Support Package",
-consulting:"GrowPro Consulting ($500/hr)",
+lumi_funnels:"Lumi Funnels",
 
 };
 function selPkg(p){
@@ -671,11 +655,6 @@ if(moA.length>0){
 h+='<div class="suse"><div class="sust">Add-Ons (Monthly)</div>';
 moA.forEach(function(a){var c=$1('[data-addon="'+a+'"]');
 h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(parseInt(c.dataset.price))+'/mo</span></div>'});
-h+='</div>';
-}
-if(hrA.length>0){
-h+='<div class="suse"><div class="sust">Consulting</div>';
-hrA.forEach(function(a){h+='<div class="sui"><span>'+addonNames[a]+'</span><span>As needed</span></div>'});
 h+='</div>';
 }
 h+='<div class="suse"><div class="sust">Platform (Monthly)</div>';

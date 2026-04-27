@@ -37,8 +37,7 @@ var operatorIncludesTreat=['hrt','branded_med','peptide_pkg'];
 var addonNames={
 fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Standard (8 weeks)",
 elec_labs:"Elective Labs",additional_page:"Additional Product Page",
-lumi_funnels:"Lumi Funnels",post_launch:"Post-Launch Support Package",
-consulting:"GrowPro Consulting ($500/hr)",
+lumi_funnels:"Lumi Funnels",
 
 };
 function selPkg(p){
@@ -308,11 +307,6 @@ if(moA.length>0){
 h+='<div class="suse"><div class="sust">Add-Ons (Monthly)</div>';
 moA.forEach(function(a){var c=$1('[data-addon="'+a+'"]');
 h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(parseInt(c.dataset.price))+'/mo</span></div>'});
-h+='</div>';
-}
-if(hrA.length>0){
-h+='<div class="suse"><div class="sust">Consulting</div>';
-hrA.forEach(function(a){h+='<div class="sui"><span>'+addonNames[a]+'</span><span>As needed</span></div>'});
 h+='</div>';
 }
 h+='<div class="suse"><div class="sust">Platform (Monthly)</div>';

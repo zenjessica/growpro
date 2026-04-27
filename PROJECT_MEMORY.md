@@ -367,3 +367,32 @@ Ad spend NEVER bundled into Stripe checkout. Configurator only collects setup + 
 - After plan-name changes, add a migration line at top of `updatePayPlans()` to silently coerce old saved values to current ones (avoid stale localStorage breaks).
 - Always rebuild combined `*.html` via `build-iframe-pages.sh` before pushing — never edit combined files directly.
 - Validate JS via `node -e "new Function(scriptText)"` before pushing.
+
+
+---
+
+## FUTURE ROADMAP — Add-Ons Page (separate page, not in initial configurator)
+
+Per Jess direction (Apr 27, 2026): "We will have to create a different page later with all the add-ons for support and the mini and max tech and pharmacy support." This is to avoid overwhelming prospects during initial signup (Product Offering Structure for New Clients knowledge base rule).
+
+**What lives on the future Add-Ons page (NOT in the 3 main configurators):**
+
+| Category | Add-On | Price | Original Location |
+|---|---|---|---|
+| **Consulting** | Post-Launch Support Package (4 weekly calls in first 30 days) | +$1,000 one-time | Removed from `launch.html` Step 3 on Apr 27, 2026 |
+| **Consulting** | GrowPro Consulting (strategic consulting with Jessica) | $500/hr | Removed from `launch.html` Step 3 on Apr 27, 2026 |
+| **Tech Support** | Mini Tech Support | TBD | Never shipped; reserved for add-ons page |
+| **Tech Support** | Max Tech Support | TBD | Never shipped; reserved for add-ons page |
+| **Pharmacy** | Pharmacy Support | TBD | Never shipped; reserved for add-ons page |
+
+**What STAYS in the main configurators (per rules):**
+- WellieMD platform setup/fee (required for all packages)
+- Lumi Funnels (required for all packages)
+- Treatment add-ons: HRT, Branded Med Pathway, Elective Labs, Peptide Package (all tier-level health services)
+- Core marketing stack (tier-level, not add-on)
+
+**When the add-ons page is built:**
+- Host at `/addons` or `/client-portal/addons` (client-portal-only, authenticated)
+- Only visible to existing clients post-launch (not to prospects)
+- Can reuse the same card UI patterns from the configurators
+- Pricing and copy TBD by Jess
