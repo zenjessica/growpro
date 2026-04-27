@@ -48,6 +48,8 @@ $1('[data-package="'+p+'"]').classList.add('sel');
 $i('s1n').disabled=false;
 applyOperatorLocks();
 updatePrice();
+// Auto-advance after short delay (routes to 1b for template, Step 2 for custom/operator)
+setTimeout(function(){if(step===1&&pkg===p) goToFromStep1();},500);
 }
 function applyOperatorLocks(){
 var isOp=pkg==='operator';

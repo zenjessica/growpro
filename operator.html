@@ -694,6 +694,8 @@ function selTier(t){
   document.querySelector('[data-tier="'+t+'"]').classList.add('sel');
   document.getElementById('s1n').disabled=false;
   updatePrice();
+  // Auto-advance to Step 2 after short delay so user sees the tier highlight before advancing
+  setTimeout(function(){if(step===1&&tier===t) goTo(2);},500);
 }
 
 function updatePrice(){
