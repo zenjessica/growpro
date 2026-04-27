@@ -332,17 +332,10 @@ function goTo(s){
   if(s===4){updatePayPlans();setTimeout(initSig,100)}
   window.scrollTo({top:0,behavior:'smooth'});
   reportHeightToParent();
-  // IFRAME-FIT v5: scroll PARENT page to iframe top via target=_top anchor (cross-origin safe).
-  // Also send postMessage as a backup for any installed listener.
+  // IFRAME-FIT v6 (Apr 27, 2026): ask parent to scroll iframe into view via postMessage ONLY.
+  // Do NOT use target=_top anchors — they navigate the parent URL and loop the iframe back to Step 1.
   try{if(window.parent && window.parent!==window){
     window.parent.postMessage({type:'growpro:scrollTop',page:'operator'},'*');
-    var a=document.createElement('a');
-    a.href='#top';
-    a.target='_top';
-    a.style.display='none';
-    document.body.appendChild(a);
-    a.click();
-    setTimeout(function(){if(a.parentNode)a.parentNode.removeChild(a);},100);
   }}catch(e){}
 }
 
