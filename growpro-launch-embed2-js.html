@@ -31,7 +31,7 @@ var PROMO_CODES={
 var pkgPrices={template:15000,custom:25000,operator:35000};
 var pkgNames={template:'Template Launch',custom:'Custom Build',operator:'Operator Suite'};
 var treatPrices={hrt:2500,branded_med:2500,peptide_pkg:5000};
-var treatNames={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',peptide_pkg:'Peptide Package'};
+var treatNames={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',peptide_pkg:'Peptide Package (12 peptides)'};
 var operatorIncludes=[];
 var operatorIncludesTreat=['hrt','branded_med','peptide_pkg'];
 var addonNames={
@@ -84,6 +84,12 @@ card.classList.remove('sel');treats=treats.filter(function(x){return x!==t});
 card.classList.add('sel');treats.push(t);
 }
 updatePrice();
+}
+function togPepDetails(){
+var d=document.getElementById('pepDetails');if(!d) return;
+var btn=document.querySelector('.pep-toggle');var open=!d.hasAttribute('hidden');
+if(open){d.setAttribute('hidden','');if(btn){btn.setAttribute('aria-expanded','false');btn.innerHTML='View 12 peptides &amp; review schedule ▾'}}
+else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true');btn.innerHTML='Hide peptide schedule ▴'}}
 }
 function togAddon(card){
 if(card.classList.contains('lck')||card.classList.contains('dis')) return;
