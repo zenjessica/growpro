@@ -396,3 +396,41 @@ Per Jess direction (Apr 27, 2026): "We will have to create a different page late
 - Only visible to existing clients post-launch (not to prospects)
 - Can reuse the same card UI patterns from the configurators
 - Pricing and copy TBD by Jess
+
+---
+
+## 12. CHECKPOINT — Apr 27, 2026 — REP CODE vs STRIPE COUPON SEPARATION ✅
+
+Clarified the two-tier discount system. **Terminology locked in UI:** the in-configurator field is now labeled **"GrowPro rep code"** with a subnote that Stripe discounts are on the next screen.
+
+### GrowPro Rep Codes (configurator-side, reshape the quote before Stripe)
+
+#### operator.html — Step 1 + Step 4 rep code boxes
+| Code | Effect | Savings |
+|---|---|---|
+| `SETUP50` | 50% off $25,000 setup fee | $12,500 |
+| `SETUP0` | Setup fee waived entirely | $25,000 |
+| `MONTH1FREE` | First month free (removes 1 month from 6-month billing) | ~monthly rate |
+| `PARTNER10` | 10% off monthly rate (all 6 months) | varies |
+| `PARTNER15` | 15% off monthly rate (all 6 months) | varies |
+| `VIP5K` | Flat $5,000/mo off monthly rate | $30,000 total |
+
+#### launch.html — Step 4 rep code box
+| Code | Effect | Savings |
+|---|---|---|
+| `WELLIE500` | WellieMD Setup $1,500 → $500 | $1,000 |
+| `FREELABS` | Free Elective Labs | $2,500 |
+| `FREEHRT` | Free HRT Addition | $2,500 |
+| `PEPTIDE50` | 50% off Peptide Package ($5,000 → $2,500) | $2,500 |
+| `BUILD5K` | $5,000 off Build (any tier) | $5,000 |
+
+#### marketing.html
+No rep codes currently wired.
+
+### Stripe Coupons (handled on Stripe Checkout screen, not in configurator)
+
+Created in Stripe Dashboard → Products → Coupons. These apply to whatever total the configurator passes to Stripe. Customer enters on the "Add promotion code" field on the Checkout page.
+
+- `GROWPROTEST`: 99.99% off — for live-mode end-to-end testing.
+
+**The two systems are fully independent.** Rep code reshapes quote → Stripe coupon discounts the Stripe-side total.

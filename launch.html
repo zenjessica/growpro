@@ -239,11 +239,12 @@
 <p class="sub">Review your build before submitting.</p>
 <div class="suc" id="sumC"></div>
 <div style="margin:20px 0">
-<div id="promoToggle"><a href="#" onclick="event.preventDefault();$i('promoToggle').style.display='none';$i('promoBox').style.display='block';" style="font-size:14px;color:var(--p);text-decoration:none;font-weight:600">Have a promo code?</a></div>
+<div id="promoToggle"><a href="#" onclick="event.preventDefault();$i('promoToggle').style.display='none';$i('promoBox').style.display='block';" style="font-size:14px;color:var(--p);text-decoration:none;font-weight:600">Have a GrowPro rep code?</a></div>
 <div id="promoBox" style="display:none">
+<div style="font-size:12px;color:#888;margin-bottom:10px">Internal GrowPro-issued codes only. Stripe discount codes (e.g. demo/test coupons) are applied on the next screen at checkout.</div>
 <div id="appliedPromos" style="margin-bottom:8px"></div>
 <div id="promoEntry" style="display:flex;gap:12px;align-items:center">
-<input type="text" class="fx" id="promoInput" placeholder="Enter code" style="flex:1;max-width:240px;text-transform:uppercase">
+<input type="text" class="fx" id="promoInput" placeholder="Enter rep code" style="flex:1;max-width:240px;text-transform:uppercase">
 <button class="btn btn-s" style="padding:12px 24px" onclick="applyPromo()">Apply</button>
 <span id="promoMsg" style="font-size:13px;font-weight:600"></span>
 </div>
