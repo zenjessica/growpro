@@ -79,6 +79,7 @@
 <div class="ck">✓</div>
 <span class="bdg b-new">Lower Entry Point</span>
 <h3 class="ct">Template Launch</h3>
+<p class="cs" style="font-weight:700;color:var(--p);letter-spacing:0.5px;font-size:12px;text-transform:uppercase;margin-bottom:4px">10–12 Week Launch Sprint</p>
 <p class="cs">Get to market fast with a proven template</p>
 <div class="cp">$15,000 <span class="sx">one-time</span></div>
 <ul class="cl">
@@ -97,6 +98,7 @@
 <div class="ck">✓</div>
 <span class="bdg b-pop">Most Popular</span>
 <h3 class="ct">Custom Build</h3>
+<p class="cs" style="font-weight:700;color:var(--p);letter-spacing:0.5px;font-size:12px;text-transform:uppercase;margin-bottom:4px">10–12 Week Launch Sprint</p>
 <p class="cs">Full white-glove brand launch with strategy</p>
 <div class="cp">$25,000 <span class="sx">one-time</span></div>
 <ul class="cl">
@@ -112,6 +114,7 @@
 <div class="ck">✓</div>
 <span class="bdg b-prem">Premium — All Bells &amp; Whistles</span>
 <h3 class="ct">Operator Suite</h3>
+<p class="cs" style="font-weight:700;color:var(--p);letter-spacing:0.5px;font-size:12px;text-transform:uppercase;margin-bottom:4px">10–12 Week Launch Sprint</p>
 <p class="cs">VIP launch with everything included — built for scale</p>
 <div class="cp">$35,000 <span class="sx">one-time</span></div>
 <ul class="cl">
@@ -232,6 +235,40 @@
 <div class="cp"><span class="ap">+$500</span></div>
 </div>
 </div>
+
+<div class="gh">Post-Launch Support <span style="font-size:12px;color:#888;font-weight:400;text-transform:none;letter-spacing:0">(optional — for founders who want extra help after the sprint ends)</span></div>
+<div class="grid" style="gap:16px">
+<div class="c csm" data-addon="post_launch_support" data-price="5500" data-type="monthly" onclick="togAddon(this)">
+<div class="ck">✓</div><span class="bdg b-rec">Month-to-Month</span>
+<h3 class="ct">Post-Launch Support</h3>
+<p class="cd">One weekly strategy meeting, priority Slack response, and live build support for the 30 days after your launch. Month-to-month — cancel anytime.</p>
+<div class="cp"><span class="ap">+$5,500</span><span class="sx">/mo</span></div>
+</div>
+<div class="c csm" id="jcCard" data-addon="jessica_consulting" data-price="500" data-type="onetime" data-qty="1" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Founder Consulting with Jessica</h3>
+<p class="cd">Direct 1:1 strategy sessions with Jessica White. Pre-pay an hour bank — use when you need.</p>
+<div class="cp"><span class="ap" id="jcTotal">+$500</span><span class="sx" id="jcSuffix">/hour</span></div>
+<div id="jcStepper" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid #E8E4F5" onclick="event.stopPropagation()">
+<div style="display:flex;align-items:center;gap:12px;justify-content:space-between">
+<div style="font-size:13px;color:#3A3548;font-weight:600">Hour Bank</div>
+<div style="display:flex;align-items:center;gap:8px">
+<button type="button" onclick="changeConsultingHrs(-1)" style="width:32px;height:32px;border:2px solid var(--p);background:#fff;color:var(--p);border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;line-height:1">−</button>
+<span id="jcQty" style="min-width:32px;text-align:center;font-weight:700;font-size:16px;color:var(--n)">1</span>
+<button type="button" onclick="changeConsultingHrs(1)" style="width:32px;height:32px;border:2px solid var(--p);background:var(--p);color:#fff;border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;line-height:1">+</button>
+</div>
+</div>
+<div style="font-size:12px;color:#666;margin-top:8px;font-style:italic">You can always add more hours later from your client portal.</div>
+</div>
+</div>
+</div>
+
+<div class="plat-box" style="margin-top:28px;background:#F4F2FA;border-color:#D6D0F0">
+<div class="plat-title" style="color:var(--p)">Built for Owner-Operators</div>
+<div style="font-size:14px;color:#3A3548;line-height:1.6;margin-top:8px">The Launch Sprint is designed for founders who want to <strong>own</strong> their telehealth business — and actually run it. After your launch kickoff, you’ll receive a complete hand-off of all assets, accounts, SOPs, and documentation. You (or your team) take the reins from there.</div>
+<div style="font-size:14px;color:#3A3548;line-height:1.6;margin-top:10px"><strong>Want ongoing strategic support?</strong> Add <strong>Post-Launch Support</strong> ($5,500/mo) above or book <strong>Founder Consulting with Jessica</strong> ($500/hr). For a full hands-on growth partnership, see the <a href="https://launch.kickstartsocial.co/operator" style="color:var(--p);font-weight:700">Growth Partner Suite</a>.</div>
+</div>
+
 <div class="bnav"><button class="btn btn-s" onclick="goTo(2)">← Back</button><button class="btn btn-p" onclick="goTo(4)">Review My Build →</button></div>
 </div>
 <div class="sec" id="step4">
@@ -387,7 +424,8 @@ var addonNames={
 fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Standard (8 weeks)",
 elec_labs:"Elective Labs",additional_page:"Additional Product Page",
 lumi_funnels:"Lumi Funnels",
-
+post_launch_support:"Post-Launch Support",
+jessica_consulting:"Founder Consulting with Jessica",
 };
 function selPkg(p){
 pkg=p;
@@ -444,10 +482,28 @@ else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true'
 function togAddon(card){
 if(card.classList.contains('lck')||card.classList.contains('dis')) return;
 var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
-if(isSel){card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});updatePrice();return}
+if(isSel){card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});if(a==='jessica_consulting'){card.dataset.qty='1';var st=document.getElementById('jcStepper');if(st)st.style.display='none';var qEl=document.getElementById('jcQty');if(qEl)qEl.textContent='1';var tEl=document.getElementById('jcTotal');if(tEl)tEl.textContent='+$500';var sEl=document.getElementById('jcSuffix');if(sEl){sEl.textContent='/hour';sEl.style.display='inline'}}updatePrice();return}
 if(gr==='fasttrack'){$q('[data-group="fasttrack"]').forEach(function(c){if(!c.classList.contains('lck')){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})}})}
 
-card.classList.add('sel');addons.push(a);updatePrice();
+card.classList.add('sel');addons.push(a);
+if(a==='jessica_consulting'){var st=document.getElementById('jcStepper');if(st)st.style.display='block';updateConsultingDisplay();}
+updatePrice();
+}
+function changeConsultingHrs(delta){
+var card=document.getElementById('jcCard');if(!card)return;
+var cur=parseInt(card.dataset.qty||'1');
+var next=Math.max(1,Math.min(20,cur+delta));
+card.dataset.qty=String(next);
+updateConsultingDisplay();
+updatePrice();
+}
+function updateConsultingDisplay(){
+var card=document.getElementById('jcCard');if(!card)return;
+var qty=parseInt(card.dataset.qty||'1');
+var total=500*qty;
+var qEl=document.getElementById('jcQty');if(qEl)qEl.textContent=qty;
+var tEl=document.getElementById('jcTotal');if(tEl)tEl.textContent='+$'+total.toLocaleString('en-US');
+var sEl=document.getElementById('jcSuffix');if(sEl)sEl.style.display=qty>1?'none':'inline';
 }
 function hasPromo(type,target){
 return activePromos.some(function(p){return target?p.promo.type===type&&p.promo.target===target:p.promo.type===type});
@@ -512,11 +568,12 @@ if(pkg==='operator'&&operatorIncludes.indexOf(a)!==-1) return;
 var card=$1('[data-addon="'+a+'"]');
 if(!card) return;
 var price=parseInt(card.dataset.price),type=card.dataset.type;
+var qty=parseInt(card.dataset.qty||'1');
 if(hasPromo('free_addon',a)) return;
 var dp=getPromo('discount_addon',a);
 if(dp) price=Math.round(price*(1-dp.promo.pct/100));
-if(type==='monthly') mo+=price;
-else if(type!=='hourly') ot+=price;
+if(type==='monthly') mo+=price*qty;
+else if(type!=='hourly') ot+=price*qty;
 });
 return{ot:ot,mo:mo};
 }
@@ -544,6 +601,7 @@ h+='<div class="sl"><span class="lb">'+treatNames[t]+'</span><span class="vl">'+
 addons.forEach(function(a){
 var card=$1('[data-addon="'+a+'"]');if(!card) return;
 var origPrice=parseInt(card.dataset.price),type=card.dataset.type;
+var qty=parseInt(card.dataset.qty||'1');
 var inc=pkg==='operator'&&operatorIncludes.indexOf(a)!==-1;
 var suffix=type==='monthly'?'/mo':type==='hourly'?'/hr':'';
 var promoFree=hasPromo('free_addon',a);
@@ -554,8 +612,10 @@ var priceStr;
 if(inc) priceStr='Included';
 else if(promoFree) priceStr='<s style="color:#AAA;font-size:12px">'+fmt(origPrice)+suffix+'</s> <span style="color:#34C759;font-weight:700">FREE</span>';
 else if(promoDisc) priceStr='<s style="color:#AAA;font-size:12px">'+fmt(origPrice)+suffix+'</s> '+fmt(dispPrice)+suffix;
+else if(qty>1) priceStr=fmt(dispPrice*qty)+' <span style="color:#888;font-size:11px">('+qty+' hrs × '+fmt(dispPrice)+')</span>';
 else priceStr=fmt(origPrice)+suffix;
-h+='<div class="sl"><span class="lb">'+addonNames[a]+'</span><span class="vl">'+priceStr+'</span></div>';
+var labelStr=addonNames[a]+(qty>1&&a==='jessica_consulting'?' ('+qty+' hrs)':'');
+h+='<div class="sl"><span class="lb">'+labelStr+'</span><span class="vl">'+priceStr+'</span></div>';
 });
 if(!h) h='<div class="sl"><span class="lb">Select a package...</span></div>';
 $i('sbC').innerHTML=h;
@@ -746,7 +806,7 @@ if(dpS) addonPrice=Math.round(price*(1-dpS.promo.pct/100));
 var promoLabel='';
 if(hasPromo('free_addon',a)){var fp=getPromo('free_addon',a);promoLabel=' (Promo: '+fp.code+')'}
 if(dpS) promoLabel=' (Promo: '+dpS.code+')';
-if(type==='onetime'&&addonPrice>0) stripeItems.push({name:addonNames[a]+promoLabel,amount_cents:addonPrice*100});
+if(type==='onetime'&&addonPrice>0){var qtyS=parseInt(card.dataset.qty||'1');var itemName=addonNames[a]+(a==='jessica_consulting'&&qtyS>1?' ('+qtyS+' hrs × $500)':'')+promoLabel;stripeItems.push({name:itemName,amount_cents:addonPrice*qtyS*100});}
 });
 btnLabel='Pay Now — '+fmt(t.ot)+' →';
 }
