@@ -757,7 +757,7 @@ e.preventDefault();
 payBtn.textContent='Processing...';
 payBtn.style.opacity='0.7';
 var planDesc=payPlan==='pif'?'Pay in Full':payPlan==='split15'?'$15K Down 5%':'$10K Down 15%';
-var fetchBody={email:em,description:'GrowPro Launch — '+pkgNames[pkg]+' — '+bn+' — '+planDesc,metadata:{business_name:bn,customer_name:fn+' '+($i('lastName').value.trim()),promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',phone:$i('phone').value.trim(),source:$i('source').value,payment_plan:planDesc,build_total:t.ot},success_url:'https://launch.kickstartsocial.co/thank-you?cs={CHECKOUT_SESSION_ID}',cancel_url:'https://launch.kickstartsocial.co/launch'};
+var fetchBody={email:em,description:'GrowPro Launch — '+pkgNames[pkg]+' — '+bn+' — '+planDesc,metadata:{business_name:bn,customer_name:fn+' '+($i('lastName').value.trim()),promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',phone:$i('phone').value.trim(),source:$i('source').value,payment_plan:planDesc,build_total:t.ot},success_url:'https://zenjessica.github.io/growpro/thank-you.html?cs={CHECKOUT_SESSION_ID}',cancel_url:'https://launch.kickstartsocial.co/launch'};
 if(planInfo){
 fetchBody.payment_plan={down_payment_cents:planInfo.down*100,installment_cents:planInfo.installment*100,installment_count:2,interval_days:28,plan_label:planInfo.planLabel};
 } else {
