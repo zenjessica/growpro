@@ -22,10 +22,12 @@ export default function JessicaSection() {
           </div>
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
             <iframe
+              key="prequalification-calendar"
               src="https://link.lumifunnels.com/widget/bookings/growproprequalification"
               className="w-full h-[700px]"
               frameBorder="0"
               title="Schedule a call with Jessica Lynne White"
+              allow="geolocation"
             />
           </div>
         </div>
