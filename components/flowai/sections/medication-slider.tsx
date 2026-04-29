@@ -199,7 +199,7 @@ export default function MedicationSliderSection() {
                       <div className="flex gap-4">
                         <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white px-6 py-3 rounded-full">
                           <a
-                            href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                            href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -212,7 +212,7 @@ export default function MedicationSliderSection() {
                           className="border-rose-600 text-rose-600 hover:bg-rose-50 px-6 py-3 rounded-full bg-transparent"
                         >
                           <a
-                            href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                            href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
                             target="_blank"
                             rel="noopener noreferrer"
                           >
@@ -268,7 +268,7 @@ export default function MedicationSliderSection() {
           </div>
           <div className="text-center p-4 bg-white rounded-lg shadow-sm">
             <a
-              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
               target="_blank"
               rel="noopener noreferrer"
               className="text-rose-600 font-semibold text-sm hover:text-rose-700 transition-colors cursor-pointer"

@@ -80,7 +80,7 @@ export function Navbar() {
             )}
           >
             <Link
-              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
               target="_blank"
               aria-label="Speak to an Expert"
             >
