@@ -769,7 +769,7 @@ method:'POST',
 headers:{'Content-Type':'application/json'},
 body:JSON.stringify(fetchBody)
 }).then(function(r){return r.json()}).then(function(d){
-if(d.url){window.location.href=d.url}
+if(d.url){try{(window.top||window).location.href=d.url}catch(e){window.location.href=d.url}}
 else{payBtn.textContent=btnLabel;payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
 }).catch(function(err){
 payBtn.textContent=btnLabel;payBtn.style.opacity='1';
