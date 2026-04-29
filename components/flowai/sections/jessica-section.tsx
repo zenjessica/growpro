@@ -23,7 +23,7 @@ export default function JessicaSection() {
           <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl overflow-hidden">
             <iframe
               key="prequalification-calendar"
-              src="https://link.lumifunnels.com/widget/bookings/growproprequalification"
+              src="https://link.lumifunnels.com/widget/bookings/growproprequalification?t=1"
               className="w-full h-[700px]"
               frameBorder="0"
               title="Schedule a call with Jessica Lynne White"
