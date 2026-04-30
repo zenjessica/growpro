@@ -292,11 +292,22 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 
 <div class="gh">SEO &amp; Content</div>
 <div class="grid">
-<div class="c csm" data-addon="seo_blog" data-price="3000" data-type="monthly" onclick="togAddon(this)">
+<div class="c csm" id="sbCard" data-addon="seo_blog" data-price="100" data-type="monthly" data-qty="1" onclick="togAddon(this)">
 <div class="ck">✓</div><span class="bdg b-pop">High Impact</span>
-<h3 class="ct">SEO Blog Writing (30 posts/mo)</h3>
-<p class="cd">30 high-intent, long-form SEO blog posts per month. Keyword research, buyer-stage mapping, on-page SEO, conversion formatting, strategic CTAs, publishing calendar.</p>
-<div class="cp"><span class="ap">+$3,000</span><span class="sx">/mo</span></div>
+<h3 class="ct">SEO Blog Writing</h3>
+<p class="cd">High-intent, long-form SEO blog posts. Keyword research, buyer-stage mapping, on-page SEO, conversion formatting, strategic CTAs, and publishing calendar. <strong>$100 per blog/mo</strong> — add as many as you want.</p>
+<div class="cp"><span class="ap" id="sbTotal">+$100</span><span class="sx" id="sbSuffix">/mo per blog</span></div>
+<div id="sbStepper" style="display:none;margin-top:14px;padding-top:14px;border-top:1px solid #E8E4F5" onclick="event.stopPropagation()">
+<div style="display:flex;align-items:center;gap:12px;justify-content:space-between">
+<div style="font-size:13px;color:#3A3548;font-weight:600">Blogs / month</div>
+<div style="display:flex;align-items:center;gap:8px">
+<button type="button" onclick="changeBlogQty(-1)" style="width:32px;height:32px;border:2px solid var(--p);background:#fff;color:var(--p);border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;line-height:1">−</button>
+<span id="sbQty" style="min-width:32px;text-align:center;font-weight:700;font-size:16px;color:var(--n)">1</span>
+<button type="button" onclick="changeBlogQty(1)" style="width:32px;height:32px;border:2px solid var(--p);background:var(--p);color:#fff;border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;line-height:1">+</button>
+</div>
+</div>
+<div style="font-size:12px;color:#666;margin-top:8px;font-style:italic">You can add or remove blogs anytime from your client portal.</div>
+</div>
 </div>
 </div>
 
@@ -443,12 +454,12 @@ var adSpend=0;
 var addonNames={
 extra_influencers:"Extra Influencers (+7 more)",secondary_ads:"Google Ads",
 email_marketing:"Full Funnel Email Marketing",social_management:"Comprehensive Social Management",
-seo_blog:"SEO Blog Writing (30/mo)",quiz_single:"Single Lifestyle Quiz",
+seo_blog:"SEO Blog Writing",quiz_single:"Single Lifestyle Quiz",
 quiz_dual:"Dual Quiz Bundle",quiz_triple:"Triple Quiz Bundle",
 extra_quiz:"Additional Quiz Form",extra_landing:"Additional Landing Page",
 welliemd:"WellieMD",lumi_funnels:"Lumi Funnels"
 };
-var fullStackAddons=['extra_influencers','secondary_ads','email_marketing','social_management','seo_blog'];
+var fullStackAddons=['extra_influencers','secondary_ads','email_marketing','social_management','seo_blog'];/* dormant: Full Stack card removed */
 var supportAddons=['welliemd','lumi_funnels'];
 
 function toggleBase(which){
@@ -475,12 +486,30 @@ function togAddon(card){
   if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
   if(isSel){
     card.classList.remove('sel');addons=addons.filter(function(x){return x!==a});
+    if(a==='seo_blog'){card.dataset.qty='1';var st=document.getElementById('sbStepper');if(st)st.style.display='none';var qEl=document.getElementById('sbQty');if(qEl)qEl.textContent='1';var tEl=document.getElementById('sbTotal');if(tEl)tEl.textContent='+$100';var sEl=document.getElementById('sbSuffix');if(sEl){sEl.textContent='/mo per blog';sEl.style.display='inline'}}
     updatePrice();return;
   }
   if(gr==='quiz'){document.querySelectorAll('[data-group="quiz"]').forEach(function(c){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})})}
   card.classList.add('sel');addons.push(a);
+  if(a==='seo_blog'){var st=document.getElementById('sbStepper');if(st)st.style.display='block';updateBlogDisplay();}
   if(isFullStack){checkFullStackState()}
   updatePrice();
+}
+
+function changeBlogQty(delta){
+  var card=document.getElementById('sbCard');if(!card)return;
+  var cur=parseInt(card.dataset.qty||'1');
+  var next=Math.max(1,Math.min(100,cur+delta));
+  card.dataset.qty=String(next);
+  updateBlogDisplay();updatePrice();
+}
+function updateBlogDisplay(){
+  var card=document.getElementById('sbCard');if(!card)return;
+  var qty=parseInt(card.dataset.qty||'1');
+  var total=100*qty;
+  var qEl=document.getElementById('sbQty');if(qEl)qEl.textContent=qty;
+  var tEl=document.getElementById('sbTotal');if(tEl)tEl.textContent='+$'+total.toLocaleString('en-US');
+  var sEl=document.getElementById('sbSuffix');if(sEl){sEl.textContent='/mo'+(qty>1?(' — '+qty+' blogs'):' per blog');sEl.style.display='inline'}
 }
 
 function updateAdSpend(){
@@ -535,9 +564,10 @@ function calcTotals(){
     addons.forEach(function(a){
       var card=document.querySelector('[data-addon="'+a+'"]');if(!card) return;
       var price=parseInt(card.dataset.price),type=card.dataset.type;
+      var qty=parseInt(card.dataset.qty||'1');
       var otp=card.dataset.onetime?parseInt(card.dataset.onetime):0;
-      if(type==='monthly'){mo+=price;if(otp) ot+=otp}
-      else ot+=price;
+      if(type==='monthly'){mo+=price*qty;if(otp) ot+=otp}
+      else ot+=price*qty;
     });
   }
   return{ot:ot,mo:mo};
@@ -570,9 +600,12 @@ function updateSB(){
     if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
     var card=document.querySelector('[data-addon="'+a+'"]');if(!card) return;
     var price=parseInt(card.dataset.price),type=card.dataset.type;
+    var qty=parseInt(card.dataset.qty||'1');
+    var lineTotal=price*qty;
     var suffix=type==='monthly'?'/mo':'';
-    h+='<div class="sl"><span class="lb">'+addonNames[a]+'</span><span class="vl">'+fmt(price)+suffix+'</span></div>';
-    if(card.dataset.onetime&&!isFullStack){h+='<div class="sl"><span class="lb" style="font-size:12px;color:#888">\u21b3 Design fee</span><span class="vl" style="font-size:12px">$'+card.dataset.onetime+'</span></div>'}
+    var label=addonNames[a]+(a==='seo_blog'&&qty>1?(' (×'+qty+')'):'');
+    h+='<div class="sl"><span class="lb">'+label+'</span><span class="vl">'+fmt(lineTotal)+suffix+'</span></div>';
+    if(card.dataset.onetime&&!isFullStack){h+='<div class="sl"><span class="lb" style="font-size:12px;color:#888">↳ Design fee</span><span class="vl" style="font-size:12px">$'+card.dataset.onetime+'</span></div>'}
   });
   if(adSpend>0){h+='<div class="sl" style="border-top:1px dashed #E2DDD5;padding-top:8px;margin-top:8px"><span class="lb" style="color:#888">Ad Spend (ACH)</span><span class="vl" style="color:#888">'+fmt(adSpend)+'/mo</span></div>'}
   document.getElementById('sbC').innerHTML=h;
@@ -633,7 +666,7 @@ function buildSum(){
   }
   if(moA.length>0){
     h+='<div class="suse"><div class="sust">Monthly Add-Ons</div>';
-    moA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(parseInt(c.dataset.price))+'/mo</span></div>'});
+    moA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');var q=parseInt(c.dataset.qty||'1');var lt=parseInt(c.dataset.price)*q;var lbl=addonNames[a]+(a==='seo_blog'&&q>1?(' — '+q+' blogs'):'');h+='<div class="sui"><span>'+lbl+'</span><span>+'+fmt(lt)+'/mo</span></div>'});
     h+='</div>';
   }
   if(otA.length>0){
@@ -712,8 +745,11 @@ function submitForm(){
     if(isFullStack&&fullStackAddons.indexOf(a)!==-1) return;
     var card=document.querySelector('[data-addon="'+a+'"');if(!card) return;
     var price=parseInt(card.dataset.price),type=card.dataset.type;
-    if(type==='monthly') stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:true});
-    else if(price>0) stripeItems.push({name:addonNames[a],amount_cents:price*100,recurring:false});
+    var qty=parseInt(card.dataset.qty||'1');
+    var lineCents=price*qty*100;
+    var lineName=addonNames[a]+(a==='seo_blog'&&qty>1?(' ('+qty+' blogs × $100)'):'');
+    if(type==='monthly') stripeItems.push({name:lineName,amount_cents:lineCents,recurring:true});
+    else if(price>0) stripeItems.push({name:lineName,amount_cents:lineCents,recurring:false});
   });
   var hasRecurring=stripeItems.some(function(i){return i.recurring});
   var checkoutMode=hasRecurring?'subscription':'payment';
@@ -728,11 +764,11 @@ function submitForm(){
         description:'GrowPro Marketing \u2014 '+getBaseName()+' \u2014 '+bn,
         metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value},
         line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
-        success_url:window.location.origin+'/marketing?success=true',
-        cancel_url:window.location.href
+        success_url:'https://zenjessica.github.io/growpro/thank-you.html?cs={CHECKOUT_SESSION_ID}',
+        cancel_url:'https://launch.kickstartsocial.co/marketing'
       })
     }).then(function(r){return r.json()}).then(function(d){
-      if(d.url){window.location.href=d.url}
+      if(d.url){(window.top||window).location.href=d.url}
       else{payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
     }).catch(function(err){
       payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Connection error. Please try again.');
