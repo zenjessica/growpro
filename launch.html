@@ -85,7 +85,7 @@
 <ul class="cl">
 <li>Pre-built WordPress template</li>
 <li>WellieMD platform setup</li>
-<li>4 core treatments included</li>
+<li>Core treatments included (GLP-1, NAD+, Sermorelin, Glutathione)</li>
 <li>LegitScript application management</li>
 <li>Payment processing setup</li>
 <li>GHL/Lumi Funnels setup</li>
@@ -157,12 +157,13 @@
 </div>
 <div class="sec" id="step2">
 <h1 class="h1">What will you offer your patients?</h1>
-<p class="sub">Your core 4 are included free. Expand your menu with HRT, branded meds, or peptides.</p>
+<p class="sub">Your core treatments are included free. Expand your menu with HRT, branded meds, or peptides.</p>
 <div class="grid g3">
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Semaglutide GLP-1</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Tirzepatide GLP-1/GIP</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">NAD+</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Sermorelin</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
+<div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Glutathione</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm" id="hrtCard" data-treatment="hrt" onclick="togTreat(this)">
 <div class="ck">✓</div>
 <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="ai">+</span></div>
@@ -691,6 +692,7 @@ h+='<div class="sui"><span>Semaglutide GLP-1</span><span class="inc">Included</s
 h+='<div class="sui"><span>Tirzepatide GLP-1/GIP</span><span class="inc">Included</span></div>';
 h+='<div class="sui"><span>NAD+</span><span class="inc">Included</span></div>';
 h+='<div class="sui"><span>Sermorelin</span><span class="inc">Included</span></div>';
+h+='<div class="sui"><span>Glutathione</span><span class="inc">Included</span></div>';
 treats.forEach(function(tr){
 var inc=pkg==='operator'&&operatorIncludesTreat.indexOf(tr)!==-1;
 var promoFree=hasPromo('free_treat',tr);
