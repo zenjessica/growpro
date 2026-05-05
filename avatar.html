@@ -8,7 +8,10 @@
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <meta http-equiv="Pragma" content="no-cache">
 <meta http-equiv="Expires" content="0">
-<base target="_top">
+<!-- NOTE: do NOT use <base target="_top"> here — it makes in-page anchors
+     (#configurator, #proof) break out of the Webflow iframe to GitHub Pages.
+     The Stripe checkout already uses window.top.location.href to break out
+     when needed, so we don't need a global target rule. -->
 <style>html,body{margin:0;padding:0;background:#fff;font-family:Inter,system-ui,sans-serif}</style>
 <script>if("scrollRestoration" in history){history.scrollRestoration="manual"}window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}});</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
