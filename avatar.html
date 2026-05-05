@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Avatars for Telehealth Ads — GrowPro</title>
+<meta name="robots" content="noindex">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
+<meta http-equiv="Expires" content="0">
+<base target="_top">
+<style>html,body{margin:0;padding:0;background:#fff;font-family:Inter,system-ui,sans-serif}</style>
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual"}window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}});</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+<style>
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px;box-sizing:border-box}
+.main{display:flex;gap:32px;padding:40px 0 120px;flex-wrap:nowrap}
+.ca{flex:1 1 auto;min-width:0}
+@media(max-width:1100px){.main{flex-wrap:wrap;gap:24px}.ca{flex:1 1 100%;min-width:0}.side{width:100%;position:static;top:auto;align-self:auto}}
+@media(max-width:768px){.wrap{padding:0 16px}.main{gap:16px;padding:20px 0 60px}}
+.g3,.pp-grid{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.g3,.pp-grid{grid-template-columns:1fr}}
+.bnav{flex-wrap:wrap;gap:12px}
+.btn{max-width:100%}
+body{overflow-x:hidden}
+@media(max-width:768px){.h1{font-size:24px;line-height:1.15}.sub{font-size:14px}}
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#fff;color:#0D1B2A;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
+:root{--p:#8B7EC8;--p2:#6B5DAE;--pl:#E8E4F5;--pb:#F4F2FA;--n:#0D1B2A;--n2:#1A2D42;--gb:#F7F7F9;--gbd:#E5E5EA;--g:#34C759;--w:#fff;--sh:0 2px 12px rgba(13,27,42,.06);--shh:0 4px 20px rgba(13,27,42,.1);--r:12px;--t:.3s ease}
+
+/* Header */
+.hdr{padding:20px 0;border-bottom:1px solid var(--gbd);background:var(--w);position:sticky;top:0;z-index:100}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:24px;letter-spacing:4px;color:var(--n)}
+.logo span{color:var(--p)}
+.tag{font-size:13px;color:#888;letter-spacing:1px}
+
+/* Trust bar */
+.tbar{background:var(--n);color:var(--w);padding:10px 0;overflow:hidden;font-size:13px;font-weight:500;letter-spacing:.5px}
+.tbi{display:flex;animation:sctrust 22s linear infinite;white-space:nowrap}
+.ti{padding:0 32px;flex-shrink:0}
+.ti::before{content:'✦';margin-right:12px;color:var(--p)}
+@keyframes sctrust{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
+
+/* HERO — sales-page style */
+.hero{background:linear-gradient(180deg,#fff 0%,var(--pb) 100%);padding:64px 0 48px;text-align:center;position:relative}
+.hero-eyebrow{display:inline-block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;padding:6px 16px;border-radius:20px;background:var(--n);color:var(--w);margin-bottom:24px}
+.hero h1{font-size:54px;font-weight:900;line-height:1.05;margin-bottom:20px;color:var(--n);letter-spacing:-1.5px;max-width:900px;margin-left:auto;margin-right:auto}
+.hero h1 .hl{color:var(--p);position:relative;display:inline-block}
+.hero h1 .hl::after{content:'';position:absolute;left:0;bottom:2px;width:100%;height:8px;background:var(--pl);z-index:-1;border-radius:4px}
+.hero-sub{font-size:19px;color:#3A3548;max-width:680px;margin:0 auto 32px;font-weight:500;line-height:1.5}
+.hero-cta-row{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;margin-bottom:24px}
+.btn-hero{font-size:17px;font-weight:700;padding:18px 36px;border-radius:10px;border:none;cursor:pointer;transition:var(--t);text-decoration:none;display:inline-flex;align-items:center;gap:8px}
+.btn-hero-p{background:var(--p);color:var(--w);box-shadow:0 4px 16px rgba(139,126,200,.4)}
+.btn-hero-p:hover{background:var(--p2);transform:translateY(-2px);box-shadow:0 8px 24px rgba(139,126,200,.5)}
+.btn-hero-s{background:transparent;color:var(--n);border:2px solid var(--n)}
+.btn-hero-s:hover{background:var(--n);color:var(--w)}
+.hero-trust{font-size:13px;color:#888;margin-top:8px}
+.hero-trust strong{color:var(--n)}
+@media(max-width:768px){.hero{padding:40px 0 32px}.hero h1{font-size:34px;line-height:1.1}.hero-sub{font-size:16px}.btn-hero{font-size:15px;padding:16px 28px;width:100%;justify-content:center}}
+
+/* Proof gallery */
+.proof{padding:64px 0 32px;background:var(--w)}
+.proof-eyebrow{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--p);margin-bottom:8px}
+.proof h2{text-align:center;font-size:36px;font-weight:800;color:var(--n);margin-bottom:8px;letter-spacing:-1px}
+.proof-sub{text-align:center;font-size:16px;color:#666;max-width:560px;margin:0 auto 40px}
+.proof-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1100px;margin:0 auto}
+@media(max-width:1024px){.proof-grid{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:640px){.proof-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+.proof-tile{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#E8E4F5 0%,#8B7EC8 100%);box-shadow:var(--sh);cursor:pointer;transition:var(--t)}
+.proof-tile:hover{transform:translateY(-4px);box-shadow:var(--shh)}
+.proof-tile-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px;background:linear-gradient(180deg,rgba(13,27,42,0) 50%,rgba(13,27,42,.85) 100%);color:var(--w)}
+.proof-bucket{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:5px 10px;border-radius:12px;background:rgba(255,255,255,.95);color:var(--n);align-self:flex-start;backdrop-filter:blur(4px)}
+.proof-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--n);box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.proof-play::before{content:'▶';margin-left:4px}
+.proof-bottom{font-size:12px;font-weight:600}
+.proof-empty{text-align:center;color:rgba(255,255,255,.7);font-size:11px;font-weight:600;padding:8px;text-transform:uppercase;letter-spacing:1px}
+
+/* Pain section */
+.pain{background:var(--n);color:var(--w);padding:72px 0;text-align:center}
+.pain h2{font-size:38px;font-weight:800;margin-bottom:16px;letter-spacing:-1px;max-width:800px;margin-left:auto;margin-right:auto}
+.pain h2 .red{color:#FF6B6B}
+.pain-sub{font-size:17px;color:rgba(255,255,255,.75);max-width:640px;margin:0 auto 40px}
+.pain-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1000px;margin:0 auto}
+@media(max-width:768px){.pain-grid{grid-template-columns:1fr}.pain h2{font-size:28px}}
+.pain-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1);border-radius:14px;padding:28px;text-align:left}
+.pain-x{font-size:24px;color:#FF6B6B;margin-bottom:12px;font-weight:800}
+.pain-card h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--w)}
+.pain-card p{font-size:14px;color:rgba(255,255,255,.7);line-height:1.6}
+
+/* Solution section */
+.sol{padding:80px 0;background:var(--pb)}
+.sol-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto;align-items:center}
+@media(max-width:900px){.sol-grid{grid-template-columns:1fr;gap:24px}}
+.sol-eyebrow{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--p);margin-bottom:12px}
+.sol h2{font-size:40px;font-weight:800;color:var(--n);line-height:1.1;margin-bottom:20px;letter-spacing:-1px}
+.sol h2 span{color:var(--p)}
+.sol p{font-size:16px;color:#3A3548;margin-bottom:16px;line-height:1.6}
+.sol ul{list-style:none;margin-top:20px}
+.sol ul li{font-size:15px;padding:8px 0;display:flex;align-items:flex-start;gap:12px;color:var(--n);font-weight:500}
+.sol ul li::before{content:'✓';color:var(--g);font-weight:900;font-size:18px;flex-shrink:0;margin-top:2px}
+.sol-visual{background:var(--w);border-radius:20px;padding:40px;box-shadow:var(--shh);text-align:center}
+.sol-visual h3{font-size:20px;font-weight:800;color:var(--n);margin-bottom:24px}
+.sol-compare{display:grid;grid-template-columns:1fr 1fr;gap:16px;text-align:left}
+.sol-col{padding:20px;border-radius:12px}
+.sol-col-bad{background:#FFF0F0;border:1px solid #FFCDD2}
+.sol-col-good{background:#E8F5E9;border:1px solid #C8E6C9}
+.sol-col-h{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1px;margin-bottom:12px}
+.sol-col-bad .sol-col-h{color:#C62828}
+.sol-col-good .sol-col-h{color:#2E7D32}
+.sol-col p{font-size:13px;margin:6px 0;color:#3A3548;font-weight:500}
+
+/* Buckets section */
+.buckets{padding:80px 0;background:var(--w)}
+.buckets h2{text-align:center;font-size:38px;font-weight:800;color:var(--n);margin-bottom:8px;letter-spacing:-1px}
+.buckets-sub{text-align:center;font-size:16px;color:#666;max-width:640px;margin:0 auto 48px}
+.buckets-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:1100px;margin:0 auto}
+@media(max-width:1024px){.buckets-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.buckets-grid{grid-template-columns:1fr}}
+.bucket-card{background:var(--pb);border:2px solid var(--pl);border-radius:14px;padding:22px;text-align:center;transition:var(--t)}
+.bucket-card:hover{border-color:var(--p);transform:translateY(-2px);box-shadow:var(--sh)}
+.bucket-icon{width:48px;height:48px;border-radius:12px;background:var(--p);color:var(--w);display:flex;align-items:center;justify-content:center;font-size:22px;font-weight:800;margin:0 auto 12px}
+.bucket-card h3{font-size:15px;font-weight:800;color:var(--n);margin-bottom:6px;line-height:1.3}
+.bucket-card p{font-size:12px;color:#666;line-height:1.5}
+
+/* Configurator wrap */
+.cfg{background:var(--gb);padding:60px 0 40px}
+.cfg .wrap-inner{max-width:1200px;margin:0 auto;padding:0 24px}
+.cfg-h{text-align:center;margin-bottom:40px}
+.cfg-h h2{font-size:38px;font-weight:800;color:var(--n);letter-spacing:-1px;margin-bottom:8px}
+.cfg-h p{font-size:16px;color:#666;max-width:560px;margin:0 auto}
+
+/* Progress bar */
+.pbar{background:var(--w);border-bottom:1px solid var(--gbd);padding:16px 0;position:sticky;top:65px;z-index:99;margin-top:0}
+.psteps{display:flex;justify-content:center;gap:8px;align-items:center}
+.pst{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:500;color:#AAA;transition:var(--t)}
+.pst.active{color:var(--p);font-weight:600}
+.pst.completed{color:var(--p)}
+.pdot{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:600;background:var(--gb);color:#AAA;border:2px solid var(--gbd);transition:var(--t);flex-shrink:0}
+.pst.active .pdot{background:var(--p);color:var(--w);border-color:var(--p)}
+.pst.completed .pdot{background:var(--p);color:var(--w);border-color:var(--p)}
+.pcon{width:60px;height:2px;background:var(--gbd);flex-shrink:0}
+.pcon.completed{background:var(--p)}
+.plbl{display:none}
+@media(min-width:768px){.plbl{display:inline}}
+
+/* Sections */
+.sec{display:none;animation:fadeIn .4s ease}
+.sec.active{display:block}
+@keyframes fadeIn{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:translateY(0)}}
+.h1{font-size:34px;font-weight:700;margin-bottom:8px;color:var(--n);line-height:1.2}
+.sub{font-size:16px;color:#666;margin-bottom:32px;max-width:640px}
+
+/* Tier cards */
+.tier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:24px}
+@media(max-width:1024px){.tier-grid{grid-template-columns:1fr}}
+.tier{background:var(--w);border:2px solid var(--gbd);border-radius:16px;padding:32px 28px;cursor:pointer;transition:var(--t);position:relative;box-shadow:var(--sh);display:flex;flex-direction:column}
+.tier:hover{box-shadow:var(--shh);transform:translateY(-4px);border-color:var(--p)}
+.tier.sel{border-color:var(--p);background:var(--pb);box-shadow:0 8px 32px rgba(139,126,200,.25)}
+.tier.featured{border-color:var(--p);transform:scale(1.02)}
+.tier.featured:hover{transform:scale(1.02) translateY(-4px)}
+.tier-bdg{position:absolute;top:-12px;left:50%;transform:translateX(-50%);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;padding:6px 16px;border-radius:20px;background:var(--p);color:var(--w);box-shadow:0 4px 12px rgba(139,126,200,.4);white-space:nowrap}
+.tier-bdg.gold{background:linear-gradient(135deg,var(--n),var(--p))}
+.tier-ck{position:absolute;top:16px;right:16px;width:32px;height:32px;border-radius:50%;background:var(--p);color:var(--w);display:none;align-items:center;justify-content:center;font-size:16px;font-weight:800}
+.tier.sel .tier-ck{display:flex}
+.tier-name{font-size:14px;font-weight:700;text-transform:uppercase;letter-spacing:1.5px;color:var(--p);margin-bottom:8px}
+.tier-title{font-size:26px;font-weight:800;color:var(--n);margin-bottom:8px;letter-spacing:-.5px}
+.tier-desc{font-size:14px;color:#666;margin-bottom:20px;min-height:42px}
+.tier-price{font-size:42px;font-weight:900;color:var(--n);letter-spacing:-1.5px;margin-bottom:4px;line-height:1}
+.tier-price .sx{font-size:14px;font-weight:500;color:#888}
+.tier-priceMo{font-size:14px;color:var(--p);font-weight:700;margin-bottom:20px}
+.tier-priceMo.empty{visibility:hidden}
+.tier-feats{list-style:none;margin-bottom:24px;flex-grow:1}
+.tier-feats li{font-size:14px;padding:6px 0;display:flex;align-items:flex-start;gap:10px;color:var(--n)}
+.tier-feats li::before{content:'✓';color:var(--g);font-weight:900;flex-shrink:0;font-size:16px}
+.tier-feats li strong{color:var(--n);font-weight:700}
+.tier-cta{margin-top:auto;text-align:center;font-size:14px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:1px}
+.tier.sel .tier-cta{color:var(--p2)}
+
+/* Add-on cards */
+.gh{font-family:'Inter',sans-serif;font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#888;margin:32px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--gbd)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1fr 1fr}
+@media(max-width:768px){.g2{grid-template-columns:1fr}}
+.c{background:var(--w);border:2px solid var(--gbd);border-radius:var(--r);padding:24px;cursor:pointer;transition:var(--t);position:relative;box-shadow:var(--sh)}
+.c:hover{box-shadow:var(--shh);transform:translateY(-2px)}
+.c.sel{border-color:var(--p);background:var(--pb)}
+.csm{padding:20px}
+.bdg{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.b-pop{background:#E8F5E9;color:#2E7D32}
+.b-rec{background:var(--pl);color:var(--p)}
+.ck{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:var(--p);color:var(--w);display:none;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.c.sel .ck{display:flex}
+.ct{font-size:18px;font-weight:700;margin-bottom:4px;color:var(--n)}
+.cd{font-size:14px;color:#555;margin-bottom:8px;line-height:1.5}
+.cp{font-size:22px;font-weight:800;color:var(--n);margin-bottom:8px}
+.cp .sx{font-size:13px;font-weight:500;color:#888}
+.cp .ap{color:var(--p)}
+
+/* Stepper inside cards */
+.stp{display:none;margin-top:14px;padding-top:14px;border-top:1px solid var(--pl)}
+.stp.show{display:block}
+.stp-row{display:flex;align-items:center;gap:12px;justify-content:space-between}
+.stp-lbl{font-size:13px;color:#3A3548;font-weight:600}
+.stp-ctrls{display:flex;align-items:center;gap:8px}
+.stp-btn{width:32px;height:32px;border:2px solid var(--p);background:var(--w);color:var(--p);border-radius:8px;font-size:18px;font-weight:700;cursor:pointer;line-height:1}
+.stp-btn.plus{background:var(--p);color:var(--w)}
+.stp-qty{min-width:32px;text-align:center;font-weight:700;font-size:16px;color:var(--n)}
+.stp-note{font-size:12px;color:#666;margin-top:8px;font-style:italic}
+
+/* Sidebar / mobile bar */
+.side{width:340px;flex-shrink:0;position:sticky;top:140px;align-self:flex-start;display:none}
+@media(min-width:1024px){.side{display:block}}
+.sc{background:var(--w);border-radius:var(--r);padding:28px;border:1px solid var(--gbd);box-shadow:var(--sh)}
+.sct{font-size:18px;font-weight:800;margin-bottom:20px;color:var(--n);letter-spacing:-.3px}
+.sl{display:flex;justify-content:space-between;font-size:14px;padding:8px 0;border-bottom:1px solid var(--gbd);gap:12px}
+.sl:last-of-type{border-bottom:none}
+.sl .lb{color:#3A3548;flex:1}
+.sl .vl{font-weight:700;color:var(--n);white-space:nowrap}
+.sdv{height:1px;background:var(--gbd);margin:16px 0}
+.stot{display:flex;justify-content:space-between;font-size:18px;font-weight:800;padding:8px 0}
+.stot .vl{color:var(--p)}
+.ssi{font-size:12px;color:#AAA;text-align:center;margin-top:16px;text-transform:uppercase;letter-spacing:1px}
+
+.mbar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--w);border-top:1px solid var(--gbd);box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:200;transition:var(--t)}
+@media(max-width:1023px){.mbar{display:block}body{padding-bottom:80px}}
+.mbc{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;cursor:pointer}
+.mbt{display:flex;gap:24px}
+.mbi{text-align:center}
+.mbi .am{font-size:18px;font-weight:800;color:var(--n)}
+.mbi .lb{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.5px}
+.mbx{font-size:20px;color:#888;transition:var(--t)}
+.mbar.exp .mbx{transform:rotate(180deg)}
+.mbe{display:none;padding:0 24px 20px;max-height:60vh;overflow-y:auto}
+.mbar.exp .mbe{display:block}
+
+/* Buttons */
+.btn{font-family:'Inter',sans-serif;font-size:16px;font-weight:700;padding:14px 32px;border-radius:8px;border:none;cursor:pointer;transition:var(--t);display:inline-flex;align-items:center;gap:8px;text-decoration:none}
+.btn-p{background:var(--p);color:var(--w)}
+.btn-p:hover{background:var(--p2)}
+.btn-p:disabled{background:#CCC;cursor:not-allowed}
+.btn-s{background:transparent;color:var(--p);border:2px solid var(--p)}
+.btn-s:hover{background:var(--pb)}
+.btn-big{font-size:18px;padding:18px 40px}
+.bnav{display:flex;justify-content:space-between;margin-top:40px;gap:16px}
+
+/* Form */
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:560px}
+@media(max-width:600px){.fg{grid-template-columns:1fr}}
+.fi{display:flex;flex-direction:column;gap:6px}
+.fi.fw{grid-column:1/-1}
+.fl{font-size:14px;font-weight:600;color:var(--n)}
+.fl .rq{color:#E53935}
+.fx,.fsel{font-family:'Inter',sans-serif;font-size:15px;padding:12px 16px;border:2px solid var(--gbd);border-radius:8px;background:var(--w);color:var(--n);transition:var(--t);outline:none}
+.fx:focus,.fsel:focus{border-color:var(--p)}
+.fx.err{border-color:#E53935}
+.fe{font-size:12px;color:#E53935;display:none}
+.fe.show{display:block}
+
+/* Summary card */
+.suc{background:var(--w);border-radius:var(--r);padding:32px;border:1px solid var(--gbd);box-shadow:var(--sh)}
+.suse{margin-bottom:24px}
+.sust{font-size:13px;font-weight:800;text-transform:uppercase;letter-spacing:1.5px;color:#888;margin-bottom:12px}
+.sui{display:flex;justify-content:space-between;padding:8px 0;font-size:15px;border-bottom:1px solid #E8E8EC;gap:12px}
+.sui:last-child{border-bottom:none}
+.sui span:last-child{font-weight:600;white-space:nowrap}
+.sudv{height:2px;background:var(--n);margin:24px 0}
+.sutr{display:flex;justify-content:space-between;font-size:22px;font-weight:800;padding:8px 0}
+.sutr .vl{color:var(--p)}
+
+/* Signature */
+.sig-section{margin:32px 0;padding:24px;background:var(--gb);border:1px solid var(--gbd);border-radius:var(--r)}
+.sig-title{font-size:16px;font-weight:700;color:var(--n);margin-bottom:4px}
+.sig-sub{font-size:13px;color:#666;margin-bottom:16px}
+.sig-link{color:var(--p);text-decoration:none;font-weight:600;font-size:14px}
+.sig-link:hover{text-decoration:underline}
+.sig-canvas-wrap{background:var(--w);border:2px solid var(--gbd);border-radius:8px;margin:16px 0;position:relative;touch-action:none}
+.sig-canvas-wrap canvas{display:block;width:100%;height:150px;cursor:crosshair}
+.sig-clear{position:absolute;top:8px;right:8px;font-size:11px;color:var(--p);cursor:pointer;font-weight:600;background:var(--w);padding:2px 8px;border-radius:4px;border:1px solid var(--pl)}
+.sig-placeholder{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:14px;color:#CCC;pointer-events:none;font-style:italic}
+.sig-check{display:flex;align-items:flex-start;gap:10px;margin-top:12px;cursor:pointer}
+.sig-check input{margin-top:3px;accent-color:var(--p);width:18px;height:18px;flex-shrink:0}
+.sig-check label{font-size:13px;color:#555;cursor:pointer;line-height:1.5}
+.sig-err{font-size:12px;color:#E53935;margin-top:8px;display:none}
+.sig-err.show{display:block}
+
+/* Confirmation */
+.conf{text-align:center;padding:40px 0}
+.conf-i{width:80px;height:80px;border-radius:50%;background:#E8F5E9;color:var(--g);display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 24px;font-weight:800}
+.conf h1{font-size:42px;margin-bottom:8px;font-weight:800}
+.conf p{font-size:16px;color:#666;margin-bottom:32px}
+.conf-r{max-width:560px;margin:0 auto;text-align:left}
+.conf-c{margin-top:32px;font-size:14px;color:#888}
+.conf-c a{color:var(--p);text-decoration:none}
+.hid{display:none!important}
+
+/* FAQ */
+.faq{padding:80px 0;background:var(--w)}
+.faq h2{text-align:center;font-size:36px;font-weight:800;color:var(--n);margin-bottom:40px;letter-spacing:-1px}
+.faq-list{max-width:780px;margin:0 auto}
+.faq-item{background:var(--gb);border:1px solid var(--gbd);border-radius:12px;margin-bottom:12px;overflow:hidden;transition:var(--t)}
+.faq-item.open{background:var(--pb);border-color:var(--p)}
+.faq-q{padding:20px 24px;font-size:16px;font-weight:700;color:var(--n);cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:16px}
+.faq-q-icon{font-size:20px;color:var(--p);font-weight:800;flex-shrink:0;transition:var(--t)}
+.faq-item.open .faq-q-icon{transform:rotate(45deg)}
+.faq-a{padding:0 24px 20px;font-size:14px;color:#3A3548;line-height:1.6;display:none}
+.faq-item.open .faq-a{display:block}
+
+/* Footer */
+.ft{background:var(--gb);border-top:1px solid var(--gbd);padding:32px 0;text-align:center;font-size:13px;color:#888;line-height:1.8}
+.ft a{color:var(--p);text-decoration:none}
+
+/* Final CTA banner */
+.fcta{background:linear-gradient(135deg,var(--n) 0%,var(--p2) 100%);color:var(--w);padding:64px 0;text-align:center}
+.fcta h2{font-size:38px;font-weight:800;margin-bottom:16px;letter-spacing:-1px;max-width:720px;margin-left:auto;margin-right:auto}
+.fcta p{font-size:17px;color:rgba(255,255,255,.85);max-width:560px;margin:0 auto 32px}
+.fcta .btn-hero-p{background:var(--w);color:var(--p)}
+.fcta .btn-hero-p:hover{background:var(--pl);transform:translateY(-2px)}
+@media(max-width:768px){.fcta h2{font-size:28px}}
+</style>
+
+<header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">AI Avatar Studio</div></div></div></header>
+
+<div class="tbar"><div class="tbi">
+<span class="ti">Custom AI Avatars Built For Your Brand</span><span class="ti">No Bank, No Reuse, No Repeats</span><span class="ti">70+ Healthcare Brands</span><span class="ti">Built for GLP-1, HRT, Peptides &amp; More</span><span class="ti">Cheaper Than Real Influencers</span>
+<span class="ti">Custom AI Avatars Built For Your Brand</span><span class="ti">No Bank, No Reuse, No Repeats</span><span class="ti">70+ Healthcare Brands</span><span class="ti">Built for GLP-1, HRT, Peptides &amp; More</span><span class="ti">Cheaper Than Real Influencers</span>
+</div></div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="wrap">
+    <span class="hero-eyebrow">New • AI Avatar Studio</span>
+    <h1>Stop Burning $2K Per Influencer Video. <span class="hl">Build Your Own AI Avatar Army.</span></h1>
+    <p class="hero-sub">Custom AI avatars built <strong>only for your brand</strong> — fully customizable look, voice, ethnicity, age, vibe, and wardrobe. Run unlimited ad creative tests without contracts, casting calls, or chasing UGC delivery.</p>
+    <div class="hero-cta-row">
+      <a href="#configurator" class="btn-hero btn-hero-p">See Pricing &amp; Build →</a>
+      <a href="#proof" class="btn-hero btn-hero-s">Watch Real Examples</a>
+    </div>
+    <div class="hero-trust"><strong>No avatar bank. No recycled clones. No rinse and repeat.</strong> Every avatar is custom-built and exclusive to your brand.</div>
+  </div>
+</section>
+
+<!-- PROOF GALLERY -->
+<section class="proof" id="proof">
+  <div class="wrap">
+    <div class="proof-eyebrow">See It In Action</div>
+    <h2>Real AI Avatars. Real Ad Creative.</h2>
+    <p class="proof-sub">Tap any tile to watch a sample of the kind of ad creative we'll build for your brand.</p>
+    <div class="proof-grid" id="proofGrid">
+      <div class="proof-tile" onclick="openProof(1)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Health Education</span><div class="proof-bottom">Authority avatar · TOF</div></div></div>
+      <div class="proof-tile" onclick="openProof(2)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Before &amp; After</span><div class="proof-bottom">Patient avatar · MOF</div></div></div>
+      <div class="proof-tile" onclick="openProof(3)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">UGC Style</span><div class="proof-bottom">Casual avatar · MOF→BOF</div></div></div>
+      <div class="proof-tile" onclick="openProof(4)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Product Breakdown</span><div class="proof-bottom">Authority avatar · MOF</div></div></div>
+      <div class="proof-tile" onclick="openProof(5)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Unboxing</span><div class="proof-bottom">Patient avatar · BOF</div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PAIN -->
+<section class="pain">
+  <div class="wrap">
+    <h2>Real Influencer Ads Are <span class="red">Killing Your Margins</span></h2>
+    <p class="pain-sub">If you're running paid ads in telehealth, you already know the math doesn't work.</p>
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-x">✕</div>
+        <h3>$500–$2,000 per influencer video</h3>
+        <p>And that's before you find out half of them don't perform. By the time you've tested 5 angles, you've burned $7,500.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-x">✕</div>
+        <h3>FTC disclosure tanks conversion</h3>
+        <p>"#ad" labels and disclaimer copy at the top of every video kill your hook before it even starts. CTR drops 40–60%.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-x">✕</div>
+        <h3>You can't iterate fast enough</h3>
+        <p>By the time the influencer ships your UGC, the trend is dead. You can't beat ad fatigue with a 4-week creative cycle.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="sol">
+  <div class="wrap">
+    <div class="sol-grid">
+      <div>
+        <div class="sol-eyebrow">The Fix</div>
+        <h2>Custom AI Avatars, Built <span>Only For Your Brand</span></h2>
+        <p>We design avatars from scratch based on <strong>your patient persona</strong> — exact look, voice, ethnicity, age, vibe, wardrobe, and setting. No stock library. No reused faces. Your avatars are yours.</p>
+        <p>Then we build out a complete content engine across 7 proven content buckets — so every funnel stage, from cold traffic to checkout, has the right creative ready to deploy.</p>
+        <ul>
+          <li>Fully customizable: look, voice, ethnicity, age, wardrobe, setting</li>
+          <li>Exclusive to your brand — never recycled or sold to competitors</li>
+          <li>Cheaper, faster, and infinitely scalable vs real influencers</li>
+          <li>No contracts, no casting calls, no shipped product</li>
+          <li>Ready in 10–21 business days</li>
+        </ul>
+      </div>
+      <div class="sol-visual">
+        <h3>AI Avatars vs Real Influencers</h3>
+        <div class="sol-compare">
+          <div class="sol-col sol-col-bad">
+            <div class="sol-col-h">Real Influencers</div>
+            <p>$500–$2K per video</p>
+            <p>4–8 week turnaround</p>
+            <p>FTC disclosure required</p>
+            <p>Limited reshoot ability</p>
+            <p>Shipped product, contracts, chasing</p>
+          </div>
+          <div class="sol-col sol-col-good">
+            <div class="sol-col-h">AI Avatars</div>
+            <p>Bulk pricing per video</p>
+            <p>10–21 business days</p>
+            <p>No disclosure, no friction</p>
+            <p>Unlimited iteration</p>
+            <p>You own the avatars forever</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BUCKETS -->
+<section class="buckets">
+  <div class="wrap">
+    <h2>Every Angle. Every Funnel Stage. Covered.</h2>
+    <p class="buckets-sub">Most ad creative fails because brands recycle one angle until it dies. We build across 7 proven content buckets so your funnel never goes stale.</p>
+    <div class="buckets-grid">
+      <div class="bucket-card"><div class="bucket-icon">01</div><h3>Problem &amp; Solution</h3><p>"I tried everything until…" — relatable patient stories that hook cold traffic.</p></div>
+      <div class="bucket-card"><div class="bucket-icon">02</div><h3>Health Education</h3><p>Authority avatars explaining how GLP-1, HRT, peptides actually work.</p></div>
+      <div class="bucket-card"><div class="bucket-icon">03</div><h3>Statistics</h3><p>Data-driven hooks: "87% of patients lost X lbs in Y weeks…"</p></div>
+      <div class="bucket-card"><div class="bucket-icon">04</div><h3>Before &amp; After Logic</h3><p>Visual transformation reasoning that stops the scroll mid-stream.</p></div>
+      <div class="bucket-card"><div class="bucket-icon">05</div><h3>Product Breakdowns</h3><p>"Here's exactly what's in your stack" — builds trust and authority.</p></div>
+      <div class="bucket-card"><div class="bucket-icon">06</div><h3>UGC Style</h3><p>Casual selfie-cam testimonials — the format crushing CTRs right now.</p></div>
+      <div class="bucket-card"><div class="bucket-icon">07</div><h3>Unboxings</h3><p>First-person package reveals — high-intent BOF creative that closes.</p></div>
+      <div class="bucket-card" style="background:var(--n);border-color:var(--n)"><div class="bucket-icon" style="background:var(--p)">⚡</div><h3 style="color:var(--w)">All 7 In Authority Tier</h3><p style="color:rgba(255,255,255,.7)">Full bucket coverage with monthly refresh.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================ -->
+<!-- CONFIGURATOR ============================== -->
+<!-- ============================================ -->
+<div id="configurator"></div>
+
+<nav class="pbar"><div class="wrap"><div class="psteps">
+<div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Choose Tier</span></div><div class="pcon"></div>
+<div class="pst" data-step="2"><div class="pdot">2</div><span class="plbl">Add-Ons</span></div><div class="pcon"></div>
+<div class="pst" data-step="3"><div class="pdot">3</div><span class="plbl">Review</span></div><div class="pcon"></div>
+<div class="pst" data-step="4"><div class="pdot">4</div><span class="plbl">Get Started</span></div>
+</div></div></nav>
+
+<div class="cfg">
+<div class="wrap"><div class="main"><div class="ca">
+
+<!-- STEP 1: TIER -->
+<div class="sec active" id="step1">
+<h1 class="h1">Choose Your AI Avatar Package</h1>
+<p class="sub">Three tiers built for every stage of brand growth. All include custom avatars built exclusively for your brand.</p>
+
+<div class="tier-grid">
+
+<!-- Tier 1 -->
+<div class="tier" id="tier1" onclick="selTier('starter')">
+  <div class="tier-ck">✓</div>
+  <div class="tier-name">Avatar Starter</div>
+  <div class="tier-title">12 Videos</div>
+  <div class="tier-desc">Test the model. Validate your hooks. Get your first AI avatar library.</div>
+  <div class="tier-price">$3,500<span class="sx"> one-time</span></div>
+  <div class="tier-priceMo empty">.</div>
+  <ul class="tier-feats">
+    <li><strong>4 custom AI avatars</strong> (4 personas)</li>
+    <li><strong>3 content buckets</strong> of your choice</li>
+    <li><strong>12 videos total</strong> (3 per avatar)</li>
+    <li>1 conversion landing page</li>
+    <li>1 quiz funnel</li>
+    <li>10 business day delivery</li>
+    <li>You own the avatars forever</li>
+  </ul>
+  <div class="tier-cta">Select Starter →</div>
+</div>
+
+<!-- Tier 2 -->
+<div class="tier featured" id="tier2" onclick="selTier('growth')">
+  <div class="tier-bdg">⭐ Most Popular</div>
+  <div class="tier-ck">✓</div>
+  <div class="tier-name">Avatar Growth</div>
+  <div class="tier-title">30 Videos</div>
+  <div class="tier-desc">Full funnel coverage. Built to drive cold traffic to checkout at scale.</div>
+  <div class="tier-price">$9,500<span class="sx"> one-time</span></div>
+  <div class="tier-priceMo empty">.</div>
+  <ul class="tier-feats">
+    <li><strong>6 custom AI avatars</strong> (6 personas)</li>
+    <li><strong>5 content buckets</strong> covered</li>
+    <li><strong>30 videos total</strong> (5 per avatar)</li>
+    <li>1 conversion landing page</li>
+    <li>1 quiz funnel</li>
+    <li>21 business day delivery</li>
+    <li>You own the avatars forever</li>
+  </ul>
+  <div class="tier-cta">Select Growth →</div>
+</div>
+
+<!-- Tier 3 -->
+<div class="tier" id="tier3" onclick="selTier('authority')">
+  <div class="tier-bdg gold">Recurring Engine</div>
+  <div class="tier-ck">✓</div>
+  <div class="tier-name">Avatar Authority</div>
+  <div class="tier-title">60 + 20/mo</div>
+  <div class="tier-desc">Your full creative engine. Perpetual ad refresh. Built to scale to $1M+ ad spend.</div>
+  <div class="tier-price">$18,500<span class="sx"> setup</span></div>
+  <div class="tier-priceMo">+ $4,500/mo</div>
+  <ul class="tier-feats">
+    <li><strong>12 custom AI avatars</strong> (12 personas)</li>
+    <li><strong>All 7 content buckets</strong> covered</li>
+    <li><strong>60 videos upfront</strong> (5 per avatar)</li>
+    <li><strong>20 fresh videos/mo</strong> ongoing</li>
+    <li>2 conversion landing pages</li>
+    <li>1 quiz funnel</li>
+    <li>Monthly performance review + creative iteration</li>
+    <li>Priority delivery queue</li>
+  </ul>
+  <div class="tier-cta">Select Authority →</div>
+</div>
+
+</div>
+
+<div id="tierErr" class="hid" style="background:#FFF0F0;border:1px solid #FFCDD2;border-radius:8px;padding:12px 16px;font-size:14px;color:#C62828;margin-bottom:16px">Please select a package to continue.</div>
+<div class="bnav"><div></div><button class="btn btn-p" onclick="goToFromTier()">Stack Add-Ons →</button></div>
+</div>
+
+<!-- STEP 2: ADD-ONS -->
+<div class="sec" id="step2">
+<h1 class="h1">Stack Your Add-Ons</h1>
+<p class="sub" id="step2Sub">Optional. All add-ons stack on top of your selected tier. Cart updates live.</p>
+
+<div class="gh">More Avatars &amp; Volume</div>
+<div class="grid g2">
+<div class="c csm" data-addon="extra_videos" data-price="2500" data-type="onetime" data-qty="1" onclick="togAddon(this)">
+<div class="ck">✓</div><span class="bdg b-pop">Popular</span>
+<h3 class="ct">Extra Avatar Videos</h3>
+<p class="cd">Add packs of 10 additional videos. Stack as many as you want.</p>
+<div class="cp"><span class="ap" id="evTotal">+$2,500</span><span class="sx" id="evSuffix"> per pack of 10</span></div>
+<div class="stp" id="evStp" onclick="event.stopPropagation()">
+<div class="stp-row"><div class="stp-lbl">Packs of 10 videos</div>
+<div class="stp-ctrls"><button type="button" class="stp-btn" onclick="changeQty('extra_videos',-1)">−</button><span class="stp-qty" id="evQty">1</span><button type="button" class="stp-btn plus" onclick="changeQty('extra_videos',1)">+</button></div>
+</div><div class="stp-note">Each pack = 10 additional videos using your existing avatars and buckets.</div>
+</div>
+</div>
+
+<div class="c csm" data-addon="extra_persona" data-price="750" data-type="onetime" data-qty="1" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Extra Avatar Persona</h3>
+<p class="cd">Add additional custom avatars beyond what's included in your tier.</p>
+<div class="cp"><span class="ap" id="epTotal">+$750</span><span class="sx" id="epSuffix"> per persona</span></div>
+<div class="stp" id="epStp" onclick="event.stopPropagation()">
+<div class="stp-row"><div class="stp-lbl">Additional personas</div>
+<div class="stp-ctrls"><button type="button" class="stp-btn" onclick="changeQty('extra_persona',-1)">−</button><span class="stp-qty" id="epQty">1</span><button type="button" class="stp-btn plus" onclick="changeQty('extra_persona',1)">+</button></div>
+</div><div class="stp-note">Each persona is fully custom — look, voice, vibe, wardrobe.</div>
+</div>
+</div>
+</div>
+
+<div class="gh">Funnels &amp; Pages</div>
+<div class="grid g2">
+<div class="c csm" data-addon="extra_landing" data-price="1500" data-type="onetime" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Additional Landing Page</h3>
+<p class="cd">Custom conversion landing page — copy, design, integration.</p>
+<div class="cp"><span class="ap">+$1,500</span><span class="sx"> each</span></div>
+</div>
+<div class="c csm" data-addon="extra_quiz" data-price="2500" data-type="onetime" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Additional Quiz Funnel</h3>
+<p class="cd">Lead-gen quiz with branching logic that routes patients to your products.</p>
+<div class="cp"><span class="ap">+$2,500</span><span class="sx"> each</span></div>
+</div>
+</div>
+
+<div class="gh">Monthly Refresh (Beat Ad Fatigue)</div>
+<div class="grid g2">
+<div class="c csm" data-addon="refresh_light" data-price="1500" data-type="monthly" data-group="refresh" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Monthly Refresh — Light</h3>
+<p class="cd">10 fresh videos delivered monthly. Uses your existing avatars + buckets to keep your creative library fresh.</p>
+<div class="cp"><span class="ap">+$1,500</span><span class="sx">/mo</span></div>
+</div>
+<div class="c csm" data-addon="refresh_pro" data-price="3500" data-type="monthly" data-group="refresh" onclick="togAddon(this)">
+<div class="ck">✓</div><span class="bdg b-rec">Best Value</span>
+<h3 class="ct">Monthly Refresh — Pro</h3>
+<p class="cd">30 fresh videos/mo + creative review. The fatigue-killer for active ad accounts.</p>
+<div class="cp"><span class="ap">+$3,500</span><span class="sx">/mo ($117/video)</span></div>
+</div>
+</div>
+
+<div class="gh">Creative Boosters</div>
+<div class="grid g2">
+<div class="c csm" data-addon="hooks_library" data-price="1200" data-type="onetime" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Ad Copy + Hooks Library</h3>
+<p class="cd">50 ad copy variants + opening hook scripts mapped to your avatars and buckets.</p>
+<div class="cp"><span class="ap">+$1,200</span></div>
+</div>
+<div class="c csm" data-addon="voiceover_premium" data-price="500" data-type="monthly" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Premium Voiceover Upgrade</h3>
+<p class="cd">Unlocks ElevenLabs premium voice tier — more natural, expressive avatar voices.</p>
+<div class="cp"><span class="ap">+$500</span><span class="sx">/mo</span></div>
+</div>
+<div class="c csm" data-addon="captions_thumbs" data-price="400" data-type="monthly" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Captions + Thumbnails</h3>
+<p class="cd">Platform-specific captions (TikTok, Reels, Shorts) and scroll-stopping thumbnail variants.</p>
+<div class="cp"><span class="ap">+$400</span><span class="sx">/mo</span></div>
+</div>
+</div>
+
+<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">← Back</button><button class="btn btn-p" onclick="goTo(3)">Review My Plan →</button></div>
+</div>
+
+<!-- STEP 3: REVIEW -->
+<div class="sec" id="step3">
+<h1 class="h1">Your AI Avatar Plan</h1>
+<p class="sub">Review your selections before submitting.</p>
+<div class="suc" id="sumC"></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(2)">← Edit Plan</button><button class="btn btn-p" onclick="goTo(4)">Continue to Submit →</button></div>
+</div>
+
+<!-- STEP 4: GET STARTED -->
+<div class="sec" id="step4">
+<div id="formV">
+<h1 class="h1">Your AI Avatar Plan is Ready.</h1>
+<p class="sub">Enter your details to finalize your plan and proceed to checkout.</p>
+<div class="fg">
+<div class="fi"><label class="fl">First Name <span class="rq">*</span></label><input type="text" class="fx" id="firstName" placeholder="First name"><span class="fe" id="fnE">First name is required</span></div>
+<div class="fi"><label class="fl">Last Name</label><input type="text" class="fx" id="lastName" placeholder="Last name"></div>
+<div class="fi"><label class="fl">Email <span class="rq">*</span></label><input type="email" class="fx" id="email" placeholder="you@company.com"><span class="fe" id="emE">Valid email is required</span></div>
+<div class="fi"><label class="fl">Phone <span style="color:#AAA;font-weight:400">(optional)</span></label><input type="tel" class="fx" id="phone" placeholder="(555) 000-0000"></div>
+<div class="fi fw"><label class="fl">Brand Name <span class="rq">*</span></label><input type="text" class="fx" id="bizName" placeholder="Your brand or business name"><span class="fe" id="bnE">Brand name is required</span></div>
+<div class="fi fw"><label class="fl">Niche / Treatment Focus</label><select class="fsel" id="niche"><option value="">Select one...</option><option>GLP-1 / Weight Loss</option><option>HRT</option><option>Peptides</option><option>NAD+ / Longevity</option><option>Sermorelin</option><option>Multi-treatment Telehealth</option><option>Other</option></select></div>
+<div class="fi fw"><label class="fl">How did you hear about us?</label><select class="fsel" id="source"><option value="">Select one...</option><option value="Brad Lea Podcast">Brad Lea Podcast</option><option value="Referral">Referral</option><option value="Social Media">Social Media</option><option value="Google">Google</option><option value="Paid Ad">Paid Ad</option><option value="Other">Other</option></select></div>
+</div>
+
+<div class="sig-section">
+<div class="sig-title">Service Agreement</div>
+<div class="sig-sub">Please review the agreement and sign below to proceed.</div>
+<a href="https://zenjessica.github.io/growpro/agreement.html" target="_blank" class="sig-link">View Full Services Agreement →</a>
+<div class="sig-canvas-wrap" id="sigWrap">
+<canvas id="sigCanvas"></canvas>
+<div class="sig-placeholder" id="sigPlaceholder">Draw your signature here</div>
+<span class="sig-clear" onclick="clearSig()">Clear</span>
+</div>
+<div class="sig-check" onclick="var cb=document.getElementById('agreeCheck');cb.checked=!cb.checked">
+<input type="checkbox" id="agreeCheck" onclick="event.stopPropagation()">
+<label>I have read and agree to the <a href="https://zenjessica.github.io/growpro/agreement.html" target="_blank" style="color:var(--p)" onclick="event.stopPropagation()">GrowPro Services Agreement</a></label>
+</div>
+<div class="sig-err" id="sigErr">Please sign above and check the agreement box to continue</div>
+</div>
+
+<div class="bnav"><button class="btn btn-s" onclick="goTo(3)">← Back</button><button class="btn btn-p" onclick="submitForm()">Submit &amp; Pay →</button></div>
+</div>
+
+<div class="conf hid" id="confV">
+<div class="conf-i">✓</div>
+<h1>You're in.</h1>
+<p>Review your AI Avatar plan below and click Pay Now to lock in your build slot.</p>
+<div style="margin:24px 0"><a id="stripePayBtn" href="#" class="btn btn-p btn-big" style="background:#34C759;text-decoration:none;display:inline-block;cursor:pointer">Pay Now →</a><p style="font-size:13px;color:#888;margin-top:8px">Secure checkout via Stripe.</p></div>
+<div class="conf-r"><div class="suc" id="confSum"></div></div>
+<div class="conf-c"><a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a> | <a href="https://growpro.co" target="_blank">growpro.co</a></div>
+</div>
+</div>
+
+</div>
+
+<aside class="side" id="sidebar"><div class="sc">
+<div class="sct">Your AI Avatar Plan</div>
+<div id="sbC"><div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select a tier to begin...</span></div></div>
+<div class="sdv"></div>
+<div class="stot"><span>One-Time</span><span class="vl" id="sOT">$0</span></div>
+<div class="stot"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
+<div class="ssi" id="sSI">Step 1 of 4</div>
+</div></aside>
+</div></div>
+</div>
+
+<!-- FAQ -->
+<section class="faq">
+<div class="wrap">
+<h2>Common Questions</h2>
+<div class="faq-list">
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Are these stock avatars from a library? <span class="faq-q-icon">+</span></div><div class="faq-a">No. Every avatar we build is custom-designed for your brand based on your patient persona — look, voice, ethnicity, age, vibe, wardrobe, and setting. Your avatars are exclusive to you and never resold or recycled.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">How long does delivery take? <span class="faq-q-icon">+</span></div><div class="faq-a">Avatar Starter delivers in 10 business days. Avatar Growth delivers in 21 business days. Avatar Authority ships the upfront 60-video library in 21 business days, then ongoing 20 fresh videos/mo.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I use these avatars on TikTok, Meta, and YouTube? <span class="faq-q-icon">+</span></div><div class="faq-a">Yes — videos are delivered in vertical 9:16 format optimized for TikTok, Reels, and Shorts, plus square and horizontal cuts on request for Meta feed and YouTube.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Do I need FTC disclosure on AI avatar ads? <span class="faq-q-icon">+</span></div><div class="faq-a">AI avatars are not endorsements from real people, so traditional influencer FTC disclosure rules don't apply. We handle all standard ad disclosure requirements during creative review.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">What if I don't have brand assets yet? <span class="faq-q-icon">+</span></div><div class="faq-a">No problem. Our intake form walks you through everything we need — patient persona, brand voice, treatment focus, and creative direction. We can build from minimal starting assets.</div></div>
+<div class="faq-item" onclick="this.classList.toggle('open')"><div class="faq-q">Can I upgrade from Starter or Growth to Authority later? <span class="faq-q-icon">+</span></div><div class="faq-a">Yes — your purchase credits roll over toward an Authority tier upgrade within 90 days. We'll keep your existing avatars and expand the library.</div></div>
+</div>
+</div>
+</section>
+
+<!-- FINAL CTA -->
+<section class="fcta">
+<div class="wrap">
+<h2>Ready to Replace Your Influencer Budget With An AI Avatar Engine?</h2>
+<p>Lock in your build slot today. Most brands see their first batch of AI avatar ads live within 21 business days.</p>
+<a href="#configurator" class="btn-hero btn-hero-p">Build My Avatar Package →</a>
+</div>
+</section>
+
+<div class="mbar" id="mBar">
+<div class="mbc" onclick="togMB()">
+<div class="mbt">
+<div class="mbi"><div class="am" id="mOT">$0</div><div class="lb">One-Time</div></div>
+<div class="mbi"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly</div></div>
+</div>
+<div class="mbx">▲</div>
+</div>
+<div class="mbe" id="mExp"></div>
+</div>
+
+<footer class="ft"><div class="wrap">
+<a href="https://growpro.co" target="_blank">growpro.co</a> | <a href="https://kickstartsocial.co" target="_blank">kickstartsocial.co</a> | <a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a>
+<p style="margin-top:8px">All AI avatars are custom-built and exclusive to the purchasing brand. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>
+</div></footer>
+
+<script>
+var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
+var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
+
+var addons=[],step=1,selectedTier=null;
+
+var tiers={
+  starter:{name:'Avatar Starter',price:3500,monthly:0,videos:12,personas:4,buckets:3},
+  growth:{name:'Avatar Growth',price:9500,monthly:0,videos:30,personas:6,buckets:5},
+  authority:{name:'Avatar Authority',price:18500,monthly:4500,videos:60,personas:12,buckets:7}
+};
+
+var addonNames={
+  extra_videos:"Extra Avatar Videos (10-pack)",
+  extra_persona:"Extra Avatar Persona",
+  extra_landing:"Additional Landing Page",
+  extra_quiz:"Additional Quiz Funnel",
+  refresh_light:"Monthly Refresh — Light (10 vids)",
+  refresh_pro:"Monthly Refresh — Pro (30 vids)",
+  hooks_library:"Ad Copy + Hooks Library",
+  voiceover_premium:"Premium Voiceover Upgrade",
+  captions_thumbs:"Captions + Thumbnails"
+};
+
+function selTier(t){
+  selectedTier=t;
+  document.getElementById('tier1').classList.remove('sel');
+  document.getElementById('tier2').classList.remove('sel');
+  document.getElementById('tier3').classList.remove('sel');
+  if(t==='starter') document.getElementById('tier1').classList.add('sel');
+  if(t==='growth') document.getElementById('tier2').classList.add('sel');
+  if(t==='authority') document.getElementById('tier3').classList.add('sel');
+  document.getElementById('tierErr').classList.add('hid');
+  updatePrice();
+}
+
+function goToFromTier(){
+  if(!selectedTier){document.getElementById('tierErr').classList.remove('hid');return}
+  goTo(2);
+}
+
+function togAddon(card){
+  var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
+  if(isSel){
+    card.classList.remove('sel');
+    addons=addons.filter(function(x){return x!==a});
+    if(a==='extra_videos'||a==='extra_persona'){card.dataset.qty='1';var stp=document.getElementById(a==='extra_videos'?'evStp':'epStp');if(stp)stp.classList.remove('show');resetStepper(a)}
+    updatePrice();return;
+  }
+  if(gr){document.querySelectorAll('[data-group="'+gr+'"]').forEach(function(c){c.classList.remove('sel');addons=addons.filter(function(x){return x!==c.dataset.addon})})}
+  card.classList.add('sel');addons.push(a);
+  if(a==='extra_videos'){document.getElementById('evStp').classList.add('show');updateStepperDisplay('extra_videos')}
+  if(a==='extra_persona'){document.getElementById('epStp').classList.add('show');updateStepperDisplay('extra_persona')}
+  updatePrice();
+}
+
+function changeQty(addon,delta){
+  var card=document.querySelector('[data-addon="'+addon+'"]');if(!card)return;
+  var cur=parseInt(card.dataset.qty||'1');
+  var next=Math.max(1,Math.min(50,cur+delta));
+  card.dataset.qty=String(next);
+  updateStepperDisplay(addon);updatePrice();
+}
+
+function updateStepperDisplay(addon){
+  var card=document.querySelector('[data-addon="'+addon+'"]');if(!card)return;
+  var qty=parseInt(card.dataset.qty||'1');
+  var price=parseInt(card.dataset.price);
+  var total=price*qty;
+  if(addon==='extra_videos'){
+    var qEl=document.getElementById('evQty');if(qEl)qEl.textContent=qty;
+    var tEl=document.getElementById('evTotal');if(tEl)tEl.textContent='+$'+total.toLocaleString('en-US');
+    var sEl=document.getElementById('evSuffix');if(sEl)sEl.textContent=qty>1?(' — '+(qty*10)+' videos'):' per pack of 10';
+  }
+  if(addon==='extra_persona'){
+    var qEl2=document.getElementById('epQty');if(qEl2)qEl2.textContent=qty;
+    var tEl2=document.getElementById('epTotal');if(tEl2)tEl2.textContent='+$'+total.toLocaleString('en-US');
+    var sEl2=document.getElementById('epSuffix');if(sEl2)sEl2.textContent=qty>1?(' — '+qty+' personas'):' per persona';
+  }
+}
+
+function resetStepper(addon){
+  if(addon==='extra_videos'){
+    document.getElementById('evQty').textContent='1';
+    document.getElementById('evTotal').textContent='+$2,500';
+    document.getElementById('evSuffix').textContent=' per pack of 10';
+  }
+  if(addon==='extra_persona'){
+    document.getElementById('epQty').textContent='1';
+    document.getElementById('epTotal').textContent='+$750';
+    document.getElementById('epSuffix').textContent=' per persona';
+  }
+}
+
+function calcTotals(){
+  var ot=0,mo=0;
+  if(selectedTier){
+    ot+=tiers[selectedTier].price;
+    mo+=tiers[selectedTier].monthly;
+  }
+  addons.forEach(function(a){
+    var card=document.querySelector('[data-addon="'+a+'"]');if(!card)return;
+    var price=parseInt(card.dataset.price),type=card.dataset.type;
+    var qty=parseInt(card.dataset.qty||'1');
+    if(type==='monthly') mo+=price*qty;
+    else ot+=price*qty;
+  });
+  return{ot:ot,mo:mo};
+}
+
+function fmt(n){return '$'+n.toLocaleString('en-US')}
+
+function updatePrice(){
+  var t=calcTotals();
+  document.getElementById('sOT').textContent=fmt(t.ot);
+  document.getElementById('sMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('mOT').textContent=fmt(t.ot);
+  document.getElementById('mMO').textContent=fmt(t.mo)+'/mo';
+  updateSB();
+}
+
+function updateSB(){
+  var h='';
+  if(selectedTier){
+    var ti=tiers[selectedTier];
+    h+='<div class="sl"><span class="lb"><strong>'+ti.name+'</strong></span><span class="vl">'+fmt(ti.price)+'</span></div>';
+    if(ti.monthly>0) h+='<div class="sl"><span class="lb">↳ Monthly engine</span><span class="vl">'+fmt(ti.monthly)+'/mo</span></div>';
+  } else {
+    h='<div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select a tier to begin...</span></div>';
+  }
+  addons.forEach(function(a){
+    var card=document.querySelector('[data-addon="'+a+'"]');if(!card)return;
+    var price=parseInt(card.dataset.price),type=card.dataset.type;
+    var qty=parseInt(card.dataset.qty||'1');
+    var lt=price*qty;
+    var sx=type==='monthly'?'/mo':'';
+    var lbl=addonNames[a]+(qty>1?(' (×'+qty+')'):'');
+    h+='<div class="sl"><span class="lb">'+lbl+'</span><span class="vl">'+fmt(lt)+sx+'</span></div>';
+  });
+  document.getElementById('sbC').innerHTML=h;
+  document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
+}
+
+function goTo(s){
+  document.querySelectorAll('.sec').forEach(function(x){x.classList.remove('active')});
+  document.getElementById('step'+s).classList.add('active');
+  document.querySelectorAll('.pst').forEach(function(ps,i){
+    var n=i+1;ps.classList.remove('active','completed');
+    if(n===s) ps.classList.add('active');
+    else if(n<s){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'}
+    else ps.querySelector('.pdot').textContent=n;
+  });
+  document.querySelectorAll('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
+  document.getElementById('sSI').textContent='Step '+s+' of 4';
+  var sb=document.getElementById('sidebar'),mb=document.getElementById('mBar');
+  if(s===1){sb.style.display='none';mb.style.display='none'}
+  else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
+  step=s;if(s===3) buildSum();if(s===4) setTimeout(initSig,100);
+  // scroll to configurator anchor instead of top of page so the sales content stays "above"
+  var anchor=document.getElementById('configurator');
+  if(anchor){anchor.scrollIntoView({behavior:'smooth',block:'start'})}else{window.scrollTo({top:0,behavior:'smooth'})}
+  reportHeightToParent();
+  try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollTop',page:'avatar'},'*');}}catch(e){}
+}
+
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'avatar',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+
+function togMB(){document.getElementById('mBar').classList.toggle('exp')}
+
+function buildSum(){
+  var t=calcTotals(),h='';
+  h+='<div class="suse"><div class="sust">Selected Package</div>';
+  if(selectedTier){
+    var ti=tiers[selectedTier];
+    h+='<div class="sui"><span><strong>'+ti.name+'</strong></span><span>'+fmt(ti.price)+'</span></div>';
+    h+='<div class="sui"><span style="font-size:13px;color:#666">↳ '+ti.videos+' videos · '+ti.personas+' personas · '+ti.buckets+' buckets</span><span></span></div>';
+    if(ti.monthly>0) h+='<div class="sui"><span>↳ Monthly creative engine</span><span>'+fmt(ti.monthly)+'/mo</span></div>';
+  }
+  h+='</div>';
+  var moA=addons.filter(function(a){var c=document.querySelector('[data-addon="'+a+'"]');return c&&c.dataset.type==='monthly'});
+  var otA=addons.filter(function(a){var c=document.querySelector('[data-addon="'+a+'"]');return c&&c.dataset.type==='onetime'});
+  if(otA.length>0){
+    h+='<div class="suse"><div class="sust">One-Time Add-Ons</div>';
+    otA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');var q=parseInt(c.dataset.qty||'1');var lt=parseInt(c.dataset.price)*q;var lbl=addonNames[a]+(q>1?(' (×'+q+')'):'');h+='<div class="sui"><span>'+lbl+'</span><span>+'+fmt(lt)+'</span></div>'});
+    h+='</div>';
+  }
+  if(moA.length>0){
+    h+='<div class="suse"><div class="sust">Monthly Add-Ons</div>';
+    moA.forEach(function(a){var c=document.querySelector('[data-addon="'+a+'"]');var q=parseInt(c.dataset.qty||'1');var lt=parseInt(c.dataset.price)*q;h+='<div class="sui"><span>'+addonNames[a]+'</span><span>+'+fmt(lt)+'/mo</span></div>'});
+    h+='</div>';
+  }
+  h+='<div class="sudv"></div>';
+  h+='<div class="sutr"><span>ONE-TIME TOTAL</span><span class="vl">'+fmt(t.ot)+'</span></div>';
+  if(t.mo>0) h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">'+fmt(t.mo)+'/mo</span></div>';
+  h+='<p style="font-size:12px;color:#999;margin-top:20px;line-height:1.6">All AI avatars are custom-built and exclusive to your brand. Delivery timelines per tier. Pricing subject to change at sole discretion of GrowPro by Kickstart Social LLC.</p>';
+  document.getElementById('sumC').innerHTML=h;
+}
+
+function getTierName(){return selectedTier?tiers[selectedTier].name:'No tier selected'}
+
+function submitForm(){
+  var fn=document.getElementById('firstName').value.trim();
+  var em=document.getElementById('email').value.trim();
+  var bn=document.getElementById('bizName').value.trim();
+  var ok=true;
+  document.getElementById('firstName').classList.remove('err');
+  document.getElementById('email').classList.remove('err');
+  document.getElementById('bizName').classList.remove('err');
+  document.getElementById('fnE').classList.remove('show');
+  document.getElementById('emE').classList.remove('show');
+  document.getElementById('bnE').classList.remove('show');
+  if(!fn){document.getElementById('firstName').classList.add('err');document.getElementById('fnE').classList.add('show');ok=false}
+  if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){document.getElementById('email').classList.add('err');document.getElementById('emE').classList.add('show');ok=false}
+  if(!bn){document.getElementById('bizName').classList.add('err');document.getElementById('bnE').classList.add('show');ok=false}
+  if(!sigHasData){document.getElementById('sigErr').classList.add('show');ok=false}else{document.getElementById('sigErr').classList.remove('show')}
+  if(!document.getElementById('agreeCheck').checked){document.getElementById('sigErr').classList.add('show');ok=false}
+  if(!ok) return;
+
+  var t=calcTotals();
+  var payload={
+    first_name:fn,last_name:document.getElementById('lastName').value.trim(),
+    email:em,phone:document.getElementById('phone').value.trim(),
+    business_name:bn,
+    niche:document.getElementById('niche').value,
+    source:document.getElementById('source').value,
+    package_type:getTierName(),
+    tier_slug:selectedTier,
+    addons_selected:addons.map(function(a){var c=document.querySelector('[data-addon="'+a+'"]');var q=parseInt(c.dataset.qty||'1');return addonNames[a]+(q>1?(' x'+q):'')}),
+    total_one_time:t.ot,
+    total_monthly:t.mo,
+    configurator_type:'avatar',
+    agreement_accepted:true,agreement_version:'v1.0',
+    date_signed:new Date().toISOString(),
+    signature:getSigData()
+  };
+  if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
+    fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)});
+  } else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
+
+  document.getElementById('formV').classList.add('hid');
+  document.getElementById('confV').classList.remove('hid');
+  document.getElementById('sidebar').style.display='none';
+  document.getElementById('mBar').style.display='none';
+  buildSum();
+  document.getElementById('confSum').innerHTML=document.getElementById('sumC').innerHTML;
+
+  // Stripe items
+  var stripeItems=[];
+  if(selectedTier){
+    var ti=tiers[selectedTier];
+    stripeItems.push({name:ti.name+' (one-time)',amount_cents:ti.price*100,recurring:false});
+    if(ti.monthly>0){
+      stripeItems.push({name:ti.name+' — Monthly Engine',amount_cents:ti.monthly*100,recurring:true});
+    }
+  }
+  addons.forEach(function(a){
+    var card=document.querySelector('[data-addon="'+a+'"]');if(!card)return;
+    var price=parseInt(card.dataset.price),type=card.dataset.type;
+    var qty=parseInt(card.dataset.qty||'1');
+    var lineCents=price*qty*100;
+    var lineName=addonNames[a]+(qty>1?(' (×'+qty+')'):'');
+    if(type==='monthly') stripeItems.push({name:lineName,amount_cents:lineCents,recurring:true});
+    else if(price>0) stripeItems.push({name:lineName,amount_cents:lineCents,recurring:false});
+  });
+
+  var hasRecurring=stripeItems.some(function(i){return i.recurring});
+  var checkoutMode=hasRecurring?'subscription':'payment';
+  var payBtn=document.getElementById('stripePayBtn');
+  var btnLabel='Pay Now — '+fmt(t.ot)+(t.mo>0?(' + '+fmt(t.mo)+'/mo'):'')+' →';
+  payBtn.textContent=btnLabel;
+
+  payBtn.onclick=function(e){
+    e.preventDefault();payBtn.textContent='Creating checkout...';payBtn.style.opacity='0.7';
+    fetch(STRIPE_API_URL,{
+      method:'POST',headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        email:em,
+        description:'GrowPro AI Avatar — '+getTierName()+' — '+bn,
+        metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,niche:document.getElementById('niche').value,configurator:'avatar'},
+        line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
+        success_url:'https://zenjessica.github.io/growpro/thank-you.html?cs={CHECKOUT_SESSION_ID}',
+        cancel_url:'https://launch.kickstartsocial.co/avatar'
+      })
+    }).then(function(r){return r.json()}).then(function(d){
+      if(d.url){(window.top||window).location.href=d.url}
+      else{payBtn.textContent=btnLabel;payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
+    }).catch(function(err){
+      payBtn.textContent=btnLabel;payBtn.style.opacity='1';alert('Connection error. Please try again.');
+    });
+  };
+  document.querySelectorAll('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'});
+  document.querySelectorAll('.pcon').forEach(function(c){c.classList.add('completed')});
+}
+
+document.addEventListener('DOMContentLoaded',function(){
+  document.getElementById('sidebar').style.display='none';
+  document.getElementById('mBar').style.display='none';
+  updatePrice();initSig();
+});
+
+// Proof gallery click handler — placeholder for now
+function openProof(n){
+  // No-op until videos are uploaded. When ready, replace with lightbox modal opening videoIds[n].
+  console.log('Proof tile '+n+' clicked — videos coming soon.');
+}
+
+// Signature
+var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;
+function initSig(){
+  sigCanvas=document.getElementById('sigCanvas');if(!sigCanvas) return;
+  sigCtx=sigCanvas.getContext('2d');var wrap=document.getElementById('sigWrap');
+  function resize(){var r=wrap.getBoundingClientRect();sigCanvas.width=r.width;sigCanvas.height=150;sigCtx.strokeStyle='#0D1B2A';sigCtx.lineWidth=2;sigCtx.lineCap='round';sigCtx.lineJoin='round'}
+  resize();window.addEventListener('resize',resize);
+  function getPos(e){var r=sigCanvas.getBoundingClientRect();var t=e.touches?e.touches[0]:e;return{x:t.clientX-r.left,y:t.clientY-r.top}}
+  sigCanvas.addEventListener('mousedown',function(e){sigDrawing=true;var p=getPos(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y)});
+  sigCanvas.addEventListener('mousemove',function(e){if(!sigDrawing)return;var p=getPos(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();sigHasData=true;document.getElementById('sigPlaceholder').style.display='none'});
+  sigCanvas.addEventListener('mouseup',function(){sigDrawing=false});
+  sigCanvas.addEventListener('mouseleave',function(){sigDrawing=false});
+  sigCanvas.addEventListener('touchstart',function(e){e.preventDefault();sigDrawing=true;var p=getPos(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y)},{passive:false});
+  sigCanvas.addEventListener('touchmove',function(e){e.preventDefault();if(!sigDrawing)return;var p=getPos(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();sigHasData=true;document.getElementById('sigPlaceholder').style.display='none'},{passive:false});
+  sigCanvas.addEventListener('touchend',function(){sigDrawing=false});
+}
+function clearSig(){if(!sigCanvas)return;sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);sigHasData=false;document.getElementById('sigPlaceholder').style.display='block'}
+function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('image/png')}
+</script>
+</body>
+</html>
