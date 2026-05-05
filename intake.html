@@ -751,39 +751,103 @@ document.getElementById('intakeForm').addEventListener('submit',function(e){
   btn.disabled=true;btn.textContent='Submitting...';
   var payload=collectPayload();
 
-  // POST to GHL webhook — same workflow as marketing.html, GHL routes to ClickUp via existing integration
-  // Differentiate via formType so GHL can route avatar intakes to the "AI Avatar Intakes" list
-  var WEBHOOK_URL=window.AVATAR_INTAKE_WEBHOOK||'https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f';
+  // POST DIRECTLY to ClickUp via the GrowPro proxy. NO GHL.
+  // Update INTAKE_API_URL after publishing the proxy to its permanent .manus.space URL.
+  var INTAKE_API_URL=window.INTAKE_API_URL||'https://3000-iw0comq1uymnmve16a4o2-a82e8296.us2.manus.computer/api/intake';
 
-  // Wrap payload with routing metadata for GHL→ClickUp workflow
-  var ghlPayload=Object.assign({
-    formType:'avatar_intake',
-    clickupListId:'901416148134',
-    clickupListName:'AI Avatar Intakes',
-    defaultAssigneeEmail:'denise@kickstartsocial.co',
-    workspaceId:'9014054089'
-  },payload);
+  // Flatten the nested payload so the proxy receives every field at top level.
+  // This is the structure /api/intake expects (see server/intakeHandler.ts).
+  function flattenForProxy(p){
+    var c=p.contact||{},b=p.brand||{},cu=p.customer||{},co=p.content||{},v=p.voice||{},cmp=p.compliance||{},w=p.wrapup||{},sg=p.signature||{};
+    // Personas: convert chip arrays to comma strings for ClickUp readability while keeping the array form too
+    var personasFlat=(p.personas||[]).map(function(per){
+      return Object.assign({},per,{
+        ethnicity:Array.isArray(per.ethnicity)?per.ethnicity.join(', '):per.ethnicity,
+        style:Array.isArray(per.style)?per.style.join(', '):per.style,
+        traits:Array.isArray(per.traits)?per.traits.join(', '):per.traits,
+        // Friendly aliases the proxy renderer recognises:
+        ageRange:per.age, vibe:per.traits&&per.traits.length?(Array.isArray(per.traits)?per.traits.join(', '):per.traits):''
+      });
+    });
+    return {
+      formType:'avatar',
+      sid:p.submissionId,
+      tier:p.tier,
+      tierLabel:p.tierLabel,
+      // Contact (flat)
+      fullName:c.fullName,brandName:c.brandName,email:c.email,phone:c.phone,website:c.website,
+      paymentConfirmed:c.paymentConfirmed,
+      // Brand (flat)
+      brandDescription:b.brandDoes,primaryProduct:b.primaryProduct,niche:b.niche,
+      brandThreeWords:b.threeWords,brandVoice:Array.isArray(b.voice)?b.voice.join(', '):b.voice,
+      competitorBrands:b.competitors,differentiator:b.differentiator,brandColors:b.colors,
+      // Customer (flat with prefix)
+      targetAudience:[cu.ageRange,cu.gender,cu.income?'Income: '+cu.income:'',cu.ltv?'LTV: '+cu.ltv:''].filter(Boolean).join(' · '),
+      customerGeo:Array.isArray(cu.geo)?cu.geo.join(', '):cu.geo,
+      customerChannels:Array.isArray(cu.channels)?cu.channels.join(', '):cu.channels,
+      customerPains:cu.pains,customerDesires:cu.desires,customerObjections:cu.objections,
+      // Personas (full structured array)
+      personas:personasFlat,
+      // Content
+      contentBuckets:Array.isArray(co.buckets)?co.buckets:[],
+      contentHooks:co.hooks,contentAvoid:co.avoid,
+      videoTone:Array.isArray(co.tone)?co.tone.join(', '):co.tone,
+      videoCta:co.cta,destinationUrl:co.destUrl,
+      videoLength:Array.isArray(co.length)?co.length.join(', '):co.length,
+      captionStyle:co.captions,hashtags:co.hashtags,
+      musicVibe:Array.isArray(co.music)?co.music.join(', '):co.music,
+      // Voice
+      voicePreference:v.preference,accentPreference:v.accent,
+      brandsAdmire:v.brandsAdmire,inspoLinks:v.inspoLinks,
+      // Compliance
+      complianceFlags:Array.isArray(cmp.flags)?cmp.flags.join(', '):cmp.flags,
+      disclaimers:cmp.disclaimers,approvedClaims:cmp.approvedClaims,approvalContact:cmp.approvalContact,
+      complianceNotes:[cmp.disclaimers,cmp.approvedClaims].filter(Boolean).join(' | '),
+      bannedClaims:cmp.flags,
+      rightsConfirmed:cmp.rightsConfirmed,conductConfirmed:cmp.conductConfirmed,
+      // Wrapup
+      anythingElse:w.anythingElse,referralSource:w.referralSource,onboardingPref:w.onboardingPref,
+      contactMethod:Array.isArray(w.contactMethod)?w.contactMethod.join(', '):w.contactMethod,
+      // Retainer (authority tier)
+      retainerCadence:p.retainer?p.retainer.cadence:'',
+      retainerDeliveryDay:p.retainer?p.retainer.deliveryDay:'',
+      retainerReviewCall:p.retainer?p.retainer.reviewCall:'',
+      retainerRefreshCadence:p.retainer?p.retainer.refreshCadence:'',
+      retainerMetrics:p.retainer?(Array.isArray(p.retainer.metrics)?p.retainer.metrics.join(', '):p.retainer.metrics):'',
+      // Signature
+      signatureName:c.fullName,signatureDate:p.submittedAt,
+      hasSignature:sg.hasSignature
+    };
+  }
 
-  fetch(WEBHOOK_URL,{
+  var proxyPayload=flattenForProxy(payload);
+  console.log('[intake] POSTing to proxy:',INTAKE_API_URL,proxyPayload);
+
+  fetch(INTAKE_API_URL,{
     method:'POST',
     headers:{'Content-Type':'application/json'},
-    body:JSON.stringify(ghlPayload)
-  }).then(function(r){
-    // Show success regardless — webhook may fail silently in dev
-    document.getElementById('intakeForm').style.display='none';
-    document.getElementById('successId').textContent=submissionId;
-    document.getElementById('successState').classList.add('show');
-    window.scrollTo({top:0,behavior:'smooth'});
-    // Also persist to localStorage as a backup
-    try{localStorage.setItem('avatarIntake_'+submissionId,JSON.stringify(ghlPayload))}catch(e){}
+    body:JSON.stringify(proxyPayload)
+  }).then(function(r){return r.json().catch(function(){return {ok:false,error:'Bad response'}})}).then(function(d){
+    console.log('[intake] Proxy response:',d);
+    if(d&&d.ok){
+      document.getElementById('intakeForm').style.display='none';
+      document.getElementById('successId').textContent=submissionId+' (ClickUp #'+(d.taskId||'—')+')';
+      document.getElementById('successState').classList.add('show');
+      window.scrollTo({top:0,behavior:'smooth'});
+      try{localStorage.setItem('avatarIntake_'+submissionId,JSON.stringify(proxyPayload))}catch(e){}
+    } else {
+      btn.disabled=false;btn.textContent='Submit Intake →';
+      var msg=d&&d.error?d.error:'Server error';
+      console.error('[intake] Proxy error:',d);
+      // Persist locally so nothing is lost
+      try{localStorage.setItem('avatarIntake_FAILED_'+submissionId,JSON.stringify({payload:proxyPayload,response:d}))}catch(e){}
+      alert('Submission failed: '+msg+'. Your answers are saved locally — please try again or email hello@kickstartsocial.co.');
+    }
   }).catch(function(err){
-    console.error('Webhook error',err);
-    // Still show success — manual recovery via localStorage backup
-    document.getElementById('intakeForm').style.display='none';
-    document.getElementById('successId').textContent=submissionId;
-    document.getElementById('successState').classList.add('show');
-    try{localStorage.setItem('avatarIntake_'+submissionId,JSON.stringify(ghlPayload))}catch(e){}
-    window.scrollTo({top:0,behavior:'smooth'});
+    btn.disabled=false;btn.textContent='Submit Intake →';
+    console.error('[intake] Network error:',err);
+    try{localStorage.setItem('avatarIntake_FAILED_'+submissionId,JSON.stringify({payload:proxyPayload,error:String(err)}))}catch(e){}
+    alert('Network error reaching ClickUp. Your answers are saved locally. Please try again or email hello@kickstartsocial.co.');
   });
 });
 
