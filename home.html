@@ -54,18 +54,20 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 .img-banner .card:hover{transform:translateY(-4px)}
 .img-banner .card img{width:100%;height:100%;object-fit:cover;display:block;border:0}
 @media(max-width:768px){.img-banner{grid-template-columns:1fr;max-width:400px}}
-.paths{display:grid;grid-template-columns:1fr 1fr;gap:32px;max-width:960px;margin:0 auto;padding:0 24px 80px}
+.paths{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;max-width:1180px;margin:0 auto;padding:0 24px 80px}
 @media(max-width:768px){.op-banner h2{font-size:22px!important}}
-@media(max-width:768px){.paths{grid-template-columns:1fr;gap:24px}}
+@media(max-width:1024px){.paths{grid-template-columns:1fr;gap:24px;max-width:560px}}
 .path{background:var(--w);border:2px solid var(--gbd);border-radius:16px;padding:40px 32px;text-align:center;transition:var(--t);cursor:pointer;position:relative;box-shadow:var(--sh)}
 .path:hover{box-shadow:var(--shh);transform:translateY(-4px);border-color:var(--p)}
 .path-icon{width:80px;height:80px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:36px;margin:0 auto 24px}
 .p1-icon{background:var(--pl);color:var(--p)}
 .p2-icon{background:var(--gl);color:var(--gold)}
+.p3-icon{background:var(--n);color:var(--p)}
 .path h2{font-size:28px;font-weight:800;margin-bottom:8px;color:var(--n);letter-spacing:-0.5px}
 .bdg{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:16px}
 .b-new{background:var(--pl);color:var(--p)}
 .b-grow{background:var(--gl);color:#8B6914}
+.b-ai{background:var(--n);color:var(--w)}
 .path p{font-size:15px;color:#666;margin-bottom:24px;line-height:1.6}
 .path .price{font-size:14px;color:#888;margin-bottom:24px}
 .path .price strong{font-size:20px;color:var(--n);font-weight:800}
@@ -77,6 +79,8 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 .btn-launch:hover{background:#7A6DB7}
 .btn-mkt{background:var(--n);color:var(--w)}
 .btn-mkt:hover{background:#1A2D42}
+.btn-ai{background:linear-gradient(135deg,var(--p),var(--n));color:var(--w)}
+.btn-ai:hover{background:linear-gradient(135deg,#7A6DB7,#1A2D42)}
 .bottom{text-align:center;padding:0 24px 80px}
 .bottom p{font-size:15px;color:#888;max-width:600px;margin:0 auto}
 .bottom a{color:var(--p);text-decoration:none;font-weight:600}
@@ -164,17 +168,34 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 <span class="bdg b-grow">Phase 2</span>
 <div class="path-icon p2-icon" style="font-size:0"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#D4A843" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg></div>
 <h2>Scale with Marketing</h2>
-<p>Already launched? Ready to grow? Our in-house healthcare marketing agency handles everything — influencers, ads, email, social, SEO, and quiz funnels.</p>
+<p>Already launched? Our in-house healthcare marketing agency runs your ads, email, social, SEO, and quiz funnels end-to-end.</p>
 <div class="price">Starting at <strong>$3,500/mo</strong></div>
 <ul>
 <li>Brand Activation Core as your foundation</li>
-<li>5 micro-influencers included in base</li>
 <li>Meta, Google, TikTok, Pinterest ad management</li>
 <li>Full funnel email marketing + automation</li>
-<li>SEO blog writing &mdash; $100/mo per blog (build your own pace)</li>
+<li>SEO blog writing &mdash; $100/mo per blog</li>
 <li>Standalone Meta Ads option: $5,000/mo</li>
+<li>Influencer campaigns optional</li>
 </ul>
 <a href="https://launch.kickstartsocial.co/marketing" target="_top" class="path-btn btn-mkt">Build My Marketing Plan →</a>
+</div>
+
+<div class="path" onclick="window.top.location.href='https://launch.kickstartsocial.co/avatar'">
+<span class="bdg b-ai">New • AI Avatars</span>
+<div class="path-icon p3-icon" style="font-size:0"><svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="#8B7EC8" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="4"/><path d="M4 21v-2a6 6 0 0 1 6-6h4a6 6 0 0 1 6 6v2"/><circle cx="19" cy="5" r="2" fill="#8B7EC8"/></svg></div>
+<h2>AI Avatar Studio</h2>
+<p>Custom AI avatars built only for your brand. Cheaper, faster, and infinitely more scalable than real influencers — across all 7 content buckets.</p>
+<div class="price">Starting at <strong>$3,500</strong></div>
+<ul>
+<li>3 tiers: Starter (12 vids), Growth (30 vids), Authority (60+20/mo)</li>
+<li>Fully customizable look, voice, ethnicity, vibe</li>
+<li>Exclusive to your brand — never reused</li>
+<li>Includes landing page + quiz funnel</li>
+<li>Beats real influencers on cost, speed, and ROAS</li>
+<li>Delivered in 10–21 business days</li>
+</ul>
+<a href="https://launch.kickstartsocial.co/avatar" target="_top" class="path-btn btn-ai">Build My Avatar Package →</a>
 </div>
 </div>
 

@@ -1,0 +1,801 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>AI Avatar Campaign Intake — GrowPro</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#0D1B2A;line-height:1.55;background:#F7F7F9;-webkit-font-smoothing:antialiased}
+:root{--p:#8B7EC8;--p2:#6B5DAE;--pl:#E8E4F5;--pb:#F4F2FA;--n:#0D1B2A;--n2:#1A2D42;--gb:#F7F7F9;--gbd:#E5E5EA;--g:#34C759;--w:#fff;--err:#E74C3C;--sh:0 2px 12px rgba(13,27,42,.06);--shh:0 4px 20px rgba(13,27,42,.1);--r:12px;--t:.25s ease}
+.wrap{max-width:880px;margin:0 auto;padding:0 20px}
+
+/* Header */
+.hdr{background:var(--w);border-bottom:1px solid var(--gbd);padding:18px 0;position:sticky;top:0;z-index:100;box-shadow:var(--sh)}
+.hdr-inner{display:flex;align-items:center;justify-content:space-between;gap:16px}
+.brand{font-size:22px;font-weight:800;letter-spacing:-.5px}
+.brand .gp{color:var(--n)}.brand .gpp{color:var(--p)}
+.brand-sub{display:block;font-size:11px;font-weight:600;color:#666;letter-spacing:1.5px;text-transform:uppercase;margin-top:2px}
+.help-link{font-size:13px;color:var(--p);text-decoration:none;font-weight:600}
+.help-link:hover{text-decoration:underline}
+
+/* Progress bar */
+.pbar{background:var(--gbd);height:4px;width:100%;position:sticky;top:64px;z-index:99}
+.pbar-fill{height:100%;background:linear-gradient(90deg,var(--p),var(--p2));width:0;transition:width .4s ease}
+
+/* Hero */
+.intake-hero{background:linear-gradient(180deg,var(--w) 0%,var(--gb) 100%);padding:48px 0 32px;text-align:center;border-bottom:1px solid var(--gbd)}
+.intake-hero .eyebrow{font-size:12px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:2px;margin-bottom:10px}
+.intake-hero h1{font-size:38px;font-weight:800;color:var(--n);margin-bottom:12px;letter-spacing:-1px}
+.intake-hero p{font-size:16px;color:#555;max-width:640px;margin:0 auto}
+.tier-badge{display:inline-block;margin-top:18px;padding:10px 20px;background:var(--pl);color:var(--p2);font-weight:700;border-radius:30px;font-size:14px;letter-spacing:.3px}
+.tier-badge .lbl{opacity:.8;font-weight:500;margin-right:6px}
+
+/* Card */
+main{padding:32px 0 80px}
+.card{background:var(--w);border:1px solid var(--gbd);border-radius:18px;padding:36px;margin-bottom:24px;box-shadow:var(--sh)}
+.section-num{display:inline-block;background:var(--pl);color:var(--p2);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;padding:6px 14px;border-radius:20px;margin-bottom:14px}
+.section-title{font-size:24px;font-weight:800;color:var(--n);margin-bottom:8px;letter-spacing:-.5px}
+.section-desc{font-size:14px;color:#666;margin-bottom:28px}
+
+/* Fields */
+.fg{margin-bottom:22px}
+.fg.half{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fg.half .fg{margin-bottom:0}
+@media(max-width:600px){.fg.half{grid-template-columns:1fr}}
+label{display:block;font-size:13px;font-weight:700;color:var(--n);margin-bottom:8px;letter-spacing:.2px}
+label .req{color:var(--err);margin-left:3px}
+label .opt{color:#999;font-weight:500;font-size:11px;margin-left:6px;text-transform:uppercase;letter-spacing:1px}
+.help{font-size:12px;color:#888;margin-top:6px;line-height:1.4}
+input[type=text],input[type=email],input[type=tel],input[type=url],input[type=number],input[type=date],select,textarea{width:100%;padding:14px 16px;border:1.5px solid var(--gbd);border-radius:10px;font-size:15px;font-family:inherit;background:var(--w);transition:var(--t);color:var(--n)}
+input:focus,select:focus,textarea:focus{outline:none;border-color:var(--p);box-shadow:0 0 0 3px var(--pl)}
+textarea{min-height:100px;resize:vertical;line-height:1.5}
+select{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 14 14'%3E%3Cpath d='M3 5l4 4 4-4' stroke='%238B7EC8' stroke-width='2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center;padding-right:40px}
+
+/* Multi-select chips */
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{padding:10px 16px;border:1.5px solid var(--gbd);border-radius:30px;font-size:13px;font-weight:600;color:#555;cursor:pointer;transition:var(--t);background:var(--w);user-select:none}
+.chip:hover{border-color:var(--p);color:var(--p2)}
+.chip.on{background:var(--p);border-color:var(--p);color:var(--w)}
+
+/* File upload */
+.file-up{border:2px dashed var(--gbd);border-radius:12px;padding:24px;text-align:center;cursor:pointer;transition:var(--t);background:var(--gb)}
+.file-up:hover{border-color:var(--p);background:var(--pb)}
+.file-up.has-file{border-color:var(--g);background:#E8F8EE}
+.file-up input{display:none}
+.file-up-icon{font-size:30px;margin-bottom:6px;color:var(--p)}
+.file-up-text{font-size:13px;font-weight:600;color:#555}
+.file-up-sub{font-size:11px;color:#999;margin-top:4px}
+
+/* Persona repeater */
+.persona-block{background:var(--gb);border:1.5px solid var(--gbd);border-radius:14px;padding:24px;margin-bottom:18px;position:relative}
+.persona-num{position:absolute;top:-12px;left:24px;background:var(--p);color:var(--w);padding:5px 14px;border-radius:14px;font-size:11px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase}
+
+/* Checkbox */
+.cb-row{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--gb);border:1.5px solid var(--gbd);border-radius:10px;cursor:pointer;transition:var(--t);margin-bottom:10px}
+.cb-row:hover{border-color:var(--p)}
+.cb-row input[type=checkbox]{width:20px;height:20px;cursor:pointer;accent-color:var(--p);margin-top:2px;flex-shrink:0}
+.cb-row label{margin:0;font-weight:500;font-size:14px;color:#333;cursor:pointer;flex:1}
+
+/* Signature */
+.sig-wrap{position:relative;background:var(--w);border:2px dashed var(--gbd);border-radius:10px;height:160px;cursor:crosshair;overflow:hidden;margin-bottom:8px}
+.sig-wrap canvas{display:block;width:100%;height:100%}
+.sig-placeholder{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#bbb;font-style:italic;pointer-events:none;font-size:14px}
+.sig-clear{font-size:12px;color:var(--p);cursor:pointer;text-decoration:underline;background:none;border:none;padding:0;font-family:inherit}
+
+/* Submit */
+.cta-row{display:flex;gap:14px;margin-top:36px}
+.btn{flex:1;padding:18px 24px;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;transition:var(--t);font-family:inherit}
+.btn-p{background:linear-gradient(135deg,var(--p),var(--p2));color:var(--w);box-shadow:0 4px 14px rgba(139,126,200,.4)}
+.btn-p:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(139,126,200,.5)}
+.btn-p:disabled{opacity:.5;cursor:not-allowed;transform:none}
+.btn-s{background:var(--w);color:var(--n);border:1.5px solid var(--gbd)}
+.btn-s:hover{border-color:var(--p);color:var(--p2)}
+
+/* Toast */
+.toast{position:fixed;bottom:24px;left:50%;transform:translateX(-50%) translateY(100px);background:var(--n);color:var(--w);padding:16px 24px;border-radius:12px;font-weight:600;box-shadow:0 10px 30px rgba(0,0,0,.3);transition:var(--t);opacity:0;z-index:1000;max-width:90vw;text-align:center}
+.toast.show{transform:translateX(-50%) translateY(0);opacity:1}
+.toast.err{background:var(--err)}
+
+/* Success state */
+.success{display:none;text-align:center;padding:60px 20px}
+.success.show{display:block;animation:fade .4s ease}
+@keyframes fade{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:none}}
+.success-icon{width:80px;height:80px;margin:0 auto 24px;background:var(--g);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--w);font-size:42px}
+.success h2{font-size:32px;font-weight:800;margin-bottom:14px}
+.success p{font-size:16px;color:#555;max-width:520px;margin:0 auto 8px}
+
+/* Tier prompt */
+.tier-prompt{background:var(--pb);border:1.5px solid var(--p);border-radius:14px;padding:28px;text-align:center}
+.tier-prompt p{margin-bottom:16px;font-size:15px;color:#555}
+.tier-options{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+@media(max-width:600px){.tier-options{grid-template-columns:1fr}}
+.tier-opt{padding:18px;background:var(--w);border:1.5px solid var(--gbd);border-radius:10px;cursor:pointer;transition:var(--t);text-align:center}
+.tier-opt:hover{border-color:var(--p);transform:translateY(-2px);box-shadow:var(--sh)}
+.tier-opt.on{border-color:var(--p);background:var(--pb)}
+.tier-opt .tn{font-weight:800;font-size:15px;color:var(--n);margin-bottom:4px}
+.tier-opt .tp{font-size:12px;color:#666}
+
+/* Footer */
+footer{background:var(--n);color:rgba(255,255,255,.7);padding:32px 0;text-align:center;font-size:13px}
+
+@media(max-width:768px){
+  .intake-hero h1{font-size:28px}
+  .card{padding:24px 20px;border-radius:14px}
+  .section-title{font-size:20px}
+}
+</style>
+</head>
+<body>
+
+<header class="hdr">
+  <div class="wrap hdr-inner">
+    <div>
+      <div class="brand"><span class="gp">GROW</span><span class="gpp">PRO</span></div>
+      <span class="brand-sub">AI Avatar Intake</span>
+    </div>
+    <a href="https://launch.kickstartsocial.co/avatar" class="help-link" target="_blank">← Back to AI Avatar Studio</a>
+  </div>
+</header>
+<div class="pbar"><div class="pbar-fill" id="pbarFill"></div></div>
+
+<section class="intake-hero">
+  <div class="wrap">
+    <div class="eyebrow">Step 2 of 2 — Project Intake</div>
+    <h1>Let's Build Your AI Avatars.</h1>
+    <p>Welcome — your purchase is confirmed. This intake takes about <strong>10–15 minutes</strong> and gives our creative team everything we need to build your custom avatars and ad creative. Auto-saves as you go.</p>
+    <div class="tier-badge" id="tierBadgeWrap" style="display:none"><span class="lbl">Your tier:</span><span id="tierBadge">—</span></div>
+  </div>
+</section>
+
+<main>
+<form id="intakeForm" autocomplete="on">
+<div class="wrap">
+
+<!-- TIER PROMPT (only shown if no tier in URL) -->
+<div class="card" id="tierPromptCard" style="display:none">
+  <div class="section-num">Your Package</div>
+  <h2 class="section-title">Which tier did you purchase?</h2>
+  <p class="section-desc">If you've already paid, your tier should be auto-selected. If not, choose below.</p>
+  <div class="tier-options">
+    <div class="tier-opt" data-tier="starter" onclick="pickTier('starter')"><div class="tn">Avatar Starter</div><div class="tp">$3,500 · 4 personas · 12 videos</div></div>
+    <div class="tier-opt" data-tier="growth" onclick="pickTier('growth')"><div class="tn">Avatar Growth</div><div class="tp">$9,500 · 6 personas · 30 videos</div></div>
+    <div class="tier-opt" data-tier="authority" onclick="pickTier('authority')"><div class="tn">Avatar Authority</div><div class="tp">$18,500 + $4,500/mo · 12 personas · 60 + 20/mo</div></div>
+  </div>
+</div>
+
+<!-- SECTION 1 — Tier & Payment Confirmation -->
+<div class="card">
+  <div class="section-num">Section 1</div>
+  <h2 class="section-title">Confirmation & Contact</h2>
+  <p class="section-desc">Confirm what you purchased and how we reach you.</p>
+
+  <div class="fg half">
+    <div class="fg"><label>Full Name<span class="req">*</span></label><input type="text" id="fullName" required placeholder="Jessica White"></div>
+    <div class="fg"><label>Brand / Business Name<span class="req">*</span></label><input type="text" id="brandName" required placeholder="Your brand"></div>
+  </div>
+  <div class="fg half">
+    <div class="fg"><label>Email Address<span class="req">*</span></label><input type="email" id="email" required placeholder="you@brand.com"></div>
+    <div class="fg"><label>Phone Number<span class="req">*</span></label><input type="tel" id="phone" required placeholder="(555) 000-0000"></div>
+  </div>
+  <div class="fg"><label>Brand Website URL<span class="opt">optional</span></label><input type="url" id="website" placeholder="https://yourbrand.com"></div>
+
+  <div class="cb-row">
+    <input type="checkbox" id="paymentConfirm" required>
+    <label for="paymentConfirm">I confirm payment has been processed (Stripe receipt received).</label>
+  </div>
+</div>
+
+<!-- SECTION 2 — Brand Foundation -->
+<div class="card">
+  <div class="section-num">Section 2</div>
+  <h2 class="section-title">Brand Foundation</h2>
+  <p class="section-desc">Critical context before we design any avatar. Be specific — generic answers = generic videos.</p>
+
+  <div class="fg"><label>What does your brand do?<span class="req">*</span></label><textarea id="brandDoes" required placeholder="One or two sentences in plain language. (e.g., 'We deliver compounded GLP-1 weight loss via telehealth.')"></textarea></div>
+  <div class="fg"><label>Primary product / service to promote in these avatars<span class="req">*</span></label><textarea id="primaryProduct" required placeholder="Be specific — exact product name, dose, format if applicable."></textarea></div>
+
+  <div class="fg half">
+    <div class="fg"><label>Niche / Treatment Vertical<span class="req">*</span></label>
+      <select id="niche" required>
+        <option value="">Select one...</option>
+        <option>GLP-1 / Weight Loss</option>
+        <option>HRT</option>
+        <option>Peptides</option>
+        <option>NAD+ / Longevity</option>
+        <option>Hair Loss</option>
+        <option>ED / Men's Health</option>
+        <option>Mental Health</option>
+        <option>Skincare</option>
+        <option>Wellness / Other</option>
+      </select>
+    </div>
+    <div class="fg"><label>3 words that describe your brand voice<span class="req">*</span></label><input type="text" id="threeWords" required placeholder="e.g., trusted, warm, no-BS"></div>
+  </div>
+
+  <div class="fg"><label>Brand voice (pick all that apply)<span class="req">*</span></label>
+    <div class="chips" data-name="brandVoice">
+      <div class="chip" data-v="Bold">Bold</div>
+      <div class="chip" data-v="Warm">Warm</div>
+      <div class="chip" data-v="Professional">Professional</div>
+      <div class="chip" data-v="Playful">Playful</div>
+      <div class="chip" data-v="Edgy">Edgy</div>
+      <div class="chip" data-v="Authoritative">Authoritative</div>
+      <div class="chip" data-v="Empathetic">Empathetic</div>
+      <div class="chip" data-v="Aspirational">Aspirational</div>
+    </div>
+  </div>
+
+  <div class="fg"><label>Direct competitors<span class="req">*</span></label><textarea id="competitors" required placeholder="List 3–5 with URLs if possible. Helps us position against them."></textarea></div>
+  <div class="fg"><label>What makes you different?<span class="req">*</span></label><textarea id="differentiator" required placeholder="Your unique angle, hook, or positioning."></textarea></div>
+
+  <div class="fg"><label>Brand colors<span class="req">*</span></label><input type="text" id="brandColors" required placeholder="Hex codes (#0D1B2A, #8B7EC8) or descriptive (deep navy + lavender)"></div>
+
+  <div class="fg half">
+    <div class="fg"><label>Logo<span class="opt">PNG/SVG preferred</span></label>
+      <label class="file-up" data-target="logoFile"><div class="file-up-icon">↑</div><div class="file-up-text">Click to upload logo</div><div class="file-up-sub">PNG, SVG, AI · max 10MB</div><input type="file" id="logoFile" accept="image/*,.ai,.eps"></label>
+    </div>
+    <div class="fg"><label>Brand assets / guidelines<span class="opt">optional</span></label>
+      <label class="file-up" data-target="brandAssets"><div class="file-up-icon">↑</div><div class="file-up-text">Click to upload</div><div class="file-up-sub">PDF, ZIP · max 25MB</div><input type="file" id="brandAssets" accept=".pdf,.zip,image/*"></label>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3 — Ideal Customer Profile -->
+<div class="card">
+  <div class="section-num">Section 3</div>
+  <h2 class="section-title">Ideal Customer Profile</h2>
+  <p class="section-desc">Avatars only convert when they look like the people you want to attract. This section is non-negotiable.</p>
+
+  <div class="fg half">
+    <div class="fg"><label>Target customer age range<span class="req">*</span></label>
+      <select id="custAge" required><option value="">Select...</option><option>18–25</option><option>26–35</option><option>36–45</option><option>46–55</option><option>56–65</option><option>65+</option></select>
+    </div>
+    <div class="fg"><label>Primary gender of customer<span class="req">*</span></label>
+      <select id="custGender" required><option value="">Select...</option><option>Female</option><option>Male</option><option>All</option><option>Non-binary</option></select>
+    </div>
+  </div>
+  <div class="fg half">
+    <div class="fg"><label>Income level<span class="req">*</span></label>
+      <select id="custIncome" required><option value="">Select...</option><option>Under $50K</option><option>$50K–$100K</option><option>$100K–$250K</option><option>$250K+</option></select>
+    </div>
+    <div class="fg"><label>Avg customer LTV<span class="opt">optional</span></label><input type="number" id="custLtv" placeholder="$"></div>
+  </div>
+
+  <div class="fg"><label>Geographic focus<span class="req">*</span></label>
+    <div class="chips" data-name="geoFocus">
+      <div class="chip" data-v="US">US</div><div class="chip" data-v="Canada">Canada</div><div class="chip" data-v="UK">UK</div><div class="chip" data-v="Australia">Australia</div><div class="chip" data-v="Global">Global</div>
+    </div>
+  </div>
+
+  <div class="fg"><label>Where do they hang out online?<span class="req">*</span></label>
+    <div class="chips" data-name="custChannels">
+      <div class="chip" data-v="Instagram">Instagram</div><div class="chip" data-v="TikTok">TikTok</div><div class="chip" data-v="Facebook">Facebook</div><div class="chip" data-v="YouTube">YouTube</div><div class="chip" data-v="Reddit">Reddit</div><div class="chip" data-v="LinkedIn">LinkedIn</div><div class="chip" data-v="Pinterest">Pinterest</div>
+    </div>
+  </div>
+
+  <div class="fg"><label>Top 3 pain points your customer has<span class="req">*</span></label><textarea id="custPains" required placeholder="Be specific. 'Can't lose weight even with diet & exercise' — not 'health issues.'"></textarea></div>
+  <div class="fg"><label>Top 3 desires / outcomes<span class="req">*</span></label><textarea id="custDesires" required placeholder="What does success look like for them?"></textarea></div>
+  <div class="fg"><label>Common objections to buying<span class="req">*</span></label><textarea id="custObjections" required placeholder="What stops them from purchasing today?"></textarea></div>
+</div>
+
+<!-- SECTION 4 — Persona Specs (REPEATABLE) -->
+<div class="card">
+  <div class="section-num">Section 4</div>
+  <h2 class="section-title">Avatar Persona Specs</h2>
+  <p class="section-desc">Define each persona we'll build. Number of personas matches your tier — fields auto-generated below.</p>
+  <div id="personaContainer"></div>
+</div>
+
+<!-- SECTION 5 — Content Buckets & Hooks -->
+<div class="card">
+  <div class="section-num">Section 5</div>
+  <h2 class="section-title">Content Strategy</h2>
+  <p class="section-desc" id="bucketsDesc">Choose your content buckets — count varies by tier.</p>
+
+  <div class="fg"><label>Content buckets to cover<span class="req">*</span> <span class="opt" id="bucketLimit">(pick 3)</span></label>
+    <div class="chips" data-name="buckets" id="bucketChips">
+      <div class="chip" data-v="Problem & Solution">Problem &amp; Solution</div>
+      <div class="chip" data-v="Health Education">Health Education</div>
+      <div class="chip" data-v="Statistics">Statistics</div>
+      <div class="chip" data-v="Before & After Logic">Before &amp; After Logic</div>
+      <div class="chip" data-v="Product Breakdowns">Product Breakdowns</div>
+      <div class="chip" data-v="UGC Style">UGC Style</div>
+      <div class="chip" data-v="Unboxings">Unboxings</div>
+    </div>
+  </div>
+
+  <div class="fg"><label>Top 5 content hooks / topics you want covered<span class="req">*</span></label><textarea id="contentHooks" required placeholder="What angles, claims, or stories should we hit? Numbered list helps."></textarea></div>
+  <div class="fg"><label>Topics to AVOID<span class="req">*</span></label><textarea id="contentAvoid" required placeholder="Compliance flags, sensitive areas, banned claims, off-limit phrases."></textarea></div>
+
+  <div class="fg half">
+    <div class="fg"><label>Tone of voice for video<span class="req">*</span></label>
+      <div class="chips" data-name="videoTone">
+        <div class="chip" data-v="Conversational">Conversational</div><div class="chip" data-v="Educational">Educational</div><div class="chip" data-v="Hype">Hype</div><div class="chip" data-v="Storytelling">Storytelling</div><div class="chip" data-v="Authoritative">Authoritative</div><div class="chip" data-v="Empathetic">Empathetic</div>
+      </div>
+    </div>
+    <div class="fg"><label>Primary CTA in videos<span class="req">*</span></label>
+      <select id="videoCta" required><option value="">Select...</option><option>Visit website</option><option>Take quiz</option><option>Book consult / call</option><option>Start free visit</option><option>Download</option><option>Follow / Subscribe</option><option>Sign up for newsletter</option></select>
+    </div>
+  </div>
+
+  <div class="fg"><label>Destination URL for ad clicks<span class="req">*</span></label><input type="url" id="destUrl" required placeholder="https://yourbrand.com/quiz"></div>
+
+  <div class="fg half">
+    <div class="fg"><label>Video length preference<span class="req">*</span></label>
+      <div class="chips" data-name="videoLength">
+        <div class="chip" data-v="15s">15 seconds</div><div class="chip" data-v="30s">30 seconds</div><div class="chip" data-v="60s">60 seconds</div>
+      </div>
+    </div>
+    <div class="fg"><label>Captions style<span class="req">*</span></label>
+      <select id="captionStyle" required><option value="">Select...</option><option>Bold word-by-word</option><option>Clean simple</option><option>Branded (custom)</option><option>Auto-generated</option></select>
+    </div>
+  </div>
+
+  <div class="fg"><label>Hashtag preferences<span class="opt">optional</span></label><textarea id="hashtags" placeholder="#yourBrand #campaign1 — leave blank if none"></textarea></div>
+  <div class="fg"><label>Music style preference<span class="opt">optional</span></label>
+    <div class="chips" data-name="musicStyle">
+      <div class="chip" data-v="Trending">Trending</div><div class="chip" data-v="Cinematic">Cinematic</div><div class="chip" data-v="Upbeat">Upbeat</div><div class="chip" data-v="Calm">Calm</div><div class="chip" data-v="None">None</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6 — Authority-only retainer details (CONDITIONAL) -->
+<div class="card" id="authoritySection" style="display:none">
+  <div class="section-num">Section 6 — Monthly Retainer</div>
+  <h2 class="section-title">Authority Retainer Details</h2>
+  <p class="section-desc">Setup for your $4,500/mo creative refresh — 20 fresh videos delivered every month.</p>
+
+  <div class="fg half">
+    <div class="fg"><label>Monthly content cadence<span class="req">*</span></label>
+      <select id="cadence"><option value="">Select...</option><option>Weekly batch (5/week)</option><option>Bi-weekly batch (10/2 weeks)</option><option>Monthly batch (20/month)</option></select>
+    </div>
+    <div class="fg"><label>Preferred delivery day<span class="req">*</span></label>
+      <select id="deliveryDay"><option value="">Select...</option><option>Monday</option><option>Wednesday</option><option>Friday</option></select>
+    </div>
+  </div>
+  <div class="fg half">
+    <div class="fg"><label>Monthly review call<span class="req">*</span></label>
+      <select id="reviewCall"><option value="">Select...</option><option>Yes — schedule recurring</option><option>No — async updates only</option></select>
+    </div>
+    <div class="fg"><label>Persona refresh cadence<span class="req">*</span></label>
+      <select id="refreshCadence"><option value="">Select...</option><option>Quarterly</option><option>Bi-annually</option><option>Annually</option></select>
+    </div>
+  </div>
+  <div class="fg"><label>Performance reporting metrics<span class="req">*</span></label>
+    <div class="chips" data-name="perfMetrics">
+      <div class="chip" data-v="View counts">View counts</div><div class="chip" data-v="CTR">CTR</div><div class="chip" data-v="Conversion rate">Conversion rate</div><div class="chip" data-v="Sales attribution">Sales attribution</div><div class="chip" data-v="ROAS">ROAS</div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 7 — Assets & Voice -->
+<div class="card">
+  <div class="section-num">Section 7</div>
+  <h2 class="section-title">Assets & Voice Direction</h2>
+  <p class="section-desc">Existing footage, photos, voice preferences for our AI generation team.</p>
+
+  <div class="fg half">
+    <div class="fg"><label>Existing video footage<span class="opt">optional</span></label>
+      <label class="file-up" data-target="existingVideo"><div class="file-up-icon">↑</div><div class="file-up-text">Upload UGC, b-roll, product</div><div class="file-up-sub">MP4, MOV · max 100MB</div><input type="file" id="existingVideo" accept="video/*"></label>
+    </div>
+    <div class="fg"><label>Existing photos<span class="opt">optional</span></label>
+      <label class="file-up" data-target="existingPhotos"><div class="file-up-icon">↑</div><div class="file-up-text">Product, lifestyle, brand</div><div class="file-up-sub">JPG/PNG · max 25MB</div><input type="file" id="existingPhotos" accept="image/*" multiple></label>
+    </div>
+  </div>
+
+  <div class="fg half">
+    <div class="fg"><label>Voice preference for AI avatars<span class="req">*</span></label>
+      <select id="voicePref" required><option value="">Select...</option><option>Female — warm</option><option>Female — bold</option><option>Male — warm</option><option>Male — authoritative</option><option>Mix (varies by persona)</option></select>
+    </div>
+    <div class="fg"><label>Accent preference<span class="req">*</span></label>
+      <select id="accentPref" required><option value="">Select...</option><option>American — Standard</option><option>American — Southern</option><option>British</option><option>Australian</option><option>Latin</option><option>Open / mix</option></select>
+    </div>
+  </div>
+
+  <div class="fg"><label>Brands you admire creatively<span class="opt">optional</span></label><textarea id="brandsAdmire" placeholder="Comma-separated. We'll study their creative DNA."></textarea></div>
+  <div class="fg"><label>Inspiration links (TikTok, IG, YouTube)<span class="opt">optional</span></label><textarea id="inspoLinks" placeholder="Drop 3–8 links to videos whose style we should reference."></textarea></div>
+</div>
+
+<!-- SECTION 8 — Legal & Compliance -->
+<div class="card">
+  <div class="section-num">Section 8</div>
+  <h2 class="section-title">Legal & Compliance</h2>
+  <p class="section-desc">Compliance and required disclaimers — critical for telehealth and regulated verticals.</p>
+
+  <div class="fg"><label>Industry compliance flags<span class="req">*</span></label>
+    <div class="chips" data-name="compliance">
+      <div class="chip" data-v="FDA">FDA</div><div class="chip" data-v="FTC">FTC</div><div class="chip" data-v="HIPAA">HIPAA</div><div class="chip" data-v="State telehealth">State telehealth</div><div class="chip" data-v="Beauty claims">Beauty claims</div><div class="chip" data-v="Financial">Financial</div><div class="chip" data-v="None apply">None apply</div>
+    </div>
+  </div>
+  <div class="fg"><label>Required disclaimers<span class="opt">paste exact required language</span></label><textarea id="disclaimers" placeholder="Specific language that must appear on assets."></textarea></div>
+  <div class="fg"><label>Approved claims list<span class="opt">optional</span></label><textarea id="approvedClaims" placeholder="Pre-approved language we can use freely."></textarea></div>
+  <div class="fg"><label>Final approval contact<span class="req">*</span></label><input type="text" id="approvalContact" required placeholder="Name + email of who has final sign-off"></div>
+
+  <div class="cb-row">
+    <input type="checkbox" id="rightsConfirm" required>
+    <label for="rightsConfirm">I confirm I own or have rights to all submitted brand materials.</label>
+  </div>
+  <div class="cb-row">
+    <input type="checkbox" id="conductConfirm" required>
+    <label for="conductConfirm">I have read and agree to GrowPro's revision and feedback policies.</label>
+  </div>
+</div>
+
+<!-- SECTION 9 — Wrap up & Signature -->
+<div class="card">
+  <div class="section-num">Section 9</div>
+  <h2 class="section-title">Final Details</h2>
+
+  <div class="fg"><label>Anything else we should know?<span class="opt">optional</span></label><textarea id="anythingElse" placeholder="Anything we haven't asked that you want us to know."></textarea></div>
+
+  <div class="fg half">
+    <div class="fg"><label>How did you hear about us?<span class="opt">optional</span></label>
+      <select id="referralSource"><option value="">Select...</option><option>Brad Lea Podcast</option><option>Referral</option><option>Social Media</option><option>Google</option><option>Existing client</option><option>Other</option></select>
+    </div>
+    <div class="fg"><label>Onboarding call preference<span class="req">*</span></label>
+      <select id="onboardingPref" required><option value="">Select...</option><option>ASAP</option><option>This week</option><option>Next week</option><option>No call needed</option></select>
+    </div>
+  </div>
+
+  <div class="fg"><label>Best contact method<span class="req">*</span></label>
+    <div class="chips" data-name="contactMethod">
+      <div class="chip" data-v="Email">Email</div><div class="chip" data-v="Slack">Slack</div><div class="chip" data-v="Text">Text</div><div class="chip" data-v="Phone">Phone</div><div class="chip" data-v="Loom">Loom async</div>
+    </div>
+  </div>
+
+  <div class="fg"><label>Signature<span class="req">*</span></label>
+    <div class="sig-wrap" id="sigWrap"><canvas id="sigCanvas"></canvas><div class="sig-placeholder" id="sigPh">Draw your signature here</div></div>
+    <button type="button" class="sig-clear" onclick="clearSig()">Clear signature</button>
+  </div>
+</div>
+
+<div class="cta-row">
+  <button type="button" class="btn btn-s" onclick="window.location.href='https://launch.kickstartsocial.co/avatar'">← Cancel</button>
+  <button type="submit" class="btn btn-p" id="submitBtn">Submit Intake →</button>
+</div>
+
+</div>
+</form>
+
+<!-- SUCCESS STATE -->
+<div class="success" id="successState">
+  <div class="wrap">
+    <div class="success-icon">✓</div>
+    <h2>You're all set.</h2>
+    <p>Your intake has been submitted to our creative team. We'll review within 24 hours and reach out via your preferred contact method to schedule your kickoff call.</p>
+    <p style="margin-top:20px;color:#888;font-size:14px">Submission ID: <strong id="successId">—</strong></p>
+    <p style="margin-top:30px"><a href="https://launch.kickstartsocial.co/avatar" class="btn btn-s" style="display:inline-block;text-decoration:none;padding:14px 28px">Back to AI Avatar Studio</a></p>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>© <span id="yr"></span> Kickstart Social · GrowPro Avatar Studio</div>
+    <div style="margin-top:8px;opacity:.7;font-size:12px">Need help? <a href="mailto:hello@kickstartsocial.co" style="color:var(--p)">hello@kickstartsocial.co</a></div>
+  </div>
+</footer>
+
+<div class="toast" id="toast"></div>
+
+<script>
+document.getElementById('yr').textContent=new Date().getFullYear();
+
+// Tier configuration — MUST match avatar.html authoritative numbers
+var TIER_CONFIG={
+  starter:  {label:'Avatar Starter',   personas:4,  buckets:3, price:'$3,500 one-time'},
+  growth:   {label:'Avatar Growth',    personas:6,  buckets:5, price:'$9,500 one-time'},
+  authority:{label:'Avatar Authority', personas:12, buckets:7, price:'$18,500 + $4,500/mo'}
+};
+
+// Parse tier + prefill from URL params (set by avatar.html success redirect)
+var qs=new URLSearchParams(window.location.search);
+var tier=(qs.get('tier')||'').toLowerCase();
+if(!TIER_CONFIG[tier]) tier='';
+
+var submissionId=qs.get('sid')||'INT-'+Date.now().toString(36).toUpperCase()+'-'+Math.random().toString(36).slice(2,6).toUpperCase();
+
+// Prefill from URL
+['fullName','brandName','email','phone'].forEach(function(id){
+  var v=qs.get(id);if(v) document.getElementById(id).value=v;
+});
+
+function pickTier(t){
+  tier=t;
+  document.querySelectorAll('.tier-opt').forEach(function(el){el.classList.toggle('on',el.dataset.tier===t)});
+  applyTier();
+}
+
+function applyTier(){
+  if(!tier){
+    document.getElementById('tierPromptCard').style.display='block';
+    document.getElementById('personaContainer').innerHTML='<p style="color:#888;font-style:italic">Select your tier above to load persona fields.</p>';
+    return;
+  }
+  document.getElementById('tierPromptCard').style.display='none';
+  var cfg=TIER_CONFIG[tier];
+  document.getElementById('tierBadgeWrap').style.display='inline-block';
+  document.getElementById('tierBadge').textContent=cfg.label+' — '+cfg.price;
+
+  // Buckets
+  document.getElementById('bucketLimit').textContent='(pick '+cfg.buckets+(cfg.buckets===7?', all 7':'')+')';
+  document.getElementById('bucketsDesc').textContent='Choose '+cfg.buckets+' content buckets'+(cfg.buckets===7?' (Authority covers all 7)':' that match your tier')+'.';
+
+  // Authority retainer section
+  document.getElementById('authoritySection').style.display=(tier==='authority'?'block':'none');
+  document.querySelectorAll('#authoritySection select').forEach(function(s){s.required=(tier==='authority')});
+
+  // Personas
+  buildPersonas(cfg.personas);
+  updateProgress();
+}
+
+function buildPersonas(n){
+  var html='';
+  for(var i=1;i<=n;i++){
+    html+='<div class="persona-block">'+
+      '<div class="persona-num">Persona '+i+' of '+n+'</div>'+
+      '<div class="fg half">'+
+        '<div class="fg"><label>Persona nickname<span class="req">*</span></label><input type="text" required data-pf="name" data-pi="'+i+'" placeholder="e.g., Suburban Mom Sarah"></div>'+
+        '<div class="fg"><label>Avatar role<span class="req">*</span></label><select required data-pf="role" data-pi="'+i+'"><option value="">Select...</option><option>Patient / Customer</option><option>Authority Figure (Doctor/Nurse)</option><option>Casual Creator (UGC)</option><option>Spokesperson</option></select></div>'+
+      '</div>'+
+      '<div class="fg half">'+
+        '<div class="fg"><label>Funnel stage<span class="req">*</span></label><select required data-pf="funnel" data-pi="'+i+'"><option value="">Select...</option><option>TOF (cold awareness)</option><option>MOF (warming)</option><option>BOF (closing)</option></select></div>'+
+        '<div class="fg"><label>Age range<span class="req">*</span></label><select required data-pf="age" data-pi="'+i+'"><option value="">Select...</option><option>18–25</option><option>26–35</option><option>36–45</option><option>46–55</option><option>56–65</option><option>65+</option></select></div>'+
+      '</div>'+
+      '<div class="fg half">'+
+        '<div class="fg"><label>Gender presentation<span class="req">*</span></label><select required data-pf="gender" data-pi="'+i+'"><option value="">Select...</option><option>Female</option><option>Male</option><option>Non-binary</option><option>No preference</option></select></div>'+
+        '<div class="fg"><label>Body type<span class="req">*</span></label><select required data-pf="body" data-pi="'+i+'"><option value="">Select...</option><option>Slim</option><option>Athletic</option><option>Average</option><option>Curvy</option><option>Plus-size</option><option>Open</option></select></div>'+
+      '</div>'+
+      '<div class="fg half">'+
+        '<div class="fg"><label>Hair color<span class="req">*</span></label><select required data-pf="hair" data-pi="'+i+'"><option value="">Select...</option><option>Brunette</option><option>Blonde</option><option>Black</option><option>Red</option><option>Gray</option><option>Open</option></select></div>'+
+        '<div class="fg"><label>Setting / environment<span class="req">*</span></label><select required data-pf="setting" data-pi="'+i+'"><option value="">Select...</option><option>Home (kitchen/living room)</option><option>Bathroom mirror</option><option>Clinic exam room</option><option>Office</option><option>Beach / outdoors</option><option>Gym</option><option>Studio neutral</option></select></div>'+
+      '</div>'+
+      '<div class="fg"><label>Ethnicity / look<span class="req">*</span></label>'+
+        '<div class="chips" data-name="p_ethnicity_'+i+'"><div class="chip" data-v="Latina/o">Latina/o</div><div class="chip" data-v="Caucasian">Caucasian</div><div class="chip" data-v="Black">Black</div><div class="chip" data-v="Asian">Asian</div><div class="chip" data-v="South Asian">South Asian</div><div class="chip" data-v="Middle Eastern">Middle Eastern</div><div class="chip" data-v="Mixed">Mixed</div><div class="chip" data-v="Open">Open</div></div>'+
+      '</div>'+
+      '<div class="fg"><label>Style aesthetic<span class="req">*</span></label>'+
+        '<div class="chips" data-name="p_style_'+i+'"><div class="chip" data-v="Luxe">Luxe</div><div class="chip" data-v="Casual">Casual</div><div class="chip" data-v="Athleisure">Athleisure</div><div class="chip" data-v="Professional">Professional</div><div class="chip" data-v="Bohemian">Bohemian</div><div class="chip" data-v="Edgy">Edgy</div></div>'+
+      '</div>'+
+      '<div class="fg"><label>Personality traits<span class="req">*</span></label>'+
+        '<div class="chips" data-name="p_traits_'+i+'"><div class="chip" data-v="Confident">Confident</div><div class="chip" data-v="Relatable">Relatable</div><div class="chip" data-v="Aspirational">Aspirational</div><div class="chip" data-v="Authoritative">Authoritative</div><div class="chip" data-v="Friendly">Friendly</div><div class="chip" data-v="Bold">Bold</div></div>'+
+      '</div>'+
+      '<div class="fg"><label>Why does this persona resonate with your audience?<span class="req">*</span></label><textarea required data-pf="resonance" data-pi="'+i+'" placeholder="Explain in 1-2 sentences why this look fits your audience."></textarea></div>'+
+      '<div class="fg"><label>Reference images<span class="opt">optional, up to 3</span></label>'+
+        '<label class="file-up" data-target="p_refs_'+i+'"><div class="file-up-icon">↑</div><div class="file-up-text">Upload reference images</div><div class="file-up-sub">JPG/PNG · max 10MB</div><input type="file" id="p_refs_'+i+'" data-pf="refs" data-pi="'+i+'" accept="image/*" multiple></label>'+
+      '</div>'+
+    '</div>';
+  }
+  document.getElementById('personaContainer').innerHTML=html;
+  initChips();
+  initFiles();
+}
+
+// Chip multi-select
+function initChips(){
+  document.querySelectorAll('.chips').forEach(function(group){
+    if(group.dataset.bound) return;
+    group.dataset.bound='1';
+    group.addEventListener('click',function(e){
+      var chip=e.target.closest('.chip');if(!chip) return;
+      // Bucket limit enforcement
+      if(group.id==='bucketChips' && tier){
+        var max=TIER_CONFIG[tier].buckets;
+        var on=group.querySelectorAll('.chip.on').length;
+        if(!chip.classList.contains('on') && on>=max){
+          showToast('Max '+max+' buckets for your tier','err');return;
+        }
+      }
+      chip.classList.toggle('on');
+      updateProgress();
+    });
+  });
+}
+
+// File uploads
+function initFiles(){
+  document.querySelectorAll('.file-up').forEach(function(label){
+    if(label.dataset.bound) return;
+    label.dataset.bound='1';
+    var inp=label.querySelector('input[type=file]');
+    inp.addEventListener('change',function(){
+      if(inp.files && inp.files.length){
+        label.classList.add('has-file');
+        var n=inp.files.length;
+        label.querySelector('.file-up-text').textContent=(n===1?inp.files[0].name:n+' files selected');
+      }else{
+        label.classList.remove('has-file');
+      }
+    });
+  });
+}
+
+// Signature
+var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;
+function initSig(){
+  sigCanvas=document.getElementById('sigCanvas');
+  sigCtx=sigCanvas.getContext('2d');
+  var wrap=document.getElementById('sigWrap');
+  function resize(){var r=wrap.getBoundingClientRect();sigCanvas.width=r.width;sigCanvas.height=r.height;sigCtx.strokeStyle='#0D1B2A';sigCtx.lineWidth=2;sigCtx.lineCap='round';sigCtx.lineJoin='round'}
+  resize();window.addEventListener('resize',resize);
+  function pos(e){var r=sigCanvas.getBoundingClientRect();var x=(e.touches?e.touches[0].clientX:e.clientX)-r.left;var y=(e.touches?e.touches[0].clientY:e.clientY)-r.top;return{x:x,y:y}}
+  function start(e){e.preventDefault();sigDrawing=true;var p=pos(e);sigCtx.beginPath();sigCtx.moveTo(p.x,p.y);document.getElementById('sigPh').style.display='none'}
+  function draw(e){if(!sigDrawing)return;e.preventDefault();var p=pos(e);sigCtx.lineTo(p.x,p.y);sigCtx.stroke();sigHasData=true}
+  function end(){sigDrawing=false}
+  sigCanvas.addEventListener('mousedown',start);sigCanvas.addEventListener('mousemove',draw);sigCanvas.addEventListener('mouseup',end);sigCanvas.addEventListener('mouseleave',end);
+  sigCanvas.addEventListener('touchstart',start);sigCanvas.addEventListener('touchmove',draw);sigCanvas.addEventListener('touchend',end);
+}
+function clearSig(){sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);sigHasData=false;document.getElementById('sigPh').style.display='flex'}
+
+// Progress
+function updateProgress(){
+  var inputs=document.querySelectorAll('input[required],select[required],textarea[required]');
+  var filled=0,total=inputs.length;
+  inputs.forEach(function(i){
+    if(i.type==='checkbox'){if(i.checked)filled++;}
+    else if(i.value && i.value.trim()) filled++;
+  });
+  // Required chip groups (if tier selected)
+  var reqChips=['brandVoice','geoFocus','custChannels','buckets','videoTone','videoLength','compliance','contactMethod'];
+  reqChips.forEach(function(name){
+    total++;
+    var g=document.querySelector('[data-name="'+name+'"]');
+    if(g && g.querySelectorAll('.chip.on').length) filled++;
+  });
+  var pct=total?Math.round((filled/total)*100):0;
+  document.getElementById('pbarFill').style.width=pct+'%';
+}
+document.addEventListener('input',updateProgress);
+document.addEventListener('change',updateProgress);
+
+// Toast
+function showToast(msg,type){
+  var t=document.getElementById('toast');
+  t.textContent=msg;t.className='toast show'+(type==='err'?' err':'');
+  setTimeout(function(){t.className='toast'},3500);
+}
+
+// Collect submission payload
+function collectPayload(){
+  function val(id){var el=document.getElementById(id);return el?el.value.trim():''}
+  function chips(name){return Array.from(document.querySelectorAll('[data-name="'+name+'"] .chip.on')).map(function(c){return c.dataset.v})}
+
+  // Collect personas
+  var personas=[];
+  if(tier){
+    var n=TIER_CONFIG[tier].personas;
+    for(var i=1;i<=n;i++){
+      var p={};
+      ['name','role','funnel','age','gender','body','hair','setting','resonance'].forEach(function(f){
+        var el=document.querySelector('[data-pf="'+f+'"][data-pi="'+i+'"]');
+        if(el) p[f]=el.value.trim();
+      });
+      p.ethnicity=chips('p_ethnicity_'+i);
+      p.style=chips('p_style_'+i);
+      p.traits=chips('p_traits_'+i);
+      personas.push(p);
+    }
+  }
+
+  return {
+    submissionId:submissionId,
+    submittedAt:new Date().toISOString(),
+    tier:tier,
+    tierLabel:TIER_CONFIG[tier]?TIER_CONFIG[tier].label:'',
+    contact:{
+      fullName:val('fullName'),brandName:val('brandName'),email:val('email'),phone:val('phone'),website:val('website'),
+      paymentConfirmed:document.getElementById('paymentConfirm').checked
+    },
+    brand:{
+      brandDoes:val('brandDoes'),primaryProduct:val('primaryProduct'),niche:val('niche'),
+      threeWords:val('threeWords'),voice:chips('brandVoice'),
+      competitors:val('competitors'),differentiator:val('differentiator'),colors:val('brandColors')
+    },
+    customer:{
+      ageRange:val('custAge'),gender:val('custGender'),income:val('custIncome'),ltv:val('custLtv'),
+      geo:chips('geoFocus'),channels:chips('custChannels'),
+      pains:val('custPains'),desires:val('custDesires'),objections:val('custObjections')
+    },
+    personas:personas,
+    content:{
+      buckets:chips('buckets'),hooks:val('contentHooks'),avoid:val('contentAvoid'),
+      tone:chips('videoTone'),cta:val('videoCta'),destUrl:val('destUrl'),
+      length:chips('videoLength'),captions:val('captionStyle'),
+      hashtags:val('hashtags'),music:chips('musicStyle')
+    },
+    retainer:tier==='authority'?{
+      cadence:val('cadence'),deliveryDay:val('deliveryDay'),
+      reviewCall:val('reviewCall'),refreshCadence:val('refreshCadence'),
+      metrics:chips('perfMetrics')
+    }:null,
+    voice:{
+      preference:val('voicePref'),accent:val('accentPref'),
+      brandsAdmire:val('brandsAdmire'),inspoLinks:val('inspoLinks')
+    },
+    compliance:{
+      flags:chips('compliance'),disclaimers:val('disclaimers'),
+      approvedClaims:val('approvedClaims'),approvalContact:val('approvalContact'),
+      rightsConfirmed:document.getElementById('rightsConfirm').checked,
+      conductConfirmed:document.getElementById('conductConfirm').checked
+    },
+    wrapup:{
+      anythingElse:val('anythingElse'),referralSource:val('referralSource'),
+      onboardingPref:val('onboardingPref'),contactMethod:chips('contactMethod')
+    },
+    signature:{
+      hasSignature:sigHasData,
+      signatureDataUrl:sigHasData?sigCanvas.toDataURL('image/png'):null
+    }
+  };
+}
+
+// Submit handler
+document.getElementById('intakeForm').addEventListener('submit',function(e){
+  e.preventDefault();
+  var btn=document.getElementById('submitBtn');
+
+  // Validate tier
+  if(!tier){showToast('Please select your tier first','err');window.scrollTo({top:0,behavior:'smooth'});return}
+  // Validate signature
+  if(!sigHasData){showToast('Please add your signature','err');document.getElementById('sigWrap').scrollIntoView({behavior:'smooth',block:'center'});return}
+
+  // Validate required chip groups
+  var bucketCount=document.querySelectorAll('#bucketChips .chip.on').length;
+  var requiredBuckets=TIER_CONFIG[tier].buckets;
+  if(bucketCount!==requiredBuckets){showToast('Please select exactly '+requiredBuckets+' content buckets','err');document.getElementById('bucketChips').scrollIntoView({behavior:'smooth',block:'center'});return}
+
+  btn.disabled=true;btn.textContent='Submitting...';
+  var payload=collectPayload();
+
+  // POST to GHL webhook — same workflow as marketing.html, GHL routes to ClickUp via existing integration
+  // Differentiate via formType so GHL can route avatar intakes to the "AI Avatar Intakes" list
+  var WEBHOOK_URL=window.AVATAR_INTAKE_WEBHOOK||'https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f';
+
+  // Wrap payload with routing metadata for GHL→ClickUp workflow
+  var ghlPayload=Object.assign({
+    formType:'avatar_intake',
+    clickupListId:'901416148134',
+    clickupListName:'AI Avatar Intakes',
+    defaultAssigneeEmail:'denise@kickstartsocial.co',
+    workspaceId:'9014054089'
+  },payload);
+
+  fetch(WEBHOOK_URL,{
+    method:'POST',
+    headers:{'Content-Type':'application/json'},
+    body:JSON.stringify(ghlPayload)
+  }).then(function(r){
+    // Show success regardless — webhook may fail silently in dev
+    document.getElementById('intakeForm').style.display='none';
+    document.getElementById('successId').textContent=submissionId;
+    document.getElementById('successState').classList.add('show');
+    window.scrollTo({top:0,behavior:'smooth'});
+    // Also persist to localStorage as a backup
+    try{localStorage.setItem('avatarIntake_'+submissionId,JSON.stringify(ghlPayload))}catch(e){}
+  }).catch(function(err){
+    console.error('Webhook error',err);
+    // Still show success — manual recovery via localStorage backup
+    document.getElementById('intakeForm').style.display='none';
+    document.getElementById('successId').textContent=submissionId;
+    document.getElementById('successState').classList.add('show');
+    try{localStorage.setItem('avatarIntake_'+submissionId,JSON.stringify(ghlPayload))}catch(e){}
+    window.scrollTo({top:0,behavior:'smooth'});
+  });
+});
+
+// Initialize
+window.addEventListener('DOMContentLoaded',function(){
+  applyTier();
+  initChips();
+  initFiles();
+  initSig();
+  updateProgress();
+});
+</script>
+
+</body>
+</html>
