@@ -76,21 +76,26 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .proof-tile{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#0D1B2A;box-shadow:var(--sh);cursor:pointer;transition:var(--t)}
 .proof-tile:hover{transform:translateY(-4px);box-shadow:var(--shh)}
 .proof-tile-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;pointer-events:none}
-.proof-tile-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,0) 60%,rgba(13,27,42,.55) 100%);transition:var(--t)}
+.proof-tile-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,0) 60%,rgba(13,27,42,.55) 100%);transition:var(--t);pointer-events:none}
 .proof-tile:hover .proof-tile-overlay{background:linear-gradient(180deg,rgba(13,27,42,.15) 0%,rgba(13,27,42,.65) 100%)}
-.proof-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--n);box-shadow:0 6px 20px rgba(0,0,0,.35);transition:var(--t)}
+.proof-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--n);box-shadow:0 6px 20px rgba(0,0,0,.35);transition:var(--t);pointer-events:none}
 .proof-play::before{content:'▶';margin-left:5px}
 .proof-tile:hover .proof-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+/* When a tile is playing, hide thumb/overlay/play so iframe is unobstructed */
+.proof-tile.playing .proof-tile-thumb,.proof-tile.playing .proof-tile-overlay,.proof-tile.playing .proof-play{display:none}
+.proof-tile-iframe{position:absolute;inset:0;width:100%;height:100%;border:none;background:#000;display:block}
 
 /* Lightbox modal for Vimeo */
-.vmodal{position:fixed;inset:0;background:rgba(8,15,28,.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+/* Vimeo lightbox: fixed, viewport-locked. Sizes 9:16 video so it always fits on screen */
+.vmodal{position:fixed;inset:0;background:rgba(8,15,28,.92);z-index:99999;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
 .vmodal.open{display:flex;animation:vfade .25s ease}
 @keyframes vfade{from{opacity:0}to{opacity:1}}
-.vmodal-inner{position:relative;width:100%;max-width:420px;aspect-ratio:9/16;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
-.vmodal-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
-.vmodal-close{position:absolute;top:-44px;right:0;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+/* Inner sized in CSS so 9:16 ratio is preserved AND it never exceeds 85vh. width derived from height (height:85vh → width = 85vh * 9/16) */
+.vmodal-inner{position:relative;height:min(85vh,800px);width:calc(min(85vh,800px) * 9 / 16);max-width:92vw;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vmodal-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:none;display:block}
+.vmodal-close{position:absolute;top:-44px;right:0;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:var(--t);z-index:10}
 .vmodal-close:hover{background:rgba(255,255,255,.22)}
-@media(max-width:480px){.vmodal-inner{max-width:96vw}.vmodal-close{top:-38px}}
+@media(max-width:480px){.vmodal-inner{height:min(80vh,720px);width:calc(min(80vh,720px) * 9 / 16)}.vmodal-close{top:-38px}}
 
 /* Pain section */
 .pain{background:var(--n);color:var(--w);padding:72px 0;text-align:center}
@@ -363,14 +368,14 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
     <h2>Real AI Avatars. Real Ad Creative.</h2>
     <p class="proof-sub">Tap any tile to watch a sample of the kind of ad creative we'll build for your brand.</p>
     <div class="proof-grid" id="proofGrid">
-      <div class="proof-tile" onclick="openProof('1189503072')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503072.jpg" alt="AI avatar sample 1" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189503670')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503670.jpg" alt="AI avatar sample 2" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189503490')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503490.jpg" alt="AI avatar sample 3" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189504000')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504000.jpg" alt="AI avatar sample 4" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189504180')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504180.jpg" alt="AI avatar sample 5" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189504558')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504558.jpg" alt="AI avatar sample 6" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189504422')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504422.jpg" alt="AI avatar sample 7" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
-      <div class="proof-tile" onclick="openProof('1189505088')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189505088.jpg" alt="AI avatar sample 8" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189503072',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503072.jpg" alt="AI avatar sample 1" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189503670',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503670.jpg" alt="AI avatar sample 2" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189503490',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503490.jpg" alt="AI avatar sample 3" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504000',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504000.jpg" alt="AI avatar sample 4" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504180',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504180.jpg" alt="AI avatar sample 5" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504558',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504558.jpg" alt="AI avatar sample 6" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504422',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504422.jpg" alt="AI avatar sample 7" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189505088',event)"><img class="proof-tile-thumb" src="https://vumbnail.com/1189505088.jpg" alt="AI avatar sample 8" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
     </div>
 
     <!-- Vimeo lightbox modal -->
@@ -964,22 +969,44 @@ function buildSum(){
 function getTierName(){return selectedTier?tiers[selectedTier].name:'No tier selected'}
 
 function submitForm(){
+  console.log('[avatar] submitForm() called');
   var fn=document.getElementById('firstName').value.trim();
   var em=document.getElementById('email').value.trim();
   var bn=document.getElementById('bizName').value.trim();
   var ok=true;
+  var missing=[];
   document.getElementById('firstName').classList.remove('err');
   document.getElementById('email').classList.remove('err');
   document.getElementById('bizName').classList.remove('err');
   document.getElementById('fnE').classList.remove('show');
   document.getElementById('emE').classList.remove('show');
   document.getElementById('bnE').classList.remove('show');
-  if(!fn){document.getElementById('firstName').classList.add('err');document.getElementById('fnE').classList.add('show');ok=false}
-  if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){document.getElementById('email').classList.add('err');document.getElementById('emE').classList.add('show');ok=false}
-  if(!bn){document.getElementById('bizName').classList.add('err');document.getElementById('bnE').classList.add('show');ok=false}
-  if(!sigHasData){document.getElementById('sigErr').classList.add('show');ok=false}else{document.getElementById('sigErr').classList.remove('show')}
-  if(!document.getElementById('agreeCheck').checked){document.getElementById('sigErr').classList.add('show');ok=false}
-  if(!ok) return;
+  if(!fn){document.getElementById('firstName').classList.add('err');document.getElementById('fnE').classList.add('show');ok=false;missing.push('First Name')}
+  if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){document.getElementById('email').classList.add('err');document.getElementById('emE').classList.add('show');ok=false;missing.push('Valid Email')}
+  if(!bn){document.getElementById('bizName').classList.add('err');document.getElementById('bnE').classList.add('show');ok=false;missing.push('Brand Name')}
+  if(!sigHasData){document.getElementById('sigErr').classList.add('show');ok=false;missing.push('Signature (draw in box)')}else{document.getElementById('sigErr').classList.remove('show')}
+  if(!document.getElementById('agreeCheck').checked){document.getElementById('sigErr').classList.add('show');ok=false;missing.push('Agreement checkbox')}
+  if(!ok){
+    console.warn('[avatar] submitForm blocked. Missing:',missing);
+    // Build/show a top-of-step banner so the user can't miss the issue
+    var step4 = document.getElementById('step4');
+    var banner = document.getElementById('submitErrBanner');
+    if(!banner){
+      banner = document.createElement('div');
+      banner.id='submitErrBanner';
+      banner.style.cssText='background:#FFF0F0;border:2px solid #C62828;border-radius:10px;padding:14px 18px;font-size:15px;color:#C62828;margin:0 0 18px 0;font-weight:600';
+      var formV = document.getElementById('formV');
+      if(formV) formV.insertBefore(banner, formV.firstChild);
+    }
+    banner.innerHTML = '⚠ Cannot proceed to checkout. Please complete: <strong>'+missing.join(', ')+'</strong>.';
+    banner.style.display='block';
+    try{ banner.scrollIntoView({behavior:'smooth',block:'center'}); }catch(_){ window.scrollTo(0,0); }
+    // Tell parent Webflow iframe to scroll to top of iframe so error is visible
+    try{ if(window.parent && window.parent!==window){ window.parent.postMessage({type:'growpro:scroll',target:'iframe-top'},'*'); } }catch(_){}
+    return;
+  }
+  var banner = document.getElementById('submitErrBanner');
+  if(banner) banner.style.display='none';
 
   var t=calcTotals();
   var payload={
@@ -1036,6 +1063,7 @@ function submitForm(){
 
   payBtn.onclick=function(e){
     e.preventDefault();payBtn.textContent='Creating checkout...';payBtn.style.opacity='0.7';
+    console.log('[avatar] Creating Stripe checkout, items:',stripeItems);
     fetch(STRIPE_API_URL,{
       method:'POST',headers:{'Content-Type':'application/json'},
       body:JSON.stringify({
@@ -1047,12 +1075,26 @@ function submitForm(){
         cancel_url:'https://launch.kickstartsocial.co/avatar'
       })
     }).then(function(r){return r.json()}).then(function(d){
-      if(d.url){(window.top||window).location.href=d.url}
-      else{payBtn.textContent=btnLabel;payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
+      console.log('[avatar] Stripe response:',d);
+      if(d.url){
+        // Force navigation to Stripe checkout (top-level so it breaks out of the Webflow iframe)
+        try{(window.top||window).location.href=d.url;}catch(_){window.location.href=d.url;}
+      } else {
+        payBtn.textContent=btnLabel;payBtn.style.opacity='1';
+        alert('Stripe checkout error: '+(d.error||'Unknown error. Please contact support.'));
+      }
     }).catch(function(err){
-      payBtn.textContent=btnLabel;payBtn.style.opacity='1';alert('Connection error. Please try again.');
+      console.error('[avatar] Stripe fetch error:',err);
+      payBtn.textContent=btnLabel;payBtn.style.opacity='1';
+      alert('Connection error reaching Stripe. Please try again or contact hello@kickstartsocial.co.');
     });
   };
+
+  // Auto-trigger Stripe checkout immediately rather than making the user click "Pay Now" again.
+  // This eliminates the dead-end where users land on "You\'re in" and don\'t realize they need to click Pay Now.
+  setTimeout(function(){ try{ payBtn.click(); }catch(_){} }, 400);
+  // Also scroll the iframe to the top so the user sees the "You\'re in. Creating checkout..." state
+  try{ if(window.parent && window.parent!==window){ window.parent.postMessage({type:'growpro:scroll',target:'iframe-top'},'*'); } }catch(_){}
   document.querySelectorAll('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='\u2713'});
   document.querySelectorAll('.pcon').forEach(function(c){c.classList.add('completed')});
 }
@@ -1063,15 +1105,34 @@ document.addEventListener('DOMContentLoaded',function(){
   updatePrice();initSig();
 });
 
-// Proof gallery — Vimeo lightbox
-function openProof(vimeoId){
-  var modal=document.getElementById('vmodal');
-  var frame=document.getElementById('vmodalFrame');
-  // autoplay=1 so the video starts when modal opens (user-initiated click), no autoplay on page load
-  // muted=0 so sound is on, loop=0, byline=0 title=0 portrait=0 for clean player
-  frame.src='https://player.vimeo.com/video/'+vimeoId+'?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
-  modal.classList.add('open');
-  document.body.style.overflow='hidden';
+// Proof gallery — inline play (no modal, no scroll). Tile becomes iframe in place.
+function openProof(vimeoId, ev){
+  // Find the tile element. Prefer the click target's closest .proof-tile for safety.
+  var tile = (ev && ev.currentTarget) ? ev.currentTarget : null;
+  if(!tile){
+    // fallback: look up via tiles list
+    var tiles = document.querySelectorAll('.proof-tile');
+    for(var i=0;i<tiles.length;i++){
+      if((tiles[i].getAttribute('onclick')||'').indexOf(vimeoId)!==-1){ tile = tiles[i]; break; }
+    }
+  }
+  if(!tile) return;
+  if(tile.classList.contains('playing')) return; // already playing
+  // Remove any iframe leftover
+  var existing = tile.querySelector('iframe');
+  if(existing) existing.parentNode.removeChild(existing);
+  var f = document.createElement('iframe');
+  f.className='proof-tile-iframe';
+  f.allow='autoplay; fullscreen; picture-in-picture';
+  f.setAttribute('allowfullscreen','');
+  f.src='https://player.vimeo.com/video/'+vimeoId+'?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+  tile.appendChild(f);
+  tile.classList.add('playing');
+  // Pause other playing tiles for clean UX (single-video-at-a-time)
+  document.querySelectorAll('.proof-tile.playing').forEach(function(t){
+    if(t!==tile){ var i2=t.querySelector('iframe'); if(i2) i2.parentNode.removeChild(i2); t.classList.remove('playing'); }
+  });
+  if(typeof reportHeightToParent==='function') setTimeout(reportHeightToParent,200);
 }
 function closeProof(e){
   if(e && e.target && !e.target.classList.contains('vmodal') && !e.target.classList.contains('vmodal-close')) return;
