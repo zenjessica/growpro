@@ -794,7 +794,23 @@ window.addEventListener('DOMContentLoaded',function(){
   initFiles();
   initSig();
   updateProgress();
+  reportHeightToParent();
 });
+
+// IFRAME-FIT: broadcast content height + scroll-to-top to parent Webflow page
+// Matches pattern in marketing.html / avatar.html — relies on WEBFLOW-IFRAME-AUTORESIZE listener installed at Webflow project Footer Code level.
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight,document.documentElement.offsetHeight);
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'intake',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+setInterval(reportHeightToParent, 1500);
 </script>
 
 </body>
