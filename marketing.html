@@ -445,7 +445,7 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div></footer>
 
 <script>
-var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
+var INTAKE_API_URL=window.INTAKE_API_URL||"https://growpro-api-xgp4ebet.manus.space/api/intake";
 var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
 var addons=[],step=1,isFullStack=false;
 var hasCore=false,hasMeta=false;
@@ -722,9 +722,10 @@ function submitForm(){
     date_signed:new Date().toISOString(),
     signature:getSigData()
   };
-  if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
-    fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)});
-  } else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
+  // Direct POST to ClickUp proxy (no GHL). formType routes to Marketing list.
+  var proxyPayload=Object.assign({formType:'marketing',sid:'mkt-'+Date.now(),fullName:fn+' '+(document.getElementById('lastName').value.trim()),brandName:bn},payload);
+  console.log('[marketing] POSTing to proxy:',INTAKE_API_URL,proxyPayload);
+  fetch(INTAKE_API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(proxyPayload)}).then(function(r){return r.json()}).then(function(d){console.log('[marketing] Proxy response:',d)}).catch(function(e){console.error('[marketing] Proxy error:',e)});
   document.getElementById('formV').classList.add('hid');
   document.getElementById('confV').classList.remove('hid');
   document.getElementById('sidebar').style.display='none';
