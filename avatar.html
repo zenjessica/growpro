@@ -69,17 +69,28 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .proof-eyebrow{text-align:center;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--p);margin-bottom:8px}
 .proof h2{text-align:center;font-size:36px;font-weight:800;color:var(--n);margin-bottom:8px;letter-spacing:-1px}
 .proof-sub{text-align:center;font-size:16px;color:#666;max-width:560px;margin:0 auto 40px}
-.proof-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:16px;max-width:1100px;margin:0 auto}
-@media(max-width:1024px){.proof-grid{grid-template-columns:repeat(3,1fr)}}
-@media(max-width:640px){.proof-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
-.proof-tile{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:linear-gradient(135deg,#E8E4F5 0%,#8B7EC8 100%);box-shadow:var(--sh);cursor:pointer;transition:var(--t)}
+.proof-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;max-width:1180px;margin:0 auto}
+@media(max-width:1024px){.proof-grid{grid-template-columns:repeat(3,1fr);gap:14px}}
+@media(max-width:768px){.proof-grid{grid-template-columns:repeat(2,1fr);gap:12px}}
+@media(max-width:480px){.proof-grid{grid-template-columns:repeat(2,1fr);gap:10px}}
+.proof-tile{position:relative;aspect-ratio:9/16;border-radius:14px;overflow:hidden;background:#0D1B2A;box-shadow:var(--sh);cursor:pointer;transition:var(--t)}
 .proof-tile:hover{transform:translateY(-4px);box-shadow:var(--shh)}
-.proof-tile-overlay{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:space-between;padding:14px;background:linear-gradient(180deg,rgba(13,27,42,0) 50%,rgba(13,27,42,.85) 100%);color:var(--w)}
-.proof-bucket{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:5px 10px;border-radius:12px;background:rgba(255,255,255,.95);color:var(--n);align-self:flex-start;backdrop-filter:blur(4px)}
-.proof-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:56px;height:56px;border-radius:50%;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--n);box-shadow:0 4px 16px rgba(0,0,0,.2)}
-.proof-play::before{content:'▶';margin-left:4px}
-.proof-bottom{font-size:12px;font-weight:600}
-.proof-empty{text-align:center;color:rgba(255,255,255,.7);font-size:11px;font-weight:600;padding:8px;text-transform:uppercase;letter-spacing:1px}
+.proof-tile-thumb{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;border:none;pointer-events:none}
+.proof-tile-overlay{position:absolute;inset:0;background:linear-gradient(180deg,rgba(13,27,42,0) 60%,rgba(13,27,42,.55) 100%);transition:var(--t)}
+.proof-tile:hover .proof-tile-overlay{background:linear-gradient(180deg,rgba(13,27,42,.15) 0%,rgba(13,27,42,.65) 100%)}
+.proof-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:60px;height:60px;border-radius:50%;background:rgba(255,255,255,.96);display:flex;align-items:center;justify-content:center;font-size:22px;color:var(--n);box-shadow:0 6px 20px rgba(0,0,0,.35);transition:var(--t)}
+.proof-play::before{content:'▶';margin-left:5px}
+.proof-tile:hover .proof-play{transform:translate(-50%,-50%) scale(1.08);background:#fff}
+
+/* Lightbox modal for Vimeo */
+.vmodal{position:fixed;inset:0;background:rgba(8,15,28,.92);z-index:9999;display:none;align-items:center;justify-content:center;padding:24px;backdrop-filter:blur(8px)}
+.vmodal.open{display:flex;animation:vfade .25s ease}
+@keyframes vfade{from{opacity:0}to{opacity:1}}
+.vmodal-inner{position:relative;width:100%;max-width:420px;aspect-ratio:9/16;background:#000;border-radius:18px;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.vmodal-inner iframe{position:absolute;inset:0;width:100%;height:100%;border:none}
+.vmodal-close{position:absolute;top:-44px;right:0;background:rgba(255,255,255,.12);color:#fff;border:1px solid rgba(255,255,255,.2);width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:18px;display:flex;align-items:center;justify-content:center;transition:var(--t)}
+.vmodal-close:hover{background:rgba(255,255,255,.22)}
+@media(max-width:480px){.vmodal-inner{max-width:96vw}.vmodal-close{top:-38px}}
 
 /* Pain section */
 .pain{background:var(--n);color:var(--w);padding:72px 0;text-align:center}
@@ -352,11 +363,22 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
     <h2>Real AI Avatars. Real Ad Creative.</h2>
     <p class="proof-sub">Tap any tile to watch a sample of the kind of ad creative we'll build for your brand.</p>
     <div class="proof-grid" id="proofGrid">
-      <div class="proof-tile" onclick="openProof(1)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Health Education</span><div class="proof-bottom">Authority avatar · TOF</div></div></div>
-      <div class="proof-tile" onclick="openProof(2)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Before &amp; After</span><div class="proof-bottom">Patient avatar · MOF</div></div></div>
-      <div class="proof-tile" onclick="openProof(3)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">UGC Style</span><div class="proof-bottom">Casual avatar · MOF→BOF</div></div></div>
-      <div class="proof-tile" onclick="openProof(4)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Product Breakdown</span><div class="proof-bottom">Authority avatar · MOF</div></div></div>
-      <div class="proof-tile" onclick="openProof(5)"><div class="proof-overlay"><div class="proof-empty">Sample Coming Soon</div></div><div class="proof-play"></div><div class="proof-tile-overlay"><span class="proof-bucket">Unboxing</span><div class="proof-bottom">Patient avatar · BOF</div></div></div>
+      <div class="proof-tile" onclick="openProof('1189503072')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503072.jpg" alt="AI avatar sample 1" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189503670')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503670.jpg" alt="AI avatar sample 2" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189503490')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189503490.jpg" alt="AI avatar sample 3" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504000')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504000.jpg" alt="AI avatar sample 4" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504180')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504180.jpg" alt="AI avatar sample 5" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504558')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504558.jpg" alt="AI avatar sample 6" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189504422')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189504422.jpg" alt="AI avatar sample 7" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+      <div class="proof-tile" onclick="openProof('1189505088')"><img class="proof-tile-thumb" src="https://vumbnail.com/1189505088.jpg" alt="AI avatar sample 8" loading="lazy"><div class="proof-tile-overlay"></div><div class="proof-play"></div></div>
+    </div>
+
+    <!-- Vimeo lightbox modal -->
+    <div class="vmodal" id="vmodal" onclick="closeProof(event)">
+      <div class="vmodal-inner" onclick="event.stopPropagation()">
+        <button class="vmodal-close" onclick="closeProof()" aria-label="Close">✕</button>
+        <iframe id="vmodalFrame" src="" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+      </div>
     </div>
   </div>
 </section>
@@ -1021,7 +1043,7 @@ function submitForm(){
         description:'GrowPro AI Avatar — '+getTierName()+' — '+bn,
         metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,niche:document.getElementById('niche').value,configurator:'avatar'},
         line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
-        success_url:'https://zenjessica.github.io/growpro/thank-you.html?cs={CHECKOUT_SESSION_ID}',
+        success_url:'https://zenjessica.github.io/growpro/intake.html?cs={CHECKOUT_SESSION_ID}&tier='+encodeURIComponent(selectedTier||'')+'&fullName='+encodeURIComponent(fn+' '+(document.getElementById('lastName').value.trim()))+'&brandName='+encodeURIComponent(bn)+'&email='+encodeURIComponent(em)+'&phone='+encodeURIComponent(document.getElementById('phone').value.trim()),
         cancel_url:'https://launch.kickstartsocial.co/avatar'
       })
     }).then(function(r){return r.json()}).then(function(d){
@@ -1041,11 +1063,25 @@ document.addEventListener('DOMContentLoaded',function(){
   updatePrice();initSig();
 });
 
-// Proof gallery click handler — placeholder for now
-function openProof(n){
-  // No-op until videos are uploaded. When ready, replace with lightbox modal opening videoIds[n].
-  console.log('Proof tile '+n+' clicked — videos coming soon.');
+// Proof gallery — Vimeo lightbox
+function openProof(vimeoId){
+  var modal=document.getElementById('vmodal');
+  var frame=document.getElementById('vmodalFrame');
+  // autoplay=1 so the video starts when modal opens (user-initiated click), no autoplay on page load
+  // muted=0 so sound is on, loop=0, byline=0 title=0 portrait=0 for clean player
+  frame.src='https://player.vimeo.com/video/'+vimeoId+'?autoplay=1&title=0&byline=0&portrait=0&dnt=1';
+  modal.classList.add('open');
+  document.body.style.overflow='hidden';
 }
+function closeProof(e){
+  if(e && e.target && !e.target.classList.contains('vmodal') && !e.target.classList.contains('vmodal-close')) return;
+  var modal=document.getElementById('vmodal');
+  var frame=document.getElementById('vmodalFrame');
+  frame.src='';
+  modal.classList.remove('open');
+  document.body.style.overflow='';
+}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeProof({target:document.getElementById('vmodal')})});
 
 // Signature
 var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;
