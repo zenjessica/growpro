@@ -917,20 +917,25 @@ function goTo(s){
   else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
   step=s;if(s===3) buildSum();if(s===4) setTimeout(initSig,100);
   // Scroll DIRECTLY to the top of the active step (skips video-grid + sales content above it).
-  // Use multiple strategies so it works whether iframe is full-height or not.
   var stepEl=document.getElementById('step'+s);
   if(stepEl){
-    // 1) Inside iframe: scroll the active step into view at the top
     stepEl.scrollIntoView({behavior:'auto',block:'start'});
-    // 2) Belt-and-suspenders: also nudge document scroll to step's offsetTop minus a small breathing margin
     try{var top=stepEl.getBoundingClientRect().top+window.pageYOffset-12;window.scrollTo({top:Math.max(0,top),behavior:'auto'});}catch(e){}
   } else {
     window.scrollTo({top:0,behavior:'auto'});
   }
   reportHeightToParent();
-  // Ask Webflow parent to scroll the iframe element itself to the top of the viewport.
-  // Webflow can listen for this on the embed (snippet provided in PR notes) but if not, the inside-iframe scroll above already covers most cases.
-  try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollIframeIntoView',page:'avatar',step:s},'*');}}catch(e){}
+  // Ask the parent (Webflow) to scroll its own page so the iframe element is at the top of the viewport.
+  // We send a postMessage that the embed snippet can react to. Also try a direct parent.scrollTo() in case same-origin.
+  try{
+    if(window.parent&&window.parent!==window){
+      window.parent.postMessage({type:'growpro:scrollToIframeTop',page:'avatar',step:s},'*');
+    }
+    // Direct attempt — will silently fail cross-origin, that's fine.
+    if(window.frameElement&&window.frameElement.scrollIntoView){
+      window.frameElement.scrollIntoView({behavior:'auto',block:'start'});
+    }
+  }catch(e){}
 }
 
 function reportHeightToParent(){
