@@ -389,7 +389,7 @@
 function $i(id){return document.getElementById(id)}
 function $q(s){return document.querySelectorAll(s)}
 function $1(s){return document.querySelector(s)}
-var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
+var INTAKE_API_URL=window.INTAKE_API_URL||"https://growpro-api-xgp4ebet.manus.space/api/intake";
 var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
 var pkg=null,treats=[],addons=[],step=1;
 var activePromos=[];
@@ -761,9 +761,10 @@ agreement_version:'v1.0',
 date_signed:new Date().toISOString(),
 signature:getSigData()
 };
-if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
-fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)});
-} else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
+// Direct POST to ClickUp proxy (no GHL). formType routes to Launch list.
+var proxyPayload=Object.assign({formType:'launch',sid:'lnch-'+Date.now(),fullName:fn+' '+($i('lastName').value.trim()),brandName:bn},payload);
+console.log('[launch] POSTing to proxy:',INTAKE_API_URL,proxyPayload);
+fetch(INTAKE_API_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(proxyPayload)}).then(function(r){return r.json()}).then(function(d){console.log('[launch] Proxy response:',d)}).catch(function(e){console.error('[launch] Proxy error:',e)});
 $i('formV').classList.add('hid');
 $i('confV').classList.remove('hid');
 $i('sidebar').style.display='none';
