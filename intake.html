@@ -564,6 +564,11 @@ function buildPersonas(n){
       '<div class="fg"><label>Personality traits<span class="req">*</span></label>'+
         '<div class="chips" data-name="p_traits_'+i+'"><div class="chip" data-v="Confident">Confident</div><div class="chip" data-v="Relatable">Relatable</div><div class="chip" data-v="Aspirational">Aspirational</div><div class="chip" data-v="Authoritative">Authoritative</div><div class="chip" data-v="Friendly">Friendly</div><div class="chip" data-v="Bold">Bold</div></div>'+
       '</div>'+
+      '<div class="fg half">'+
+        '<div class="fg"><label>Primary language<span class="req">*</span></label><select required data-pf="language" data-pi="'+i+'"><option value="">Select...</option><option>English</option><option>Spanish</option><option>French</option><option>Portuguese (Brazil)</option><option>Portuguese (Portugal)</option><option>German</option><option>Italian</option><option>Mandarin Chinese</option><option>Cantonese</option><option>Hindi</option><option>Arabic</option><option>Tagalog</option><option>Vietnamese</option><option>Korean</option><option>Japanese</option><option>Russian</option><option>Polish</option><option>Other (note in resonance field)</option></select></div>'+
+        '<div class="fg"><label>Realism style<span class="req">*</span></label><select required data-pf="realism" data-pi="'+i+'"><option value="">Select...</option><option>Polished &amp; clean (smooth skin, professional)</option><option>Hyper-realistic with flaws (textured skin, fly-aways, natural)</option><option>Mid (lightly textured but still polished)</option></select></div>'+
+      '</div>'+
+      '<div class="fg"><label>Outfit / wardrobe<span class="req">*</span></label><input type="text" required data-pf="outfit" data-pi="'+i+'" placeholder="e.g., Pink scrubs with brand logo / Cozy beige sweater &amp; jeans / Athleisure tank &amp; leggings / Lab coat over blouse"></div>'+
       '<div class="fg"><label>Why does this persona resonate with your audience?<span class="req">*</span></label><textarea required data-pf="resonance" data-pi="'+i+'" placeholder="Explain in 1-2 sentences why this look fits your audience."></textarea></div>'+
       '<div class="fg"><label>Reference images<span class="opt">optional, up to 3</span></label>'+
         '<label class="file-up" data-target="p_refs_'+i+'"><div class="file-up-icon">↑</div><div class="file-up-text">Upload reference images</div><div class="file-up-sub">JPG/PNG · max 10MB</div><input type="file" id="p_refs_'+i+'" data-pf="refs" data-pi="'+i+'" accept="image/*" multiple></label>'+
@@ -670,7 +675,7 @@ function collectPayload(){
     var n=TIER_CONFIG[tier].personas;
     for(var i=1;i<=n;i++){
       var p={};
-      ['name','role','funnel','age','gender','body','hair','setting','resonance'].forEach(function(f){
+      ['name','role','funnel','age','gender','body','hair','setting','language','realism','outfit','resonance'].forEach(function(f){
         var el=document.querySelector('[data-pf="'+f+'"][data-pi="'+i+'"]');
         if(el) p[f]=el.value.trim();
       });
