@@ -933,6 +933,11 @@ function goTo(s){
   try{
     if(window.parent&&window.parent!==window){
       window.parent.postMessage({type:'growpro:scrollToIframeTop',page:'avatar',step:s},'*');
+      // Also send the active step's Y position so parent can scroll precisely
+      if(stepEl){
+        var stepY=stepEl.getBoundingClientRect().top+window.pageYOffset-12;
+        window.parent.postMessage({type:'growpro:scrollParentTo',page:'avatar',iframeY:Math.max(0,stepY)},'*');
+      }
     }
     // Direct attempt — will silently fail cross-origin, that's fine.
     if(window.frameElement&&window.frameElement.scrollIntoView){
@@ -952,6 +957,31 @@ function reportHeightToParent(){
 window.addEventListener('load',reportHeightToParent);
 window.addEventListener('resize',reportHeightToParent);
 if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+
+// Intercept in-page anchor clicks (#configurator, #proof, etc.) so they scroll
+// the PARENT Webflow page (where the iframe lives), since the iframe itself
+// has scrolling="no" and is auto-sized to fit content.
+document.addEventListener('click',function(ev){
+  var a=ev.target.closest('a[href^="#"]');
+  if(!a) return;
+  var href=a.getAttribute('href');
+  if(!href || href==='#' || href.length<2) return;
+  var id=href.slice(1);
+  var target=document.getElementById(id);
+  if(!target) return;
+  ev.preventDefault();
+  // Calculate the target element's offset within the iframe document
+  var rect=target.getBoundingClientRect();
+  var iframeY=rect.top+window.pageYOffset;
+  // Tell the parent Webflow page to scroll so this offset is visible
+  try{
+    if(window.parent && window.parent!==window){
+      window.parent.postMessage({type:'growpro:scrollParentTo',page:'avatar',iframeY:iframeY},'*');
+    }
+  }catch(e){}
+  // Also scroll within the iframe in case it has its own scroll context
+  target.scrollIntoView({behavior:'smooth',block:'start'});
+});
 
 function togMB(){document.getElementById('mBar').classList.toggle('exp')}
 
