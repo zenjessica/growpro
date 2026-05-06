@@ -1119,7 +1119,7 @@ function submitForm(){
         description:'GrowPro AI Avatar — '+getTierName()+' — '+bn,
         metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,niche:document.getElementById('niche').value,configurator:'avatar'},
         line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
-        success_url:'https://zenjessica.github.io/growpro/intake.html?cs={CHECKOUT_SESSION_ID}&tier='+encodeURIComponent(selectedTier||'')+'&fullName='+encodeURIComponent(fn+' '+(document.getElementById('lastName').value.trim()))+'&brandName='+encodeURIComponent(bn)+'&email='+encodeURIComponent(em)+'&phone='+encodeURIComponent(document.getElementById('phone').value.trim()),
+        success_url:'https://launch.kickstartsocial.co/avatar-intake?cs={CHECKOUT_SESSION_ID}&tier='+encodeURIComponent(selectedTier||'')+'&fullName='+encodeURIComponent(fn+' '+(document.getElementById('lastName').value.trim()))+'&brandName='+encodeURIComponent(bn)+'&email='+encodeURIComponent(em)+'&phone='+encodeURIComponent(document.getElementById('phone').value.trim()),
         cancel_url:'https://launch.kickstartsocial.co/avatar'
       })
     }).then(function(r){return r.json()}).then(function(d){
