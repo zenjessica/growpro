@@ -1,0 +1,41 @@
+<!--
+  Webflow Embed snippet for the AI Avatar Studio configurator
+  Page slug: /avatar  →  https://launch.kickstartsocial.co/avatar
+  Source: https://zenjessica.github.io/growpro/avatar.html
+
+  v2 — fixes mobile scroll lockup. Uses iframe-resizer pattern + dynamic height
+  via JavaScript so the page scrolls naturally on iOS Safari.
+-->
+<style>
+  html, body { margin:0 !important; padding:0 !important; overflow:auto !important; height:auto !important; }
+  body > div, body > main, body > section { padding:0 !important; margin:0 !important; }
+  iframe#avatar-frame { width:100%; border:0; display:block; min-height:100vh; }
+</style>
+<iframe id="avatar-frame"
+        src="https://zenjessica.github.io/growpro/avatar.html"
+        scrolling="yes"
+        allow="autoplay; fullscreen; clipboard-write; payment"></iframe>
+<script>
+(function(){
+  var f = document.getElementById('avatar-frame');
+  // Listen for height messages from inside the iframe (postMessage hook)
+  window.addEventListener('message', function(e){
+    if(!e.data || typeof e.data!=='object') return;
+    if(e.data.type==='resizeAvatarFrame' && e.data.height){
+      f.style.height = (parseInt(e.data.height,10)+50) + 'px';
+    }
+  });
+  // Fallback: poll iframe content height every 500ms (works when same-origin not enforced via redirects)
+  function tick(){
+    try{
+      var h = f.contentWindow.document.body.scrollHeight;
+      if(h && Math.abs(parseInt(f.style.height||0,10)-h)>20){
+        f.style.height = (h+50)+'px';
+      }
+    }catch(e){}
+  }
+  setInterval(tick, 800);
+  // Initial generous height while we wait
+  f.style.height = '3500px';
+})();
+</script>
