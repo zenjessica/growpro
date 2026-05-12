@@ -57,7 +57,7 @@ export default function ServicesBreakdownSection() {
           </p>
           <Button asChild size="lg" className="bg-white text-rose-600 hover:bg-rose-50 font-semibold px-8 py-6 text-lg">
             <a
-              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
               target="_blank"
               rel="noopener noreferrer"
             >
