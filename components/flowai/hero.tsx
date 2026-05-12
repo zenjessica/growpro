@@ -65,7 +65,7 @@ export function Hero() {
             )}
           >
             <Link
-              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
               target="_blank"
               rel="noopener noreferrer"
             >

@@ -97,7 +97,7 @@ export default function EarningsCalculatorSection() {
         <div className="mt-8">
           <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white px-8 py-3">
             <a
-              href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+              href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
               target="_blank"
               rel="noopener noreferrer"
             >
