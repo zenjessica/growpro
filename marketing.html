@@ -803,6 +803,78 @@ sigCanvas.addEventListener('touchend',function(){sigDrawing=false});
 }
 function clearSig(){if(!sigCanvas)return;sigCtx.clearRect(0,0,sigCanvas.width,sigCanvas.height);sigHasData=false;document.getElementById('sigPlaceholder').style.display='block'}
 function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('image/png')}
+/* GrowPro Marketing a-la-carte patch */
+  (function(){
+  function money(n){return '$'+Number(n).toLocaleString('en-US')}
+  function hasAnySelection(){return !!(hasCore||hasMeta||(addons&&addons.length))}
+  function extraCard(){return document.querySelector('[data-addon="extra_influencers"]')}
+  function syncInfluencerPrice(){
+    var card=extraCard();
+    if(!card)return;
+    var withCore=!!(hasCore||isFullStack);
+    var price=withCore?3250:6500;
+    card.dataset.price=String(price);
+    var amount=card.querySelector('.ap');
+    var note=card.querySelector('.sx');
+    if(amount)amount.textContent='+'+money(price);
+    if(note)note.textContent=withCore?'/mo with Core':'/mo standalone - $3,250/mo with Core';
+  }
+  function updateAlaCarteCopy(){
+    var sub=document.querySelector('#step1 .sub');
+    if(sub)sub.textContent='Choose a base if you want full-service support, or skip ahead and build an a la carte add-on plan.';
+    var err=document.getElementById('baseErr');
+    if(err)err.textContent='Select at least one base or add-on before reviewing your plan.';
+    var note=document.querySelector('#step1 .note-box');
+    if(note)note.textContent='Base packages are optional. On the next step, you can choose add-ons a la carte. Ad spend for Meta is collected separately via ACH.';
+    var btn=document.querySelector('#step1 .btn-p');
+    if(btn)btn.textContent='Continue to Add-Ons ->';
+    var step2=document.getElementById('step2Sub');
+    if(step2)step2.textContent='Select any combination. Add-ons can stand alone or stack on top of a selected base. Price updates live.';
+  }
+  goToFromBase=function(){
+    var err=document.getElementById('baseErr');
+    if(err)err.classList.add('hid');
+    goTo(2);
+  };
+  var oldGoTo=goTo;
+  goTo=function(s){
+    if(s===3&&!hasAnySelection()){
+      alert('Select at least one base or add-on before reviewing your plan.');
+      return;
+    }
+    syncInfluencerPrice();
+    oldGoTo(s);
+    updateAlaCarteCopy();
+  };
+  var oldUpdatePrice=updatePrice;
+  updatePrice=function(){
+    syncInfluencerPrice();
+    oldUpdatePrice();
+    updateAlaCarteCopy();
+  };
+  var oldTogAddon=togAddon;
+  togAddon=function(card){
+    syncInfluencerPrice();
+    oldTogAddon(card);
+    syncInfluencerPrice();
+    updateAlaCarteCopy();
+  };
+  var oldToggleBase=toggleBase;
+  toggleBase=function(which){
+    oldToggleBase(which);
+    syncInfluencerPrice();
+    oldUpdatePrice();
+    updateAlaCarteCopy();
+  };
+  var oldSubmitForm=submitForm;
+  submitForm=function(){
+    syncInfluencerPrice();
+    oldSubmitForm();
+  };
+  updateAlaCarteCopy();
+  syncInfluencerPrice();
+})();
+
 </script>
 </body>
 </html>
