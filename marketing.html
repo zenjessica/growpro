@@ -1040,5 +1040,86 @@ function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('ima
   }
 })();
 </script>
+<script>
+(function(){
+  if(window.__gpAvatarMarketingAddons) return;
+  window.__gpAvatarMarketingAddons=true;
+
+  var realQuerySelector=document.querySelector.bind(document);
+  document.querySelector=function(sel){
+    if(typeof sel==='string' && sel.indexOf('[data-addon="')===0 && sel.slice(-1)==='"'){
+      sel=sel+']';
+    }
+    return realQuerySelector(sel);
+  };
+
+  function addAvatarCards(){
+    if(document.getElementById('avatarStudioMarketingAddons')) return;
+
+    if(window.addonNames){
+      addonNames.avatar_starter='AI Avatar Studio - Starter';
+      addonNames.avatar_growth='AI Avatar Studio - Growth';
+      addonNames.avatar_authority='AI Avatar Studio - Authority';
+    }
+
+    var html=
+      '<div class="gh" id="avatarStudioMarketingAddons">AI Avatar Studio</div>'+
+      '<div class="grid g2">'+
+        '<div class="c csm" data-addon="avatar_starter" data-price="3500" data-type="onetime" data-group="avatar" onclick="togAddon(this)">'+
+          '<div class="ck">&#10003;</div><span class="bdg b-rec">Standalone</span>'+
+          '<h3 class="ct">Avatar Starter</h3>'+
+          '<p class="cd">12 custom AI avatar videos, 4 personas, 3 content buckets, landing page, and quiz funnel.</p>'+
+          '<div class="cp"><span class="ap">+$3,500</span><span class="sx"> one-time</span></div>'+
+        '</div>'+
+        '<div class="c csm" data-addon="avatar_growth" data-price="9500" data-type="onetime" data-group="avatar" onclick="togAddon(this)">'+
+          '<div class="ck">&#10003;</div><span class="bdg b-pop">Most popular</span>'+
+          '<h3 class="ct">Avatar Growth</h3>'+
+          '<p class="cd">30 custom AI avatar videos, 6 personas, 5 content buckets, landing page, and quiz funnel.</p>'+
+          '<div class="cp"><span class="ap">+$9,500</span><span class="sx"> one-time</span></div>'+
+        '</div>'+
+        '<div class="c csm" data-addon="avatar_authority" data-price="4500" data-onetime="18500" data-type="monthly" data-group="avatar" onclick="togAddon(this)">'+
+          '<div class="ck">&#10003;</div><span class="bdg b-fs">Recurring engine</span>'+
+          '<h3 class="ct">Avatar Authority</h3>'+
+          '<p class="cd">60 videos upfront, 12 personas, all 7 content buckets, plus 20 fresh videos per month.</p>'+
+          '<div class="cp"><span class="ap">+$18,500</span><span class="sx"> setup + $4,500/mo</span></div>'+
+        '</div>'+
+      '</div>';
+
+    var headers=[].slice.call(document.querySelectorAll('.gh'));
+    var seo=headers.filter(function(h){return h.textContent.indexOf('SEO')!==-1})[0];
+    if(seo) seo.insertAdjacentHTML('beforebegin',html);
+  }
+
+  function fixAvatarLinks(){
+    document.querySelectorAll('a[href*="/avatar"]').forEach(function(a){
+      a.textContent='Choose AI Avatar Studio below';
+      a.removeAttribute('target');
+      a.href='#avatarStudioMarketingAddons';
+      a.onclick=function(e){
+        e.preventDefault();
+        e.stopPropagation();
+        addAvatarCards();
+        document.getElementById('avatarStudioMarketingAddons').scrollIntoView({behavior:'smooth'});
+      };
+    });
+  }
+
+  var oldTogAddon=window.togAddon;
+  window.togAddon=function(card){
+    if(card && card.dataset.group==='avatar' && !card.classList.contains('sel')){
+      document.querySelectorAll('[data-group="avatar"]').forEach(function(c){
+        c.classList.remove('sel');
+        if(window.addons) addons=addons.filter(function(x){return x!==c.dataset.addon});
+      });
+    }
+    oldTogAddon(card);
+  };
+
+  addAvatarCards();
+  fixAvatarLinks();
+  if(window.updatePrice) updatePrice();
+})();
+</script>
+
 </body>
 </html>
