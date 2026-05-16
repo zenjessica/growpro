@@ -1215,6 +1215,44 @@ function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('ima
   setTimeout(syncMarketingBaseCards, 1000);
 })();
 </script>
+<script>
+(function(){
+  function addAdSpendNote(card, text){
+    if(!card || card.querySelector('.gp-ad-spend-note')) return;
+    var note = document.createElement('p');
+    note.className = 'gp-ad-spend-note';
+    note.style.cssText = 'margin-top:10px;font-size:12px;color:#8B6914;font-weight:700;';
+    note.textContent = text || '* Ad spend not included.';
+    card.appendChild(note);
+  }
+
+  function runAdSpendNotes(){
+    var core = document.getElementById('baseCore');
+    var meta = document.getElementById('baseMeta');
+    var tiktok = document.getElementById('baseTikTokSoon');
+    var google = document.querySelector('[data-addon="secondary_ads"]');
+
+    var metaPrice = meta && meta.querySelector('.cp');
+    if(metaPrice){
+      metaPrice.innerHTML = '$5k <span class="sx">/month (90-day minimum)</span>';
+    }
+
+    addAdSpendNote(core, '* Ad spend not included.');
+    addAdSpendNote(meta, '* Ad spend not included. Meta ad spend is collected separately via ACH.');
+    addAdSpendNote(tiktok, '* Ad spend not included.');
+    addAdSpendNote(google, '* Ad spend not included.');
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', runAdSpendNotes);
+  } else {
+    runAdSpendNotes();
+  }
+
+  setTimeout(runAdSpendNotes, 300);
+  setTimeout(runAdSpendNotes, 1000);
+})();
+</script>
 
 </body>
 </html>
