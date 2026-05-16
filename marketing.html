@@ -1121,5 +1121,100 @@ function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('ima
 })();
 </script>
 
+<script>
+(function(){
+  if(window.__gpFinalMarketingBaseCards) return;
+  window.__gpFinalMarketingBaseCards = true;
+
+  function syncMarketingBaseCards(){
+    window.metaPrice = 5000;
+
+    var core = document.getElementById('baseCore');
+    var meta = document.getElementById('baseMeta');
+
+    if(core && core.parentElement){
+      core.parentElement.style.gridTemplateColumns = 'repeat(3, minmax(0, 1fr))';
+      core.parentElement.style.alignItems = 'stretch';
+    }
+
+    var style = document.getElementById('gpFinalMarketingBaseStyle');
+    if(!style){
+      style = document.createElement('style');
+      style.id = 'gpFinalMarketingBaseStyle';
+      style.textContent =
+        '@media(max-width:900px){#baseCore,#baseMeta,#baseTikTokSoon{width:100%!important}#baseCore{grid-column:auto!important}}' +
+        '#baseTikTokSoon{cursor:default!important;opacity:.95;background:#fafafa}' +
+        '#baseTikTokSoon:hover{transform:none!important;box-shadow:0 2px 12px rgba(13,27,42,.06)!important}';
+      document.head.appendChild(style);
+    }
+
+    if(core){
+      var coreDesc = core.querySelector('.cd');
+      if(coreDesc) coreDesc.innerHTML = 'Full-service marketing foundation for brand voice, content systems, creative direction, and launch momentum. Best for long-term brand building.';
+
+      core.querySelectorAll('li').forEach(function(li){
+        var text = li.textContent.trim();
+        if(
+          text.indexOf('UGC + branded content library build') !== -1 ||
+          text.indexOf("Ads run through your brand's Meta account") !== -1 ||
+          text.indexOf('Account warm-up period required') !== -1 ||
+          text.indexOf('1 landing page build included') !== -1
+        ){
+          li.remove();
+        }
+      });
+    }
+
+    if(meta){
+      var metaPriceBox = meta.querySelector('.cp');
+      if(metaPriceBox) metaPriceBox.innerHTML = '$5,000 <span class="sx">/mo (90-day minimum)</span>';
+
+      var metaList = meta.querySelector('.cl');
+      if(metaList){
+        metaList.innerHTML =
+          '<li>Pre-warmed ad accounts, not your brand account</li>' +
+          '<li>Facebook + Instagram campaign management</li>' +
+          '<li>15 ad creatives per month using AI avatar, your content, or UGC</li>' +
+          '<li>Ad creative, copy, and A/B testing</li>' +
+          '<li>Audience targeting + retargeting setup</li>' +
+          '<li>Weekly monitoring, reporting, and optimization</li>' +
+          '<li>Healthcare ad policy support and account guidance</li>' +
+          '<li>~4 week onboarding</li>' +
+          '<li>Landing page highly recommended</li>';
+      }
+
+      if(!document.getElementById('baseTikTokSoon')){
+        meta.insertAdjacentHTML('afterend',
+          '<div class="c" id="baseTikTokSoon" style="padding:28px;">' +
+          '<span class="bdg b-rec">Coming Soon</span>' +
+          '<h3 class="ct" style="font-size:24px">TikTok Ads</h3>' +
+          '<p class="cd">TikTok paid ads management for healthcare brands. Built for short-form creative testing, compliant campaign structure, and faster audience learning once available.</p>' +
+          '<div class="cp">Coming Soon <span class="sx">/ waitlist</span></div>' +
+          '<ul class="cl">' +
+          '<li>TikTok campaign strategy and account setup</li>' +
+          '<li>15 short-form creatives per month</li>' +
+          '<li>Creative can use AI avatar, your content, or UGC</li>' +
+          '<li>Weekly monitoring and optimization</li>' +
+          '<li>Hook, angle, and offer testing</li>' +
+          '<li>Healthcare policy review before launch</li>' +
+          '</ul></div>'
+        );
+      }
+    }
+
+    if(typeof window.updatePrice === 'function') window.updatePrice();
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', syncMarketingBaseCards);
+  } else {
+    syncMarketingBaseCards();
+  }
+
+  setTimeout(syncMarketingBaseCards, 300);
+  setTimeout(syncMarketingBaseCards, 1000);
+})();
+</script>
+
 </body>
 </html>
