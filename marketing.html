@@ -1321,6 +1321,245 @@ function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('ima
   setTimeout(run,1000);
 })();
 </script>
+<script id="gp-final-marketing-repair-v4">
+(function(){
+  if(window.__gpFinalMarketingRepairV4) return;
+  window.__gpFinalMarketingRepairV4 = true;
 
+  function money(n){ return '$' + Number(n).toLocaleString('en-US'); }
+  function byText(selector, text){
+    var nodes = Array.prototype.slice.call(document.querySelectorAll(selector));
+    return nodes.find(function(el){ return (el.textContent || '').toLowerCase().indexOf(text.toLowerCase()) !== -1; });
+  }
+  function cardByAddon(name){ return document.querySelector('[data-addon="' + name + '"]'); }
+  function setHTML(el, html){ if(el) el.innerHTML = html; }
+  function setText(el, text){ if(el) el.textContent = text; }
+
+  function cleanBrokenText(root){
+    root = root || document.body;
+    var walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+    var bad = [];
+    while(walker.nextNode()) bad.push(walker.currentNode);
+    bad.forEach(function(node){
+      var s = node.nodeValue;
+      s = s.replace(/\u00c2/g, '');
+      s = s.replace(/\u00e2\u0153[\u201c\u201d\u0093\u0094"]?/g, '');
+      s = s.replace(/\u00e2\u20ac[\u201c\u201d\u2013\u2014\u009d\u009c"]?/g, '-');
+      s = s.replace(/\s+-\s+/g, ' - ');
+      node.nodeValue = s;
+    });
+  }
+
+  function addStyle(){
+    if(document.getElementById('gpFinalMarketingRepairStyle')) return;
+    var style = document.createElement('style');
+    style.id = 'gpFinalMarketingRepairStyle';
+    style.textContent = [
+      '.cl li::before{content:"\\2713"!important;color:#34C759!important;font-weight:700!important;}',
+      '.ti::before{content:"*"!important;margin-right:12px!important;color:var(--p,#8B7EC8)!important;}',
+      '.c .ck{font-size:0!important;line-height:1!important;}',
+      '.c .ck::before{content:"\\2713"!important;font-size:14px!important;color:#fff!important;}',
+      '#baseTikTokSoon{cursor:pointer!important;opacity:1!important;background:#fff!important;}',
+      '#baseTikTokSoon:hover{box-shadow:var(--shh,0 4px 20px rgba(13,27,42,.1))!important;transform:translateY(-2px)!important;}',
+      '#baseTikTokSoon.sel{border-color:var(--p,#8B7EC8)!important;background:var(--pb,#F4F2FA)!important;}',
+      '.c.sel .ck{display:flex!important;}',
+      '@media(max-width:900px){#baseCore,#baseMeta,#baseTikTokSoon{width:100%!important;}}'
+    ].join('\n');
+    document.head.appendChild(style);
+  }
+
+  function fixBaseCards(){
+    if(typeof window.metaPrice !== 'undefined') window.metaPrice = 5000;
+    if(typeof window.adSpend !== 'undefined') window.adSpend = 0;
+
+    var core = document.getElementById('baseCore');
+    var meta = document.getElementById('baseMeta');
+
+    if(core && core.parentElement){
+      core.parentElement.style.gridTemplateColumns = 'repeat(3, minmax(0, 1fr))';
+      core.parentElement.style.alignItems = 'stretch';
+    }
+
+    if(core){
+      setHTML(core.querySelector('.cp'), '$3,500 <span class="sx">/mo (90-day minimum)</span>');
+      setHTML(core.querySelector('.cd'), 'Full-service marketing foundation for brand voice, content systems, creative direction, and launch momentum. Best for long-term brand building.');
+      var coreList = core.querySelector('.cl');
+      if(coreList){
+        coreList.innerHTML = [
+          '<li>Instagram + TikTok setup & optimization</li>',
+          '<li>Content pillars + brand voice established</li>',
+          '<li>Posting 5x per week for duration of contract</li>',
+          '<li>5 micro-influencer campaigns (60-day)</li>',
+          '<li>Rights to all UGC content for ads</li>',
+          '<li>Onboarding meeting with creative team</li>'
+        ].join('');
+      }
+      if(!core.querySelector('.gp-ad-note')) core.insertAdjacentHTML('beforeend','<p class="gp-ad-note" style="font-size:13px;color:#8B6914;font-weight:700;margin-top:14px">* Ad spend not included.</p>');
+    }
+
+    if(meta){
+      setText(meta.querySelector('.ct'), 'Meta Marketing - Managed Ads');
+      setHTML(meta.querySelector('.cp'), '$5,000 <span class="sx">/mo (90-day minimum)</span>');
+      setHTML(meta.querySelector('.cd'), 'Full Meta (Facebook + Instagram) ad management using <strong>our pre-warmed ad accounts</strong> - not your brand account. Faster activation, faster scaling, no warm-up wait.');
+      var metaList = meta.querySelector('.cl');
+      if(metaList){
+        metaList.innerHTML = [
+          '<li>Pre-warmed ad accounts, not your brand account</li>',
+          '<li>Facebook + Instagram campaign management</li>',
+          '<li>15 ad creatives per month using AI avatar, your content, or UGC</li>',
+          '<li>Ad creative, copy, and A/B testing</li>',
+          '<li>Audience targeting + retargeting setup</li>',
+          '<li>Weekly monitoring, reporting, and optimization</li>',
+          '<li>Healthcare ad policy support and account guidance</li>',
+          '<li>~4 week onboarding</li>',
+          '<li>Landing page highly recommended</li>'
+        ].join('');
+      }
+      var adBox = document.getElementById('adSpendWrap');
+      if(adBox) adBox.remove();
+      Array.prototype.slice.call(meta.querySelectorAll('p,div')).forEach(function(el){
+        if(/ACH|Monthly Ad Spend Budget|Minimum ad spend|collected separately/i.test(el.textContent || '')) el.remove();
+      });
+      if(!meta.querySelector('.gp-ad-note')) meta.insertAdjacentHTML('beforeend','<p class="gp-ad-note" style="font-size:13px;color:#8B6914;font-weight:700;margin-top:14px">* Ad spend not included.</p>');
+    }
+
+    ensureTikTok(meta || core);
+  }
+
+  function ensureTikTok(anchor){
+    var t = document.getElementById('baseTikTokSoon');
+    if(!t && anchor){
+      anchor.insertAdjacentHTML('afterend', [
+        '<div class="c" id="baseTikTokSoon" style="padding:28px;">',
+          '<div class="ck"></div>',
+          '<span class="bdg b-rec">Paid Ads</span>',
+          '<h3 class="ct" style="font-size:24px">TikTok Ads</h3>',
+          '<p class="cd">TikTok paid ads management for healthcare brands. Built for short-form creative testing, compliant campaign structure, and faster audience learning.</p>',
+          '<div class="cp">$5,000 <span class="sx">/mo (90-day minimum)</span></div>',
+          '<ul class="cl">',
+            '<li>TikTok campaign strategy and account setup</li>',
+            '<li>15 short-form creatives per month</li>',
+            '<li>Creative can use AI avatar, your content, or UGC</li>',
+            '<li>Weekly monitoring and optimization</li>',
+            '<li>Hook, angle, and offer testing</li>',
+            '<li>Healthcare policy review before launch</li>',
+          '</ul>',
+          '<p class="gp-ad-note" style="font-size:13px;color:#8B6914;font-weight:700;margin-top:14px">* Ad spend not included.</p>',
+        '</div>'
+      ].join(''));
+      t = document.getElementById('baseTikTokSoon');
+    }
+    if(!t) return;
+    t.classList.remove('gp-coming-soon');
+    t.dataset.addon = 'tiktok_ads';
+    t.dataset.price = '5000';
+    t.dataset.type = 'monthly';
+    setText(t.querySelector('.bdg'), 'Paid Ads');
+    setText(t.querySelector('.ct'), 'TikTok Ads');
+    setHTML(t.querySelector('.cp'), '$5,000 <span class="sx">/mo (90-day minimum)</span>');
+    if(!t.querySelector('.ck')) t.insertAdjacentHTML('afterbegin','<div class="ck"></div>');
+    if(window.addons && window.addons.indexOf('tiktok_ads') !== -1) t.classList.add('sel');
+    t.onclick = function(){
+      if(typeof window.togAddon === 'function') window.togAddon(t);
+      if(window.addons && window.addons.indexOf('tiktok_ads') !== -1) t.classList.add('sel');
+      setTimeout(cleanAll, 0);
+    };
+  }
+
+  function ensureAvatarStudio(){
+    if(document.getElementById('avatarStudioMarketingAddons')) return;
+    var seo = byText('.gh','SEO');
+    var html = [
+      '<div class="gh" id="avatarStudioMarketingAddons">AI Avatar Studio</div>',
+      '<div class="grid g2" id="avatarStudioMarketingGrid">',
+        '<div class="c csm" data-addon="avatar_starter" data-price="3500" data-type="onetime" data-group="avatar" onclick="togAddon(this)">',
+          '<div class="ck"></div><span class="bdg b-new">Standalone</span>',
+          '<h3 class="ct">Avatar Starter</h3>',
+          '<p class="cd">12 custom AI avatar videos, 4 personas, 3 content buckets, landing page, and quiz funnel.</p>',
+          '<div class="cp"><span class="ap">+$3,500</span><span class="sx"> one-time</span></div>',
+        '</div>',
+        '<div class="c csm" data-addon="avatar_growth" data-price="9500" data-type="onetime" data-group="avatar" onclick="togAddon(this)">',
+          '<div class="ck"></div><span class="bdg b-pop">Most Popular</span>',
+          '<h3 class="ct">Avatar Growth</h3>',
+          '<p class="cd">30 custom AI avatar videos, 6 personas, 5 content buckets, landing page, and quiz funnel.</p>',
+          '<div class="cp"><span class="ap">+$9,500</span><span class="sx"> one-time</span></div>',
+        '</div>',
+        '<div class="c csm" data-addon="avatar_authority" data-price="18500" data-type="monthly" data-onetime="18500" data-group="avatar" onclick="togAddon(this)">',
+          '<div class="ck"></div><span class="bdg b-prem">Recurring Engine</span>',
+          '<h3 class="ct">Avatar Authority</h3>',
+          '<p class="cd">60 videos upfront, 12 personas, all 7 content buckets, plus 20 fresh videos per month.</p>',
+          '<div class="cp"><span class="ap">+$18,500</span><span class="sx"> setup + $4,500/mo</span></div>',
+        '</div>',
+      '</div>'
+    ].join('');
+    if(seo) seo.insertAdjacentHTML('beforebegin', html);
+    else document.getElementById('step2').insertAdjacentHTML('beforeend', html);
+    if(window.addonNames){
+      window.addonNames.avatar_starter = 'AI Avatar Starter';
+      window.addonNames.avatar_growth = 'AI Avatar Growth';
+      window.addonNames.avatar_authority = 'AI Avatar Authority';
+      window.addonNames.tiktok_ads = 'TikTok Ads';
+    }
+  }
+
+  function fixGoogleAds(){
+    var g = cardByAddon('secondary_ads');
+    if(!g) return;
+    setText(g.querySelector('.ct'), 'Google Ads');
+    setHTML(g.querySelector('.cd'), 'Google Ads management. Account setup, landing page, pixel mapping, campaign structure, optimization, reporting, ad creation, and testing. Pinterest or X can be added as secondary platforms. 90-day minimum.');
+    setHTML(g.querySelector('.cp'), '<span class="ap">+$1,000</span><span class="sx">/mo</span>');
+    g.dataset.price = '1000';
+    if(!g.querySelector('.gp-ad-note')) g.insertAdjacentHTML('beforeend','<p class="gp-ad-note" style="font-size:13px;color:#8B6914;font-weight:700;margin-top:14px">* Ad spend not included.</p>');
+    if(window.addonNames) window.addonNames.secondary_ads = 'Google Ads';
+  }
+
+  function scrubAdSpend(){
+    if(typeof window.adSpend !== 'undefined') window.adSpend = 0;
+    var adBox = document.getElementById('adSpendWrap');
+    if(adBox) adBox.remove();
+    Array.prototype.slice.call(document.querySelectorAll('.sl,.sui,.suse,.note-box,p,div')).forEach(function(el){
+      var tx = el.textContent || '';
+      if(/Ad Spend \(ACH\)|Monthly Ad Spend Budget|Minimum ad spend|via ACH|collected separately via ACH|Meta ad spend is collected separately/i.test(tx)){
+        if(el.className === 'note-box') el.textContent = 'Base packages are optional. On the next step, you can choose add-ons a la carte. Ad spend is not included.';
+        else if(el.classList && (el.classList.contains('sl') || el.classList.contains('sui') || el.classList.contains('suse'))) el.remove();
+      }
+    });
+  }
+
+  function wrapFunctions(){
+    if(typeof window.updateSB === 'function' && !window.__gpWrappedUpdateSBV4){
+      window.__gpWrappedUpdateSBV4 = true;
+      var oldUpdateSB = window.updateSB;
+      window.updateSB = function(){ var r = oldUpdateSB.apply(this, arguments); setTimeout(cleanAll,0); return r; };
+    }
+    if(typeof window.buildSum === 'function' && !window.__gpWrappedBuildSumV4){
+      window.__gpWrappedBuildSumV4 = true;
+      var oldBuildSum = window.buildSum;
+      window.buildSum = function(){ var r = oldBuildSum.apply(this, arguments); setTimeout(cleanAll,0); return r; };
+    }
+  }
+
+  function cleanAll(){
+    addStyle();
+    cleanBrokenText(document.body);
+    fixBaseCards();
+    ensureAvatarStudio();
+    fixGoogleAds();
+    scrubAdSpend();
+    wrapFunctions();
+    if(typeof window.updatePrice === 'function' && !window.__gpUpdatingRepair){
+      window.__gpUpdatingRepair = true;
+      try{ window.updatePrice(); }catch(e){}
+      window.__gpUpdatingRepair = false;
+    }
+  }
+
+  if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', cleanAll);
+  else cleanAll();
+  setTimeout(cleanAll, 250);
+  setTimeout(cleanAll, 1000);
+  setTimeout(cleanAll, 2500);
+})();
+</script>
 </body>
 </html>
