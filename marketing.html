@@ -1253,6 +1253,48 @@ function getSigData(){if(!sigHasData)return null;return sigCanvas.toDataURL('ima
   setTimeout(runAdSpendNotes, 1000);
 })();
 </script>
+<script>
+(function(){
+  function cleanAchLanguage(){
+    document.querySelectorAll('*').forEach(function(el){
+      if(!el.childNodes || el.childNodes.length !== 1) return;
+      var text = el.textContent || '';
+
+      text = text.replace(' Meta ad spend is collected separately via ACH.', '');
+      text = text.replace(' Ad spend for Meta is collected separately via ACH.', '');
+      text = text.replace(' Collected separately via ACH.', '');
+      text = text.replace(' via ACH', '');
+      text = text.replace('/mo via ACH', '/mo');
+
+      if(el.textContent !== text){
+        el.textContent = text;
+      }
+    });
+
+    var note = document.querySelector('#step1 .note-box');
+    if(note){
+      note.textContent = 'Base packages are optional. On the next step, you can choose add-ons a la carte. Ad spend is not included for paid ads.';
+    }
+
+    var adSpendWrap = document.getElementById('adSpendWrap');
+    if(adSpendWrap){
+      var p = adSpendWrap.querySelector('p');
+      if(p) p.textContent = 'Minimum $3,000/mo. Meta only. Ad spend not included.';
+      var suffix = adSpendWrap.querySelector('span:last-child');
+      if(suffix) suffix.textContent = '/mo';
+    }
+  }
+
+  if(document.readyState === 'loading'){
+    document.addEventListener('DOMContentLoaded', cleanAchLanguage);
+  } else {
+    cleanAchLanguage();
+  }
+
+  setTimeout(cleanAchLanguage, 300);
+  setTimeout(cleanAchLanguage, 1000);
+})();
+</script>
 
 </body>
 </html>
