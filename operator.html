@@ -169,12 +169,6 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .hid{display:none!important}
 .ft{background:var(--gb);border-top:1px solid var(--gbd);padding:32px 0;text-align:center;font-size:13px;color:#888;line-height:1.8}
 .ft a{color:var(--p);text-decoration:none}
-.promo-box{background:var(--gb);border:1px solid var(--gbd);border-radius:var(--r);padding:20px;margin-top:24px}
-.promo-row{display:flex;gap:8px}
-.promo-row input{flex:1;font-family:'Inter',sans-serif;font-size:14px;padding:10px 14px;border:2px solid var(--gbd);border-radius:8px;outline:none;background:var(--w)}
-.promo-row input:focus{border-color:var(--p)}
-.promo-row button{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:10px 20px;border-radius:8px;border:none;background:var(--p);color:var(--w);cursor:pointer;transition:var(--t)}
-.promo-row button:hover{background:#7A6DB7}
 .pif-box{background:linear-gradient(135deg,#FFF8E7,#FFFDF5);border:2px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin-top:20px;text-align:center}
 .pif-box .pif-title{font-size:16px;font-weight:700;color:#6B4226;margin-bottom:4px}
 .pif-box .pif-price{font-size:28px;font-weight:800;color:var(--n)}
@@ -249,7 +243,6 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div class="ck">&#10003;</div>
 <div class="bdg b-entry">Entry Point</div>
 <div class="tname">GrowPro Elite</div>
-<p style="font-weight:700;color:var(--p);letter-spacing:0.5px;font-size:12px;text-transform:uppercase;margin-bottom:6px">6-Month Sprint</p>
 <div class="tdesc">Full brand launch with managed marketing and team support.</div>
 <div class="tprice">$18,500<span class="mo">/mo</span></div>
 <div class="tsetup">+ $25,000 setup</div>
@@ -274,7 +267,6 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div class="ck">&#10003;</div>
 <div class="bdg b-rec">Recommended</div>
 <div class="tname">Founder Operator</div>
-<p style="font-weight:700;color:var(--p);letter-spacing:0.5px;font-size:12px;text-transform:uppercase;margin-bottom:6px">6-Month Sprint</p>
 <div class="tdesc">Jessica embedded as your fractional operator. Weekly 1:1s, compliance playbook, and full marketing stack.</div>
 <div class="tprice">$28,500<span class="mo">/mo</span></div>
 <div class="tsetup">+ $25,000 setup</div>
@@ -297,7 +289,6 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div class="ck">&#10003;</div>
 <div class="bdg b-fast">Fastest to Revenue</div>
 <div class="tname">Accelerator</div>
-<p style="font-weight:700;color:var(--p);letter-spacing:0.5px;font-size:12px;text-transform:uppercase;margin-bottom:6px">6-Month Sprint</p>
 <div class="tdesc">Jessica personally drives your brand for 6 months. The most aggressive, hands-on partnership we offer.</div>
 <div class="tprice">$33,500<span class="mo">/mo</span></div>
 <div class="tsetup">+ $25,000 setup</div>
@@ -311,29 +302,12 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <li>30+ influencer network activated</li>
 <li>GHL revenue engine fully running</li>
 <li>Month 6: revenue-generating, compliant brand</li>
-<li>Month 6 hand-off — or renew for another sprint</li>
+<li>Converts to Founder Operator at month 7</li>
 </ul>
 <div class="tnote">+ $15-20k/mo ad spend (client funded, not included)</div>
 </div>
 </div>
 
-<!-- End-of-engagement hand-off block -->
-<div style="background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:20px 24px;margin-top:28px">
-<div style="font-weight:700;font-size:14px;color:var(--p);letter-spacing:.5px;text-transform:uppercase;margin-bottom:8px">After Your 6-Month Sprint</div>
-<div style="font-size:14px;color:#3A3548;line-height:1.6">After 6 months, we hand off everything &mdash; brand, assets, SOPs, accounts, and documentation. You and your team take it from there. Or, if you want to continue the partnership, you can <strong>renew for another 6-month sprint</strong> at any tier.</div>
-</div>
-
-<!-- GrowPro Rep Code (internal) -->
-<div class="promo-box">
-<div style="font-size:14px;font-weight:600;margin-bottom:4px">Have a GrowPro rep code?</div>
-<div style="font-size:12px;color:#888;margin-bottom:8px">Internal GrowPro-issued codes only. Stripe discount codes (e.g. demo/test coupons) are applied on the next screen at checkout.</div>
-<div class="promo-row">
-<input type="text" id="promoInput" placeholder="Enter rep code" style="text-transform:uppercase">
-<button onclick="applyPromo()">Apply</button>
-</div>
-<div id="promoMsg" style="font-size:13px;margin-top:6px;min-height:18px"></div>
-<div id="appliedPromos"></div>
-</div>
 
 <div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goTo(2)">Continue to Treatments &rarr;</button></div>
 </div>
@@ -341,13 +315,12 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <!-- STEP 2: Treatments (NEW) -->
 <div class="sec" id="step2">
 <h1 class="h1">Add Treatments to Your Brand</h1>
-<p class="sub">Your core treatments are included free with every Growth Partnership. Expand your menu — each treatment is a one-time setup billed alongside your tier.</p>
+<p class="sub">Your Core 4 are included free with every Growth Partnership. Expand your menu — each treatment is a one-time setup billed alongside your tier.</p>
 <div class="grid g3">
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Semaglutide GLP-1</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Tirzepatide GLP-1/GIP</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">NAD+</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Sermorelin</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
-<div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Glutathione</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm" data-treatment="hrt" onclick="togTreat(this)">
 <div class="ck">✓</div>
 <h3 class="ct">HRT (Men &amp; Women)</h3>
@@ -357,7 +330,7 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div class="c csm" data-treatment="branded_med" onclick="togTreat(this)">
 <div class="ck">✓</div>
 <h3 class="ct">Brand Name Medication Pathway</h3>
-<p class="cd">Add brand-name pharmaceuticals like <strong>Wegovy</strong>, <strong>Zepbound</strong>, and <strong>Founzayo</strong> — product page, packaging language, and provider protocol setup.</p>
+<p class="cd">Your own branded medication names, packaging language, and provider protocol setup.</p>
 <div class="cp"><span class="ap">+$2,500</span></div>
 </div>
 <div class="c csm" data-treatment="elec_labs" onclick="togTreat(this)">
@@ -407,18 +380,6 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div id="formV">
 <h1 class="h1">Let's Get Started.</h1>
 <p class="sub">Enter your details to finalize your growth partnership and proceed to checkout.</p>
-
-<!-- GrowPro Rep Code (Step 4, internal) -->
-<div class="promo-box" style="margin-bottom:24px">
-<div style="font-size:14px;font-weight:600;margin-bottom:4px">Have a GrowPro rep code?</div>
-<div style="font-size:12px;color:#888;margin-bottom:8px">Internal GrowPro-issued codes only. Stripe discount codes (e.g. demo/test coupons) are applied on the next screen at checkout.</div>
-<div class="promo-row">
-<input type="text" id="promoInput3" placeholder="Enter rep code" style="text-transform:uppercase">
-<button onclick="applyPromo3()">Apply</button>
-</div>
-<div id="promoMsg3" style="font-size:13px;margin-top:6px;min-height:18px"></div>
-<div id="appliedPromos3"></div>
-</div>
 
 <!-- Ad Spend Disclosure -->
 <div style="background:#FFF8E7;border:1px solid #E8D5B7;border-radius:12px;padding:14px 18px;margin-bottom:20px">
@@ -481,7 +442,7 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div class="sig-section" id="sigSection">
 <div class="sig-title">Service Agreement</div>
 <div class="sig-sub">Please review the agreement and sign below to proceed.</div>
-<a href="https://launch.kickstartsocial.co/agreement" target="_blank" class="sig-link">View Full Services Agreement &rarr;</a>
+<a href="https://launch.kickstartsocial.co/agreement" target="_blank" rel="noopener" class="sig-link">View Full Services Agreement &rarr;</a>
 <div class="sig-canvas-wrap" id="sigWrap">
 <canvas id="sigCanvas"></canvas>
 <div class="sig-placeholder" id="sigPlaceholder">Draw your signature here</div>
@@ -489,7 +450,7 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 </div>
 <div class="sig-check" onclick="var cb=document.getElementById('agreeCheck');cb.checked=!cb.checked">
 <input type="checkbox" id="agreeCheck" onclick="event.stopPropagation()">
-<label>I have read and agree to the <a href="https://launch.kickstartsocial.co/agreement" target="_blank" style="color:var(--p)" onclick="event.stopPropagation()">GrowPro Services Agreement</a></label>
+<label>I have read and agree to the <a href="https://launch.kickstartsocial.co/agreement" target="_blank" rel="noopener" style="color:var(--p)" onclick="event.stopPropagation()">GrowPro Services Agreement</a></label>
 </div>
 <div class="sig-err" id="sigErr">Please sign above and check the agreement box to continue</div>
 </div>
@@ -563,7 +524,6 @@ var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ
 var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
 
 var tier=null,step=1;
-var activePromos=[];
 var payPlan='pif';
 
 
@@ -637,7 +597,7 @@ var TIERS={
       '30+ influencer network activated',
       'GHL revenue engine fully running',
       'Month 6: revenue-generating, compliant brand',
-      'Month 6 hand-off — or renew for another sprint'
+      'Converts to Founder Operator at month 7'
     ]
   }
 };
@@ -665,37 +625,10 @@ function togPepDetails(){
   else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true');btn.innerHTML='Hide peptide schedule \u25b4'}}
 }
 
-var PROMO_CODES={
-  'SETUP50':{type:'setup_discount',pct:50,desc:'50% off setup fee',savings:12500},
-  'SETUP0':{type:'setup_free',desc:'Setup fee waived',savings:25000},
-  'MONTH1FREE':{type:'month_free',desc:'First month free',savings:0},
-  'PARTNER10':{type:'monthly_discount',pct:10,desc:'10% off monthly rate',savings:0},
-  'PARTNER15':{type:'monthly_discount',pct:15,desc:'15% off monthly rate',savings:0},
-  'VIP5K':{type:'monthly_flat',amount:5000,desc:'$5,000/mo off monthly rate',savings:0}
-};
-
-function hasPromo(type){return activePromos.some(function(p){return p.promo.type===type})}
-function getPromo(type){
-  for(var i=0;i<activePromos.length;i++){if(activePromos[i].promo.type===type) return activePromos[i]}
-  return null;
-}
-
-
-
 function calcTotals(){
   if(!tier) return{setup:0,mo:0};
   var t=TIERS[tier];
-  var setup=t.setup;
-  var mo=t.monthly;
-  if(hasPromo('setup_free')) setup=500; // $500 minimum on full waiver
-  var sp=getPromo('setup_discount');
-  if(sp) setup=Math.max(500,Math.round(setup*(1-sp.promo.pct/100)));
-  if(hasPromo('month_free')){/* first month free handled at Stripe level */}
-  var mp=getPromo('monthly_discount');
-  if(mp) mo=Math.round(mo*(1-mp.promo.pct/100));
-  var fp=getPromo('monthly_flat');
-  if(fp) mo=Math.max(0,mo-fp.promo.amount);
-  return{setup:setup,mo:mo};
+  return{setup:t.setup,mo:t.monthly};
 }
 
 function fmt(n){return '$'+n.toLocaleString('en-US')}
@@ -725,14 +658,7 @@ function updateSB(){
   var tT=treatsTotal();
   var h='<div class="sl"><span class="lb">'+t.name+'</span><span class="vl">'+fmt(tots.mo)+'/mo</span></div>';
   if(tots.setup>0){
-    var origSetup=t.setup;
-    if(tots.setup<origSetup){
-      h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(origSetup)+'</s> '+(tots.setup===0?'<span style="color:#34C759;font-weight:700">FREE</span>':fmt(tots.setup))+'</span></div>';
-    } else {
-      h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
-    }
-  } else if(t.setup>0){
-    h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl"><s style="color:#AAA;font-size:12px">'+fmt(t.setup)+'</s> <span style="color:#34C759;font-weight:700">FREE</span></span></div>';
+    h+='<div class="sl"><span class="lb">Tier Setup</span><span class="vl">'+fmt(tots.setup)+'</span></div>';
   }
   if(treats.length){
     treats.forEach(function(k){
@@ -747,48 +673,6 @@ function updateSB(){
   document.getElementById('sOT').textContent=fmt(tots.setup+tT);
   document.getElementById('mOT').textContent=fmt(tots.setup+tT);
 }
-
-function renderAppliedPromos(){
-  var els=[document.getElementById('appliedPromos'),document.getElementById('appliedPromos3')];
-  var h='';
-  if(activePromos.length>0){
-    activePromos.forEach(function(ap,i){
-      h+='<div style="display:flex;align-items:center;gap:8px;padding:6px 12px;background:#F0FFF4;border:1px solid #34C759;border-radius:8px;margin-top:6px">';
-      h+='<span style="font-size:13px;font-weight:600;color:#34C759;flex:1">'+ap.code+': '+ap.promo.desc+'</span>';
-      h+='<a href="#" onclick="event.preventDefault();removePromo('+i+')" style="color:#E53935;font-size:12px;font-weight:600;text-decoration:none">Remove</a>';
-      h+='</div>';
-    });
-  }
-  els.forEach(function(el){if(el) el.innerHTML=h});
-}
-function removePromo(idx){
-  activePromos.splice(idx,1);
-  renderAppliedPromos();
-  updatePrice();
-}
-function _applyPromoCore(inputId,msgId){
-  var code=document.getElementById(inputId).value.trim().toUpperCase();
-  var msg=document.getElementById(msgId);
-  if(!code){msg.style.color='#E53935';msg.textContent='Enter a code';return}
-  var promo=PROMO_CODES[code];
-  if(!promo){msg.style.color='#E53935';msg.textContent='Invalid code';return}
-  if(activePromos.some(function(p){return p.code===code})){msg.style.color='#E53935';msg.textContent='Code already applied';return}
-  if((promo.type==='setup_discount'||promo.type==='setup_free')&&(hasPromo('setup_discount')||hasPromo('setup_free'))){
-    msg.style.color='#E53935';msg.textContent='Only one setup discount allowed';return;
-  }
-  if(promo.type==='monthly_discount'&&hasPromo('monthly_discount')){
-    msg.style.color='#E53935';msg.textContent='Only one monthly discount allowed';return;
-  }
-  activePromos.push({code:code,promo:promo});
-  msg.style.color='#34C759';msg.textContent='Applied!';
-  document.getElementById(inputId).value='';
-  setTimeout(function(){msg.textContent=''},2000);
-  renderAppliedPromos();
-  updatePrice();
-  if(typeof updatePayPlans==='function') updatePayPlans();
-}
-function applyPromo(){_applyPromoCore('promoInput','promoMsg')}
-function applyPromo3(){_applyPromoCore('promoInput3','promoMsg3')}
 
 function selPlan(plan){
   payPlan=plan;
@@ -976,9 +860,6 @@ function buildSum(){
   var pifBox=document.getElementById('pifBox');
   if(tier==='accelerator'){
     var pif=t.payInFull;
-    if(hasPromo('setup_free')) pif=pif-t.setup;
-    var sp2=getPromo('setup_discount');
-    if(sp2) pif=pif-(t.setup-Math.round(t.setup*(1-sp2.promo.pct/100)));
     document.getElementById('pifPrice').textContent=fmt(pif);
     document.getElementById('pifSave').textContent='Save '+fmt(sixMoTotal-pif)+' vs. monthly';
     document.getElementById('pifSplit').textContent=fmt(Math.ceil(pif/2));
@@ -1005,7 +886,7 @@ function submitForm(){
   var payload={
     first_name:fn,last_name:document.getElementById('lastName').value.trim(),
     email:em,phone:document.getElementById('phone').value.trim(),
-    business_name:bn,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',
+    business_name:bn,
     source:document.getElementById('source').value,
     tier:t.name,setup_fee:tots.setup,monthly_rate:tots.mo,
     term:t.term,
@@ -1080,9 +961,9 @@ function submitForm(){
     var fetchBody={
       email:em,
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planInfo.planLabel,
-      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,promo_codes:activePromos.map(function(p){return p.code}).join(',')||'none',term:t.term,payment_plan:planInfo.planLabel,treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',treatments_total:treatsTotal(),support_upgrades:'none'},
-      success_url:'https://zenjessica.github.io/growpro/thank-you.html?cs={CHECKOUT_SESSION_ID}',
-      cancel_url:'https://launch.kickstartsocial.co/operator',
+      metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,term:t.term,payment_plan:planInfo.planLabel,treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',treatments_total:treatsTotal(),support_upgrades:'none'},
+      success_url:window.location.origin+'/operator?success=true',
+      cancel_url:window.location.href,
       line_items:stripeItems,
       mode:checkoutMode
     };
@@ -1091,7 +972,7 @@ function submitForm(){
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(fetchBody)
     }).then(function(r){return r.json()}).then(function(d){
-      if(d.url){try{(window.top||window).location.href=d.url}catch(e){window.location.href=d.url}}
+      if(d.url){window.location.href=d.url}
       else{payBtn.textContent='Pay Now — '+fmt(firstPay)+' today →';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
     }).catch(function(err){
       payBtn.textContent='Pay Now — '+fmt(firstPay)+' today →';payBtn.style.opacity='1';

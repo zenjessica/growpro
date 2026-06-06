@@ -157,12 +157,6 @@ h1,h2,h3,.display-font{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .hid{display:none!important}
 .ft{background:var(--gb);border-top:1px solid var(--gbd);padding:32px 0;text-align:center;font-size:13px;color:#888;line-height:1.8}
 .ft a{color:var(--p);text-decoration:none}
-.promo-box{background:var(--gb);border:1px solid var(--gbd);border-radius:var(--r);padding:20px;margin-top:24px}
-.promo-row{display:flex;gap:8px}
-.promo-row input{flex:1;font-family:'Inter',sans-serif;font-size:14px;padding:10px 14px;border:2px solid var(--gbd);border-radius:8px;outline:none;background:var(--w)}
-.promo-row input:focus{border-color:var(--p)}
-.promo-row button{font-family:'Inter',sans-serif;font-size:14px;font-weight:600;padding:10px 20px;border-radius:8px;border:none;background:var(--p);color:var(--w);cursor:pointer;transition:var(--t)}
-.promo-row button:hover{background:#7A6DB7}
 .pif-box{background:linear-gradient(135deg,#FFF8E7,#FFFDF5);border:2px solid var(--gold);border-radius:var(--r);padding:20px 24px;margin-top:20px;text-align:center}
 .pif-box .pif-title{font-size:16px;font-weight:700;color:#6B4226;margin-bottom:4px}
 .pif-box .pif-price{font-size:28px;font-weight:800;color:var(--n)}
@@ -302,17 +296,6 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 </div>
 </div>
 
-<!-- GrowPro Rep Code (internal) -->
-<div class="promo-box">
-<div style="font-size:14px;font-weight:600;margin-bottom:4px">Have a GrowPro rep code?</div>
-<div style="font-size:12px;color:#888;margin-bottom:8px">Internal GrowPro-issued codes only. Stripe discount codes (e.g. demo/test coupons) are applied on the next screen at checkout.</div>
-<div class="promo-row">
-<input type="text" id="promoInput" placeholder="Enter rep code" style="text-transform:uppercase">
-<button onclick="applyPromo()">Apply</button>
-</div>
-<div id="promoMsg" style="font-size:13px;margin-top:6px;min-height:18px"></div>
-<div id="appliedPromos"></div>
-</div>
 
 <div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goTo(2)">Continue to Treatments &rarr;</button></div>
 </div>
@@ -386,18 +369,6 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <h1 class="h1">Let's Get Started.</h1>
 <p class="sub">Enter your details to finalize your growth partnership and proceed to checkout.</p>
 
-<!-- GrowPro Rep Code (Step 4, internal) -->
-<div class="promo-box" style="margin-bottom:24px">
-<div style="font-size:14px;font-weight:600;margin-bottom:4px">Have a GrowPro rep code?</div>
-<div style="font-size:12px;color:#888;margin-bottom:8px">Internal GrowPro-issued codes only. Stripe discount codes (e.g. demo/test coupons) are applied on the next screen at checkout.</div>
-<div class="promo-row">
-<input type="text" id="promoInput3" placeholder="Enter rep code" style="text-transform:uppercase">
-<button onclick="applyPromo3()">Apply</button>
-</div>
-<div id="promoMsg3" style="font-size:13px;margin-top:6px;min-height:18px"></div>
-<div id="appliedPromos3"></div>
-</div>
-
 <!-- Ad Spend Disclosure -->
 <div style="background:#FFF8E7;border:1px solid #E8D5B7;border-radius:12px;padding:14px 18px;margin-bottom:20px">
 <div style="font-weight:700;color:#6B4226;font-size:14px;margin-bottom:6px">⚡ Ad Spend (Required, Billed Separately)</div>
@@ -459,7 +430,7 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 <div class="sig-section" id="sigSection">
 <div class="sig-title">Service Agreement</div>
 <div class="sig-sub">Please review the agreement and sign below to proceed.</div>
-<a href="https://launch.kickstartsocial.co/agreement" target="_blank" class="sig-link">View Full Services Agreement &rarr;</a>
+<a href="https://launch.kickstartsocial.co/agreement" target="_blank" rel="noopener" class="sig-link">View Full Services Agreement &rarr;</a>
 <div class="sig-canvas-wrap" id="sigWrap">
 <canvas id="sigCanvas"></canvas>
 <div class="sig-placeholder" id="sigPlaceholder">Draw your signature here</div>
@@ -467,7 +438,7 @@ html,body{margin:0;padding:0;overflow-x:hidden;overflow-y:visible;-webkit-overfl
 </div>
 <div class="sig-check" onclick="var cb=document.getElementById('agreeCheck');cb.checked=!cb.checked">
 <input type="checkbox" id="agreeCheck" onclick="event.stopPropagation()">
-<label>I have read and agree to the <a href="https://launch.kickstartsocial.co/agreement" target="_blank" style="color:var(--p)" onclick="event.stopPropagation()">GrowPro Services Agreement</a></label>
+<label>I have read and agree to the <a href="https://launch.kickstartsocial.co/agreement" target="_blank" rel="noopener" style="color:var(--p)" onclick="event.stopPropagation()">GrowPro Services Agreement</a></label>
 </div>
 <div class="sig-err" id="sigErr">Please sign above and check the agreement box to continue</div>
 </div>

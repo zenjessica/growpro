@@ -75,4 +75,20 @@ Items flagged during active sessions but not fixed in-session. Clear each one wh
 
 ---
 
-*Last updated: 2026-06-03*
+## 7. Closer discount workflow (replaces removed promo code system)
+
+**What:** Coupon/promo code fields removed from all 3 configurators (launch, operator) on 2026-06-05. When a customer asks for a discount going forward, the process is:
+
+1. Closer pings Jessica on Slack or text with the request and reason.
+2. Jessica decides yes or no.
+3. If yes, Jessica generates a custom Stripe Payment Link with the discounted amount and metadata fields: `{closer: "name", reason: "discount justification"}`.
+4. Closer sends the Payment Link directly to the customer.
+5. Configurator stays at full price for everyone else.
+
+**Why this matters:** Tracks discount frequency by closer (via Stripe metadata). Feeds into closer performance reviews. Preserves price discipline on the public-facing configurator.
+
+**To implement:** No code change needed now -- this is a process/ops procedure. Document it in the GrowPro Notion founder ops section so closers know the workflow.
+
+---
+
+*Last updated: 2026-06-05*
