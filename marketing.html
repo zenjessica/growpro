@@ -735,7 +735,7 @@ function submitForm(){
         description:'GrowPro Marketing \u2014 '+getBaseName()+' \u2014 '+bn,
         metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value},
         line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
-        success_url:window.location.origin+'/marketing?success=true',
+        success_url:'https://zenjessica.github.io/growpro/thank-you.html?build=marketing&session={CHECKOUT_SESSION_ID}',
         cancel_url:window.location.href
       })
     }).then(function(r){return r.json()}).then(function(d){

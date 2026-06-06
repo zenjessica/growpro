@@ -962,7 +962,7 @@ function submitForm(){
       email:em,
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planInfo.planLabel,
       metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,term:t.term,payment_plan:planInfo.planLabel,treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',treatments_total:treatsTotal(),support_upgrades:'none'},
-      success_url:window.location.origin+'/operator?success=true',
+      success_url:'https://zenjessica.github.io/growpro/thank-you.html?build=operator&session={CHECKOUT_SESSION_ID}',
       cancel_url:window.location.href,
       line_items:stripeItems,
       mode:checkoutMode

@@ -1,223 +1,173 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Welcome to the Family — Kickstart Social</title>
-<meta name="robots" content="noindex">
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to GrowPro - Let's Build</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-:root{
-  --p:#8B7EC8;         /* purple primary */
-  --pl:#E8E4F5;        /* purple light */
-  --pb:#F4F2FA;        /* purple bg */
-  --n:#0D1B2A;         /* navy */
-  --w:#FFFFFF;
-  --gb:#F7F7F9;        /* gray bg */
-  --gbd:#E5E5EA;       /* gray border */
-  --muted:#666;
-  --sh:0 2px 12px rgba(13,27,42,0.06);
-  --shh:0 8px 32px rgba(13,27,42,0.12);
-  --r:12px;
-  --t:0.3s ease;
-}
-*{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--pb);color:var(--n);font-family:'Inter',system-ui,-apple-system,sans-serif;line-height:1.6;-webkit-font-smoothing:antialiased}
-body{min-height:100vh;display:flex;flex-direction:column}
-.wrap{max-width:760px;margin:0 auto;padding:48px 24px;width:100%;flex:1}
-
-/* Header */
-.brand{text-align:center;margin-bottom:32px}
-.brand-name{font-size:24px;font-weight:800;letter-spacing:1.5px;color:var(--n)}
-.brand-name .accent{color:var(--p)}
-.brand-tag{font-size:12px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:4px}
-
-/* Hero success card */
-.hero{background:var(--w);border-radius:20px;padding:48px 40px;box-shadow:var(--shh);text-align:center;margin-bottom:24px;position:relative;overflow:hidden}
-.hero::before{content:"";position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--p) 0%,var(--n) 100%)}
-.checkmark{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--p) 0%,#6B5FA8 100%);display:flex;align-items:center;justify-content:center;margin:0 auto 20px;box-shadow:0 8px 24px rgba(139,126,200,0.35)}
-.checkmark svg{width:36px;height:36px}
-.hero h1{font-size:34px;font-weight:800;color:var(--n);margin-bottom:12px;line-height:1.2}
-.hero h1 .em{color:var(--p)}
-.hero .lead{font-size:17px;color:var(--muted);max-width:500px;margin:0 auto;line-height:1.6}
-
-/* Section card */
-.card{background:var(--w);border-radius:var(--r);padding:32px 36px;box-shadow:var(--sh);margin-bottom:20px}
-.card h2{font-size:20px;font-weight:700;color:var(--n);margin-bottom:20px;display:flex;align-items:center;gap:10px}
-.card h2::before{content:"";display:inline-block;width:4px;height:22px;background:var(--p);border-radius:2px}
-
-/* Deliverables list */
-.items{list-style:none;display:grid;gap:12px}
-.items li{display:flex;align-items:flex-start;gap:12px;padding:14px 16px;background:var(--pb);border:1px solid var(--pl);border-radius:10px;transition:var(--t)}
-.items li:hover{background:var(--pl);transform:translateX(2px)}
-.tick{flex-shrink:0;width:22px;height:22px;border-radius:50%;background:var(--p);display:flex;align-items:center;justify-content:center;margin-top:1px}
-.tick svg{width:12px;height:12px;stroke:var(--w);stroke-width:3;fill:none}
-.item-title{font-weight:600;font-size:15px;color:var(--n)}
-.item-sub{font-size:13px;color:var(--muted);margin-top:2px}
-
-/* Checklist */
-.checklist{list-style:none;display:grid;gap:10px}
-.checklist li{display:flex;align-items:flex-start;gap:12px;padding:12px 0;font-size:15px;color:var(--n);border-bottom:1px solid var(--gbd)}
-.checklist li:last-child{border-bottom:none}
-.num{flex-shrink:0;width:26px;height:26px;border-radius:50%;background:var(--n);color:var(--w);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;margin-top:-1px}
-
-/* CSM footer card */
-.csm{background:linear-gradient(135deg,var(--n) 0%,#1A2F4A 100%);color:var(--w);border-radius:var(--r);padding:32px 36px;text-align:center;box-shadow:var(--shh);margin-bottom:24px}
-.csm-title{font-size:18px;font-weight:700;margin-bottom:10px;color:var(--w)}
-.csm-title .em{color:var(--p)}
-.csm p{font-size:15px;color:rgba(255,255,255,0.85);line-height:1.6;max-width:520px;margin:0 auto}
-.csm .welcome{margin-top:16px;font-size:16px;font-weight:600;color:var(--pl);letter-spacing:.3px}
-
-/* CTA button */
-.cta-wrap{text-align:center;margin-top:8px}
-.btn{display:inline-block;padding:14px 32px;background:var(--p);color:var(--w);text-decoration:none;border-radius:999px;font-weight:700;font-size:15px;transition:var(--t);box-shadow:0 4px 16px rgba(139,126,200,0.3)}
-.btn:hover{background:#6B5FA8;transform:translateY(-1px);box-shadow:0 6px 20px rgba(139,126,200,0.45)}
-
-/* Footer */
-.foot{text-align:center;padding:24px;font-size:13px;color:var(--muted)}
-.foot a{color:var(--p);text-decoration:none;font-weight:600}
-.foot a:hover{text-decoration:underline}
-
-/* Mobile */
-@media(max-width:640px){
-  .wrap{padding:32px 16px}
-  .hero{padding:36px 24px;border-radius:16px}
-  .hero h1{font-size:26px}
-  .hero .lead{font-size:15px}
-  .card{padding:24px 20px}
-  .card h2{font-size:18px}
-  .csm{padding:24px 20px}
-  .items li{padding:12px 14px}
-  .item-title{font-size:14px}
-}
-
-/* Simple fade-in */
-@keyframes fadeUp{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
-.hero,.card,.csm{animation:fadeUp .5s ease both}
-.card{animation-delay:.08s}
-.csm{animation-delay:.16s}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#0D1B2A;color:#F0F0F5;line-height:1.7;overflow-x:hidden;min-height:100vh}
+:root{--p:#8B7EC8;--pl:rgba(139,126,200,0.15);--pb:rgba(139,126,200,0.08);--n:#0D1B2A;--card:#162435;--border:rgba(139,126,200,0.2);--g:#34C759;--w:#FFF;--muted:rgba(240,240,245,0.6);--r:16px}
+.wrap{max-width:700px;margin:0 auto;padding:0 24px}
+.hdr{padding:20px 0;border-bottom:1px solid var(--border);background:rgba(13,27,42,0.95);position:sticky;top:0;z-index:100;backdrop-filter:blur(8px)}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:22px;letter-spacing:4px;color:#FFF}
+.logo span{color:var(--p)}
+.tag{font-size:11px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
+.build-tag{font-size:11px;color:var(--muted);letter-spacing:1.5px;text-transform:uppercase;text-align:right}
+.hero{text-align:center;padding:64px 0 48px}
+.check-icon{margin:0 auto 32px;display:block;filter:drop-shadow(0 0 24px rgba(139,126,200,0.5))}
+.hero-tag{display:inline-block;font-size:11px;font-weight:700;color:var(--p);background:var(--pl);border:1px solid var(--border);padding:5px 14px;border-radius:20px;letter-spacing:2px;text-transform:uppercase;margin-bottom:20px}
+.hero h1{font-size:36px;font-weight:800;color:#FFF;letter-spacing:-0.5px;line-height:1.2;margin-bottom:16px}
+.hero p{font-size:16px;color:var(--muted);max-width:520px;margin:0 auto;line-height:1.8}
+@media(max-width:600px){.hero h1{font-size:26px}}
+.divider{border:none;border-top:1px solid var(--border);margin:0}
+.section{padding:48px 0}
+.section-title{font-size:11px;font-weight:700;color:var(--p);letter-spacing:2px;text-transform:uppercase;margin-bottom:24px}
+.checklist{display:flex;flex-direction:column;gap:12px}
+.check-item{display:flex;align-items:flex-start;gap:16px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:20px 24px;transition:border-color .2s}
+.check-item:hover{border-color:var(--p)}
+.check-dot{flex-shrink:0;margin-top:2px}
+.check-text strong{display:block;font-size:15px;font-weight:700;color:#FFF;margin-bottom:4px}
+.check-text span{font-size:13px;color:var(--muted);line-height:1.6}
+.cta-box{background:var(--pl);border:1px solid var(--border);border-radius:var(--r);padding:32px 36px;text-align:center;margin:0 0 56px}
+.cta-box p{font-size:16px;color:rgba(240,240,245,0.85);line-height:1.8}
+.session-badge{display:inline-flex;align-items:center;gap:8px;font-size:11px;color:var(--muted);background:var(--pb);border:1px solid var(--border);border-radius:8px;padding:6px 12px;margin-top:24px}
+.session-dot{width:6px;height:6px;border-radius:50%;background:var(--g);flex-shrink:0}
+.ft{border-top:1px solid var(--border);padding:32px 0;text-align:center;font-size:13px;color:var(--muted);line-height:1.9}
+.ft a{color:var(--p);text-decoration:none}
+.ft a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
+
+<header class="hdr">
+  <div class="wrap">
+    <div>
+      <div class="logo">GROW<span>PRO</span></div>
+      <div class="tag">Powered by Kickstart Social</div>
+    </div>
+    <div class="build-tag" id="buildTag"></div>
+  </div>
+</header>
+
+<main>
   <div class="wrap">
 
-    <!-- Brand -->
-    <div class="brand">
-      <div class="brand-name">KICKSTART<span class="accent">SOCIAL</span></div>
-      <div class="brand-tag">Powered by GrowPro</div>
-    </div>
-
-    <!-- Hero -->
     <div class="hero">
-      <div class="checkmark">
-        <svg viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+      <svg class="check-icon" width="88" height="88" viewBox="0 0 88 88" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="44" cy="44" r="44" fill="#8B7EC8"/>
+        <path d="M26 44 L38 57 L62 28" stroke="white" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+      </svg>
+      <div class="hero-tag">Payment Confirmed</div>
+      <h1 id="heroHeadline">Welcome to the Family - Let's Build</h1>
+      <p id="heroSub">Your payment was received. You've officially joined an exclusive group of telehealth founders building the next generation of healthcare brands.</p>
+      <div class="session-badge" id="sessionBadge" style="display:none">
+        <div class="session-dot"></div>
+        <span id="sessionText"></span>
       </div>
-      <h1>Welcome to the <span class="em">Family</span>&nbsp;&mdash;&nbsp;Let's Build</h1>
-      <p class="lead">Your payment was received. You've officially joined an exclusive group of telehealth founders building the next generation of healthcare brands.</p>
     </div>
 
-    <!-- What you'll receive -->
-    <div class="card">
-      <h2>You'll Receive</h2>
-      <ul class="items">
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Service Agreement</div>
-            <div class="item-sub">DocuSign link delivered via email</div>
+    <hr class="divider">
+
+    <div class="section">
+      <div class="section-title">Here's What Happens Next</div>
+      <div class="checklist">
+
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#8B7EC8"/><path d="M6.5 11 L9.5 14 L15.5 7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
           </div>
-        </li>
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Project Kickoff Questionnaire</div>
-            <div class="item-sub">Tells us everything we need to start building</div>
+          <div class="check-text">
+            <strong>Service Agreement</strong>
+            <span>DocuSign link delivered to your inbox. Review and sign to officially kick off the engagement.</span>
           </div>
-        </li>
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Founder's Dashboard Access</div>
-            <div class="item-sub">Your private Notion workspace for this project</div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#8B7EC8"/><path d="M6.5 11 L9.5 14 L15.5 7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
           </div>
-        </li>
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Slack Channel Invitation</div>
-            <div class="item-sub">Direct line to your dedicated build team</div>
+          <div class="check-text">
+            <strong>Project Kickoff Questionnaire</strong>
+            <span>Tells us everything we need to start building your brand. The more detail you give us, the faster we move.</span>
           </div>
-        </li>
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Timeline Confirmation</div>
-            <div class="item-sub">Milestones and deliverable dates</div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#8B7EC8"/><path d="M6.5 11 L9.5 14 L15.5 7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
           </div>
-        </li>
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Telehealth BAA Agreement</div>
-            <div class="item-sub">DocuSign link for HIPAA compliance</div>
+          <div class="check-text">
+            <strong>Founder's Dashboard Access</strong>
+            <span>Your private Notion workspace for this project. Track every deliverable, milestone, and asset in one place.</span>
           </div>
-        </li>
-        <li>
-          <div class="tick"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
-          <div>
-            <div class="item-title">Telehealth Service Agreement</div>
-            <div class="item-sub">DocuSign link for your provider services</div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#8B7EC8"/><path d="M6.5 11 L9.5 14 L15.5 7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
           </div>
-        </li>
-      </ul>
+          <div class="check-text">
+            <strong>Slack Channel Invitation</strong>
+            <span>Direct line to your dedicated build team. This is where your project lives day-to-day throughout the launch.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#8B7EC8"/><path d="M6.5 11 L9.5 14 L15.5 7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </div>
+          <div class="check-text">
+            <strong>Timeline Confirmation</strong>
+            <span>Your milestones and deliverable dates, confirmed in writing so everyone is aligned from day one.</span>
+          </div>
+        </div>
+
+        <div class="check-item">
+          <div class="check-dot">
+            <svg width="22" height="22" viewBox="0 0 22 22" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="11" fill="#8B7EC8"/><path d="M6.5 11 L9.5 14 L15.5 7.5" stroke="white" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+          </div>
+          <div class="check-text">
+            <strong>Telehealth BAA Agreement</strong>
+            <span>DocuSign link for your HIPAA Business Associate Agreement. Required for compliance before we go live.</span>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <!-- Checklist -->
-    <div class="card">
-      <h2>Your Checklist</h2>
-      <ul class="checklist">
-        <li><div class="num">1</div><div>Sign the service agreement when it arrives</div></li>
-        <li><div class="num">2</div><div>Complete the kickoff questionnaire within 48 hours</div></li>
-        <li><div class="num">3</div><div>Join Slack and introduce yourself to your team</div></li>
-        <li><div class="num">4</div><div>Be responsive &mdash; we move fast when you move fast</div></li>
-      </ul>
-    </div>
-
-    <!-- CSM footer -->
-    <div class="csm">
-      <div class="csm-title">Questions? <span class="em">Your dedicated CSM has you covered.</span></div>
-      <p>Your dedicated Customer Success Manager will reach out within <strong style="color:#fff">24 hours of payment</strong> with your dedicated Slack channel invitation and all the next steps.</p>
-      <div class="welcome">Welcome to the team.</div>
-    </div>
-
-    <!-- CTA -->
-    <div class="cta-wrap">
-      <a href="https://kickstartsocial.co" class="btn">Back to Kickstart Social</a>
+    <div class="cta-box">
+      <p><strong style="color:#FFF">Your strategist will reach out within 24 hours</strong> to schedule your kickoff call and get the clock started on your build.</p>
+      <p style="margin-top:10px;font-size:13px;color:var(--muted)">Questions in the meantime? <a href="mailto:hello@kickstartsocial.co" style="color:#8B7EC8;text-decoration:none">hello@kickstartsocial.co</a></p>
     </div>
 
   </div>
+</main>
 
-  <!-- Footer -->
-  <div class="foot">
-    Questions right now? Email <a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a>
+<footer class="ft">
+  <div class="wrap">
+    <a href="https://growpro.co" target="_blank" rel="noopener">growpro.co</a> | <a href="https://kickstartsocial.co" target="_blank" rel="noopener">kickstartsocial.co</a> | <a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a>
+    <p style="margin-top:8px">Kickstart Social LLC dba GrowPro. All rights reserved.</p>
   </div>
+</footer>
 
-  <!-- Display order confirmation if session_id is in URL -->
-  <script>
-  (function(){
-    try{
-      var p=new URLSearchParams(location.search);
-      var cs=p.get('cs');
-      if(cs && cs.length>5){
-        var el=document.createElement('div');
-        el.style.cssText='max-width:760px;margin:0 auto;padding:0 24px 24px;text-align:center;font-size:12px;color:#888;font-family:ui-monospace,Menlo,monospace';
-        el.textContent='Order reference: '+cs.slice(0,28)+'…';
-        document.body.insertBefore(el,document.querySelector('.foot'));
-      }
-    }catch(e){}
-  })();
-  </script>
+<script>
+(function(){
+  var p=new URLSearchParams(window.location.search);
+  var name=p.get('name');
+  var build=p.get('build');
+  var session=p.get('session');
+  if(name){document.getElementById('heroHeadline').textContent='Welcome to the Family, '+name+' - Let\'s Build';}
+  var labels={launch:'GrowPro Launch',marketing:'Marketing Suite',operator:'Operator Suite'};
+  if(build&&labels[build]){document.getElementById('buildTag').textContent=labels[build];}
+  if(session){
+    document.getElementById('sessionText').textContent='Session: '+session.substring(0,24)+'...';
+    document.getElementById('sessionBadge').style.display='inline-flex';
+  }
+})();
+</script>
 </body>
 </html>
