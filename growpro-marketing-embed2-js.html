@@ -295,10 +295,10 @@ function submitForm(){
         metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value},
         line_items:stripeItems,mode:checkoutMode,monthly_cents:t.mo*100,
         success_url:'https://zenjessica.github.io/growpro/thank-you.html?build=marketing&session={CHECKOUT_SESSION_ID}&name='+encodeURIComponent(fn),
-        cancel_url:window.location.href
+        cancel_url:window.top.location.href
       })
     }).then(function(r){return r.json()}).then(function(d){
-      if(d.url){window.location.href=d.url}
+      if(d.url){window.top.location.href=d.url}
       else{payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
     }).catch(function(err){
       payBtn.textContent='Pay Now \u2014 '+fmt(t.mo)+'/mo \u2192';payBtn.style.opacity='1';alert('Connection error. Please try again.');

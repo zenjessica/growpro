@@ -963,7 +963,7 @@ function submitForm(){
       description:'GrowPro Operator Suite — '+t.name+' — '+bn+' — '+planInfo.planLabel,
       metadata:{business_name:bn,customer_name:fn+' '+(document.getElementById('lastName').value.trim()),phone:document.getElementById('phone').value.trim(),source:document.getElementById('source').value,tier:t.name,term:t.term,payment_plan:planInfo.planLabel,treatments:treats.map(function(k){return TREAT_NAMES[k]||k}).join(', ')||'none',treatments_total:treatsTotal(),support_upgrades:'none'},
       success_url:'https://zenjessica.github.io/growpro/thank-you.html?build=operator&session={CHECKOUT_SESSION_ID}&name='+encodeURIComponent(fn),
-      cancel_url:window.location.href,
+      cancel_url:window.top.location.href,
       line_items:stripeItems,
       mode:checkoutMode
     };
@@ -972,7 +972,7 @@ function submitForm(){
       headers:{'Content-Type':'application/json'},
       body:JSON.stringify(fetchBody)
     }).then(function(r){return r.json()}).then(function(d){
-      if(d.url){window.location.href=d.url}
+      if(d.url){window.top.location.href=d.url}
       else{payBtn.textContent='Pay Now — '+fmt(firstPay)+' today →';payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
     }).catch(function(err){
       payBtn.textContent='Pay Now — '+fmt(firstPay)+' today →';payBtn.style.opacity='1';
