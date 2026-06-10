@@ -31,7 +31,7 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 .wrap{max-width:1200px;margin:0 auto;padding:0 24px}
 
 /* HEADER */
-.hdr{padding:18px 0;border-bottom:1px solid var(--gbd);background:var(--w)}
+.hdr{padding:16px 0;border-bottom:1px solid var(--gbd);background:var(--w)}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between}
 .logo{font-weight:800;font-size:28px;letter-spacing:4px;color:var(--n)}
 .logo span{color:var(--p)}
@@ -45,37 +45,40 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 @keyframes sctrust{0%{transform:translateX(0)}100%{transform:translateX(-50%)}}
 
 /* 1. HERO */
-.hero{padding:56px 0 28px;text-align:center}
+.hero{padding:48px 0 24px;text-align:center}
 .hero h1{font-size:52px;font-weight:800;color:var(--n);margin-bottom:14px;line-height:1.1;letter-spacing:-1px}
 .hero h1 span{color:var(--p)}
-.hero p{font-size:18px;color:#666;max-width:620px;margin:0 auto 32px;font-weight:400}
+.hero p{font-size:18px;color:#666;max-width:620px;margin:0 auto 28px;font-weight:400}
 @media(max-width:768px){.hero h1{font-size:34px}.hero p{font-size:16px}}
-.stats{display:flex;justify-content:center;gap:44px;padding:20px 0 32px;flex-wrap:wrap}
+.stats{display:flex;justify-content:center;gap:44px;padding:16px 0 28px;flex-wrap:wrap}
 .stat{text-align:center}
 .stat .num{font-size:40px;font-weight:800;color:var(--p);letter-spacing:-1px}
 .stat .lbl{font-size:12px;color:#888;text-transform:uppercase;letter-spacing:1px;font-weight:600}
 @media(max-width:600px){.stats{gap:20px}.stat .num{font-size:30px}}
-.hero-vid-wrap{max-width:700px;margin:0 auto 44px;padding:0 24px}
+.hero-vid-wrap{max-width:700px;margin:0 auto 36px;padding:0 24px}
 .hero-vid{position:relative;width:100%;padding-bottom:56.25%;border-radius:16px;overflow:hidden;box-shadow:0 12px 40px rgba(13,27,42,0.12);background:#000}
 .hero-vid iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;display:block}
-@media(max-width:768px){.hero-vid-wrap{padding:0 16px;margin-bottom:28px}}
+@media(max-width:768px){.hero-vid-wrap{padding:0 16px;margin-bottom:24px}}
 
-/* 2. AS FEATURED IN */
-.gp-media-bar{border-top:1px solid var(--gbd);border-bottom:1px solid var(--gbd);padding:16px 24px;text-align:center;background:#fff}
-.gp-media-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#999;margin-bottom:12px}
-.gp-media-logos{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:8px 12px}
-.gp-outlet{display:inline-flex;align-items:center;padding:5px 12px;border:1px solid #ddd;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:.04em;color:#555;text-decoration:none;white-space:nowrap;background:#fafafa}
-.gp-outlet:hover{border-color:var(--p);color:var(--p)}
-.gp-outlet-strong{border-color:var(--p);color:var(--n);font-size:13px}
+/* 2. AS FEATURED IN — real logo bar */
+.gp-media-bar{background:#fff;border-top:1px solid var(--gbd);border-bottom:1px solid var(--gbd);padding:14px 24px;text-align:center}
+.gp-media-label{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#bbb;margin-bottom:12px}
+.gp-logo-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:16px 28px}
+.gp-press-logo{max-height:34px;width:auto;object-fit:contain;display:block;opacity:.8;transition:opacity .2s,filter .2s;filter:grayscale(20%)}
+a .gp-press-logo:hover{opacity:1;filter:none}
+.gp-press-no-link .gp-press-logo{cursor:default}
+/* Celebrity logo is yellow-on-white; render on a dark pill */
+.gp-press-dark{background:#1c1c1c;border-radius:6px;padding:5px 12px;display:inline-flex;align-items:center;line-height:0}
+.gp-press-dark .gp-press-logo{opacity:.95}
 
 /* 3. BUILD CARDS */
-.gp-build-section{padding:52px 24px 40px;background:var(--pb)}
-.gp-build-header{text-align:center;margin-bottom:20px}
+.gp-build-section{padding:44px 24px 34px;background:var(--pb)}
+.gp-build-header{text-align:center;margin-bottom:18px}
 .gp-build-header h2{font-size:clamp(24px,4vw,34px);font-weight:800;color:var(--n);margin:0 0 10px}
 .gp-build-header p{font-size:16px;color:#666;max-width:540px;margin:0 auto}
-.gp-founding-banner{background:#F8F6FF;border:1px solid #CCCAE0;border-radius:10px;padding:12px 24px;text-align:center;max-width:1100px;margin:0 auto 28px;font-size:14px;font-weight:600;color:#544E73;letter-spacing:.01em}
-.gp-build-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:22px;max-width:1100px;margin:0 auto}
-.gp-build-card{background:#fff;border:2px solid var(--gbd);border-radius:16px;padding:26px 22px 22px;display:flex;flex-direction:column;transition:box-shadow var(--t),border-color var(--t)}
+.gp-founding-banner{background:#F8F6FF;border:1px solid #CCCAE0;border-radius:10px;padding:11px 24px;text-align:center;max-width:1100px;margin:0 auto 24px;font-size:14px;font-weight:600;color:#544E73;letter-spacing:.01em}
+.gp-build-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px;max-width:1100px;margin:0 auto}
+.gp-build-card{background:#fff;border:2px solid var(--gbd);border-radius:16px;padding:24px 20px 20px;display:flex;flex-direction:column;transition:box-shadow var(--t),border-color var(--t)}
 .gp-build-card:hover{box-shadow:var(--shh);border-color:var(--p)}
 .gp-build-card.gp-rec{border-color:var(--p);box-shadow:0 4px 24px rgba(139,126,200,.18)}
 .gp-card-badge{display:inline-block;padding:4px 10px;border-radius:4px;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:10px}
@@ -83,72 +86,93 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 .gp-badge-pop{background:var(--pl);color:var(--p)}
 .gp-badge-prem{background:var(--gl);color:#7A5100}
 .gp-card-name{font-size:22px;font-weight:800;margin:0 0 4px;color:var(--n)}
-.gp-card-sub{font-size:14px;color:#666;margin:0 0 14px;line-height:1.5}
+.gp-card-sub{font-size:14px;color:#666;margin:0 0 12px;line-height:1.5}
 .gp-card-price{font-size:28px;font-weight:800;color:var(--n);margin:0 0 4px}
 .gp-card-price span{font-size:14px;font-weight:400;color:#888}
-.gp-card-ul{list-style:none;padding:0;margin:14px 0;flex:1}
+.gp-card-ul{list-style:none;padding:0;margin:12px 0;flex:1}
 .gp-card-ul li{font-size:13.5px;color:#444;padding:5px 0 5px 20px;position:relative;line-height:1.5;border-bottom:1px solid #f3f3f3}
 .gp-card-ul li:last-child{border-bottom:none}
 .gp-card-ul li::before{content:"✓";position:absolute;left:0;color:var(--g);font-weight:700}
 .gp-card-footer{font-size:13px;color:#555;font-style:italic;margin:10px 0 14px;line-height:1.5}
-.gp-cta-btn{display:block;background:var(--p);color:#fff;text-align:center;padding:14px 20px;border-radius:var(--r);font-size:15px;font-weight:700;text-decoration:none;transition:background var(--t);margin-top:auto}
+.gp-cta-btn{display:block;background:var(--p);color:#fff;text-align:center;padding:13px 20px;border-radius:var(--r);font-size:15px;font-weight:700;text-decoration:none;transition:background var(--t);margin-top:auto}
 .gp-cta-btn:hover{background:#7a6db8}
 .gp-cta-btn-dark{background:var(--n)}
 .gp-cta-btn-dark:hover{background:#1a2f45}
 
 /* 4. GROWTH PARTNER SUITE */
-.gp-gps-band{background:var(--n);color:#fff;padding:60px 24px}
+.gp-gps-band{background:var(--n);color:#fff;padding:52px 24px}
 .gp-gps-inner{max-width:760px;margin:0 auto;text-align:center}
 .gp-gps-eyebrow{font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--p);margin-bottom:10px}
 .gp-gps-h{font-size:clamp(26px,4vw,38px);font-weight:800;line-height:1.2;margin:0 0 12px}
 .gp-gps-sub{font-size:17px;color:rgba(255,255,255,.75);margin:0 0 10px;line-height:1.6}
-.gp-gps-body{font-size:15px;color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 22px;line-height:1.7}
+.gp-gps-body{font-size:15px;color:rgba(255,255,255,.65);max-width:600px;margin:0 auto 20px;line-height:1.7}
 .gp-gps-price{font-size:22px;font-weight:800;margin:0 0 8px;color:#fff}
 .gp-gps-price span{font-size:15px;font-weight:400;color:rgba(255,255,255,.55)}
-.gp-gps-includes{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:22px 26px;text-align:left;margin:18px auto 26px;max-width:600px}
+.gp-gps-includes{background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.12);border-radius:var(--r);padding:20px 24px;text-align:left;margin:16px auto 24px;max-width:600px}
 .gp-gps-includes-title{font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--p);margin-bottom:12px}
 .gp-gps-ul{list-style:none;padding:0;margin:0}
 .gp-gps-ul li{font-size:14px;color:rgba(255,255,255,.8);padding:5px 0 5px 20px;position:relative;border-bottom:1px solid rgba(255,255,255,.07)}
 .gp-gps-ul li:last-child{border-bottom:none}
 .gp-gps-ul li::before{content:"✓";position:absolute;left:0;color:var(--g);font-weight:700}
-.gp-gps-cta{display:inline-block;background:var(--p);color:#fff;padding:15px 34px;border-radius:var(--r);font-size:16px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:background var(--t)}
+.gp-gps-cta{display:inline-block;background:var(--p);color:#fff;padding:14px 32px;border-radius:var(--r);font-size:16px;font-weight:700;text-decoration:none;margin-bottom:10px;transition:background var(--t)}
 .gp-gps-cta:hover{background:#7a6db8}
 .gp-gps-scarcity{font-size:13px;color:rgba(255,255,255,.45);margin-top:8px}
 
 /* 5. CERTIFICATION STRIP */
-.gp-cert-section{background:#fff;padding:28px 24px;border-top:1px solid var(--gbd);border-bottom:1px solid var(--gbd)}
-.gp-cert-strip{display:flex;align-items:center;justify-content:center;gap:14px 28px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
-.gp-cert-item{display:flex;align-items:center;gap:8px;font-size:13px;color:#444;white-space:nowrap}
+.gp-cert-section{background:#fff;padding:24px 24px;border-top:1px solid var(--gbd);border-bottom:1px solid var(--gbd)}
+.gp-cert-strip{display:flex;align-items:center;justify-content:center;gap:12px 26px;flex-wrap:wrap;max-width:1100px;margin:0 auto}
+.gp-cert-item{display:flex;align-items:center;gap:7px;font-size:13px;color:#444;white-space:nowrap}
 .gp-cert-check{color:var(--g);font-size:15px;flex-shrink:0;font-weight:700}
-.gp-ls-logo-inline{height:36px;width:auto;object-fit:contain;vertical-align:middle;margin-left:10px;display:inline-block}
+.gp-ls-logo-inline{height:34px;width:auto;object-fit:contain;vertical-align:middle;margin-left:10px;display:inline-block}
 
 /* 6. TESTIMONIALS */
-.gp-testimonials{padding:52px 24px 44px;background:var(--pb)}
-.gp-testimonials-header{text-align:center;margin-bottom:28px}
+.gp-testimonials{padding:44px 24px 36px;background:var(--pb)}
+.gp-testimonials-header{text-align:center;margin-bottom:24px}
 .gp-testimonials-header h2{font-size:clamp(20px,3vw,26px);font-weight:800;color:var(--n);margin:0 0 6px}
 .gp-testimonials-header p{font-size:15px;color:#666}
-.gp-video-single{max-width:600px;margin:0 auto}
+.gp-video-single{max-width:580px;margin:0 auto}
 .gp-video-wrap{border-radius:var(--r);overflow:hidden;background:#000;aspect-ratio:16/9}
 .gp-video-wrap iframe{width:100%;height:100%;border:0;display:block}
-.gp-video-caption{font-size:13px;color:#666;text-align:center;margin-top:8px;font-style:italic}
+.gp-video-caption{font-size:13px;color:#666;text-align:center;margin-top:7px;font-style:italic}
+
+/* FEATURED ON: media/podcast section */
+.gp-featured-on{padding:44px 24px 36px;background:#fff}
+.gp-featured-header{text-align:center;margin-bottom:24px}
+.gp-featured-header h2{font-size:clamp(20px,3vw,26px);font-weight:800;color:var(--n);margin:0 0 6px}
+.gp-featured-header p{font-size:15px;color:#666}
+.gp-yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:860px;margin:0 auto 24px}
+.gp-yt-thumb{display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;position:relative;background:#000;text-decoration:none}
+.gp-yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.gp-yt-thumb:hover img{opacity:.82}
+.gp-yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:48px;height:48px;background:rgba(0,0,0,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.gp-yt-play::after{content:'';border-style:solid;border-width:9px 0 9px 16px;border-color:transparent transparent transparent #fff;margin-left:3px}
+.gp-also-on{display:flex;justify-content:center;align-items:center;gap:12px 20px;flex-wrap:wrap;max-width:860px;margin:0 auto}
+.gp-also-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+.gp-also-logo-link{display:inline-flex;align-items:center;line-height:0}
+.gp-also-logo{max-height:28px;width:auto;object-fit:contain;opacity:.75;transition:opacity .2s;display:block}
+.gp-also-logo-link:hover .gp-also-logo{opacity:1}
+@media(max-width:640px){.gp-yt-grid{grid-template-columns:1fr}}
 
 /* 7. FOUNDER BAND */
-.gp-founder-band{background:var(--n);color:#fff;padding:52px 24px}
-.gp-founder-inner{display:grid;grid-template-columns:auto 1fr;gap:36px;align-items:center;max-width:860px;margin:0 auto}
-.gp-founder-photo{width:170px;height:170px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid var(--p);flex-shrink:0}
+.gp-founder-band{background:var(--n);color:#fff;padding:48px 24px}
+.gp-founder-inner{display:grid;grid-template-columns:auto 1fr;gap:34px;align-items:start;max-width:860px;margin:0 auto}
+.gp-founder-photo{width:160px;height:160px;border-radius:50%;object-fit:cover;object-position:top;border:4px solid var(--p);flex-shrink:0;margin-top:4px}
 .gp-founder-eyebrow{font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--p);margin-bottom:10px}
 .gp-founder-h{font-size:clamp(19px,3vw,24px);font-weight:800;line-height:1.25;margin:0 0 12px}
-.gp-founder-body{font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;max-width:540px}
-@media(max-width:640px){.gp-founder-inner{grid-template-columns:1fr;text-align:center}.gp-founder-photo{margin:0 auto}}
+.gp-founder-body{font-size:15px;color:rgba(255,255,255,.8);line-height:1.7;max-width:520px;margin-bottom:18px}
+.gp-marquis-panel{display:inline-flex;align-items:center;gap:14px;background:rgba(255,255,255,.93);border-radius:10px;padding:10px 16px;max-width:380px}
+.gp-marquis-seal{width:96px;height:auto;border-radius:6px;flex-shrink:0;display:block}
+.gp-marquis-text{font-size:13px;color:#333;line-height:1.4;font-style:italic}
+@media(max-width:640px){.gp-founder-inner{grid-template-columns:1fr;text-align:center}.gp-founder-photo{margin:0 auto}.gp-marquis-panel{max-width:100%;justify-content:center}}
 
 /* LOGO WALL (hidden) */
-.gp-logo-wall{padding:52px 24px;background:#fff}
-.gp-logo-wall-header{text-align:center;margin-bottom:28px}
+.gp-logo-wall{padding:44px 24px;background:#fff}
+.gp-logo-wall-header{text-align:center;margin-bottom:24px}
 .gp-logo-wall-header h2{font-size:clamp(20px,3vw,26px);font-weight:800;color:var(--n);margin:0 0 6px}
 .gp-logo-wall-header p{font-size:15px;color:#666}
-.gp-logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;max-width:880px;margin:0 auto}
-.gp-logo-tile{background:var(--pb);border:1px solid var(--gbd);border-radius:var(--r);padding:20px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:90px}
-.gp-logo-tile img{max-height:38px;max-width:100%;width:auto;object-fit:contain}
+.gp-logo-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;max-width:880px;margin:0 auto}
+.gp-logo-tile{background:var(--pb);border:1px solid var(--gbd);border-radius:var(--r);padding:18px 14px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;min-height:86px}
+.gp-logo-tile img{max-height:36px;max-width:100%;width:auto;object-fit:contain}
 .gp-logo-tile-name{font-size:11px;color:#888;font-weight:600;text-align:center;text-transform:uppercase;letter-spacing:.05em}
 @media(max-width:640px){.gp-logo-grid{grid-template-columns:repeat(2,1fr)}}
 
@@ -156,29 +180,29 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 .gp-guarantee-gate{display:none}
 
 /* DISCLAIMER */
-.gp-disclaimer{padding:14px 24px;background:var(--pb);border-top:1px solid var(--gbd);text-align:center}
+.gp-disclaimer{padding:12px 24px;background:var(--pb);border-top:1px solid var(--gbd);text-align:center}
 .gp-disclaimer p{font-size:13px;color:#666;max-width:680px;margin:0 auto;line-height:1.6}
 
 /* 8. FAQ */
-.gp-faq{padding:52px 24px 44px;background:var(--pb)}
+.gp-faq{padding:44px 24px 38px;background:var(--pb)}
 .gp-faq-inner{max-width:760px;margin:0 auto}
-.gp-faq-header{text-align:center;margin-bottom:28px}
+.gp-faq-header{text-align:center;margin-bottom:24px}
 .gp-faq-header h2{font-size:clamp(22px,3vw,28px);font-weight:800;color:var(--n);margin:0 0 6px}
 .gp-faq-header p{font-size:15px;color:#666}
 .gp-faq-item{border-bottom:1px solid var(--gbd)}
-.gp-faq-q{width:100%;background:none;border:none;text-align:left;padding:15px 40px 15px 0;font-size:15px;font-weight:600;color:var(--n);cursor:pointer;position:relative;line-height:1.4;font-family:inherit}
+.gp-faq-q{width:100%;background:none;border:none;text-align:left;padding:14px 40px 14px 0;font-size:15px;font-weight:600;color:var(--n);cursor:pointer;position:relative;line-height:1.4;font-family:inherit}
 .gp-faq-q::after{content:"+";position:absolute;right:4px;top:50%;transform:translateY(-50%);font-size:22px;color:var(--p);font-weight:300;transition:transform .2s}
 .gp-faq-item.open .gp-faq-q::after{transform:translateY(-50%) rotate(45deg)}
 .gp-faq-a{max-height:0;overflow:hidden;transition:max-height .4s ease,padding-bottom .2s}
-.gp-faq-item.open .gp-faq-a{max-height:900px;padding-bottom:16px}
+.gp-faq-item.open .gp-faq-a{max-height:900px;padding-bottom:14px}
 .gp-faq-a p{font-size:14px;color:#555;line-height:1.7;margin:0 0 10px}
 .gp-faq-a p:last-child{margin-bottom:0}
 
 /* 9. FOOTER */
-.bottom{text-align:center;padding:18px 24px 22px;border-top:1px solid var(--gbd);background:#fff}
+.bottom{text-align:center;padding:16px 24px 20px;border-top:1px solid var(--gbd);background:#fff}
 .bottom p{font-size:14px;color:#888;max-width:600px;margin:0 auto}
 .bottom a{color:var(--p);text-decoration:none;font-weight:600}
-.ft{background:var(--gb);border-top:1px solid var(--gbd);padding:24px 0;text-align:center;font-size:13px;color:#888;line-height:1.8}
+.ft{background:var(--gb);border-top:1px solid var(--gbd);padding:22px 0;text-align:center;font-size:13px;color:#888;line-height:1.8}
 .ft a{color:var(--p);text-decoration:none}
 </style>
 </head>
@@ -210,20 +234,35 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
   </div>
 </div>
 
-<!-- 2. AS FEATURED IN -->
+<!-- 2. AS FEATURED IN — real logo bar -->
 <div class="gp-media-bar">
   <div class="gp-media-label">As Featured In</div>
-  <div class="gp-media-logos">
-    <a href="https://ktla.com" target="_top" class="gp-outlet gp-outlet-strong">KTLA</a>
-    <a href="https://finance.yahoo.com" target="_top" class="gp-outlet gp-outlet-strong">Yahoo Finance</a>
-    <a href="https://gritdaily.com/marquis-whos-who-honors-jessica-l-white/" target="_top" class="gp-outlet gp-outlet-strong">Grit Daily</a>
-    <a href="https://celebritynews.com/jessica-lynne-white-featured-on-legacy-makers-tv/" target="_top" class="gp-outlet">Legacy Makers TV</a>
-    <a href="https://benzinga.com" target="_top" class="gp-outlet">Benzinga</a>
-    <a href="https://fox5sandiego.com" target="_top" class="gp-outlet">Fox 5 San Diego</a>
-    <a href="https://apnews.com" target="_top" class="gp-outlet">AP News</a>
-    <a href="https://podcasts.apple.com/us/podcast/telehealth-founder-reveals-the-exact-system-to-launch/id1662990704?i=1000746078210" target="_top" class="gp-outlet">Brad Lea Podcast</a>
-    <a href="https://voyagela.com" target="_top" class="gp-outlet">Voyage LA</a>
-    <a href="https://www.24-7pressrelease.com/press-release-service/529456" target="_top" class="gp-outlet">American Business Times</a>
+  <div class="gp-logo-row">
+    <a href="https://finance.yahoo.com/news/kickstartsocial-co-digital-marketing-agency-041100626.html" target="_blank" rel="noopener">
+      <img src="assets/yahoo-finance.png" alt="Yahoo Finance" class="gp-press-logo">
+    </a>
+    <span class="gp-press-no-link">
+      <img src="assets/la-weekly.png" alt="LA Weekly" class="gp-press-logo">
+    </span>
+    <a href="https://ktla.com/business/press-releases/ein-presswire/811942259/jessica-lynne-white-joins-legacy-makers-tv-to-share-insights-on-healthcare-innovation-and-building-a-lasting-business/" target="_blank" rel="noopener">
+      <img src="assets/ktla.png" alt="KTLA" class="gp-press-logo">
+    </a>
+    <a href="https://gritdaily.com/marquis-whos-who-honors-jessica-l-white/" target="_blank" rel="noopener">
+      <img src="assets/grit-daily.png" alt="Grit Daily" class="gp-press-logo">
+    </a>
+    <a href="https://voyagela.com/interview/daily-inspiration-meet-jessica-lynne-white-pt/" target="_blank" rel="noopener">
+      <img src="assets/voyage-la.png" alt="Voyage LA" class="gp-press-logo">
+    </a>
+    <a href="https://boldjourney.com/meet-jessica-white-2/" target="_blank" rel="noopener">
+      <img src="assets/bold-journey.png" alt="Bold Journey" class="gp-press-logo">
+    </a>
+    <a href="https://www.einpresswire.com/article/811942259/jessica-lynne-white-joins-legacy-makers-tv-to-share-insights-on-healthcare-innovation-and-building-a-lasting-business" target="_blank" rel="noopener">
+      <img src="assets/ein-presswire.png" alt="EIN Presswire" class="gp-press-logo">
+    </a>
+    <!-- Celebrity: yellow-on-white logo rendered on dark pill so it's visible -->
+    <span class="gp-press-no-link gp-press-dark">
+      <img src="assets/celebrity.png" alt="Celebrity" class="gp-press-logo" style="max-height:26px">
+    </span>
   </div>
 </div>
 
@@ -347,6 +386,37 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
   </div>
 </div>
 
+<!-- FEATURED ON: media / podcast appearances -->
+<div class="gp-featured-on">
+  <div class="gp-featured-header">
+    <h2>Featured On</h2>
+    <p>Media appearances and podcast features.</p>
+  </div>
+  <div class="gp-yt-grid">
+    <a href="https://www.youtube.com/watch?v=7sh5CxVYgqw" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/7sh5CxVYgqw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=llDaIcB_vSw" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/llDaIcB_vSw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=1dZKNJuBfkY" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/1dZKNJuBfkY/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+  </div>
+  <div class="gp-also-on">
+    <span class="gp-also-label">Also on</span>
+    <a href="https://podcasts.apple.com/us/podcast/telehealth-founder-reveals-the-exact-system-to-launch/id1662990704?i=1000746078210" class="gp-also-logo-link" target="_blank" rel="noopener">
+      <img src="assets/apple-podcasts.png" alt="Apple Podcasts" class="gp-also-logo">
+    </a>
+    <a href="https://insidesuccess.tv/programs/lme_jessica-white" class="gp-also-logo-link" target="_blank" rel="noopener">
+      <img src="assets/inside-success.png" alt="Inside Success" class="gp-also-logo">
+    </a>
+  </div>
+</div>
+
 <!-- 7. FOUNDER / AUTHORITY BAND -->
 <div class="gp-founder-band">
   <div class="gp-founder-inner">
@@ -355,6 +425,11 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
       <div class="gp-founder-eyebrow">Built by a clinician, not a dropshipper</div>
       <h2 class="gp-founder-h">Jessica Lynne White, BS, MSPT</h2>
       <p class="gp-founder-body">A 27-year licensed physical therapist and former Director of Rehabilitation who crossed into telehealth and has launched 75+ brands. She bridges clinical operations and growth, so your build is compliant first and sellable second.</p>
+      <!-- Marquis Who's Who seal: place assets/marquis_whos_who.png in repo assets/ to activate -->
+      <div class="gp-marquis-panel">
+        <img src="assets/marquis_whos_who.png" alt="Marquis Who's Who Honored Listee" class="gp-marquis-seal">
+        <span class="gp-marquis-text">Marquis Who's Who<br>Honored Listee, 2025.</span>
+      </div>
     </div>
   </div>
 </div>
@@ -380,16 +455,16 @@ body{font-family:'Inter',sans-serif;background:#FFFFFF;color:#0D1B2A;line-height
 <!-- BUILD GUARANTEE: hidden pending compliance review -->
 <div class="gp-guarantee-gate">
   <!-- DRAFT WORDING: do not publish until compliance review approves exact text -->
-  <div style="padding:52px 24px;background:#fff;border-top:4px solid var(--g)">
+  <div style="padding:44px 24px;background:#fff;border-top:4px solid var(--g)">
     <div style="max-width:780px;margin:0 auto">
       <div style="font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin-bottom:10px">The GrowPro Build Guarantee</div>
-      <h2 style="font-size:clamp(22px,3vw,28px);font-weight:800;color:var(--n);margin:0 0 22px">We stand behind the build.</h2>
-      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:20px">
-        <div style="border:1px solid var(--gbd);border-radius:var(--r);padding:18px;background:var(--pb)"><h4 style="font-size:15px;font-weight:700;margin:0 0 8px">Launch and Approval*</h4><p style="font-size:13.5px;color:#555;line-height:1.6;margin:0">We guarantee your brand launches and secures LegitScript and merchant processing approval, or we keep working at no additional cost until it does.</p></div>
-        <div style="border:1px solid var(--gbd);border-radius:var(--r);padding:18px;background:var(--pb)"><h4 style="font-size:15px;font-weight:700;margin:0 0 8px">Timeline</h4><p style="font-size:13.5px;color:#555;line-height:1.6;margin:0">Your build goes live within 12 weeks of completing your onboarding milestones, or you receive 20 SEO-optimized blogs at no charge. Applies only if you complete your onboarding steps on schedule.</p></div>
-        <div style="border:1px solid var(--gbd);border-radius:var(--r);padding:18px;background:var(--pb)"><h4 style="font-size:15px;font-weight:700;margin:0 0 8px">Build Satisfaction</h4><p style="font-size:13.5px;color:#555;line-height:1.6;margin:0">We revise each deliverable until you approve it, with two rounds of revisions per phase. You sign off on each phase before we build the next. Once approved it is locked, and later changes are separate change orders.</p></div>
+      <h2 style="font-size:clamp(22px,3vw,28px);font-weight:800;color:var(--n);margin:0 0 20px">We stand behind the build.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-bottom:18px">
+        <div style="border:1px solid var(--gbd);border-radius:var(--r);padding:16px;background:var(--pb)"><h4 style="font-size:15px;font-weight:700;margin:0 0 8px">Launch and Approval*</h4><p style="font-size:13.5px;color:#555;line-height:1.6;margin:0">We guarantee your brand launches and secures LegitScript and merchant processing approval, or we keep working at no additional cost until it does.</p></div>
+        <div style="border:1px solid var(--gbd);border-radius:var(--r);padding:16px;background:var(--pb)"><h4 style="font-size:15px;font-weight:700;margin:0 0 8px">Timeline</h4><p style="font-size:13.5px;color:#555;line-height:1.6;margin:0">Your build goes live within 12 weeks of completing your onboarding milestones, or you receive 20 SEO-optimized blogs at no charge. Applies only if you complete your onboarding steps on schedule.</p></div>
+        <div style="border:1px solid var(--gbd);border-radius:var(--r);padding:16px;background:var(--pb)"><h4 style="font-size:15px;font-weight:700;margin:0 0 8px">Build Satisfaction</h4><p style="font-size:13.5px;color:#555;line-height:1.6;margin:0">We revise each deliverable until you approve it, with two rounds of revisions per phase. You sign off on each phase before we build the next. Once approved it is locked, and later changes are separate change orders.</p></div>
       </div>
-      <p style="font-size:12px;color:#888;line-height:1.7;border-top:1px solid var(--gbd);padding-top:14px;margin:0">*Approval guarantees apply to eligible operators with a compliant business model. They do not cover ineligible cases, including convicted felons, research-only peptide or cannabis brands, or applicants with a MATCH or TMF (terminated merchant) listing or other disqualifying processing history. A brand name and availability check and an eligibility review are completed during onboarding before your build begins. GrowPro is not responsible for rebuilds caused by a name or trademark conflict the client did not disclose or check.</p>
+      <p style="font-size:12px;color:#888;line-height:1.7;border-top:1px solid var(--gbd);padding-top:12px;margin:0">*Approval guarantees apply to eligible operators with a compliant business model. They do not cover ineligible cases, including convicted felons, research-only peptide or cannabis brands, or applicants with a MATCH or TMF (terminated merchant) listing or other disqualifying processing history.</p>
     </div>
   </div>
 </div>
