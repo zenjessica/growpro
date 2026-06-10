@@ -25,13 +25,12 @@ var pkgPrices={template:18000,custom:27000,operator:40000};
 var pkgNames={template:'Template Launch',custom:'Custom Build',operator:'Operator Suite'};
 var treatPrices={hrt:2500,branded_med:2500,peptide_pkg:5000};
 var treatNames={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',peptide_pkg:'Peptide Package (12 peptides)'};
-var operatorIncludes=[];
+var operatorIncludes=['ai_engine'];
 var operatorIncludesTreat=['hrt','branded_med','peptide_pkg'];
 var addonNames={
 fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Standard (8 weeks)",
 elec_labs:"Elective Labs",additional_page:"Additional Product Page",
-lumi_funnels:"Lumi Funnels",
-
+ai_engine:"AI Conversion Engine",
 };
 function selPkg(p){
 pkg=p;
@@ -202,8 +201,8 @@ var sb=$i('sidebar'),mb=$i('mBar');
 if(s===1){sb.style.display='none';mb.style.display='none'}
 else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
 step=s;
-if(s===4) buildSum();
-if(s===5){updatePayPlans();setTimeout(initSig,100);var pac=$i('platformAckCheck'),sb=$i('submitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
+if(s===4){buildSum();var pac=$i('platformAckCheck'),sb=$i('step4SubmitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
+if(s===5){updatePayPlans();setTimeout(initSig,100);}
 window.scrollTo({top:0,behavior:'smooth'});
 reportHeightToParent();
 try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollTop',page:'launch'},'*');}}catch(e){}
@@ -262,11 +261,11 @@ if(t.mo>0){h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">
 h+='<div class="plat-box" style="margin-top:20px">';
 h+='<div class="plat-title">Required platform costs, billed separately, not included in total</div>';
 h+='<div style="font-size:13px;color:#666;margin-top:8px;line-height:1.8">';
-h+='<strong style="color:#333">WellieMD:</strong> $2,000 one-time setup, then $1,500/mo. Activates as your build begins.<br>';
+h+='<strong style="color:#333">WellieMD:</strong> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.<br>';
 h+='<strong style="color:#333">Lumi Funnels</strong> (CRM, funnels, automations): $499/mo. Activates around week 5.';
 h+='</div>';
 h+='</div>';
-h+='<p class="sufp">Ad spend not included. Pricing subject to change.</p>';
+h+='<p class="sufp">Pricing subject to change.</p>';
 $i('sumC').innerHTML=h;
 }
 function submitForm(){

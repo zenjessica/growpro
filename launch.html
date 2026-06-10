@@ -127,7 +127,7 @@
 </div>
 <div class="plat-box" style="margin-top:24px">
 <div class="plat-title">Required platform costs, billed separately, not included in today's total</div>
-<div class="plat-line"><span class="lb">WellieMD: $2,000 one-time setup, then $1,500/mo. Activates as your build begins.</span></div>
+<div class="plat-line"><span class="lb">WellieMD: $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.</span></div>
 <div class="plat-line"><span class="lb">Lumi Funnels (CRM, funnels, automations): $499/mo. Activates around week 5 when your site build is complete and you are preparing to launch.</span></div>
 </div>
 <div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goToFromStep1()">Continue →</button></div>
@@ -197,14 +197,16 @@
 <div class="sec" id="step3">
 <h1 class="h1">Power-Ups &amp; Add-Ons</h1>
 <p class="sub">Enhance your build. Add any of these now or any time after launch.</p>
-<div class="gh">Platform &amp; CRM</div>
+<div class="gh">Growth Layer</div>
 <div class="grid" style="gap:16px">
-<div class="c csm" style="cursor:default;background:var(--pb);border-color:var(--pl)" data-addon="lumi_funnels" data-price="499" data-type="monthly">
-<span class="bdg b-fast">Required Platform Cost</span>
-<h3 class="ct">Lumi Funnels</h3>
-<p class="cd">CRM, funnels, and automations. Required to operate your brand after launch. Billed directly by Lumi, separate from your build total.</p>
-<div class="cp"><span style="font-size:20px;font-weight:700;color:var(--n)">$499</span><span class="sx">/mo, billed separately</span></div>
-<p style="font-size:12px;color:#888;margin-top:8px;line-height:1.5">Activates ~week 5. Not included in your build total. You will be invoiced directly by Lumi, not through GrowPro.</p>
+<div class="c csm pep" id="aiEngineCard" data-addon="ai_engine" data-price="6500" data-type="onetime" onclick="togAddon(this)">
+<div class="ck">✓</div>
+<span class="bdg b-hv">High Value</span>
+<div style="display:flex;align-items:center;gap:8px;margin-bottom:8px"><span class="ai">+</span></div>
+<h3 class="ct">AI Conversion Engine</h3>
+<p class="cd">Your brand's automated growth layer. Includes a proprietary, compliant AI chat bot, abandoned cart and checkout recovery with Meta and Google Pixel conversion tracking, automated SMS flows, automated email flows, and conversational AI.</p>
+<p style="font-size:12px;color:#8B6914;margin:10px 0 0;line-height:1.5;font-style:italic">The AI Conversion Engine works the leads and patients your brand attracts. It does not run ads or generate traffic. It converts and retains the audience you bring.</p>
+<div class="cp"><span class="ap">+$6,500</span></div>
 </div>
 </div>
 
@@ -244,7 +246,31 @@
 <h1 class="h1">Your Quote Summary</h1>
 <p class="sub">Review your build before submitting.</p>
 <div class="suc" id="sumC"></div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(3)">← Back</button><button class="btn btn-p" onclick="goTo(5)">Submit →</button></div>
+<div style="background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:16px 20px;margin:24px 0 16px">
+<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:6px">What Happens Next</div>
+<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections and confirm everything with you before anything is charged.</p>
+</div>
+<div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--gbd);border-radius:var(--r);padding:16px 20px;margin-bottom:16px">
+<img src="assets/mike-b.jpg" alt="Mike B." style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--pl)">
+<div>
+<p style="font-size:14px;color:#444;line-height:1.6;margin:0 0 8px;font-style:italic">"Kickstart Social is so ahead of the game, from pharmacy relationships to tech to delivery. Jessica showed me that this truly is a business in a box, and she delivered everything on a silver platter."</p>
+<p style="font-size:13px;font-weight:700;color:var(--n);margin:0">— Mike B.</p>
+</div>
+</div>
+<div style="display:flex;flex-wrap:wrap;gap:8px 16px;padding:12px 16px;background:var(--gb);border:1px solid var(--gbd);border-radius:8px;margin-bottom:20px">
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>100% LegitScript approval across 75+ launches</span>
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>100% merchant processing success</span>
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>Direct pharmacy and physician network</span>
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>We manage your application and work until you're approved</span>
+</div>
+<div style="padding:14px 16px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px;margin-bottom:16px">
+<div style="display:flex;align-items:flex-start;gap:10px;cursor:pointer" onclick="var cb=$i('platformAckCheck');cb.checked=!cb.checked;cb.dispatchEvent(new Event('change'))">
+<input type="checkbox" id="platformAckCheck" onclick="event.stopPropagation()" onchange="var sb=$i('step4SubmitBtn');if(sb)sb.disabled=!this.checked" style="margin-top:3px;accent-color:var(--p);width:18px;height:18px;flex-shrink:0;cursor:pointer">
+<label style="font-size:13px;color:#555;cursor:pointer;line-height:1.5">I understand that WellieMD ($2,000 setup, then $1,500/mo) and Lumi Funnels ($499/mo) are required platform costs billed separately from my build, and that these begin during my build.</label>
+</div>
+<div id="platAckErr" style="font-size:12px;color:#E53935;margin-top:6px;display:none">Please acknowledge the platform costs above to continue</div>
+</div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(3)">← Back</button><button id="step4SubmitBtn" class="btn btn-p" onclick="goTo(5)" disabled>Submit →</button></div>
 </div>
 <div class="sec" id="step5">
 <div id="formV">
@@ -306,31 +332,7 @@
 </div>
 <div class="sig-err" id="sigErr">Please sign above and check the agreement box to continue</div>
 </div>
-<div style="background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:16px 20px;margin:24px 0 16px">
-<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:6px">What Happens Next</div>
-<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections and confirm everything with you before anything is charged.</p>
-</div>
-<div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--gbd);border-radius:var(--r);padding:16px 20px;margin-bottom:16px">
-<img src="assets/mike-b.jpg" alt="Mike B." style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--pl)">
-<div>
-<p style="font-size:14px;color:#444;line-height:1.6;margin:0 0 8px;font-style:italic">"Kickstart Social is so ahead of the game, from pharmacy relationships to tech to delivery. Jessica showed me that this truly is a business in a box, and she delivered everything on a silver platter."</p>
-<p style="font-size:13px;font-weight:700;color:var(--n);margin:0">— Mike B.</p>
-</div>
-</div>
-<div style="display:flex;flex-wrap:wrap;gap:8px 16px;padding:12px 16px;background:var(--gb);border:1px solid var(--gbd);border-radius:8px;margin-bottom:20px">
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>100% LegitScript approval across 75+ launches</span>
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>100% merchant processing success</span>
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>Direct pharmacy and physician network</span>
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>We manage your application and work until you're approved</span>
-</div>
-<div style="padding:14px 16px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px;margin-bottom:16px">
-<div style="display:flex;align-items:flex-start;gap:10px;cursor:pointer" onclick="var cb=$i('platformAckCheck');cb.checked=!cb.checked;cb.dispatchEvent(new Event('change'))">
-<input type="checkbox" id="platformAckCheck" onclick="event.stopPropagation()" onchange="var sb=$i('submitBtn');if(sb)sb.disabled=!this.checked" style="margin-top:3px;accent-color:var(--p);width:18px;height:18px;flex-shrink:0;cursor:pointer">
-<label style="font-size:13px;color:#555;cursor:pointer;line-height:1.5">I understand that WellieMD ($2,000 setup, then $1,500/mo) and Lumi Funnels ($499/mo) are required platform costs billed separately from my build, and that these begin during my build.</label>
-</div>
-<div id="platAckErr" style="font-size:12px;color:#E53935;margin-top:6px;display:none">Please acknowledge the platform costs above to continue</div>
-</div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()" disabled>Submit & Pay →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Submit & Pay →</button></div>
 </div>
 <div class="conf hid" id="confV">
 <div class="conf-i">✓</div>
@@ -347,7 +349,7 @@
 <div id="sbC"><div class="sl"><span class="lb">Select a package...</span></div></div>
 <div class="sdv"></div>
 <div class="stot"><span>One-Time</span><span class="vl" id="sOT">$0</span></div>
-<div class="stot"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
+<div class="stot" style="display:none"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
 <div class="ssi" id="sSI">Step 1 of 5</div>
 </div></aside>
 </div></div>
@@ -355,7 +357,7 @@
 <div class="mbc" onclick="togMB()">
 <div class="mbt">
 <div class="mbi"><div class="am" id="mOT">$0</div><div class="lb">One-Time</div></div>
-<div class="mbi"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly</div></div>
+<div class="mbi" style="display:none"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly</div></div>
 </div>
 <div class="mbx">▲</div>
 </div>
@@ -392,13 +394,12 @@ var pkgPrices={template:18000,custom:27000,operator:40000};
 var pkgNames={template:'Template Launch',custom:'Custom Build',operator:'Operator Suite'};
 var treatPrices={hrt:2500,branded_med:2500,peptide_pkg:5000};
 var treatNames={hrt:'HRT (Men & Women)',branded_med:'Brand Name Medication Pathway',peptide_pkg:'Peptide Package (12 peptides)'};
-var operatorIncludes=[];
+var operatorIncludes=['ai_engine'];
 var operatorIncludesTreat=['hrt','branded_med','peptide_pkg'];
 var addonNames={
 fast_track:"Fast Track Priority (4-6 weeks)",fast_track_standard:"Fast Track Standard (8 weeks)",
 elec_labs:"Elective Labs",additional_page:"Additional Product Page",
-lumi_funnels:"Lumi Funnels",
-
+ai_engine:"AI Conversion Engine",
 };
 function selPkg(p){
 pkg=p;
@@ -569,8 +570,8 @@ var sb=$i('sidebar'),mb=$i('mBar');
 if(s===1){sb.style.display='none';mb.style.display='none'}
 else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
 step=s;
-if(s===4) buildSum();
-if(s===5){updatePayPlans();setTimeout(initSig,100);var pac=$i('platformAckCheck'),sb=$i('submitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
+if(s===4){buildSum();var pac=$i('platformAckCheck'),sb=$i('step4SubmitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
+if(s===5){updatePayPlans();setTimeout(initSig,100);}
 window.scrollTo({top:0,behavior:'smooth'});
 reportHeightToParent();
 try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollTop',page:'launch'},'*');}}catch(e){}
@@ -629,11 +630,11 @@ if(t.mo>0){h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">
 h+='<div class="plat-box" style="margin-top:20px">';
 h+='<div class="plat-title">Required platform costs, billed separately, not included in total</div>';
 h+='<div style="font-size:13px;color:#666;margin-top:8px;line-height:1.8">';
-h+='<strong style="color:#333">WellieMD:</strong> $2,000 one-time setup, then $1,500/mo. Activates as your build begins.<br>';
+h+='<strong style="color:#333">WellieMD:</strong> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.<br>';
 h+='<strong style="color:#333">Lumi Funnels</strong> (CRM, funnels, automations): $499/mo. Activates around week 5.';
 h+='</div>';
 h+='</div>';
-h+='<p class="sufp">Ad spend not included. Pricing subject to change.</p>';
+h+='<p class="sufp">Pricing subject to change.</p>';
 $i('sumC').innerHTML=h;
 }
 function submitForm(){
