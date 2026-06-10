@@ -104,7 +104,7 @@ small{color:#666}
 <h1>GrowPro Configurators</h1>
 <p>Auto-synced from <code>zenjessica/growpro</code> on GitHub. Embed these pages via iframe in Webflow.</p>
 <a href="home.html">Home Hero <small>&mdash; launch.kickstartsocial.co landing section</small></a>
-<a href="launch.html">Launch Configurator <small>&mdash; Template $15K / Custom $25K / Operator $35K</small></a>
+<a href="launch.html">Launch Configurator <small>&mdash; Template $18K / Custom $27K / Operator $40K</small></a>
 <a href="marketing.html">Marketing Configurator <small>&mdash; Core $3.5K/mo + Meta Ads $4K/mo</small></a>
 <a href="operator.html">Operator Configurator <small>&mdash; Elite / Founder / Accelerator</small></a>
 </body>

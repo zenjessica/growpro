@@ -5,5 +5,13 @@
   @media(max-width:768px){.gp-frame-wrap{height:calc(100vh - 60px);min-height:800px}}
 </style>
 <div class="gp-frame-wrap">
-  <iframe src="https://zenjessica.github.io/growpro/launch.html" allow="payment" loading="eager"></iframe>
+  <iframe id="gp-launch-iframe" src="https://zenjessica.github.io/growpro/launch.html" allow="payment" loading="eager"></iframe>
 </div>
+<script>
+(function(){
+  var base='https://zenjessica.github.io/growpro/launch.html';
+  var p=new URLSearchParams(window.location.search).get('pkg');
+  var iframe=document.getElementById('gp-launch-iframe');
+  if(p&&/^(template|custom|operator)$/.test(p)) iframe.src=base+'?pkg='+p;
+})();
+</script>
