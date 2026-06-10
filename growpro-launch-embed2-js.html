@@ -203,7 +203,7 @@ if(s===1){sb.style.display='none';mb.style.display='none'}
 else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
 step=s;
 if(s===4) buildSum();
-if(s===5){updatePayPlans();setTimeout(initSig,100);}
+if(s===5){updatePayPlans();setTimeout(initSig,100);var pac=$i('platformAckCheck'),sb=$i('submitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
 window.scrollTo({top:0,behavior:'smooth'});
 reportHeightToParent();
 try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollTop',page:'launch'},'*');}}catch(e){}
@@ -233,6 +233,7 @@ h+='<div class="sui"><span>Semaglutide GLP-1</span><span class="inc">Included</s
 h+='<div class="sui"><span>Tirzepatide GLP-1/GIP</span><span class="inc">Included</span></div>';
 h+='<div class="sui"><span>NAD+</span><span class="inc">Included</span></div>';
 h+='<div class="sui"><span>Sermorelin</span><span class="inc">Included</span></div>';
+h+='<div class="sui"><span>Glutathione</span><span class="inc">Included</span></div>';
 treats.forEach(function(tr){
 var inc=pkg==='operator'&&operatorIncludesTreat.indexOf(tr)!==-1;
 var trp=treatPrices[tr]||2500;h+='<div class="sui"><span>'+treatNames[tr]+'</span><span'+(inc?' class="inc"':'')+'>'+( inc?'Included':'+'+fmt(trp))+'</span></div>';
@@ -277,6 +278,7 @@ if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){$i('email').classList.add('e
 if(!bn){$i('bizName').classList.add('err');$i('bnE').classList.add('show');ok=false}
 if(!sigHasData){$i('sigErr').classList.add('show');ok=false}else{$i('sigErr').classList.remove('show')}
 if(!$i('agreeCheck').checked){$i('sigErr').classList.add('show');ok=false}
+var pac=$i('platformAckCheck');if(pac&&!pac.checked){var pe=$i('platAckErr');if(pe)pe.style.display='block';ok=false}else{var pe=$i('platAckErr');if(pe)pe.style.display='none'}
 if(!ok) return;
 var t=calcTotals();
 var otList=addons.filter(function(a){var c=$1('[data-addon="'+a+'"]');return c&&c.dataset.type==='onetime'}).map(function(a){return addonNames[a]});
