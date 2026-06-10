@@ -56,6 +56,7 @@
 .gal-counter{text-align:center;margin:16px 0;font-size:15px;color:#666}
 .gal-counter strong{color:var(--p);font-size:20px}
 .gal-note{text-align:center;padding:16px;background:var(--pb);border-radius:var(--r);border:1px solid var(--pl);margin-top:16px;font-size:14px;color:#555;line-height:1.6}
+@media(max-width:600px){.trs-row{flex-direction:column!important}}
 </style>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Build Your Telehealth Brand</div></div></div></header>
 <nav class="pbar"><div class="wrap"><div class="psteps">
@@ -83,7 +84,7 @@
 <div class="cp">$18,000 <span class="sx">one-time</span></div>
 <ul class="cl">
 <li>Pre-built WordPress template</li>
-<li>WellieMD platform setup</li>
+<li>Wellie MD Telehealth Platform setup</li>
 <li>5 core treatments included</li>
 <li>LegitScript application management</li>
 <li>Payment processing setup</li>
@@ -127,11 +128,12 @@
 </div>
 <div class="plat-box" style="margin-top:24px">
 <div class="plat-title">Required platform costs, billed separately, not included in today's total</div>
-<div class="plat-line"><span class="lb">WellieMD: $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.</span></div>
+<div class="plat-line"><span class="lb">Wellie MD Telehealth Platform: $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.</span></div>
 <div class="plat-line"><span class="lb">Lumi Funnels (CRM, funnels, automations): $499/mo. Activates around week 5 when your site build is complete and you are preparing to launch.</span></div>
 </div>
 <div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goToFromStep1()">Continue →</button></div>
 </div>
+<script>(function(){try{var p=new URLSearchParams(window.location.search).get('pkg');if(p&&(p==='template'||p==='custom'||p==='operator')){var el=document.getElementById('step1');if(el)el.classList.remove('active')}}catch(e){}})();</script>
 <div class="sec" id="step1b">
 <h1 class="h1">Pick Your Favorites</h1>
 <p class="sub">Tap up to 3 templates you love. Your final pick is made on the kick-off call.</p>
@@ -155,7 +157,7 @@
 </div>
 <div class="sec" id="step2">
 <h1 class="h1">What will you offer your patients?</h1>
-<p class="sub">Your core 5 are included free. Expand your menu with branded meds or peptides.</p>
+<p class="sub">Your core 5 medications are included. Expand your menu with branded meds or peptides.</p>
 <div class="grid g3">
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Semaglutide GLP-1</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
 <div class="c csm lck"><div class="ck">✓</div><h3 class="ct">Tirzepatide GLP-1/GIP</h3><div class="cp"><span class="sx" style="font-size:16px;color:var(--g);font-weight:600">Included</span></div></div>
@@ -217,12 +219,14 @@
 <h3 class="ct">Fast Track Priority (4-6 weeks)</h3>
 <p class="cd">Skip the line. Dedicated team. Live in 4-6 weeks. Paid in full at signing.</p>
 <div class="cp"><span class="ap">+$10,000</span></div>
+<p class="cn" style="color:#1565C0;font-size:12px">*See timeline terms below</p>
 </div>
 <div class="c csm" id="ftsCard" data-addon="fast_track_standard" data-price="5000" data-type="onetime" data-group="fasttrack" onclick="togAddon(this)">
 <div class="ck">✓</div>
 <h3 class="ct">Fast Track Standard (8 weeks)</h3>
 <p class="cd">Priority queue. Live in approximately 8 weeks. Paid in full at signing.</p>
 <div class="cp"><span class="ap">+$5,000</span></div>
+<p class="cn" style="color:#1565C0;font-size:12px">*See timeline terms below</p>
 </div>
 <div style="margin:-4px 0 10px;padding:10px 14px;background:#EBF5FF;border:1px solid #90CAF9;border-radius:8px;font-size:13px">
 <button type="button" id="fastTermsBtn" onclick="togFastTerms()" style="background:none;border:none;color:#1565C0;font-size:13px;font-weight:700;cursor:pointer;font-family:inherit;padding:0;width:100%;text-align:left" aria-expanded="false">Fast Track Timeline Terms ▾</button>
@@ -248,7 +252,7 @@
 <div class="suc" id="sumC"></div>
 <div style="background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:16px 20px;margin:24px 0 16px">
 <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:6px">What Happens Next</div>
-<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections and confirm everything with you before anything is charged.</p>
+<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections, confirm your build, and get your invoice issued.</p>
 </div>
 <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--gbd);border-radius:var(--r);padding:16px 20px;margin-bottom:16px">
 <img src="assets/mike-b.jpg" alt="Mike B." style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--pl)">
@@ -257,16 +261,16 @@
 <p style="font-size:13px;font-weight:700;color:var(--n);margin:0">— Mike B., GrowPro client</p>
 </div>
 </div>
-<div style="display:flex;flex-wrap:wrap;gap:8px 16px;padding:12px 16px;background:var(--gb);border:1px solid var(--gbd);border-radius:8px;margin-bottom:20px">
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>100% LegitScript approval across 75+ launches</span>
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>100% merchant processing success</span>
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>Direct pharmacy and physician network</span>
-<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px"><span style="color:var(--g);font-weight:700">✓</span>We manage your application and work until you're approved</span>
+<div class="trs-row" style="display:flex;flex-wrap:wrap;gap:8px 16px;padding:12px 16px;background:var(--gb);border:1px solid var(--gbd);border-radius:8px;margin-bottom:20px;overflow:hidden">
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px;min-width:0;flex-shrink:1"><span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>100% LegitScript approval across 75+ launches</span>
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px;min-width:0;flex-shrink:1"><span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>100% merchant processing success</span>
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px;min-width:0;flex-shrink:1"><span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>Direct pharmacy and physician network</span>
+<span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px;min-width:0;flex-shrink:1"><span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>We manage your application and work until you're approved</span>
 </div>
 <div style="padding:14px 16px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px;margin-bottom:16px">
 <div style="display:flex;align-items:flex-start;gap:10px;cursor:pointer" onclick="var cb=$i('platformAckCheck');cb.checked=!cb.checked;cb.dispatchEvent(new Event('change'))">
 <input type="checkbox" id="platformAckCheck" onclick="event.stopPropagation()" onchange="var sb=$i('step4SubmitBtn');if(sb)sb.disabled=!this.checked" style="margin-top:3px;accent-color:var(--p);width:18px;height:18px;flex-shrink:0;cursor:pointer">
-<label style="font-size:13px;color:#555;cursor:pointer;line-height:1.5">I understand that WellieMD ($2,000 setup, then $1,500/mo) and Lumi Funnels ($499/mo) are required platform costs, billed separately from my build, that begin as my brand goes live.</label>
+<label style="font-size:13px;color:#555;cursor:pointer;line-height:1.5">I understand that Wellie MD Telehealth Platform ($2,000 setup, then $1,500/mo) and Lumi Funnels ($499/mo) are required platform costs, billed separately from my build, that begin as my brand goes live.</label>
 </div>
 <div id="platAckErr" style="font-size:12px;color:#E53935;margin-top:6px;display:none">Please acknowledge the platform costs above to continue</div>
 </div>
@@ -278,7 +282,7 @@
 <p class="sub">Enter your details to checkout.</p>
 <div class="pp-section" id="ppSection" style="display:none">
 <div class="pp-title">Choose Your Payment Plan</div>
-<div class="pp-sub">Platform costs (WellieMD and Lumi Funnels) are billed separately. Choose your build payment plan.</div>
+<div class="pp-sub">Platform costs (Wellie MD Telehealth Platform and Lumi Funnels) are billed separately. Choose your build payment plan.</div>
 <div class="pp-grid">
 <div class="pp-card pp-best pp-sel" data-plan="pif" onclick="selPlan('pif')">
 <div class="pp-ck">✓</div>
@@ -630,7 +634,7 @@ if(t.mo>0){h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">
 h+='<div class="plat-box" style="margin-top:20px">';
 h+='<div class="plat-title">Required platform costs, billed separately, not included in total</div>';
 h+='<div style="font-size:13px;color:#666;margin-top:8px;line-height:1.8">';
-h+='<strong style="color:#333">WellieMD:</strong> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.<br>';
+h+='<strong style="color:#333">Wellie MD Telehealth Platform:</strong> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.<br>';
 h+='<strong style="color:#333">Lumi Funnels</strong> (CRM, funnels, automations): $499/mo. Activates around week 5.';
 h+='</div>';
 h+='</div>';
@@ -823,6 +827,7 @@ var pkgParam=urlParams.get('pkg');
 if(pkgParam&&pkgPrices[pkgParam]){
   pkgPreSelected=true;
   selPkg(pkgParam);
+  goTo(2);
 }
 });
 var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;

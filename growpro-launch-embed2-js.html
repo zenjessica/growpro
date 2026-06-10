@@ -261,7 +261,7 @@ if(t.mo>0){h+='<div class="sutr"><span>MONTHLY RECURRING</span><span class="vl">
 h+='<div class="plat-box" style="margin-top:20px">';
 h+='<div class="plat-title">Required platform costs, billed separately, not included in total</div>';
 h+='<div style="font-size:13px;color:#666;margin-top:8px;line-height:1.8">';
-h+='<strong style="color:#333">WellieMD:</strong> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.<br>';
+h+='<strong style="color:#333">Wellie MD Telehealth Platform:</strong> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.<br>';
 h+='<strong style="color:#333">Lumi Funnels</strong> (CRM, funnels, automations): $499/mo. Activates around week 5.';
 h+='</div>';
 h+='</div>';
@@ -454,6 +454,7 @@ var pkgParam=urlParams.get('pkg');
 if(pkgParam&&pkgPrices[pkgParam]){
   pkgPreSelected=true;
   selPkg(pkgParam);
+  goTo(2);
 }
 });
 var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;
