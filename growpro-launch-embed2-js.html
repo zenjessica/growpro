@@ -45,7 +45,23 @@ setTimeout(function(){if(step===1&&pkg===p) goToFromStep1();},500);
 }
 function applyOperatorLocks(){
 var isOp=pkg==='operator';
-var trCards=[{id:'hrtCard',key:'hrt'},{id:'brandTrCard',key:'branded_med'},{id:'pepTrCard',key:'peptide_pkg'}];
+// HRT is Operator Suite only: lock out (greyed, non-purchasable) on Template/Custom
+var hrtEl=$i('hrtCard');
+if(hrtEl){
+  if(isOp){
+    hrtEl.classList.remove('dis');hrtEl.classList.add('lck','sel');hrtEl.onclick=null;
+    if(treats.indexOf('hrt')===-1) treats.push('hrt');
+    var hrtLbl=hrtEl.querySelector('.hrt-oplabel');if(hrtLbl) hrtLbl.style.display='none';
+    var hrtPr=hrtEl.querySelector('.hrt-price');if(hrtPr) hrtPr.style.display='';
+  } else {
+    hrtEl.classList.remove('lck','sel');hrtEl.classList.add('dis');hrtEl.onclick=null;
+    treats=treats.filter(function(x){return x!=='hrt'});
+    var hrtLbl=hrtEl.querySelector('.hrt-oplabel');if(hrtLbl) hrtLbl.style.display='';
+    var hrtPr=hrtEl.querySelector('.hrt-price');if(hrtPr) hrtPr.style.display='none';
+  }
+}
+// branded_med and peptide_pkg: auto-included on Operator, buyable on Template/Custom
+var trCards=[{id:'brandTrCard',key:'branded_med'},{id:'pepTrCard',key:'peptide_pkg'}];
 trCards.forEach(function(tc){
 var el=$i(tc.id);if(!el)return;
 if(isOp){
@@ -85,6 +101,12 @@ var btn=document.querySelector('.pep-toggle');var open=!d.hasAttribute('hidden')
 if(open){d.setAttribute('hidden','');if(btn){btn.setAttribute('aria-expanded','false');btn.innerHTML='View 12 peptides &amp; review schedule ▾'}}
 else{d.removeAttribute('hidden');if(btn){btn.setAttribute('aria-expanded','true');btn.innerHTML='Hide peptide schedule ▴'}}
 }
+function togFastTerms(){
+var d=$i('fastTermsBody');var btn=$i('fastTermsBtn');if(!d||!btn)return;
+var open=!d.hasAttribute('hidden');
+if(open){d.setAttribute('hidden','');btn.setAttribute('aria-expanded','false');btn.innerHTML='Fast Track Timeline Terms ▾'}
+else{d.removeAttribute('hidden');btn.setAttribute('aria-expanded','true');btn.innerHTML='Fast Track Timeline Terms ▴'}
+}
 function togAddon(card){
 if(card.classList.contains('lck')||card.classList.contains('dis')) return;
 var a=card.dataset.addon,gr=card.dataset.group,isSel=card.classList.contains('sel');
@@ -100,6 +122,7 @@ ot+=pkgPrices[pkg];
 }
 treats.forEach(function(t){
 if(pkg==='operator'&&operatorIncludesTreat.indexOf(t)!==-1) return;
+if(t==='hrt'&&pkg!=='operator') return;
 ot+=treatPrices[t]||2500;
 });
 addons.forEach(function(a){
@@ -417,6 +440,13 @@ $i('sidebar').style.display='none';
 $i('mBar').style.display='none';
 updatePrice();
 initSig();
+// HRT is Operator Suite only — grey it out on initial load
+var hrtEl=$i('hrtCard');
+if(hrtEl){
+  hrtEl.classList.add('dis');hrtEl.onclick=null;
+  var hrtLbl=hrtEl.querySelector('.hrt-oplabel');if(hrtLbl) hrtLbl.style.display='';
+  var hrtPr=hrtEl.querySelector('.hrt-price');if(hrtPr) hrtPr.style.display='none';
+}
 // Pre-select tier from ?pkg= URL param (front-page card click-through)
 var urlParams=new URLSearchParams(window.location.search);
 var pkgParam=urlParams.get('pkg');
