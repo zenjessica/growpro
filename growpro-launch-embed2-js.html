@@ -189,14 +189,21 @@ return;
 if(s===2&&!pkg) return;
 $q('.sec').forEach(function(x){x.classList.remove('active')});
 document.getElementById('step'+s).classList.add('active');
-$q('.pst').forEach(function(ps,i){
-var n=i+1;ps.classList.remove('active','completed');
-if(n===s) ps.classList.add('active');
-else if(n<s){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓'}
-else ps.querySelector('.pdot').textContent=n;
+var _stepOrder=[1,2,4,5];
+$q('.pst').forEach(function(ps){
+var dsn=parseInt(ps.dataset.step);
+var dIdx=_stepOrder.indexOf(dsn);
+if(dIdx===-1){ps.classList.remove('active','completed');return;}
+var sIdx=_stepOrder.indexOf(s);
+var dispNum=dIdx+1;
+ps.classList.remove('active','completed');
+if(dIdx===sIdx) ps.classList.add('active');
+else if(dIdx<sIdx){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓';}
+else ps.querySelector('.pdot').textContent=dispNum;
 });
 $q('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
-$i('sSI').textContent='Step '+s+' of 5';
+var _dispMap={1:1,2:2,4:3,5:4};
+$i('sSI').textContent='Step '+(_dispMap[s]||s)+' of 4';
 var sb=$i('sidebar'),mb=$i('mBar');
 if(s===1){sb.style.display='none';mb.style.display='none'}
 else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}

@@ -50,7 +50,7 @@
 <nav class="pbar"><div class="wrap"><div class="psteps">
 <div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Launch Path</span></div><div class="pcon"></div>
 <div class="pst" data-step="2"><div class="pdot">2</div><span class="plbl">Treatments</span></div><div class="pcon"></div>
-<div class="pst" data-step="3"><div class="pdot">3</div><span class="plbl">Power-Ups</span></div><div class="pcon"></div>
+<div class="pst" data-step="3" style="display:none"><div class="pdot">3</div><span class="plbl">Power-Ups</span></div><div class="pcon" style="display:none"></div>
 <div class="pst" data-step="4"><div class="pdot">4</div><span class="plbl">Review</span></div><div class="pcon"></div>
 <div class="pst" data-step="5"><div class="pdot">5</div><span class="plbl">Get Started</span></div>
 </div></div></nav>
@@ -182,9 +182,9 @@
 <div class="cp"><span class="ap">+$5,000</span></div>
 </div>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">← Back</button><button class="btn btn-p" onclick="goTo(3)">Continue →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">← Back</button><button class="btn btn-p" onclick="goTo(4)">Continue →</button></div>
 </div>
-<div class="sec" id="step3">
+<div class="sec" id="step3" style="display:none">
 <h1 class="h1">Power-Ups &amp; Add-Ons</h1>
 <p class="sub">Enhance your build. Add any of these now or any time after launch.</p>
 <div class="gh">Growth Layer</div>
@@ -262,7 +262,7 @@
 </div>
 <div id="platAckErr" style="font-size:12px;color:#E53935;margin-top:6px;display:none">Please acknowledge the platform costs above to continue</div>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(3)">← Back</button><button id="step4SubmitBtn" class="btn btn-p" onclick="goTo(5)" disabled>Submit →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(2)">← Back</button><button id="step4SubmitBtn" class="btn btn-p" onclick="goTo(5)" disabled>Submit →</button></div>
 </div>
 <div class="sec" id="step5">
 <div id="formV">
