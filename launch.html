@@ -278,11 +278,11 @@
 </div>
 <div class="sec" id="step5">
 <div id="formV">
-<h1 class="h1">Your Build is Ready</h1>
-<p class="sub">Enter your details to checkout.</p>
+<h1 class="h1">Let's Get You Started</h1>
+<p class="sub">Enter your details and a launch strategist will reach out.</p>
 <div class="pp-section" id="ppSection" style="display:none">
 <div class="pp-title">Choose Your Payment Plan</div>
-<div class="pp-sub">Platform costs (Wellie MD Telehealth Platform and Lumi Funnels) are billed separately. Choose your build payment plan.</div>
+<div class="pp-sub">How would you like to pay? (We will confirm this with you, no payment is taken now.)</div>
 <div class="pp-grid">
 <div class="pp-card pp-best pp-sel" data-plan="pif" onclick="selPlan('pif')">
 <div class="pp-ck">✓</div>
@@ -321,28 +321,12 @@
 <div class="fi fw"><label class="fl">Business Name <span class="rq">*</span></label><input type="text" class="fx" id="bizName" placeholder="Business name"><span class="fe" id="bnE">Business name is required</span></div>
 <div class="fi fw"><label class="fl">How did you find us?</label><select class="fsel" id="source"><option value="">Select one...</option><option value="Brad Lea Podcast">Brad Lea Podcast</option><option value="Referral">Referral</option><option value="Social Media">Social Media</option><option value="Google">Google</option><option value="Other">Other</option></select></div>
 </div>
-<div class="sig-section" id="sigSection">
-<div class="sig-title">Service Agreement</div>
-<div class="sig-sub">Please review the agreement and sign below to proceed.</div>
-<a href="https://launch.kickstartsocial.co/agreement" target="_blank" rel="noopener" class="sig-link">View Full Services Agreement →</a>
-<div class="sig-canvas-wrap" id="sigWrap">
-<canvas id="sigCanvas"></canvas>
-<div class="sig-placeholder" id="sigPlaceholder">Draw your signature here</div>
-<span class="sig-clear" onclick="clearSig()">Clear</span>
-</div>
-<div class="sig-check" onclick="var cb=$i('agreeCheck');cb.checked=!cb.checked">
-<input type="checkbox" id="agreeCheck" onclick="event.stopPropagation()">
-<label>I have read and agree to the <a href="https://launch.kickstartsocial.co/agreement" target="_blank" rel="noopener" style="color:var(--p)" onclick="event.stopPropagation()">GrowPro Services Agreement</a></label>
-</div>
-<div class="sig-err" id="sigErr">Please sign above and check the agreement box to continue</div>
-</div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Submit & Pay →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Send My Build →</button></div>
 </div>
 <div class="conf hid" id="confV">
 <div class="conf-i">✓</div>
 <h1 class="display-font">You are in.</h1>
-<p>Review below and click Pay Now.</p>
-<div style="margin:24px 0"><a id="stripePayBtn" href="#" class="btn btn-p" style="font-size:18px;padding:18px 48px;background:#34C759;text-decoration:none;display:inline-block;cursor:pointer">Pay Now →</a><p style="font-size:13px;color:#888;margin-top:8px">Secure checkout via Stripe.</p></div>
+<p>Your build has been submitted. A launch strategist will reach out within one business day to confirm your build and send your invoice.</p>
 <div class="conf-r"><div class="suc" id="confSum"></div></div>
 <div class="conf-c"><a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a> | <a href="https://growpro.co" target="_blank">growpro.co</a></div>
 </div>
@@ -369,7 +353,7 @@
 </div>
 <footer class="ft"><div class="wrap">
 <div class="ftl"><a href="https://growpro.co" target="_blank">growpro.co</a> | <a href="https://kickstartsocial.co" target="_blank">kickstartsocial.co</a> | <a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a></div>
-<p>Pricing subject to change. Ad spend billed separately.</p>
+<p>Pricing subject to change.</p>
 </div></footer>
 <script>
 function $i(id){return document.getElementById(id)}
@@ -575,7 +559,7 @@ if(s===1){sb.style.display='none';mb.style.display='none'}
 else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
 step=s;
 if(s===4){buildSum();var pac=$i('platformAckCheck'),sb=$i('step4SubmitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
-if(s===5){updatePayPlans();setTimeout(initSig,100);}
+if(s===5){updatePayPlans();}
 window.scrollTo({top:0,behavior:'smooth'});
 reportHeightToParent();
 try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollTop',page:'launch'},'*');}}catch(e){}
@@ -648,14 +632,11 @@ $i('fnE').classList.remove('show');$i('emE').classList.remove('show');$i('bnE').
 if(!fn){$i('firstName').classList.add('err');$i('fnE').classList.add('show');ok=false}
 if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){$i('email').classList.add('err');$i('emE').classList.add('show');ok=false}
 if(!bn){$i('bizName').classList.add('err');$i('bnE').classList.add('show');ok=false}
-if(!sigHasData){$i('sigErr').classList.add('show');ok=false}else{$i('sigErr').classList.remove('show')}
-if(!$i('agreeCheck').checked){$i('sigErr').classList.add('show');ok=false}
 var pac=$i('platformAckCheck');if(pac&&!pac.checked){var pe=$i('platAckErr');if(pe)pe.style.display='block';ok=false}else{var pe=$i('platAckErr');if(pe)pe.style.display='none'}
 if(!ok) return;
 var t=calcTotals();
 var otList=addons.filter(function(a){var c=$1('[data-addon="'+a+'"]');return c&&c.dataset.type==='onetime'}).map(function(a){return addonNames[a]});
 var moList=addons.filter(function(a){var c=$1('[data-addon="'+a+'"]');return c&&c.dataset.type==='monthly'}).map(function(a){return addonNames[a]});
-var planInfo=getStripeItemsForPlan(t,em,fn,bn);
 var payload={
 first_name:fn,last_name:$i('lastName').value.trim(),
 email:em,phone:$i('phone').value.trim(),
@@ -668,11 +649,7 @@ addons_one_time:otList,addons_monthly:moList,
 welliemd_setup:2000,welliemd_monthly:1500,
 total_one_time:t.ot,total_monthly:t.mo,
 configurator_type:'launch',
-template_favorites:galPicks.length>0?galPicks.join(', '):'None selected',
-agreement_accepted:true,
-agreement_version:'v1.0',
-date_signed:new Date().toISOString(),
-signature:getSigData()
+template_favorites:galPicks.length>0?galPicks.join(', '):'None selected'
 };
 if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
 fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)});
@@ -683,62 +660,6 @@ $i('sidebar').style.display='none';
 $i('mBar').style.display='none';
 buildSum();
 $i('confSum').innerHTML=$i('sumC').innerHTML;
-var stripeItems=[];
-var checkoutMode='payment';
-var btnLabel='';
-if(planInfo){
-stripeItems=planInfo.items;
-checkoutMode=planInfo.mode;
-btnLabel='Pay Now: '+fmt(planInfo.down)+' down';
-var ppHtml='<div class="suse" style="background:#FFF8E7;border:1px solid #E8D5B7;border-radius:12px;padding:16px 20px;margin-top:16px"><div class="sust" style="color:#6B4226">Payment Plan: '+planInfo.planLabel+'</div>';
-ppHtml+='<div class="sui"><span>Down Payment (today)</span><span><strong>'+fmt(planInfo.down)+'</strong></span></div>';
-ppHtml+='<div class="sui"><span>Installment 1 (week 4)</span><span>'+fmt(planInfo.installment)+'</span></div>';
-ppHtml+='<div class="sui"><span>Installment 2 (week 8)</span><span>'+fmt(planInfo.installment)+'</span></div>';
-ppHtml+='<div class="sui" style="font-weight:700"><span>Total</span><span>'+fmt(planInfo.totalWithFee)+'</span></div>';
-if(payPlan==='split10') ppHtml+='<div style="font-size:11px;color:#888;margin-top:8px;font-style:italic">15% fee on balance</div>';
-ppHtml+='<div style="font-size:11px;color:#34C759;margin-top:4px;font-weight:600">Auto-charged every 4 weeks</div>';
-ppHtml+='</div>';
-$i('confSum').innerHTML+=ppHtml;
-} else {
-if(pkg) stripeItems.push({name:pkgNames[pkg],amount_cents:pkgPrices[pkg]*100});
-treats.forEach(function(tr){
-if(pkg==='operator'&&operatorIncludesTreat.indexOf(tr)!==-1) return;
-stripeItems.push({name:treatNames[tr],amount_cents:(treatPrices[tr]||2500)*100});
-});
-addons.forEach(function(a){
-if(pkg==='operator'&&operatorIncludes.indexOf(a)!==-1) return;
-var card=$1('[data-addon="'+a+'"');if(!card) return;
-var price=parseInt(card.dataset.price),type=card.dataset.type;
-if(type==='onetime') stripeItems.push({name:addonNames[a],amount_cents:price*100});
-});
-btnLabel='Pay Now: '+fmt(t.ot);
-}
-var payBtn=$i('stripePayBtn');
-payBtn.textContent=btnLabel;
-payBtn.onclick=function(e){
-e.preventDefault();
-payBtn.textContent='Processing...';
-payBtn.style.opacity='0.7';
-var planDesc=payPlan==='pif'?'Pay in Full':payPlan==='split15'?'$15K Down 5%':'$10K Down 15%';
-var fetchBody={email:em,description:'GrowPro Launch: '+pkgNames[pkg]+', '+bn+', '+planDesc,metadata:{business_name:bn,customer_name:fn+' '+($i('lastName').value.trim()),phone:$i('phone').value.trim(),source:$i('source').value,payment_plan:planDesc,build_total:t.ot},success_url:'https://zenjessica.github.io/growpro/thank-you.html?build=launch&session={CHECKOUT_SESSION_ID}&name='+encodeURIComponent(fn),cancel_url:(function(){try{return window.top.location.href}catch(e){return window.location.href}})()};
-if(planInfo){
-fetchBody.payment_plan={down_payment_cents:planInfo.down*100,installment_cents:planInfo.installment*100,installment_count:2,interval_days:28,plan_label:planInfo.planLabel};
-} else {
-fetchBody.line_items=stripeItems;
-fetchBody.mode=checkoutMode;
-}
-fetch(STRIPE_API_URL,{
-method:'POST',
-headers:{'Content-Type':'application/json'},
-body:JSON.stringify(fetchBody)
-}).then(function(r){return r.json()}).then(function(d){
-if(d.url){try{window.top.location.href=d.url}catch(e){window.location.href=d.url}}
-else{payBtn.textContent=btnLabel;payBtn.style.opacity='1';alert('Error: '+(d.error||'Unknown error'))}
-}).catch(function(err){
-payBtn.textContent=btnLabel;payBtn.style.opacity='1';
-alert('Connection error. Please try again.');
-});
-};
 $q('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓'});
 $q('.pcon').forEach(function(c){c.classList.add('completed')});
 }
@@ -813,7 +734,6 @@ document.addEventListener('DOMContentLoaded',function(){
 $i('sidebar').style.display='none';
 $i('mBar').style.display='none';
 updatePrice();
-initSig();
 // HRT is Operator Suite only — grey it out on initial load
 var hrtEl=$i('hrtCard');
 if(hrtEl){
