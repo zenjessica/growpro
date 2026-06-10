@@ -317,7 +317,7 @@
 <div class="fi"><label class="fl">First Name <span class="rq">*</span></label><input type="text" class="fx" id="firstName" placeholder="First name"><span class="fe" id="fnE">First name is required</span></div>
 <div class="fi"><label class="fl">Last Name</label><input type="text" class="fx" id="lastName" placeholder="Last name"></div>
 <div class="fi"><label class="fl">Email <span class="rq">*</span></label><input type="email" class="fx" id="email" placeholder="you@company.com"><span class="fe" id="emE">Valid email is required</span></div>
-<div class="fi"><label class="fl">Phone <span style="color:#AAA;font-weight:400">(optional)</span></label><input type="tel" class="fx" id="phone" placeholder="(555) 000-0000"></div>
+<div class="fi"><label class="fl">Phone <span class="rq">*</span></label><input type="tel" class="fx" id="phone" placeholder="(555) 000-0000"><span class="fe" id="phE">Phone is required</span></div>
 <div class="fi fw"><label class="fl">Business Name <span class="rq">*</span></label><input type="text" class="fx" id="bizName" placeholder="Business name"><span class="fe" id="bnE">Business name is required</span></div>
 <div class="fi fw"><label class="fl">How did you find us?</label><select class="fsel" id="source"><option value="">Select one...</option><option value="Brad Lea Podcast">Brad Lea Podcast</option><option value="Referral">Referral</option><option value="Social Media">Social Media</option><option value="Google">Google</option><option value="Other">Other</option></select></div>
 </div>
@@ -627,11 +627,12 @@ $i('sumC').innerHTML=h;
 }
 function submitForm(){
 var fn=$i('firstName').value.trim(),em=$i('email').value.trim(),bn=$i('bizName').value.trim(),ok=true;
-$i('firstName').classList.remove('err');$i('email').classList.remove('err');$i('bizName').classList.remove('err');
-$i('fnE').classList.remove('show');$i('emE').classList.remove('show');$i('bnE').classList.remove('show');
+$i('firstName').classList.remove('err');$i('email').classList.remove('err');$i('bizName').classList.remove('err');$i('phone').classList.remove('err');
+$i('fnE').classList.remove('show');$i('emE').classList.remove('show');$i('bnE').classList.remove('show');$i('phE').classList.remove('show');
 if(!fn){$i('firstName').classList.add('err');$i('fnE').classList.add('show');ok=false}
 if(!em||em.indexOf('@')===-1||em.indexOf('.')===-1){$i('email').classList.add('err');$i('emE').classList.add('show');ok=false}
 if(!bn){$i('bizName').classList.add('err');$i('bnE').classList.add('show');ok=false}
+var ph=$i('phone').value.trim();if(!ph){$i('phone').classList.add('err');$i('phE').classList.add('show');ok=false}
 var pac=$i('platformAckCheck');if(pac&&!pac.checked){var pe=$i('platAckErr');if(pe)pe.style.display='block';ok=false}else{var pe=$i('platAckErr');if(pe)pe.style.display='none'}
 if(!ok) return;
 var t=calcTotals();
