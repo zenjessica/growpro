@@ -3,13 +3,13 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>GrowPro — Services Agreement</title>
+<title>GrowPro: Client Services Agreement</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.8;overflow-x:hidden}
-:root{--p:#8B7EC8;--pl:#E8E4F5;--pb:#F4F2FA;--n:#0D1B2A;--gb:#F7F7F9;--gbd:#E5E5EA;--g:#34C759;--w:#FFF;--r:12px}
+body{font-family:'Inter',sans-serif;background:#FFF;color:#1a1a1a;line-height:1.8;overflow-x:hidden}
+:root{--p:#8B7EC8;--pl:#E8E4F5;--pb:#F4F2FA;--n:#0D1B2A;--gb:#F7F7F9;--gbd:#E5E5EA;--w:#FFF;--r:12px}
 .hdr{padding:20px 0;border-bottom:1px solid var(--gbd);background:var(--w);position:sticky;top:0;z-index:100}
 .hdr .wrap{display:flex;align-items:center;justify-content:space-between}
 .wrap{max-width:860px;margin:0 auto;padding:0 24px}
@@ -17,15 +17,19 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 .logo span{color:var(--p)}
 .tag{font-size:13px;color:#888;letter-spacing:1px}
 .doc{padding:48px 0 80px}
-.doc h1{font-size:28px;font-weight:700;margin-bottom:4px;color:var(--n);letter-spacing:-0.5px}
-.doc .company{font-size:15px;color:#888;margin-bottom:32px}
-.doc h2{font-size:20px;font-weight:700;margin:36px 0 12px;color:var(--n);letter-spacing:-0.3px;border-bottom:1px solid var(--gbd);padding-bottom:8px}
+.doc h1{font-size:28px;font-weight:800;margin-bottom:4px;color:var(--n);letter-spacing:-0.5px}
+.doc .company{font-size:15px;color:#888;margin-bottom:8px}
+.doc .eff{font-size:13px;color:#888;margin-bottom:28px}
+.doc h2{font-size:21px;font-weight:800;margin:40px 0 14px;color:var(--n);letter-spacing:-0.3px;border-bottom:2px solid var(--gbd);padding-bottom:8px}
 .doc h3{font-size:16px;font-weight:700;margin:24px 0 8px;color:var(--n)}
-.doc p{font-size:14px;color:#333;margin-bottom:12px;line-height:1.8}
-.doc ul{margin:8px 0 16px 24px;font-size:14px;color:#333}
+.doc p{font-size:14.5px;color:#1a1a1a;margin-bottom:12px;line-height:1.8}
+.doc p .lead{font-weight:700;color:var(--n)}
+.doc ul{margin:8px 0 16px 24px;font-size:14.5px;color:#1a1a1a}
 .doc ul li{margin-bottom:6px;line-height:1.7}
 .doc .note{font-size:13px;color:#888;font-style:italic;margin-top:40px;padding-top:20px;border-top:1px solid var(--gbd)}
-.doc .sow-divider{margin:48px 0;padding:32px 0;border-top:3px solid var(--n);text-align:center}
+.doc hr.sow-rule{border:none;border-top:2px solid var(--n);margin:56px 0 0}
+.doc .sow-divider{padding:32px 0 8px;text-align:center}
+.doc .sow-divider .kicker{font-size:13px;font-weight:700;letter-spacing:2px;color:var(--p);margin-bottom:6px}
 .doc .sow-divider h1{font-size:24px;margin-bottom:4px}
 .doc .sow-divider p{font-size:14px;color:#888}
 .ft{background:var(--gb);border-top:1px solid var(--gbd);padding:32px 0;text-align:center;font-size:13px;color:#888;line-height:1.8}
@@ -33,29 +37,38 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 .ver{display:inline-block;font-size:11px;font-weight:600;color:var(--p);background:var(--pb);padding:3px 10px;border-radius:12px;margin-bottom:16px;letter-spacing:0.5px}
 .btn-print{background:var(--p);color:var(--w);border:none;padding:10px 18px;border-radius:8px;font-family:'Inter',sans-serif;font-weight:600;font-size:13px;cursor:pointer;transition:background .2s}
 .btn-print:hover{background:#7468B0}
-.notice{background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:16px 20px;margin-bottom:24px;font-size:13px;color:#555;line-height:1.6}
+.callout{background:#f5f5f5;border-left:3px solid var(--n);border-radius:0 6px 6px 0;padding:16px 20px;margin:20px 0;font-size:14px;font-weight:700;color:#1a1a1a;line-height:1.7}
+.notice{background:#f5f5f5;border-left:3px solid var(--n);border-radius:0 6px 6px 0;padding:16px 20px;margin-bottom:24px;font-size:13px;color:#1a1a1a;line-height:1.7}
 .notice strong{color:var(--n)}
+.notice a{color:var(--n);font-weight:700;text-decoration:underline}
+.affirm{margin-top:24px;font-weight:700;color:var(--n)}
+@media (max-width:600px){.wrap{padding:0 18px}.doc{padding:32px 0 56px}.doc h1{font-size:24px}.doc h2{font-size:19px}.hdr .wrap{gap:12px}.btn-print{padding:9px 14px;font-size:12px}}
 @media print{.hdr,.ft,.btn-print{display:none}.doc{padding:0}body{background:#FFF}}
 </style>
 </head>
 <body>
-<header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Services Agreement</div></div><button class="btn-print" onclick="window.print()">Print / Save as PDF</button></div></header>
+<header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Client Services Agreement</div></div><button class="btn-print" onclick="window.print()">Print / Save as PDF</button></div></header>
 <div class="wrap"><div class="doc">
-<div class="ver">Agreement v1.1</div>
-<h1>Services Agreement</h1>
-<p class="company">Kickstart Social LLC dba GrowPro — Client Services</p>
-<div class="notice"><strong>How to sign:</strong> Review this agreement, then complete your build at <a href="https://launch.kickstartsocial.co/operator" style="color:var(--p);font-weight:600;text-decoration:none">launch.kickstartsocial.co/operator</a> (or <a href="https://launch.kickstartsocial.co/launch" style="color:var(--p);font-weight:600;text-decoration:none">/launch</a>). Step 4 will capture your e-signature and process payment. A signed PDF will be emailed to you.</div>
+<div class="ver">Agreement v2.0</div>
+<h1>Client Services Agreement</h1>
+<p class="company">GrowPro Telehealth | Kickstart Social LLC</p>
+<p class="eff">Effective Date: Upon Execution</p>
 
-<h2>Section 1 — Parties and Definitions</h2>
-<p><strong>1.1</strong> "Agency" or "GrowPro" means Kickstart Social LLC, a California limited liability company, doing business as GrowPro, with its principal place of business in California.</p>
-<p><strong>1.2</strong> "Client" means the individual or business entity executing this Agreement via invoice payment.</p>
-<p><strong>1.3</strong> "Confidential Information" means all data, know-how, trade secrets, and business information of either party that a reasonable person would treat as confidential.</p>
-<p><strong>1.4</strong> "Services" means the services detailed on the applicable invoice, including telehealth consulting, brand launch, platform configuration, CRM buildout, website design, social media management, and paid advertising management. Scope may be amended by mutual written agreement.</p>
-<p><strong>1.5</strong> "Service Fees" means the fees as specified on the applicable invoice.</p>
-<p><strong>1.6</strong> "Deliverables" means any work product, creative assets, funnels, CRM configurations, website files, ad copy, or platform builds produced by Agency under this Agreement.</p>
-<p><strong>1.7</strong> "Platform" or "WellieMD" means the white-label telehealth software platform operated by Agency, where applicable.</p>
+<div class="notice"><strong>How to sign:</strong> Review this Agreement, then complete your build at <a href="https://launch.kickstartsocial.co/operator">launch.kickstartsocial.co/operator</a> (or <a href="https://launch.kickstartsocial.co/launch">/launch</a>). The final step captures your electronic signature. A signed PDF will be emailed to you.</div>
 
-<h2>Section 2 — Telehealth Services</h2>
+<div class="callout">IMPORTANT: Read this Agreement carefully before signing. By executing this Agreement, you acknowledge that you have read, understood, and agree to all terms. This Agreement contains binding dispute resolution procedures and limitations on chargebacks and refunds.</div>
+
+<h2>Section 1: Parties and Definitions</h2>
+<p><span class="lead">1.1</span> "Agency," "GrowPro," or "Kickstart Social" means Kickstart Social LLC, a California limited liability company, doing business as GrowPro, with its principal place of business in California.</p>
+<p><span class="lead">1.2</span> "Client" means the individual or business entity executing this Agreement via electronic signature.</p>
+<p><span class="lead">1.3</span> "Confidential Information" means all data, know-how, trade secrets, and business information of either party that a reasonable person would treat as confidential.</p>
+<p><span class="lead">1.4</span> "Services" means the services detailed on the applicable invoice and Exhibit A (Statement of Work), including telehealth consulting, brand launch, platform configuration, CRM buildout, website design, social media management, and paid advertising management. Scope may be amended only by mutual written agreement signed by both parties.</p>
+<p><span class="lead">1.5</span> "Service Fees" means the fees as specified on the applicable invoice.</p>
+<p><span class="lead">1.6</span> "Deliverables" means any work product, creative assets, funnels, CRM configurations, website files, ad copy, or platform builds produced by Agency under this Agreement.</p>
+<p><span class="lead">1.7</span> "Platform" or "WellieMD" means the white-label telehealth software platform operated by Agency, provided to Client under a limited license during the term of this Agreement.</p>
+<p><span class="lead">1.8</span> "Milestone" means a defined project phase as set forth in Section 4A of this Agreement, upon completion of which Agency delivers written notice to Client and Client is afforded a review and acceptance period.</p>
+
+<h2>Section 2: Telehealth Services</h2>
 <p>This section applies to all clients engaged in telehealth operations, including GrowPro program participants and clients operating on WellieMD or third-party telehealth platforms.</p>
 <h3>2.1 Nature of Services</h3>
 <p>Agency provides telehealth business consulting, brand development, platform configuration, marketing strategy, advertising management, pharmacy partner introductions, website design, and related launch and operational support. Agency does not provide legal, medical, clinical, pharmaceutical, or regulatory compliance services of any kind.</p>
@@ -66,191 +79,224 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 <h3>2.4 Warning Letters</h3>
 <p>Agency shall not be liable for FDA warning letters, FTC actions, state regulatory enforcement actions, or similar regulatory communications directed at Client or Client's brand. Agency will provide reasonable support in navigating such communications if requested.</p>
 <h3>2.5 Pharmacy Partners</h3>
-<p>Agency may introduce Client to pharmacy partners including but not limited to Pharmacy Hub. Agency makes no representation or warranty regarding any pharmacy partner's continued operation, regulatory compliance, pricing, or product availability. Client assumes all risk associated with pharmacy relationships.</p>
+<p>Agency may introduce Client to pharmacy partners. Agency makes no representation or warranty regarding any pharmacy partner's continued operation, regulatory compliance, pricing, or product availability. Client assumes all risk associated with pharmacy relationships.</p>
 <h3>2.6 Peptides and Emerging Categories</h3>
 <p>Agency makes no representation regarding the current or future legal status of peptide medications, GLP-1 compounds, or any other compounded substance. Client is solely responsible for ensuring their brand's medication offerings comply with applicable law at all times.</p>
 
-<h2>Section 3 — Marketing Services</h2>
+<h2>Section 3: Marketing Services</h2>
 <h3>3.1 Scope</h3>
-<p>Marketing services are limited to the specific platforms and channels commissioned by Client as detailed on the applicable invoice and Statement of Work (SOW). Agency does not manage platforms not expressly included in the signed scope. Additional platforms may be added at any time via a separate invoice or Statement of Work amendment.</p>
+<p>Marketing services are limited to the specific platforms and channels commissioned by Client as detailed on the applicable invoice and Statement of Work. Agency does not manage platforms not expressly included in the signed scope. Additional platforms may be added at any time via a separate invoice or Statement of Work amendment.</p>
 <h3>3.2 Platform Compliance Commitment</h3>
-<p>Agency makes commercially reasonable efforts to ensure all advertising creative, copy, and targeting comply with the policies of Meta, Google, TikTok, and any other advertising platform used on Client's behalf. Agency stays current with platform policy updates and proactively adjusts campaigns and creative accordingly. However, platform policies change frequently and without notice, and Agency cannot guarantee that all content will be approved or that accounts will remain in good standing at all times.</p>
+<p>Agency makes commercially reasonable efforts to ensure all advertising creative, copy, and targeting comply with the policies of Meta, Google, TikTok, and any other advertising platform used on Client's behalf. However, platform policies change frequently and without notice, and Agency cannot guarantee that all content will be approved or that accounts will remain in good standing at all times.</p>
 <h3>3.3 Ad Platform Restrictions</h3>
-<p>Agency shall not be liable for ad account suspensions, bans, or restrictions imposed by Meta, Google, TikTok, or any other advertising platform. Healthcare advertising is subject to heightened platform scrutiny. Agency will make commercially reasonable efforts to resolve restrictions and restore account functionality promptly.</p>
+<p>Agency shall not be liable for ad account suspensions, bans, or restrictions imposed by any advertising platform. Agency will make commercially reasonable efforts to resolve restrictions and restore account functionality promptly.</p>
 <h3>3.4 Ad Spend</h3>
 <p>Ad spend is paid directly by Client to the advertising platform and is separate from Agency fees. Agency does not guarantee specific CPA, ROAS, or revenue outcomes.</p>
 <h3>3.5 No Performance Guarantee</h3>
 <p>Agency does not guarantee specific revenue outcomes, patient acquisition numbers, ROAS, CPA, or any other performance metric. Projections provided are estimates based on historical data and are not contractual commitments.</p>
 
-<h2>Section 4 — Fees and Payment</h2>
+<h2>Section 4: Fees and Payment</h2>
 <h3>4.1 Setup Fee</h3>
-<p>Setup fees are due at signing or as specified on the invoice. Setup fees are non-refundable once work commences.</p>
-<h3>4.2 Monthly Retainer</h3>
-<p>Monthly retainer fees are due on the billing date established at contract execution, based on the contracted service start date. This date is specified in the applicable invoice and does not default to the first of the month unless expressly stated. Failure to pay within 10 business days of the due date may result in suspension of services.</p>
+<p>Setup fees are due at signing or as specified on the invoice and are non-refundable once work commences. Work is deemed commenced upon any of the following: kickoff call scheduled or completed, brand questionnaire sent, domain research initiated, platform configuration begun, or any creative work started. Client's execution of this Agreement constitutes acknowledgment that services have commenced upon payment.</p>
+<h3>4.2 Monthly Fees</h3>
+<p>Monthly fees are due on the billing date established at contract execution. This date is specified in the applicable invoice and does not default to the first of the month unless expressly stated. Failure to pay within 10 business days of the due date may result in suspension of services and website access.</p>
 <h3>4.3 Late Payment</h3>
-<p>Overdue balances accrue interest at 1.5% per month. Agency reserves the right to suspend services for accounts more than 15 days past due.</p>
-<h3>4.4 Chargebacks</h3>
-<p>Client agrees not to initiate chargebacks for services rendered. Any disputed charges must first be submitted in writing to Agency. Chargebacks may result in immediate termination and collection proceedings.</p>
+<p>Overdue balances accrue interest at 1.5% per month. Agency reserves the right to suspend all services, platform access, and website hosting for accounts more than 15 days past due without further notice.</p>
+<h3>4.4 Custom Pricing Modifications</h3>
+<p>Any modification to standard pricing, monthly fees, payment schedules, or service inclusions must be documented in a written addendum signed by both parties, or confirmed via email exchange between authorized representatives of both parties. Such email confirmation is binding. Pricing modifications do not alter the non-refundable nature of fees paid or any other term of this Agreement.</p>
+<h3>4.5 Dispute Resolution: Required Process Before Any Chargeback</h3>
+<div class="callout">REQUIRED: Client must complete the written dispute process below before initiating any chargeback. Failure to do so constitutes a material breach of this Agreement.</div>
+<p>Prior to initiating any chargeback, payment reversal, or dispute with any financial institution or payment processor, Client must:</p>
+<ul>
+<li>Submit a written dispute notice to Agency at hello@kickstartsocial.co describing the specific concern in detail;</li>
+<li>Allow Agency thirty (30) calendar days from confirmed receipt of the written notice to investigate and respond;</li>
+<li>Participate in good-faith resolution efforts during the 30-day period.</li>
+</ul>
+<p>Client agrees not to initiate a chargeback or payment dispute during this 30-day resolution period. If Agency fails to respond within 30 days, Client may then pursue available remedies. Agency's response may include a proposed resolution, credit, scope adjustment, or written explanation. This process is a condition precedent to any chargeback right.</p>
+<h3>4.6 Chargebacks: Breach and Consequences</h3>
+<p>Initiating a chargeback or payment dispute without first completing the written dispute process in Section 4.5 constitutes a material breach of this Agreement. In the event Client initiates a chargeback in breach of Section 4.5, or in the event a chargeback is filed for services that were delivered and accepted under this Agreement, Client agrees that:</p>
+<ul>
+<li>The chargeback constitutes immediate grounds for termination of all services without notice or refund;</li>
+<li>Agency may immediately suspend or take offline any website, funnel, landing page, or digital asset hosted on Agency-managed infrastructure;</li>
+<li>Agency may immediately terminate Client's WellieMD platform access;</li>
+<li>Client remains liable for the full disputed amount plus a $500 chargeback processing fee per occurrence;</li>
+<li>Client shall be liable for all of Agency's attorney's fees, collection costs, and related expenses incurred in recovering the disputed amount;</li>
+<li>Agency reserves the right to pursue collection through any available legal remedy including small claims court, civil litigation, or third-party collections.</li>
+</ul>
+<p>This clause survives termination of this Agreement.</p>
 
-<h2>Section 5 — Intellectual Property</h2>
-<h3>5.1 Client Ownership</h3>
-<p>Upon payment in full, Client owns all Deliverables created specifically for Client's brand. Agency retains ownership of its proprietary methods, templates, platform code, and tools.</p>
-<h3>5.2 Brand Name Clearance</h3>
+<h2>Section 4A: Project Milestones and Acceptance</h2>
+<h3>4A.1 Milestone Structure</h3>
+<p>Client's telehealth brand build is structured around four defined milestones. Upon completion of each milestone, Agency will deliver written notification to Client via email or Slack. Client has five (5) business days from delivery of written notification to review and provide written feedback or written approval.</p>
+<p>The four milestones are:</p>
+<ul>
+<li><strong>Milestone 1: Brand Identity</strong>. Logo, color palette, typography, and brand guidelines delivered for Client review and approval.</li>
+<li><strong>Milestone 2: Website Design</strong>. Full website design mockups and copy delivered for Client review and approval prior to development commencement.</li>
+<li><strong>Milestone 3: Platform Configuration</strong>. WellieMD platform configured, patient portal live in staging environment, CRM setup complete, delivered for Client review and approval.</li>
+<li><strong>Milestone 4: Launch Approval</strong>. Full site live on Agency-managed hosting, all integrations active, test order completed, delivered for final Client sign-off prior to go-live.</li>
+</ul>
+<h3>4A.2 Deemed Acceptance</h3>
+<p>If Client does not provide written feedback or written rejection within five (5) business days of Agency's written milestone delivery notification, that milestone is deemed accepted and approved by Client. Deemed accepted milestones are considered complete, non-refundable, and may not be disputed as undelivered in any subsequent chargeback, dispute, or legal proceeding.</p>
+<h3>4A.3 Rejection and Revision</h3>
+<p>If Client provides written rejection within the five-day window, Agency will address the specific concerns raised and resubmit the milestone for a new five-day review period. The number of revision rounds per milestone is governed by Section 6 of Exhibit A. Rejection must be specific and in writing. General dissatisfaction without specific feedback does not constitute valid rejection.</p>
+<h3>4A.4 Milestone Records</h3>
+<p>Agency will maintain written records of all milestone delivery notifications and client acceptance responses. These records serve as evidence of delivery and acceptance in any dispute resolution proceeding. Client acknowledges that milestone acceptance records may be submitted to payment processors, financial institutions, or courts as evidence of services rendered.</p>
+
+<h2>Section 5: Hosting, Infrastructure, and Platform Control</h2>
+<h3>5.1 Agency-Managed Hosting</h3>
+<p>All websites, funnels, landing pages, and digital assets built by Agency are hosted on Agency-managed server infrastructure as part of the WellieMD platform service. Hosting is included in Client's monthly WellieMD platform fee. Client's website and digital assets remain on Agency-managed infrastructure for the duration of this Agreement and any renewal period.</p>
+<h3>5.2 Domain Ownership</h3>
+<p>Client owns their domain name, registered in Client's name. DNS records are configured to point to Agency-managed hosting. Agency will configure and manage DNS settings on Client's behalf during the term of this Agreement.</p>
+<h3>5.3 No Hosting Transfer During Active Agreement</h3>
+<p>Transfer of hosting credentials, DNS control, cPanel access, or server-level access to Client does not occur while this Agreement is active. Client does not receive server-level access to Agency infrastructure at any time.</p>
+<h3>5.4 Hosting Transfer Upon Termination in Good Standing</h3>
+<p>Upon termination of this Agreement in good standing (meaning all outstanding balances are paid in full, no active disputes or chargebacks exist, and the termination is in accordance with Section 6.2), Agency will provide Client with all completed Deliverable files and assist with transition of the website to Client-controlled hosting. A one-time migration fee may apply. Migration requires 30 days written notice.</p>
+<h3>5.5 Immediate Suspension Rights</h3>
+<p>Agency may immediately redirect, suspend, or take offline any website, funnel, or digital asset hosted on Agency infrastructure in the event of: (a) non-payment of any fee outstanding more than 15 days; (b) a chargeback initiated by Client; (c) material breach of this Agreement by Client; (d) immediate termination under Section 6.3. Suspension may occur without prior notice in the event of chargeback or material breach.</p>
+<h3>5.6 WellieMD Platform License</h3>
+<p>The WellieMD platform remains the exclusive property of Kickstart Social LLC. Client receives a limited, non-transferable license to use the platform during the term of this Agreement. Upon termination in good standing, Client retains their patient data, brand assets, and pharmacy relationships but loses platform access. Upon termination for breach or chargeback, platform access terminates immediately without data export rights until all disputed amounts are resolved.</p>
+
+<h2>Section 6: Intellectual Property</h2>
+<h3>6.1 Client Ownership Upon Full Payment</h3>
+<p>Upon payment in full of all amounts due under this Agreement, Client owns all Deliverables created specifically for Client's brand. Agency retains ownership of its proprietary methods, templates, platform code, and tools.</p>
+<h3>6.2 Brand Name Clearance</h3>
 <p>Client confirms it has independently searched for competing brand names and trademark conflicts. Client accepts full responsibility for all redesign costs if a conflict is discovered after design work commences. Agency is not responsible for trademark infringement arising from Client-selected brand names.</p>
-<h3>5.3 WellieMD Platform</h3>
-<p>The WellieMD platform remains the exclusive property of Kickstart Social LLC. Client receives a limited, non-transferable license to use the platform during the term of this Agreement. Upon termination, Client retains their patient data, brand assets, and pharmacy relationships but loses platform access.</p>
 
-<h2>Section 6 — Term and Termination</h2>
-<h3>6.1 Term</h3>
-<p>This Agreement commences on the invoice date and continues for the initial term specified in the Statement of Work (SOW) (minimum three months unless otherwise stated). After the initial term, the Agreement continues month-to-month until terminated.</p>
-<h3>6.2 Termination by Client</h3>
+<h2>Section 7: Term and Termination</h2>
+<h3>7.1 Term</h3>
+<p>This Agreement commences on the invoice date and continues for the initial term specified in the Statement of Work (minimum three months unless otherwise stated). After the initial term, the Agreement continues month-to-month until terminated.</p>
+<h3>7.2 Termination by Client</h3>
 <p>Client may terminate with 30 days written notice after the initial term. Setup fees and work completed through the notice period are non-refundable.</p>
-<h3>6.3 Termination by Agency</h3>
+<h3>7.3 Termination by Agency: With Cure Period</h3>
 <p>Agency may terminate this Agreement for material breach by Client, provided that Agency first delivers written notice describing the breach in reasonable detail and Client is afforded a cure period of ten (10) business days from receipt of such notice to cure the breach. If the breach is not cured within the cure period, Agency may terminate immediately without further notice and without refund.</p>
-<p><strong>Exceptions — Immediate Termination Without Cure.</strong> Notwithstanding the foregoing, Agency may terminate this Agreement immediately and without a cure period in the event of: (a) fraud, misrepresentation, or illegal activity by Client; (b) chargeback initiated by Client; (c) abusive, harassing, or threatening conduct by Client toward Agency staff (per Section 8.2); (d) any conduct by Client that creates immediate legal, regulatory, reputational, or operational risk to Agency, its staff, partner pharmacies, partner clinicians, or other clients; or (e) Client's insolvency, bankruptcy, or assignment for the benefit of creditors.</p>
-<h3>6.4 Effect of Termination</h3>
-<p>Upon termination, Agency will provide Client with all completed Deliverables and patient data. Platform access terminates at end of the notice period. Agency retains the right to pursue payment of outstanding balances.</p>
+<h3>7.4 Immediate Termination Without Cure</h3>
+<p>Notwithstanding Section 7.3, Agency may terminate this Agreement immediately and without a cure period in the event of:</p>
+<ul>
+<li>Fraud, misrepresentation, or illegal activity by Client;</li>
+<li>Chargeback initiated by Client without completing the written dispute process in Section 4.5;</li>
+<li>Abusive, harassing, or threatening conduct by Client toward Agency staff per Section 9.2;</li>
+<li>Any conduct by Client that creates immediate legal, regulatory, reputational, or operational risk to Agency, its staff, partner pharmacies, partner clinicians, or other clients;</li>
+<li>Client's insolvency, bankruptcy, or assignment for the benefit of creditors.</li>
+</ul>
+<h3>7.5 Effect of Termination in Good Standing</h3>
+<p>Upon termination in good standing, Agency will provide Client with all completed Deliverables and patient data. Platform access terminates at end of the notice period. Agency retains the right to pursue payment of outstanding balances.</p>
+<h3>7.6 Effect of Termination for Breach or Chargeback</h3>
+<p>Upon termination for breach or following a chargeback, Agency may: immediately suspend website and platform access; retain all fees paid as liquidated damages for work performed and opportunity costs; pursue collection of all outstanding amounts plus the $500 chargeback processing fee; and withhold Deliverable files until all amounts owed are resolved.</p>
 
-<h2>Section 7 — Confidentiality</h2>
+<h2>Section 8: Confidentiality</h2>
 <p>Both parties agree to maintain the confidentiality of the other's Confidential Information and not to disclose it to third parties without prior written consent. This obligation survives termination for a period of two years.</p>
 
-<h2>Section 8 — Client Conduct</h2>
-<p>GrowPro is built on a foundation of mutual respect, collaboration, and professionalism. We bring our best to every client relationship and expect the same in return.</p>
-<h3>8.1 Professional Communication</h3>
-<p>Client agrees to communicate with Agency staff, contractors, and team members in a respectful and professional manner at all times. This includes written communications, video calls, Slack messages, and any other channel. Verbal or written abuse, harassment, threats, or demeaning language directed at any Agency team member will not be tolerated under any circumstances.</p>
-<h3>8.2 Zero Tolerance</h3>
-<p>Agency reserves the right to terminate this Agreement immediately and without refund if Client engages in abusive, harassing, threatening, or disrespectful behavior toward any Agency staff member or contractor. Agency is not obligated to continue services in an environment that is hostile or harmful to its team.</p>
-<h3>8.3 Responsiveness</h3>
-<p>Client agrees to respond to Agency requests, approvals, and questionnaires in a timely manner (generally within 48-72 hours). Agency's ability to deliver on timeline is directly dependent on Client responsiveness. Delays caused by Client do not constitute a breach by Agency.</p>
-<h3>8.4 Good Faith</h3>
-<p>Both parties agree to act in good faith throughout the term of this Agreement — communicating openly, raising concerns early, and working collaboratively toward the shared goal of building a successful telehealth brand.</p>
+<h2>Section 9: Client Conduct</h2>
+<p>GrowPro is built on a foundation of mutual respect, collaboration, and professionalism. Agency brings its best to every client relationship and expects the same in return.</p>
+<h3>9.1 Professional Communication</h3>
+<p>Client agrees to communicate with Agency staff, contractors, and team members in a respectful and professional manner at all times. This includes written communications, video calls, Slack messages, and any other channel.</p>
+<h3>9.2 Zero Tolerance</h3>
+<p>Agency reserves the right to terminate this Agreement immediately and without refund if Client engages in abusive, harassing, threatening, or disrespectful behavior toward any Agency staff member or contractor.</p>
+<h3>9.3 Responsiveness</h3>
+<p>Client agrees to respond to Agency requests, approvals, and questionnaires within 48-72 hours. Agency's ability to deliver on timeline is directly dependent on Client responsiveness. Delays caused by Client do not constitute a breach by Agency and do not extend Agency's delivery obligations.</p>
+<h3>9.4 Good Faith</h3>
+<p>Both parties agree to act in good faith throughout the term of this Agreement: communicating openly, raising concerns early, and working collaboratively toward the shared goal of building a successful telehealth brand. In the event Client has a concern about services, Client agrees to raise that concern directly with Agency before taking any unilateral action including but not limited to filing a chargeback, disputing a payment, or engaging legal counsel, except as otherwise permitted by applicable law.</p>
 
-<h2>Section 9 — HIPAA and Data Privacy</h2>
+<h2>Section 10: HIPAA and Data Privacy</h2>
 <p>A separate Business Associate Agreement (BAA) governs HIPAA compliance obligations and is incorporated by reference where Client's services involve protected health information (PHI). For non-telehealth marketing clients, standard data privacy obligations apply per applicable law.</p>
 
-<h2>Section 10 — Limitation of Liability</h2>
+<h2>Section 11: Limitation of Liability</h2>
 <p>Agency's total liability under this Agreement shall not exceed three months of fees paid in the three months preceding the claim. Agency shall not be liable for lost profits, lost revenue, lost patients, or any indirect, incidental, or consequential damages.</p>
 
-<h2>Section 11 — Indemnification</h2>
-<h3>11.1 Indemnification by Client</h3>
-<p>Client agrees to indemnify, defend, and hold harmless Agency and its officers, employees, and contractors from and against any third-party claims, losses, damages, liabilities, and expenses (including reasonable attorneys' fees) arising from or related to: Client's brand operations, Client's products or services, regulatory violations by Client, patient harm, clinical decisions made by Client or Client's licensed providers, pharmacy issues attributable to Client's pharmacy partners, HIPAA violations by Client, intellectual property infringement by Client-supplied materials, or Client's breach of this Agreement.</p>
-<h3>11.2 Carve-Outs — Excluded Claims</h3>
-<p>Client's indemnification obligations under Section 11.1 do <strong>not</strong> apply to, and Client shall have no duty to indemnify Agency for, any claim, loss, damage, liability, or expense to the extent it arises from or is caused by: (a) Agency's gross negligence; (b) Agency's fraud or intentional misrepresentation; (c) Agency's willful misconduct; or (d) Agency's material breach of this Agreement. In any such case, Agency shall be solely responsible for the resulting claim and shall indemnify and hold Client harmless to the extent of Agency's responsibility, subject to the Limitation of Liability in Section 10.</p>
-<h3>11.3 Indemnification Procedure</h3>
-<p>The indemnified party shall (i) promptly notify the indemnifying party in writing of any claim subject to indemnification, (ii) grant the indemnifying party sole control of the defense and settlement (provided no settlement admits liability of the indemnified party without consent, not to be unreasonably withheld), and (iii) cooperate reasonably at the indemnifying party's expense.</p>
+<h2>Section 12: Indemnification</h2>
+<h3>12.1 Indemnification by Client</h3>
+<p>Client agrees to indemnify, defend, and hold harmless Agency and its officers, employees, and contractors from and against any third-party claims, losses, damages, liabilities, and expenses (including reasonable attorneys' fees) arising from or related to: Client's brand operations; Client's products or services; regulatory violations by Client; patient harm; clinical decisions made by Client or Client's licensed providers; pharmacy issues attributable to Client's pharmacy partners; HIPAA violations by Client; intellectual property infringement by Client-supplied materials; or Client's breach of this Agreement.</p>
+<h3>12.2 Carve-Outs</h3>
+<p>Client's indemnification obligations under Section 12.1 do not apply to claims arising from Agency's gross negligence, fraud, willful misconduct, or material breach of this Agreement.</p>
+<h3>12.3 Indemnification Procedure</h3>
+<p>The indemnified party shall promptly notify the indemnifying party in writing of any claim subject to indemnification, grant the indemnifying party reasonable control of the defense, and cooperate reasonably at the indemnifying party's expense.</p>
 
-<h2>Section 12 — General Provisions</h2>
-<p><strong>12.1 Governing Law:</strong> This Agreement is governed by the laws of the State of California.</p>
-<p><strong>12.2 Dispute Resolution:</strong> Disputes shall first be submitted to good-faith mediation before litigation.</p>
-<p><strong>12.3 Entire Agreement:</strong> This Agreement, together with the applicable Statement of Work (SOW), Add-On Menu, and any attached addenda, constitutes the entire agreement between the parties.</p>
-<p><strong>12.4 Amendment:</strong> Amendments must be in writing and signed by both parties.</p>
-<p><strong>12.5 Severability:</strong> If any provision is unenforceable, the remainder continues in full force.</p>
-<p><strong>12.6 Notices:</strong> Notices shall be delivered via email to the address on file.</p>
+<h2>Section 13: General Provisions</h2>
+<p><span class="lead">13.1 Governing Law:</span> This Agreement is governed by the laws of the State of California.</p>
+<p><span class="lead">13.2 Dispute Resolution:</span> Disputes shall first be submitted to the written dispute process in Section 4.5. If unresolved after 30 days, disputes shall be submitted to good-faith mediation in Los Angeles County, California. If mediation fails, disputes shall be resolved in the state or federal courts of Los Angeles County, California. Client waives any objection to personal jurisdiction or venue in Los Angeles County. For disputes under $12,500, either party may elect to resolve the dispute in California Small Claims Court.</p>
+<p><span class="lead">13.3 Entire Agreement:</span> This Agreement, together with Exhibit A (Statement of Work), the Business Associate Agreement, the WellieMD Platform Access Agreement, and any signed addenda, constitutes the entire agreement between the parties and supersedes all prior discussions, representations, and agreements.</p>
+<p><span class="lead">13.4 Amendment:</span> Amendments to the main body of this Agreement must be in writing and signed by both parties. Amendments to pricing or scope may be made via signed addendum or confirmed email exchange between authorized representatives.</p>
+<p><span class="lead">13.5 Severability:</span> If any provision is unenforceable, the remainder continues in full force.</p>
+<p><span class="lead">13.6 Notices:</span> Notices shall be delivered via email to the address on file. For formal legal notices, delivery is confirmed upon written acknowledgment of receipt.</p>
+<p><span class="lead">13.7 No Waiver:</span> Agency's failure to enforce any provision of this Agreement on one occasion does not constitute a waiver of Agency's right to enforce that provision in the future.</p>
 
-<h2>Section 13 — Telehealth Services Addendum</h2>
-<p>The following provisions supplement the above and govern all telehealth brand launch and platform services. In the event of conflict, these provisions control with respect to telehealth matters. HIPAA and PHI obligations are addressed separately in the applicable Business Associate Agreement (BAA).</p>
-<h3>13.1 Agency Role — Marketing and Consulting Only</h3>
+<h2>Section 14: Telehealth Services Addendum</h2>
+<p>The following provisions supplement the above and govern all telehealth brand launch and platform services. In the event of conflict, these provisions control with respect to telehealth matters.</p>
+<h3>14.1 Agency Role</h3>
 <p>Agency provides telehealth business consulting, brand development, marketing strategy, advertising management, platform configuration, CRM buildout, pharmacy partner introductions, and related launch support. Agency does not provide and is not responsible for: medical care, clinical services, prescribing decisions, pharmacy services, legal compliance advice, regulatory filings, or any other professional service outside of marketing and business consulting.</p>
-<h3>13.2 FDA, Compounding and Regulatory Change</h3>
-<p>Client acknowledges and agrees that:</p>
-<ul>
-<li>The FDA, DEA, state medical boards, pharmacy boards, FTC, and other regulatory bodies frequently update policies governing telehealth, compounding, GLP-1 medications, peptides, hormones, and controlled substances.</li>
-<li>Agency cannot predict, control, or guarantee Client's compliance with current or future regulatory requirements.</li>
-<li>Agency is not responsible for business interruption, revenue loss, patient loss, or operational disruption caused by regulatory changes.</li>
-<li>Client is solely responsible for ensuring their brand, medications, and marketing materials comply with all applicable law at all times.</li>
-<li>If Client receives a warning letter or regulatory notice, Agency will provide reasonable support but bears no liability for the underlying violation.</li>
-</ul>
-<h3>13.3 Ad Platform Policies</h3>
-<p>Agency shall not be liable for ad account suspensions, bans, or restrictions imposed by Meta, Google, TikTok, or any other advertising platform. Healthcare advertising is subject to heightened platform scrutiny. Agency will make commercially reasonable efforts to resolve restrictions. Client acknowledges that no guarantee of uninterrupted advertising access can be made.</p>
-<h3>13.4 No Guarantee of Regulatory Approval or Platform Compliance</h3>
-<p>Agency does not guarantee that any deliverable — including website copy, ad creative, email content, or platform configuration — will be approved by any regulatory body, advertising platform, or compliance program including LegitScript. Agency will use commercially reasonable efforts to ensure deliverables meet known compliance standards at the time of delivery.</p>
-<h3>13.5 Medical Providers and Prescribers</h3>
-<p>Agency is not responsible for recruiting, credentialing, supervising, or retaining licensed prescribers or clinical staff. The provider network (including Beluga Health or any successor) is a separate third-party arrangement. Agency shall not be liable if a provider network is discontinued, restricted, or becomes unavailable.</p>
-<h3>13.6 Pharmacy Partners</h3>
-<p>Agency may introduce Client to pharmacy partners for fulfillment. Agency makes no representation or warranty regarding any pharmacy partner's regulatory compliance, pricing, product availability, or continued operation. Client assumes all risk associated with pharmacy relationships. Agency shall not be liable for any shortage, product discontinuation, regulatory action against a pharmacy, or fulfillment failure. All pharmacies used are LegitScript certified.</p>
-<h3>13.7 State Telehealth Law Variability</h3>
-<p>Telehealth regulations vary significantly by state. Client is solely responsible for ensuring their operations comply with the telehealth laws of all states in which they operate or market. Agency does not provide state-by-state legal analysis and is not responsible for state regulatory violations.</p>
-<h3>13.8 HIPAA and Protected Health Information</h3>
-<p>To the extent Client's services involve Protected Health Information (PHI) as defined under HIPAA, a separate Business Associate Agreement (BAA) governs the parties' HIPAA obligations and is incorporated by reference. Client is responsible for ensuring their CRM, platform, and patient communications infrastructure is configured in a HIPAA-compliant manner.</p>
-<h3>13.9 FTC Endorsement and Testimonial Rules</h3>
+<h3>14.2 Regulatory Change</h3>
+<p>Client acknowledges and agrees that regulatory agencies frequently update policies governing telehealth, compounding, GLP-1 medications, peptides, hormones, and controlled substances. Agency cannot predict, control, or guarantee Client's compliance with current or future regulatory requirements. Agency is not responsible for business interruption or revenue loss caused by regulatory changes. Client is solely responsible for ensuring their brand, medications, and marketing materials comply with all applicable law at all times.</p>
+<h3>14.3 Ad Platform Policies</h3>
+<p>Agency shall not be liable for ad account suspensions, bans, or restrictions. Agency will make commercially reasonable efforts to resolve restrictions. Client acknowledges that no guarantee of uninterrupted advertising access can be made.</p>
+<h3>14.4 No Guarantee of Regulatory or Platform Approval</h3>
+<p>Agency does not guarantee that any deliverable will be approved by any regulatory body, advertising platform, or compliance program including LegitScript. Agency will use commercially reasonable efforts to ensure deliverables meet known compliance standards at the time of delivery.</p>
+<h3>14.5 Medical Providers and Prescribers</h3>
+<p>Agency is not responsible for recruiting, credentialing, supervising, or retaining licensed prescribers or clinical staff. The provider network is a separate third-party arrangement. Agency shall not be liable if a provider network is discontinued, restricted, or becomes unavailable.</p>
+<h3>14.6 Pharmacy Partners</h3>
+<p>Agency may introduce Client to pharmacy partners for fulfillment. Agency makes no representation or warranty regarding any pharmacy partner's regulatory compliance, pricing, product availability, or continued operation. Client assumes all risk associated with pharmacy relationships.</p>
+<h3>14.7 State Telehealth Law Variability</h3>
+<p>Telehealth regulations vary significantly by state. Client is solely responsible for ensuring their operations comply with the telehealth laws of all states in which they operate or market.</p>
+<h3>14.8 HIPAA and PHI</h3>
+<p>To the extent Client's services involve Protected Health Information, a separate Business Associate Agreement governs the parties' HIPAA obligations and is incorporated by reference. Client is responsible for ensuring their CRM, platform, and patient communications infrastructure is configured in a HIPAA-compliant manner.</p>
+<h3>14.9 FTC Endorsement and Testimonial Rules</h3>
 <p>Client is responsible for ensuring all testimonials, before-and-after claims, endorsements, and patient stories used in marketing comply with FTC guidelines. Client indemnifies Agency for any FTC action arising from Client's marketing content.</p>
-<h3>13.10 Payment Processing and High-Risk Merchant Risk</h3>
+<h3>14.10 Payment Processing Risk</h3>
 <p>Payment processing in the telehealth space is high-risk. Agency is not responsible for merchant account terminations, reserve requirements, fund holds, or chargeback losses. Client assumes all payment processing risk.</p>
-<h3>13.11 Business Model Risk Acknowledgment</h3>
-<p>Client acknowledges and accepts the following risks inherent to telehealth brand operation:</p>
-<ul>
-<li>Regulatory changes may render current medication offerings non-viable.</li>
-<li>Compounding pharmacy relationships are subject to FDA enforcement.</li>
-<li>Ad platform policies for healthcare brands are restrictive and subject to change.</li>
-<li>Patient acquisition costs and revenue are not guaranteed.</li>
-<li>The telehealth market is competitive and evolving rapidly.</li>
-<li>LegitScript certification is not guaranteed and is subject to ongoing compliance.</li>
-</ul>
-<h3>13.12 Telehealth-Specific Indemnification</h3>
-<p>Client agrees to indemnify, defend, and hold harmless Agency and its officers, employees, contractors, and successors from and against any and all claims, losses, damages, liabilities, fines, penalties, and expenses (including reasonable attorneys fees) arising from or related to:</p>
-<ul>
-<li>FDA warning letters, FTC enforcement actions, DEA actions, or state regulatory enforcement related to Client's brand.</li>
-<li>Patient harm, adverse events, or malpractice claims.</li>
-<li>HIPAA violations or PHI breaches.</li>
-<li>False or misleading advertising claims.</li>
-<li>Pharmacy partner regulatory violations.</li>
-<li>Unauthorized use of provider names, likenesses, or credentials in advertising.</li>
-<li>Trademark infringement arising from Client's brand name.</li>
-</ul>
-<h3>13.13 Agency Right to Terminate for Telehealth Risk</h3>
-<p>Agency reserves the right to terminate this Agreement immediately and without refund if: Client's brand, operations, or marketing materials create material legal or regulatory risk for Agency; Client receives an FDA warning letter, FTC action, or similar enforcement action and fails to cure within 10 days; or Client's actions could reasonably be expected to harm Agency's reputation or regulatory standing.</p>
-<h3>13.14 Client Representations and Warranties</h3>
-<p>Client represents and warrants that:</p>
-<ul>
-<li>All prescribers associated with Client's brand are licensed in the states where they practice.</li>
-<li>Client's pharmacy partners are licensed and compliant with applicable law.</li>
-<li>Client has obtained or will obtain LegitScript certification prior to running paid advertising.</li>
-<li>Client has a HIPAA compliance program in place or will establish one prior to collecting PHI.</li>
-<li>Client's brand name does not infringe on any existing trademark.</li>
-<li>Client will comply with all FTC, FDA, and platform advertising guidelines.</li>
-</ul>
-<p>Breach of any representation or warranty entitles Agency to immediate termination.</p>
-<h3>13.15 Industry Volatility Acknowledgment</h3>
-<p>Client acknowledges that the telehealth, compounding pharmacy, and GLP-1 markets are subject to significant regulatory, market, and competitive volatility. Client has conducted its own due diligence and does not rely on Agency for predictions about market conditions, regulatory outcomes, or business viability. Agency is not the guarantor of Client's business success.</p>
-<p style="margin-top:24px;font-weight:600">By executing this Agreement and paying the applicable invoice, Client agrees to all terms above including the Telehealth provisions in Section 13.</p>
+<h3>14.11 Business Model Risk Acknowledgment</h3>
+<p>Client acknowledges and accepts the following risks inherent to telehealth brand operation: regulatory changes may render current medication offerings non-viable; compounding pharmacy relationships are subject to FDA enforcement; ad platform policies for healthcare brands are restrictive and subject to change; patient acquisition costs and revenue are not guaranteed; the telehealth market is competitive and evolving rapidly; and LegitScript certification is subject to ongoing compliance requirements.</p>
+<h3>14.12 Telehealth-Specific Indemnification</h3>
+<p>Client agrees to indemnify, defend, and hold harmless Agency and its officers, employees, contractors, and successors from and against any and all claims, losses, damages, liabilities, fines, penalties, and expenses (including reasonable attorneys' fees) arising from or related to: FDA warning letters, FTC enforcement actions, DEA actions, or state regulatory enforcement related to Client's brand; patient harm or adverse events; HIPAA violations or PHI breaches; false or misleading advertising claims; pharmacy partner regulatory violations; unauthorized use of provider names or credentials; and trademark infringement arising from Client's brand name.</p>
+<h3>14.13 Agency Right to Terminate for Telehealth Risk</h3>
+<p>Agency reserves the right to terminate this Agreement immediately and without refund if Client's brand, operations, or marketing materials create material legal or regulatory risk for Agency; Client receives an FDA warning letter or FTC action and fails to cure within 10 days; or Client's actions could reasonably be expected to harm Agency's reputation or regulatory standing.</p>
+<h3>14.14 Client Representations and Warranties</h3>
+<p>Client represents and warrants that: all prescribers associated with Client's brand are licensed in the states where they practice; Client's pharmacy partners are licensed and compliant with applicable law; Client has obtained or will obtain LegitScript certification prior to running paid advertising; Client has a HIPAA compliance program in place or will establish one prior to collecting PHI; Client's brand name does not infringe on any existing trademark; and Client will comply with all FTC, FDA, and platform advertising guidelines.</p>
+<h3>14.15 Industry Volatility Acknowledgment</h3>
+<p>Client acknowledges that the telehealth, compounding pharmacy, and GLP-1 markets are subject to significant regulatory, market, and competitive volatility. Client has conducted its own due diligence and does not rely on Agency for predictions about market conditions, regulatory outcomes, or business viability.</p>
 
+<h2>Execution and Electronic Signature</h2>
+<p>By executing this Agreement, Client confirms all of the following:</p>
+<ul>
+<li>Client has read and understood this Agreement in its entirety, including the Telehealth Addendum and Exhibit A.</li>
+<li>All fees paid are non-refundable once services commence.</li>
+<li>Client agrees to the written dispute process in Section 4.5 as a required condition before initiating any chargeback.</li>
+<li>Client's website and digital assets will be hosted on Agency-managed infrastructure for the duration of this Agreement.</li>
+<li>The milestone acceptance process in Section 4A governs delivery and acceptance of all Deliverables.</li>
+<li>This Agreement is legally binding upon electronic signature.</li>
+</ul>
+
+<hr class="sow-rule">
 <div class="sow-divider">
+<div class="kicker">EXHIBIT A</div>
 <h1>Statement of Work</h1>
 <p>GrowPro Telehealth Brand Launch Program</p>
 </div>
 
-<h2>Section 1 — Project Overview</h2>
-<p>This Statement of Work details the scope of services to be delivered by Kickstart Social LLC dba GrowPro to Client. This Statement of Work (SOW) is incorporated by reference into the Services Agreement and governs the specific deliverables, timeline, and responsibilities for Client's telehealth brand launch.</p>
+<h2>SOW Section 1: Project Overview</h2>
+<p>This Statement of Work details the scope of services to be delivered by Kickstart Social LLC dba GrowPro to Client. This SOW is incorporated by reference into the Services Agreement and governs the specific deliverables, timeline, and responsibilities for Client's telehealth brand launch. In the event of any conflict between this SOW and the main Agreement, the main Agreement controls.</p>
 
-<h2>Section 2 — Scope of Work</h2>
-<h3>2.1 Platform and Infrastructure (If using WellieMD platform)</h3>
+<h2>SOW Section 2: Scope of Work</h2>
+<h3>2.1 Platform and Infrastructure (WellieMD)</h3>
+<p>The following are included where Client is using the WellieMD platform:</p>
 <ul>
 <li>WellieMD white-label telehealth platform setup and configuration</li>
 <li>Custom domain setup and SSL configuration</li>
 <li>Patient portal configuration and branding</li>
-<li>Provider network integration — direct founder access to provider network for fast credentialing and setup</li>
+<li>Provider network integration with direct founder access for fast credentialing</li>
 <li>Intake forms and compliance documentation</li>
-<li>CRM setup via Go HighLevel (Lumi Funnels) — includes phone number acquisition and A2P registration for compliant SMS sending. Workflow buildout and email automations are not included and are available as add-ons.</li>
-<li>Affiliate and coupon code management setup (native to WellieMD)</li>
-<li>Payment processing setup and high-risk merchant account coordination via Authorize.net and NMI gateways</li>
+<li>CRM setup via Lumi Funnels (GoHighLevel) including phone number acquisition and A2P registration for compliant SMS sending. Workflow buildout and email automations are available as add-ons.</li>
+<li>Affiliate and coupon code management setup</li>
+<li>Payment processing setup and high-risk merchant account coordination</li>
 <li>Pharmacy API integration</li>
-<li>Custom domain setup and DNS configuration</li>
-<li>Webhooks configuration (order updates, abandoned cart, new order, new patient) — WellieMD handles all order status notifications natively</li>
 <li>Google Analytics and Google Tag Manager integration</li>
-<li>Email and sending domain setup with DNS, DKIM, and SPF verification</li>
-<li>Metafields configuration</li>
-<li>Notifications setup</li>
-<li>Store policies configuration</li>
-<li>Brand settings setup</li>
-<li>Analytics and SEO configuration including title and meta description</li>
-<li>Patient Resources — blog posts and educational content setup</li>
-<li>Provider network settings configuration</li>
-<li>Users and permissions setup</li>
+<li>Email and sending domain setup with DKIM and SPF verification</li>
+<li>Notifications, store policies, brand settings, and analytics configuration</li>
+<li>Patient Resources including blog and educational content setup</li>
+<li>Provider network settings, users, and permissions configuration</li>
 </ul>
 <h3>2.1.1 LegitScript and Payment Processing</h3>
-<p>GrowPro has a 100% success rate in obtaining LegitScript certification and securing payment processing for LegitScript-approved telehealth brands. While we are confident in our process and will work diligently on your behalf, we cannot guarantee approval as LegitScript and payment processors make independent decisions. Payment processing for peptide-only sites is available at Agency's sole discretion based on compliance posture, brand positioning, and current processor guidelines.</p>
+<p>GrowPro has a 100% success rate in obtaining LegitScript certification and securing payment processing for LegitScript-approved telehealth brands. While Agency is confident in its process and will work diligently on Client's behalf, Agency cannot guarantee approval as LegitScript and payment processors make independent decisions.</p>
 <h3>2.1.2 Client-Provided Websites</h3>
-<p>If Client has an existing website they wish to use in lieu of a new build, Agency will conduct a full audit of the site prior to finalizing the investment. Existing websites in the telehealth space almost universally require significant remediation to meet LegitScript certification standards, FDA-compliant medication language requirements, platform integration, and GHL connectivity. The audit will identify all required changes and the investment will be adjusted accordingly. Agency does not guarantee that a client-provided website will be suitable for use without modification, and in many cases a new build is the more cost-effective path. The audit fee will be discussed with your strategist prior to commencement.</p>
+<p>If Client has an existing website they wish to use in lieu of a new build, Agency will conduct a full audit prior to finalizing the investment. Existing telehealth websites almost universally require significant remediation to meet LegitScript certification standards and platform integration requirements. The audit will identify all required changes and the investment will be adjusted accordingly.</p>
 <h3>2.2 Brand and Creative</h3>
 <ul>
 <li>Brand identity development (logo, colors, typography, brand guidelines)</li>
@@ -268,30 +314,29 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 </ul>
 <h3>2.4 Pharmacy Partner Introductions</h3>
 <ul>
-<li>Direct founder access to certified pharmacy partnerships — no middleman, no delays</li>
+<li>Direct founder access to certified pharmacy partnerships</li>
 <li>Medication list setup and pricing coordination</li>
 <li>Fulfillment workflow documentation</li>
 </ul>
 
-<h2>Section 3 — Outside This Scope</h2>
-<p>The following items are NOT included in this Statement of Work unless separately invoiced or specified:</p>
+<h2>SOW Section 3: Outside This Scope</h2>
 <h3>3.1 Available as Add-Ons</h3>
-<p>The following are available as add-ons and are priced separately on the GrowPro Add-On Menu. Pricing is subject to change and the Add-On Menu is the authoritative reference for current rates.</p>
+<p>The following are available as add-ons and are priced separately on the GrowPro Add-On Menu:</p>
 <ul>
-<li>All marketing services — available separately via marketing packages</li>
+<li>All marketing services (available separately via marketing packages)</li>
 <li>Fast Track Launch</li>
 <li>Reclassifying Peptide Package</li>
 <li>Branded Medication Pathway</li>
 <li>Elective Labs and HRT Program</li>
 <li>Lifestyle Quiz Forms</li>
 <li>Post-Launch Support Package</li>
-<li>Additional WordPress product pages</li>
-<li>Additional landing pages</li>
+<li>Additional product pages, landing pages</li>
 <li>VA and customer service staffing</li>
 <li>GrowPro consulting hours</li>
+<li>Workflow buildout and email automations</li>
 </ul>
 <h3>3.2 Not Offered</h3>
-<p>The following are outside the scope of GrowPro services and are not available in any capacity:</p>
+<p>The following are outside the scope of GrowPro services entirely:</p>
 <ul>
 <li>Provider and clinician recruitment, credentialing, or supervision</li>
 <li>Pharmacy licensing or regulatory compliance</li>
@@ -299,45 +344,43 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 <li>State telehealth license applications</li>
 </ul>
 <h3>3.3 Available by Quote</h3>
-<p>The following are not included in standard scope but may be available through our network or as a custom engagement. Contact your strategist for a quote.</p>
 <ul>
-<li>Trademark filing assistance via LegalZoom or Rocket Lawyer — we can assist and connect you but do not provide legal advice</li>
-<li>Insurance procurement (business, professional liability, or malpractice)</li>
-<li>Custom app development — available by quote, however Agency strongly advises new brands to prioritize patient acquisition before app development</li>
-<li>Photography or videography shoots</li>
+<li>Trademark filing assistance (Agency connects Client with LegalZoom or Rocket Lawyer but does not provide legal advice)</li>
+<li>Insurance procurement</li>
+<li>Custom app development</li>
+<li>Photography or videography</li>
 <li>WooCommerce or third-party ecommerce for non-telehealth product sales</li>
-<li>Affiliate product pages for external or third-party products</li>
 <li>Canva tools, habit trackers, meal planners, or downloadable digital products</li>
-<li>Any page, tool, or feature not explicitly listed in this Statement of Work</li>
+<li>Any page, tool, or feature not explicitly listed in this SOW</li>
 </ul>
 
-<h2>Section 4 — Timeline</h2>
+<h2>SOW Section 4: Timeline</h2>
 <h3>4.1 Standard Launch Timeline</h3>
 <p>Standard GrowPro brand launch: up to 12 weeks from signed agreement and receipt of setup fee.</p>
 <h3>4.2 Fast Track</h3>
-<p>Expedited launch is available as an add-on at two tiers and only modifiable if in writing per CEO in individual quote:</p>
 <ul>
-<li><strong>Fast Track 4-6 weeks:</strong> $10,000 one-time. Maximum priority build with dedicated team hours. Live in 4-6 weeks from signing. Payment in full required at signing — Fast Track fees are not available on a payment plan.</li>
-<li><strong>Fast Track 8 weeks:</strong> $5,000 one-time. Priority queue placement. Live in approximately 8 weeks. Payment in full required at signing — Fast Track fees are not available on a payment plan.</li>
+<li><strong>Fast Track 4-6 weeks:</strong> $10,000 one-time. Maximum priority build. Payment in full required at signing.</li>
+<li><strong>Fast Track 8 weeks:</strong> $5,000 one-time. Priority queue placement. Payment in full required at signing.</li>
 </ul>
+<p>Fast Track modifications are only available in writing per CEO authorization. Fast Track fees are not available on a payment plan.</p>
 <h3>4.3 Client Dependencies</h3>
-<p>Timeline is contingent on timely Client response to kickoff questionnaire (within 48 hours), brand approvals, and content provision. Delays caused by Client do not extend Agency's delivery obligations.</p>
+<p>Timeline is contingent on timely Client response to kickoff questionnaire (within 48 hours), brand approvals, and content provision. Delays caused by Client do not extend Agency's delivery obligations and do not constitute a breach by Agency.</p>
 
-<h2>Section 5 — Client Responsibilities</h2>
+<h2>SOW Section 5: Client Responsibilities</h2>
 <ul>
 <li>Complete kickoff questionnaire within 48 hours of signing</li>
-<li>Provide brand feedback and approvals within 48-72 hours of review requests</li>
-<li>Ad spend is paid to the applicable advertising platform or may be paid in advance to Agency depending on campaign structure and vendor arrangement — your strategist will confirm the billing method at campaign launch</li>
-<li>Twilio phone number monthly fee — billed directly to Client by Twilio for GHL SMS functionality</li>
-<li>A2P 10DLC SMS registration — one-time fee under $25, billed directly to Client for SMS compliance</li>
+<li>Provide brand feedback and approvals within 48-72 hours of all review requests</li>
+<li>Respond to all milestone delivery notifications within five (5) business days per Section 4A</li>
+<li>Ad spend paid directly to the applicable advertising platform unless otherwise agreed in writing</li>
+<li>Twilio phone number monthly fee billed directly to Client for GHL SMS functionality</li>
+<li>A2P 10DLC SMS registration (one-time fee under $25) billed directly to Client</li>
 <li>Maintain active business entity and applicable business licenses</li>
-<li>Ensure all brand name and trademark clearance prior to design commencement</li>
-<li>Be responsive — Agency moves fast when Client moves fast</li>
+<li>Ensure brand name and trademark clearance prior to design commencement</li>
 <li>Execute BAA and any required third-party agreements</li>
 <li>Comply with all applicable telehealth, pharmacy, and advertising regulations</li>
 </ul>
 
-<h2>Section 6 — Revisions</h2>
+<h2>SOW Section 6: Revisions</h2>
 <h3>6.1 Web Design Revisions</h3>
 <p>Three rounds of revisions included on website design. Additional revisions billed at $150/hour.</p>
 <h3>6.2 Brand Identity Revisions</h3>
@@ -347,31 +390,21 @@ body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.
 <h3>6.4 Redesign Due to Brand Conflict</h3>
 <p>If a brand conflict or trademark issue is discovered after design work commences due to Client's failure to conduct adequate name clearance, all redesign costs are the sole responsibility of Client.</p>
 
-<h2>Section 7 — Payment Terms</h2>
-<p>Setup fee due at signing. Monthly retainer due on the first of each month. All fees non-refundable once work commences for that billing period. Refer to Services Agreement Section 4 for full payment terms.</p>
+<h2>SOW Section 7: Payment Terms</h2>
+<p>Setup fee due at signing. Monthly WellieMD platform fee due on the date established at contract execution. All fees non-refundable once work commences for that billing period. Refer to Services Agreement Section 4 for full payment terms including the required dispute process before any chargeback.</p>
 
-<h2>Section 8 — Scope Creep and Change Orders</h2>
-<p>Any request for work outside the scope explicitly described in this Statement of Work constitutes a change order and requires written approval and a separate invoice before work commences. This includes but is not limited to:</p>
-<ul>
-<li>Additional product pages, site sections, or platform features beyond those listed in Section 2</li>
-<li>Custom development work including WooCommerce integrations, third-party platform integrations, custom dashboards, or membership logic</li>
-<li>Third-party platform integrations not included in the original scope (e.g. urgent care platforms, additional telehealth vendors)</li>
-<li>Additional weekly meetings, extended meeting durations, or additional Zoom sessions beyond what is standard for the package</li>
-<li>Any page, feature, tool, or deliverable not explicitly listed in this Statement of Work</li>
-</ul>
-<p>Out-of-scope work is billed at $150 per hour unless a flat rate is agreed upon in writing prior to commencement. Agency reserves the right to decline out-of-scope requests. Verbal approvals do not constitute authorization to proceed.</p>
+<h2>SOW Section 8: Scope Creep and Change Orders</h2>
+<p>Any request for work outside the scope explicitly described in this SOW constitutes a change order and requires written approval and a separate invoice before work commences. Out-of-scope work is billed at $150 per hour unless a flat rate is agreed upon in writing prior to commencement. Verbal approvals do not constitute authorization to proceed.</p>
 
-<h2>Section 9 — Post-Launch Support and Growth Partner Program</h2>
-<p>GrowPro packages include a kickoff call, milestone check-ins during the build, a launch call, and a 30-day post-launch check-in. This covers the build phase. What happens after launch is a different — and equally important — chapter.</p>
-<p>We know the learning curve is real. Platform questions come up. Pharmacy workflows need fine-tuning. WellieMD has nuances that take time to master. We have built specific programs to support founders through that phase without draining the build team.</p>
+<h2>SOW Section 9: Post-Launch Support</h2>
 <h3>9.1 Post-Launch Support Package (Optional Add-On)</h3>
-<p>$1,000 total for the first 30 days post-launch. Includes 4 scheduled calls — one per week — each up to 60 minutes. Covers WellieMD platform support, GHL and tech questions, and pharmacy workflow guidance. This is the hand-holding month — the one that gets you operationally confident so you can run your brand independently. $1,000 covers all 4 calls, not per call. Available for the first month post-launch only. Clients who need continued support after that month move into the Growth Partner program.</p>
+<p>$1,000 total for the first 30 days post-launch. Includes 4 scheduled calls (one per week, up to 60 minutes each). Covers WellieMD platform support, GHL and tech questions, and pharmacy workflow guidance. Available for the first month post-launch only.</p>
 <h3>9.2 Growth Partner Consulting (Optional Add-On)</h3>
-<p>For founders who want continued strategic and operational support beyond the launch phase, GrowPro offers Growth Partner Consulting at $500/hr or as part of the Founder Operator package. This covers strategic guidance, offer structure, P&amp;L review, scaling decisions, pharmacy partner negotiations, and high-level operational support directly with Jessica. This is not a platform support or training service — it is executive-level operator consulting for founders who are ready to scale.</p>
-<p>Ongoing weekly calls, extended Zoom sessions, and continued platform training beyond the Post-Launch Support Package are not included in any standard GrowPro package and are available only through the Growth Partner or Founder Operator programs.</p>
-<p style="margin-top:24px;font-weight:600">This Statement of Work is incorporated by reference into the Services Agreement signed by Client. By paying the applicable invoice Client agrees to the scope, terms, and limitations described herein.</p>
+<p>For founders who want continued strategic and operational support beyond launch, GrowPro offers Growth Partner Consulting at $500/hr or as part of the Founder Operator package. This is executive-level operator consulting for founders who are ready to scale. Ongoing weekly calls and extended support beyond the Post-Launch Support Package are not included in any standard GrowPro package.</p>
 
-<p class="note">Agreement v1.1 — Kickstart Social LLC dba GrowPro. This document is provided for review prior to signing. By proceeding with payment through the GrowPro configurator, you acknowledge that you have read, understood, and agree to all terms contained in this Services Agreement and Statement of Work.</p>
+<p class="affirm">Exhibit A Acknowledgment: By signing the main Services Agreement, Client acknowledges that they have read and understood this Statement of Work in full, that the scope described herein represents the complete deliverables under this engagement, and that any work not explicitly listed in this SOW requires a separate written change order.</p>
+
+<p class="note">Agreement v2.0 | Kickstart Social LLC dba GrowPro | growpro.co | kickstartsocial.co | hello@kickstartsocial.co. All rights reserved. Kickstart Social LLC. California.</p>
 </div></div>
 
 <footer class="ft"><div class="wrap">
