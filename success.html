@@ -722,6 +722,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 (function(){
   // Lumi webhook endpoint (same as the GrowPro launch configurator)
   var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
+  var SUCCESS_WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/0ba735d2-ceea-4b6a-a59d-773d50aa66ef";
   // Lumi workflow: Telehealth Application - Score and Route
   // Banger = investment_ready contains "ready now" AND commitment_score contains "8 to 10" AND readiness contains "now"
   // Strong = investment_ready contains "ready now" AND commitment_score contains "5 to 7"
@@ -806,7 +807,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     };
     var btn=document.getElementById('apSubmit');
     btn.disabled=true; btn.textContent='Submitting...';
-    fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
+    fetch(SUCCESS_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
       .then(function(){ showPanel('apSuccess'); })
       .catch(function(){ btn.disabled=false; btn.textContent='Submit My Application'; showPanel('apError'); });
   });
