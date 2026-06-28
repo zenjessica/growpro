@@ -145,6 +145,14 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 .price-sub{font-size:15px;color:#555;line-height:1.7;margin:14px auto 0;max-width:480px}
 .price-small{font-size:13px;font-style:italic;color:#777;line-height:1.6;margin:16px auto 0;max-width:500px}
 .price-note{font-size:13px;color:#555;line-height:1.6;margin:12px auto 0;max-width:500px}
+.cost-box{background:#fff;border-radius:16px;padding:32px 28px;box-shadow:0 12px 40px rgba(13,27,42,.12);max-width:560px;margin:18px auto 0;text-align:left}
+.cost-box h3{font-size:20px;font-weight:800;color:var(--navy);text-align:center;margin-bottom:6px}
+.cost-sub{font-size:14px;color:#888;text-align:center;line-height:1.6;margin:0 auto 18px;max-width:440px}
+.cost-list{list-style:none;padding:0;margin:0}
+.cost-list li{position:relative;padding:10px 0 10px 22px;font-size:15px;color:#333;line-height:1.6;border-bottom:1px solid #f1f1f4}
+.cost-list li:last-child{border-bottom:none}
+.cost-list li::before{content:"";position:absolute;left:0;top:17px;width:8px;height:8px;border-radius:50%;background:#b8bcc4}
+.cost-foot{font-size:13px;font-style:italic;color:#888;line-height:1.65;margin-top:16px;text-align:center}
 
 /* ---------- FOUNDER ---------- */
 .founder-photo{width:100%;max-width:500px;margin:0 auto;border-radius:12px}
@@ -463,6 +471,17 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     <div class="price-box">
       <div class="price-big">Starting at $27,000</div>
       <p class="price-sub">Complete done-for-you telehealth brand launch on infrastructure we own. LegitScript managed. Payment processing managed. WellieMD platform included. CRM setup included. Pharmacy network access included.</p>
+    </div>
+    <div class="cost-box">
+      <h3>Additional Monthly Costs</h3>
+      <p class="cost-sub">These are separate from your build investment and paid directly by you.</p>
+      <ul class="cost-list">
+        <li>Wellie MD Platform Fee: starting at $1,500/month - your patient platform, built and operated by us</li>
+        <li>Lumi CRM: $499/month - your patient pipeline, automations, and communications</li>
+        <li>SMS and Email: usage-based, typically $50 to $200/month</li>
+        <li>LegitScript Certification Renewal: approximately $2,000/year</li>
+      </ul>
+      <p class="cost-foot">Unlike white-label platforms you do not own, your Wellie MD fee covers software we built, maintain, and operate alongside your brand every day.</p>
     </div>
     <a class="cta" href="#apply">Apply to Work With Us</a>
     <p class="cta-note" style="color:#777">A member of our team will walk you through the right build level for your goals.</p>
