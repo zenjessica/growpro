@@ -11,7 +11,7 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-:root{--p:#8B7EC8;--ph:#7a6db8;--navy:#0d1b2a;--card:#1e2d3d;--ink:#1a1a1a;--gray:#f5f5f5}
+:root{--p:#8B7EC8;--ph:#7a6db8;--navy:#0d1b2a;--n:#0d1b2a;--card:#1e2d3d;--ink:#1a1a1a;--gray:#f5f5f5}
 body{font-family:'Inter',system-ui,sans-serif;color:var(--ink);line-height:1.6;background:#fff;padding-top:64px;overflow-x:hidden}
 img{max-width:100%;display:block}
 
@@ -138,6 +138,24 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 .faq-a p{padding:0 0 20px;font-size:15px;color:#444;line-height:1.75}
 .faq-item label:focus-within,.faq-item input:focus~label{outline:2px solid var(--p);outline-offset:3px}
 
+/* ---------- FEATURED ON (exact CSS from home.html) ---------- */
+.gp-featured-on{padding:28px 24px 22px;background:#fff}
+.gp-featured-header{text-align:center;margin-bottom:18px}
+.gp-featured-header h2{font-size:clamp(20px,3vw,26px);font-weight:800;color:var(--n);margin:0 0 4px}
+.gp-featured-header p{font-size:15px;color:#666}
+.gp-yt-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;max-width:860px;margin:0 auto 18px}
+.gp-yt-thumb{display:block;border-radius:10px;overflow:hidden;aspect-ratio:16/9;position:relative;background:#000;text-decoration:none}
+.gp-yt-thumb img{width:100%;height:100%;object-fit:cover;display:block;transition:opacity .2s}
+.gp-yt-thumb:hover img{opacity:.82}
+.gp-yt-play{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;background:rgba(0,0,0,.6);border-radius:50%;display:flex;align-items:center;justify-content:center;pointer-events:none}
+.gp-yt-play::after{content:'';border-style:solid;border-width:8px 0 8px 15px;border-color:transparent transparent transparent #fff;margin-left:3px}
+.gp-also-on{display:flex;justify-content:center;align-items:center;gap:12px 18px;flex-wrap:wrap;max-width:860px;margin:0 auto}
+.gp-also-label{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#bbb}
+.gp-also-logo-link{display:inline-flex;align-items:center;line-height:0}
+.gp-also-logo{max-height:26px;width:auto;object-fit:contain;opacity:.72;transition:opacity .2s;display:block}
+.gp-also-logo-link:hover .gp-also-logo{opacity:1}
+@media(max-width:640px){.gp-yt-grid{grid-template-columns:1fr}}
+
 /* ---------- FOOTER ---------- */
 .ft{background:#F7F7F9;border-top:1px solid #E5E5EA;padding:36px 20px;text-align:center;font-size:13px;color:#888;line-height:1.8}
 .ft a{color:var(--p);text-decoration:none}
@@ -211,16 +229,6 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 <!-- ============ SECTION 2: HERO ============ -->
 <header class="hero">
   <div class="hero-inner">
-    <div class="press-label">As Seen In:</div>
-    <div class="press-row press-dark">
-      <img src="assets/yahoo-finance.png" alt="Yahoo Finance">
-      <img src="assets/la-weekly.png" alt="LA Weekly">
-      <img src="assets/ktla.png" alt="KTLA CW">
-      <img src="assets/grit-daily.png" alt="Grit Daily">
-      <img src="assets/voyage-la.png" alt="Voyage LA">
-      <img src="assets/bold-journey.png" alt="Bold Journey">
-      <img src="assets/ein-presswire.png" alt="EIN Presswire">
-    </div>
     <h1>The Only Done-For-You Telehealth Launch Built on Software We Own.</h1>
     <p class="sub">No rented platforms. No vendor middlemen. No hype.</p>
     <p class="cred">Led by Jessica Lynne White, PT - licensed clinician with 27 years in healthcare. 80+ brands launched and operational. Every layer of your build controlled by one team.</p>
@@ -317,7 +325,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
           <tr><td class="row-h">LegitScript</td><td>You figure it out</td><td class="gp"><span class="ck">&#10003;</span>100% success rate, managed for you</td></tr>
           <tr><td class="row-h">Payment Processing</td><td>You figure it out</td><td class="gp"><span class="ck">&#10003;</span>100% approval rate, managed for you</td></tr>
           <tr><td class="row-h">Pharmacy Network</td><td>Third party referral</td><td class="gp"><span class="ck">&#10003;</span>Direct pre-negotiated access</td></tr>
-          <tr><td class="row-h">Provider Network</td><td>Third party referral</td><td class="gp"><span class="ck">&#10003;</span>Direct Beluga Health integration</td></tr>
+          <tr><td class="row-h">Provider Network</td><td>Third party referral</td><td class="gp"><span class="ck">&#10003;</span>Direct provider network integration</td></tr>
           <tr><td class="row-h">When Something Breaks</td><td>Call your consultant</td><td class="gp"><span class="ck">&#10003;</span>Call your build team</td></tr>
           <tr><td class="row-h">Led By</td><td>Marketer / consultant</td><td class="gp"><span class="ck">&#10003;</span>Licensed clinician, 27 years</td></tr>
           <tr><td class="row-h">Active Operator</td><td>No</td><td class="gp"><span class="ck">&#10003;</span>Yes - founder runs live patient brands daily</td></tr>
@@ -366,9 +374,9 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   <div class="sec-inner">
     <div class="eyebrow">Investment</div>
     <h2 class="h-sec">One Program. Three Build Levels.</h2>
-    <p class="sub-sec">Starting at $27,000 - under what others charge for strategy alone.</p>
+    <p class="sub-sec">Starting at $18,000 - under what others charge for strategy alone.</p>
     <div class="price-box">
-      <div class="price-big">Starting at $27,000</div>
+      <div class="price-big">Starting at $18,000</div>
       <p class="price-sub">Complete done-for-you telehealth brand launch on infrastructure we own. LegitScript managed. Payment processing managed. WellieMD platform included. CRM setup included. Pharmacy network access included.</p>
       <p class="price-small">Operator Suite available at $40,000 - includes HRT program, Peptide Pack, Branded Medication Pathway, AI Conversion Engine patient nurture system, lifestyle quizzes x3 verticals, 30 days SEO blogs, 90 days social graphics.</p>
       <p class="price-note">The AI Conversion Engine is our proprietary done-for-you patient nurture and conversion system. It is not an ad platform.</p>
@@ -416,6 +424,37 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     <button class="cta" data-open-modal>Apply to Work With Us</button>
   </div>
 </section>
+
+<!-- ============ FEATURED ON (exact copy from home.html) ============ -->
+<div class="gp-featured-on">
+  <div class="gp-featured-header">
+    <h2>Featured On</h2>
+    <p>Media appearances and podcast features.</p>
+  </div>
+  <div class="gp-yt-grid">
+    <a href="https://www.youtube.com/watch?v=7sh5CxVYgqw" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/7sh5CxVYgqw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=llDaIcB_vSw" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/llDaIcB_vSw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=1dZKNJuBfkY" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/1dZKNJuBfkY/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+  </div>
+  <div class="gp-also-on">
+    <span class="gp-also-label">Also on</span>
+    <a href="https://podcasts.apple.com/us/podcast/telehealth-founder-reveals-the-exact-system-to-launch/id1662990704?i=1000746078210" class="gp-also-logo-link" target="_blank" rel="noopener">
+      <img src="assets/apple-podcasts.png" alt="Apple Podcasts" class="gp-also-logo">
+    </a>
+    <a href="https://insidesuccess.tv/programs/lme_jessica-white" class="gp-also-logo-link" target="_blank" rel="noopener">
+      <img src="assets/inside-success.png" alt="Inside Success" class="gp-also-logo">
+    </a>
+  </div>
+</div>
 
 <!-- ============ SECTION 12: HARD TRUTH ============ -->
 <section class="sec sec-gray">
