@@ -40,26 +40,62 @@ img{max-width:100%;display:block}
 .nav-inner{max-width:1100px;width:100%;margin:0 auto;padding:0 20px;display:flex;align-items:center;justify-content:space-between}
 .logo{font-weight:800;font-size:24px;letter-spacing:3px;color:var(--navy);text-decoration:none}
 .logo span{color:var(--p)}
-.nav-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--p);color:#fff;border:none;cursor:pointer;font-family:inherit;font-size:14px;font-weight:700;padding:0 20px;min-height:44px;border-radius:10px;transition:background .2s}
+.nav-cta{display:inline-flex;align-items:center;justify-content:center;background:var(--p);color:#fff;border:none;cursor:pointer;text-decoration:none;font-family:inherit;font-size:14px;font-weight:700;padding:0 20px;min-height:44px;border-radius:10px;transition:background .2s}
 .nav-cta:hover{background:var(--ph)}
 
 /* ---------- HERO ---------- */
 .hero{background:var(--navy);color:#fff;text-align:center;padding:40px 20px 56px}
 .hero-inner{max-width:680px;margin:0 auto}
-.press-label{font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:#8a97a4;margin-bottom:12px}
-.press-row{display:flex;align-items:center;gap:24px;overflow-x:auto;padding:6px 0 14px;scrollbar-width:none}
-.press-row::-webkit-scrollbar{display:none}
-.press-row img{height:24px;width:auto;flex-shrink:0}
-.press-dark img{filter:brightness(0) invert(1);opacity:.85}
-.press-light img{filter:grayscale(100%);opacity:.55;max-height:32px;height:28px}
-@media(min-width:768px){.press-row{justify-content:center;flex-wrap:wrap;gap:16px 30px}}
-.hero h1{font-size:36px;font-weight:800;line-height:1.12;letter-spacing:-.6px;margin:18px 0 16px}
+.hero h1{font-size:36px;font-weight:800;line-height:1.12;letter-spacing:-.6px;margin:0 0 16px}
 .hero .sub{font-size:18px;font-weight:400;color:#e4e9ee;margin-bottom:14px}
 .hero .cred{font-size:14px;color:#aaaaaa;line-height:1.6;max-width:560px;margin:0 auto}
 @media(min-width:768px){.hero h1{font-size:56px}}
 .pills{display:flex;flex-direction:column;gap:12px;align-items:center;margin:28px auto 4px;max-width:520px}
 .pill{border:1px solid #fff;color:#fff;border-radius:999px;padding:12px 24px;font-size:14px;font-weight:600;text-align:center;width:100%}
 @media(min-width:768px){.pills{flex-direction:row;justify-content:center;max-width:none}.pill{width:auto}}
+
+/* ---------- INLINE APPLICATION ---------- */
+#apply{scroll-margin-top:72px}
+.apply-head{max-width:600px;margin:0 auto 26px;text-align:center}
+.ap-card{background:#fff;border-radius:16px;max-width:560px;margin:0 auto;box-shadow:0 18px 50px rgba(0,0,0,.28);overflow:hidden;color:var(--ink)}
+.ap-top{display:flex;align-items:center;gap:14px;padding:16px 20px 0}
+.ap-progress{flex:1;height:6px;background:#ececf0;border-radius:999px;overflow:hidden}
+.ap-progress-bar{height:100%;width:16.67%;background:var(--p);transition:width .35s ease}
+.ap-counter{font-size:15px;color:#999;font-weight:600;flex-shrink:0}
+.ap-body{padding:22px 24px 28px}
+.ap-step{display:none}
+.ap-step.active{display:block}
+.ap-q{font-size:20px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:6px}
+.ap-note{font-size:16px;color:#777;margin-bottom:16px;line-height:1.5}
+.ap-q+.ap-opt{margin-top:18px}
+.ap-opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid #e0e0e6;border-radius:12px;padding:14px 16px;margin-bottom:12px;font-size:16px;font-weight:600;color:var(--ink);cursor:pointer;min-height:52px;font-family:inherit;transition:border-color .2s,background .2s}
+.ap-opt:hover{border-color:var(--p)}
+.ap-opt.sel{border-color:var(--p);background:#f4f2fa}
+.ap-radio{width:22px;height:22px;border-radius:50%;border:2px solid #c9c9d2;flex-shrink:0;position:relative}
+.ap-opt.sel .ap-radio{border-color:var(--p)}
+.ap-opt.sel .ap-radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--p)}
+.ap-title{font-size:21px;font-weight:800;color:var(--navy);margin-bottom:6px}
+.ap-sub{font-size:16px;color:#666;margin-bottom:18px;line-height:1.5}
+.ap-field{margin-bottom:14px}
+.ap-field label{display:block;font-size:16px;font-weight:600;margin-bottom:6px;color:#444}
+.ap-field input{width:100%;min-height:52px;border:1.5px solid #e0e0e6;border-radius:10px;padding:0 14px;font-size:16px;font-family:inherit;color:var(--ink)}
+.ap-field input:focus{outline:none;border-color:var(--p)}
+.ap-field.bad input{border-color:var(--p);background:#faf8ff}
+.ap-ferr{font-size:14px;color:var(--p);font-weight:600;margin-top:5px;display:none}
+.ap-field.bad .ap-ferr{display:block}
+.ap-submit{width:100%;min-height:52px;background:var(--navy);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-top:10px;font-family:inherit;transition:background .2s}
+.ap-submit:hover{background:#1a2f45}
+.ap-submit:disabled{opacity:.6;cursor:default}
+.ap-fine{font-size:14px;color:#999;margin-top:14px;line-height:1.6}
+.ap-panel{display:none;text-align:center;padding:8px 0}
+.ap-panel.active{display:block}
+.ap-check{width:66px;height:66px;border-radius:50%;background:var(--p);color:#fff;font-size:36px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.ap-panel h3{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:12px}
+.ap-panel p{font-size:16px;color:#555;line-height:1.7;margin-bottom:20px}
+.ap-igbtn{display:block;width:100%;background:var(--p);color:#fff;text-decoration:none;font-weight:700;font-size:16px;padding:15px;border-radius:12px;min-height:52px;text-align:center}
+.ap-igbtn:hover{background:var(--ph)}
+.ap-mail{color:var(--p);font-weight:700;text-decoration:none}
+@media(max-width:560px){.ap-body{padding:20px 16px 24px}.ap-top{padding:14px 16px 0}}
 
 /* ---------- VIDEO ---------- */
 .video{position:relative;width:100%;padding-bottom:56.25%;border-radius:16px;overflow:hidden;background:#000;max-width:700px;margin:24px auto 0;box-shadow:0 10px 36px rgba(13,27,42,.18)}
@@ -117,6 +153,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 .founder-bio p{font-size:16px;color:#333;line-height:1.75;margin-bottom:16px;text-align:center}
 .founder-attr{text-align:center;font-weight:800;color:var(--navy);margin-top:18px;line-height:1.5}
 .founder-attr span{display:block;font-weight:600;color:#666;font-size:14px}
+.press-row{display:flex;align-items:center;gap:24px;overflow-x:auto;padding:6px 0 14px;scrollbar-width:none}
+.press-row::-webkit-scrollbar{display:none}
+.press-row img{height:24px;width:auto;flex-shrink:0}
+.press-light img{filter:grayscale(100%);opacity:.55;max-height:32px;height:28px}
+@media(min-width:768px){.press-row{justify-content:center;flex-wrap:wrap;gap:16px 30px}}
 
 /* ---------- HARD TRUTH ---------- */
 .truth-block{margin-bottom:24px}
@@ -163,66 +204,15 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 .ft-social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:14px 0}
 .ft-social a{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-weight:600;font-size:13px}
 .ft-disclaimer{max-width:760px;margin:18px auto 0;font-size:11px;color:#999;line-height:1.7;border-top:1px solid #E5E5EA;padding-top:16px}
-
-/* ---------- MODAL ---------- */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);z-index:2000;display:none;overflow-y:auto;padding:24px 16px}
-.modal-overlay.show{display:flex;align-items:flex-start;justify-content:center}
-.modal-box{background:#fff;border-radius:16px;width:100%;max-width:560px;margin:auto;position:relative;overflow:hidden}
-.modal-close{position:absolute;top:10px;right:12px;width:44px;height:44px;background:none;border:none;font-size:30px;line-height:1;color:#9aa0a6;cursor:pointer;z-index:5}
-.modal-close:hover{color:#444}
-.modal-progress{height:5px;background:#ececf0}
-.modal-progress-bar{height:100%;width:20%;background:var(--p);transition:width .35s ease}
-.modal-inner{display:flex}
-.modal-sidebar{display:none}
-.modal-content{flex:1;padding:34px 26px 36px;min-width:0}
-.ms-step{display:flex;gap:10px;align-items:flex-start;margin-bottom:20px;font-size:13px;color:#9aa0a6;line-height:1.3}
-.ms-step strong{display:block;color:inherit;font-weight:700}
-.ms-step.on{color:var(--navy)}
-.ms-num{width:24px;height:24px;border-radius:50%;background:#e5e5ea;color:#888;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700;flex-shrink:0}
-.ms-step.on .ms-num{background:var(--p);color:#fff}
-@media(min-width:760px){.modal-sidebar{display:block;width:200px;background:#f7f7f9;padding:30px 22px;flex-shrink:0}}
-.mstep{display:none}
-.mstep.active{display:block}
-.mq{font-size:21px;font-weight:800;color:var(--navy);line-height:1.3;margin-bottom:6px}
-.mnote{font-size:13px;color:#888;margin-bottom:18px;line-height:1.5}
-.mq+.opt{margin-top:18px}
-.opt{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:#fff;border:1.5px solid #e0e0e6;border-radius:12px;padding:15px 16px;margin-bottom:12px;font-size:15px;font-weight:600;color:var(--ink);cursor:pointer;min-height:48px;font-family:inherit;transition:border-color .2s,background .2s}
-.opt:hover{border-color:var(--p)}
-.opt.sel{border-color:var(--p);background:#f4f2fa}
-.radio{width:20px;height:20px;border-radius:50%;border:2px solid #c9c9d2;flex-shrink:0;position:relative}
-.opt.sel .radio{border-color:var(--p)}
-.opt.sel .radio::after{content:"";position:absolute;inset:3px;border-radius:50%;background:var(--p)}
-.field{margin-bottom:14px}
-.field label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#444}
-.field input{width:100%;min-height:48px;border:1.5px solid #e0e0e6;border-radius:10px;padding:0 14px;font-size:16px;font-family:inherit;color:var(--ink)}
-.field input:focus{outline:none;border-color:var(--p)}
-.field.bad input{border-color:var(--p);background:#faf8ff}
-.ferr{font-size:12px;color:var(--p);font-weight:600;margin-top:5px;display:none}
-.field.bad .ferr{display:block}
-.msub{width:100%;min-height:52px;background:var(--p);color:#fff;border:none;border-radius:12px;font-size:16px;font-weight:700;cursor:pointer;margin-top:10px;font-family:inherit;transition:background .2s}
-.msub:hover{background:var(--ph)}
-.msub:disabled{opacity:.6;cursor:default}
-.fineprint{font-size:12px;color:#999;margin-top:14px;line-height:1.6}
-.mtitle{font-size:22px;font-weight:800;color:var(--navy);margin-bottom:6px}
-.msubtext{font-size:14px;color:#666;margin-bottom:20px;line-height:1.5}
-.panel{display:none;text-align:center;padding:14px 0}
-.panel.active{display:block}
-.panel .check{width:66px;height:66px;border-radius:50%;background:var(--p);color:#fff;font-size:36px;display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-.panel h3{font-size:23px;font-weight:800;color:var(--navy);margin-bottom:12px}
-.panel p{font-size:15px;color:#555;line-height:1.7;margin-bottom:20px}
-.panel .ig-btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;font-weight:700;font-size:15px;padding:13px 26px;border-radius:12px;min-height:48px}
-.panel .ig-btn:hover{background:var(--ph)}
-.panel a.mailto{color:var(--p);font-weight:700;text-decoration:none}
-@media(max-width:560px){.modal-overlay{padding:0}.modal-box{border-radius:0;min-height:100vh}.modal-content{padding:30px 20px 36px}}
 </style>
 </head>
 <body>
 
-<!-- ============ SECTION 1: STICKY NAV ============ -->
+<!-- ============ STICKY NAV ============ -->
 <nav class="nav">
   <div class="nav-inner">
     <a href="#" class="logo">GROW<span>PRO</span></a>
-    <button class="nav-cta" data-open-modal>Apply Now</button>
+    <a class="nav-cta" href="#apply">Apply Now</a>
   </div>
 </nav>
 
@@ -237,12 +227,107 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       <div class="pill">100% LegitScript Approval Rate</div>
       <div class="pill">100% Payment Processing Approval Rate</div>
     </div>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
     <p class="cta-note">Limited launch slots available this quarter.</p>
   </div>
 </header>
 
-<!-- ============ SECTION 3: VIDEO ============ -->
+<!-- ============ SECTION 3: INLINE APPLICATION ============ -->
+<section class="sec sec-dark" id="apply">
+  <div class="apply-head">
+    <div class="eyebrow">Apply to Work With Us</div>
+    <h2 class="h-sec">See If You Qualify.</h2>
+    <p class="sub-sec">Answer 6 quick questions. A member of our team will contact you within one business day.</p>
+  </div>
+  <div class="ap-card">
+    <div class="ap-top" id="apChrome">
+      <div class="ap-progress"><div class="ap-progress-bar" id="apBar"></div></div>
+      <div class="ap-counter" id="apCounter">Step 1 of 6</div>
+    </div>
+    <div class="ap-body">
+
+      <!-- STEP 1 - Background -->
+      <div class="ap-step active" data-step="1">
+        <h3 class="ap-q">Which best describes you?</h3>
+        <button type="button" class="ap-opt" data-step="1" data-key="background" data-val="Entrepreneur / Investor"><span class="ap-radio"></span><span>Entrepreneur / Investor</span></button>
+        <button type="button" class="ap-opt" data-step="1" data-key="background" data-val="Medical or Wellness Professional"><span class="ap-radio"></span><span>Medical or Wellness Professional</span></button>
+        <button type="button" class="ap-opt" data-step="1" data-key="background" data-val="Existing Business Owner adding a revenue stream"><span class="ap-radio"></span><span>Existing Business Owner adding a revenue stream</span></button>
+        <button type="button" class="ap-opt" data-step="1" data-key="background" data-val="Other"><span class="ap-radio"></span><span>Other</span></button>
+      </div>
+
+      <!-- STEP 2 - Readiness -->
+      <div class="ap-step" data-step="2">
+        <h3 class="ap-q">How soon are you looking to launch?</h3>
+        <button type="button" class="ap-opt" data-step="2" data-key="readiness" data-val="Ready to move now"><span class="ap-radio"></span><span>Ready to move now</span></button>
+        <button type="button" class="ap-opt" data-step="2" data-key="readiness" data-val="Actively planning, timeline within 90 days"><span class="ap-radio"></span><span>Actively planning, timeline within 90 days</span></button>
+        <button type="button" class="ap-opt" data-step="2" data-key="readiness" data-val="Still researching my options"><span class="ap-radio"></span><span>Still researching my options</span></button>
+      </div>
+
+      <!-- STEP 3 - Investment -->
+      <div class="ap-step" data-step="3">
+        <h3 class="ap-q">Do you have $27,000 or more in liquid capital ready to invest?</h3>
+        <p class="ap-note">This covers your complete infrastructure build. Marketing and ad spend are separate.</p>
+        <button type="button" class="ap-opt" data-step="3" data-key="investment_ready" data-val="Yes, I have capital ready now"><span class="ap-radio"></span><span>Yes, I have capital ready now</span></button>
+        <button type="button" class="ap-opt" data-step="3" data-key="investment_ready" data-val="I need to explore financing options"><span class="ap-radio"></span><span>I need to explore financing options</span></button>
+        <button type="button" class="ap-opt" data-step="3" data-key="investment_ready" data-val="Not at this time" data-decline="invest"><span class="ap-radio"></span><span>Not at this time</span></button>
+      </div>
+
+      <!-- STEP 4 - Commitment -->
+      <div class="ap-step" data-step="4">
+        <h3 class="ap-q">On a scale of 1 to 10, how committed are you to launching a telehealth brand in the next 90 days?</h3>
+        <button type="button" class="ap-opt" data-step="4" data-key="commitment_score" data-val="8 to 10 - I am ready to move now"><span class="ap-radio"></span><span>8 to 10 - I am ready to move now</span></button>
+        <button type="button" class="ap-opt" data-step="4" data-key="commitment_score" data-val="5 to 7 - I am actively planning"><span class="ap-radio"></span><span>5 to 7 - I am actively planning</span></button>
+        <button type="button" class="ap-opt" data-step="4" data-key="commitment_score" data-val="1 to 4 - I am still exploring" data-decline="commit"><span class="ap-radio"></span><span>1 to 4 - I am still exploring</span></button>
+      </div>
+
+      <!-- STEP 5 - Goal -->
+      <div class="ap-step" data-step="5">
+        <h3 class="ap-q">What is your primary goal with this business?</h3>
+        <button type="button" class="ap-opt" data-step="5" data-key="goal" data-val="Add a revenue stream to an existing business"><span class="ap-radio"></span><span>Add a revenue stream to an existing business</span></button>
+        <button type="button" class="ap-opt" data-step="5" data-key="goal" data-val="Build a scalable brand to exit or sell"><span class="ap-radio"></span><span>Build a scalable brand to exit or sell</span></button>
+        <button type="button" class="ap-opt" data-step="5" data-key="goal" data-val="Replace or supplement my current income"><span class="ap-radio"></span><span>Replace or supplement my current income</span></button>
+        <button type="button" class="ap-opt" data-step="5" data-key="goal" data-val="Enter the telehealth space as an investor"><span class="ap-radio"></span><span>Enter the telehealth space as an investor</span></button>
+      </div>
+
+      <!-- STEP 6 - Contact -->
+      <div class="ap-step" data-step="6">
+        <h3 class="ap-title">Almost There.</h3>
+        <p class="ap-sub">A member of the GrowPro Founder Partnerships team will contact you within one business day.</p>
+        <form id="apForm" novalidate>
+          <div class="ap-field" id="apf_first"><label for="apFirst">First Name</label><input type="text" id="apFirst" autocomplete="given-name"><div class="ap-ferr">Please enter your first name.</div></div>
+          <div class="ap-field" id="apf_last"><label for="apLast">Last Name</label><input type="text" id="apLast" autocomplete="family-name"><div class="ap-ferr">Please enter your last name.</div></div>
+          <div class="ap-field" id="apf_email"><label for="apEmail">Email Address</label><input type="email" id="apEmail" autocomplete="email"><div class="ap-ferr">Please enter a valid email address.</div></div>
+          <div class="ap-field" id="apf_phone"><label for="apPhone">Phone Number</label><input type="tel" id="apPhone" autocomplete="tel"><div class="ap-ferr">Please enter your phone number.</div></div>
+          <button type="submit" class="ap-submit" id="apSubmit">Submit My Application</button>
+          <p class="ap-fine">By submitting you agree to be contacted by the GrowPro team. We do not sell or share your information.</p>
+        </form>
+      </div>
+
+      <!-- DECLINE PANEL (step 3 or step 4) -->
+      <div class="ap-panel" id="apDecline">
+        <p id="apDeclineMsg"></p>
+        <a class="ap-igbtn" href="https://instagram.com/therealzenjessica" target="_blank" rel="noopener">Follow Us on Instagram</a>
+      </div>
+
+      <!-- SUCCESS PANEL -->
+      <div class="ap-panel" id="apSuccess">
+        <div class="ap-check">&#10003;</div>
+        <h3>Application Received.</h3>
+        <p>Thank you. A member of the GrowPro Founder Partnerships team will be in touch within one business day.</p>
+        <a class="ap-igbtn" href="https://instagram.com/therealzenjessica" target="_blank" rel="noopener">Follow @therealzenjessica on Instagram</a>
+      </div>
+
+      <!-- ERROR PANEL -->
+      <div class="ap-panel" id="apError">
+        <h3>Something Went Wrong.</h3>
+        <p>Please email us directly at <a class="ap-mail" href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a></p>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============ SECTION 4: VIDEO ============ -->
 <section class="sec sec-gray">
   <div class="sec-inner wide7">
     <div class="eyebrow">Watch Before You Read</div>
@@ -251,11 +336,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     <div class="video">
       <iframe src="https://www.youtube.com/embed/E14AY3OJI3k" title="See why GrowPro is different" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
   </div>
 </section>
 
-<!-- ============ SECTION 4: PAIN ============ -->
+<!-- ============ SECTION 5: PAIN ============ -->
 <section class="sec sec-white">
   <div class="sec-inner">
     <div class="eyebrow">The Problem</div>
@@ -275,7 +360,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   </div>
 </section>
 
-<!-- ============ SECTION 5: MARKET OPPORTUNITY ============ -->
+<!-- ============ SECTION 6: MARKET OPPORTUNITY ============ -->
 <section class="sec sec-dark">
   <div class="sec-inner">
     <div class="eyebrow">The Opportunity</div>
@@ -293,21 +378,21 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       <p>Brands that are not LegitScript certified and operationally established before that window are going to scramble. Brands built right now, on compliant infrastructure, with the right pharmacy relationships already in place, are positioned to be the last ones standing when the dust settles.</p>
     </div>
     <p class="proof">We have never lost a LegitScript application. We have never failed to secure payment processing. 80+ brands launched and operational.</p>
-    <button class="cta" data-open-modal>Apply Before Slots Fill This Quarter</button>
+    <a class="cta" href="#apply">Apply Before Slots Fill This Quarter</a>
   </div>
 </section>
 
-<!-- ============ SECTION 6: EARLY APPLICATION CTA ============ -->
+<!-- ============ SECTION 7: EARLY APPLICATION CTA ============ -->
 <section class="sec sec-gray" style="padding-top:60px;padding-bottom:60px">
   <div class="sec-inner">
     <h2 class="h-sec">Ready to Skip the Research?</h2>
     <p class="sub-sec">If you already know this is the right move, apply now. A member of our team will contact you within one business day.</p>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
     <p class="cta-note" style="color:#777">No income claims. No hype. Just a proven build.</p>
   </div>
 </section>
 
-<!-- ============ SECTION 7: COMPARISON ============ -->
+<!-- ============ SECTION 8: COMPARISON ============ -->
 <section class="sec sec-white">
   <div class="sec-inner wide8">
     <div class="eyebrow">How We Compare</div>
@@ -333,11 +418,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       </table>
     </div>
     <p class="cmp-foot">No names. You know who we are talking about.</p>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
   </div>
 </section>
 
-<!-- ============ SECTION 8: WHAT YOU CANNOT BUY ANYWHERE ELSE ============ -->
+<!-- ============ SECTION 9: WHAT YOU CANNOT BUY ANYWHERE ELSE ============ -->
 <section class="sec sec-dark">
   <div class="sec-inner">
     <div class="eyebrow">The Difference</div>
@@ -365,11 +450,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
         <p>GrowPro builds your infrastructure. We can assist with paid media strategy and connect you with the right resources for patient acquisition. Your brand will be launch-ready and conversion-optimized from day one. Ongoing marketing management is available as a separate engagement through Kickstart Social.</p>
       </div>
     </div>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
   </div>
 </section>
 
-<!-- ============ SECTION 9: PRICING ============ -->
+<!-- ============ SECTION 10: PRICING ============ -->
 <section class="sec sec-gray">
   <div class="sec-inner">
     <div class="eyebrow">Investment</div>
@@ -381,12 +466,12 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       <p class="price-small">Operator Suite available at $40,000 - includes HRT program, Peptide Pack, Branded Medication Pathway, AI Conversion Engine patient nurture system, lifestyle quizzes x3 verticals, 30 days SEO blogs, 90 days social graphics.</p>
       <p class="price-note">The AI Conversion Engine is our proprietary done-for-you patient nurture and conversion system. It is not an ad platform.</p>
     </div>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
     <p class="cta-note" style="color:#777">A member of our team will walk you through the right build level for your goals.</p>
   </div>
 </section>
 
-<!-- ============ SECTION 10: FOUNDER ============ -->
+<!-- ============ SECTION 11: FOUNDER ============ -->
 <section class="sec sec-white">
   <div class="sec-inner">
     <div class="eyebrow">Your Founder</div>
@@ -412,7 +497,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   </div>
 </section>
 
-<!-- ============ SECTION 11: TESTIMONIALS ============ -->
+<!-- ============ SECTION 12: TESTIMONIALS ============ -->
 <section class="sec sec-dark">
   <div class="sec-inner wide7">
     <div class="eyebrow">Hear From Founders</div>
@@ -421,7 +506,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     <div class="video">
       <iframe src="https://www.youtube.com/embed/F6z-MirFawU" title="GrowPro founder testimonials" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe>
     </div>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
   </div>
 </section>
 
@@ -456,7 +541,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   </div>
 </div>
 
-<!-- ============ SECTION 12: HARD TRUTH ============ -->
+<!-- ============ SECTION 13: HARD TRUTH ============ -->
 <section class="sec sec-gray">
   <div class="sec-inner">
     <div class="eyebrow">Read This Before You Apply</div>
@@ -480,11 +565,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       </ul>
     </div>
     <div class="truth-callout">We are selective about who we work with because your brand operates on our platform and our reputation is on the line alongside yours. We take that seriously.</div>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
   </div>
 </section>
 
-<!-- ============ SECTION 13: FAQ ============ -->
+<!-- ============ SECTION 14: FAQ ============ -->
 <section class="sec sec-white">
   <div class="sec-inner wide7">
     <div class="eyebrow">Questions</div>
@@ -503,17 +588,17 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   </div>
 </section>
 
-<!-- ============ SECTION 14: FINAL CTA ============ -->
+<!-- ============ SECTION 15: FINAL CTA ============ -->
 <section class="sec sec-dark" style="padding-top:80px;padding-bottom:80px">
   <div class="sec-inner">
     <h2 class="h-sec">Ready to Build Something Real?</h2>
     <p class="sub-sec" style="max-width:500px">Limited launch slots are available this quarter. If you are serious about entering the telehealth space on infrastructure you control, with a team that has done this 80+ times, apply now.</p>
-    <button class="cta" data-open-modal>Apply to Work With Us</button>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
     <p class="cta-note">No income claims. No hype. Just a proven build.</p>
   </div>
 </section>
 
-<!-- ============ SECTION 15: FOOTER ============ -->
+<!-- ============ FOOTER ============ -->
 <footer class="ft">
   <div>
     <a href="https://growpro.co" target="_blank" rel="noopener">growpro.co</a> | <a href="https://kickstartsocial.co" target="_blank" rel="noopener">kickstartsocial.co</a> | <a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a>
@@ -527,190 +612,78 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   <p class="ft-disclaimer">GrowPro is a done-for-you telehealth infrastructure build program. We do not make income claims, revenue projections, or earnings guarantees of any kind. Results vary based on individual effort, market conditions, regulatory environment, and factors outside our control. The market statistics referenced on this page are sourced from publicly available industry research and are not projections of individual business performance. Testimonials represent individual experiences and are not typical results. This page is not an offer of employment, investment advice, legal advice, or medical advice. Kickstart Social LLC dba GrowPro. All rights reserved.</p>
 </footer>
 
-<!-- ============ APPLICATION MODAL ============ -->
-<div class="modal-overlay" id="appModal" aria-hidden="true" role="dialog" aria-modal="true">
-  <div class="modal-box">
-    <button class="modal-close" id="modalClose" aria-label="Close">&times;</button>
-    <div class="modal-progress"><div class="modal-progress-bar" id="progBar"></div></div>
-    <div class="modal-inner">
-      <aside class="modal-sidebar" id="modalSidebar">
-        <div class="ms-step" data-s="1"><span class="ms-num">1</span><span><strong>Background</strong>Who you are</span></div>
-        <div class="ms-step" data-s="2"><span class="ms-num">2</span><span><strong>Readiness</strong>Your timeline</span></div>
-        <div class="ms-step" data-s="3"><span class="ms-num">3</span><span><strong>Investment</strong>Your capital</span></div>
-        <div class="ms-step" data-s="4"><span class="ms-num">4</span><span><strong>Goal</strong>Your objective</span></div>
-        <div class="ms-step" data-s="5"><span class="ms-num">5</span><span><strong>Contact</strong>Where to reach you</span></div>
-      </aside>
-      <div class="modal-content" id="modalContent">
-
-        <!-- STEP 1 -->
-        <div class="mstep active" data-step="1">
-          <h3 class="mq">Which best describes you?</h3>
-          <button class="opt" data-step="1" data-key="background" data-val="Entrepreneur / Investor"><span class="radio"></span>Entrepreneur / Investor</button>
-          <button class="opt" data-step="1" data-key="background" data-val="Medical or Wellness Professional"><span class="radio"></span>Medical or Wellness Professional</button>
-          <button class="opt" data-step="1" data-key="background" data-val="Existing Business Owner adding a revenue stream"><span class="radio"></span>Existing Business Owner adding a revenue stream</button>
-          <button class="opt" data-step="1" data-key="background" data-val="Other"><span class="radio"></span>Other</button>
-        </div>
-
-        <!-- STEP 2 -->
-        <div class="mstep" data-step="2">
-          <h3 class="mq">Are you ready to launch a telehealth brand?</h3>
-          <button class="opt" data-step="2" data-key="readiness" data-val="Ready to move now"><span class="radio"></span>Ready to move now</button>
-          <button class="opt" data-step="2" data-key="readiness" data-val="Actively planning, timeline within 90 days"><span class="radio"></span>Actively planning, timeline within 90 days</button>
-          <button class="opt" data-step="2" data-key="readiness" data-val="Still researching my options"><span class="radio"></span>Still researching my options</button>
-        </div>
-
-        <!-- STEP 3 -->
-        <div class="mstep" data-step="3">
-          <h3 class="mq">Are you prepared to invest $27,000 or more in a done-for-you telehealth build?</h3>
-          <p class="mnote">This covers your complete infrastructure build. Marketing and ad spend are separate.</p>
-          <button class="opt" data-step="3" data-key="investment_ready" data-val="Yes, I have capital ready"><span class="radio"></span>Yes, I have capital ready</button>
-          <button class="opt" data-step="3" data-key="investment_ready" data-val="I would like to learn more about investment options"><span class="radio"></span>I would like to learn more about investment options</button>
-          <button class="opt" data-step="3" data-key="investment_ready" data-val="Not at this time" data-decline="1"><span class="radio"></span>Not at this time</button>
-        </div>
-
-        <!-- STEP 4 -->
-        <div class="mstep" data-step="4">
-          <h3 class="mq">What is your primary goal with this business?</h3>
-          <button class="opt" data-step="4" data-key="goal" data-val="Add a revenue stream to an existing business"><span class="radio"></span>Add a revenue stream to an existing business</button>
-          <button class="opt" data-step="4" data-key="goal" data-val="Build a scalable brand to exit or sell"><span class="radio"></span>Build a scalable brand to exit or sell</button>
-          <button class="opt" data-step="4" data-key="goal" data-val="Replace or supplement my current income"><span class="radio"></span>Replace or supplement my current income</button>
-          <button class="opt" data-step="4" data-key="goal" data-val="Enter the telehealth space as an investor"><span class="radio"></span>Enter the telehealth space as an investor</button>
-        </div>
-
-        <!-- STEP 5 -->
-        <div class="mstep" data-step="5">
-          <h3 class="mtitle">Almost There.</h3>
-          <p class="msubtext">A member of the GrowPro team will contact you within one business day.</p>
-          <form id="appForm" novalidate>
-            <div class="field" id="f_first"><label for="fName">First Name</label><input type="text" id="fName" autocomplete="given-name"><div class="ferr">Please enter your first name.</div></div>
-            <div class="field" id="f_last"><label for="lName">Last Name</label><input type="text" id="lName" autocomplete="family-name"><div class="ferr">Please enter your last name.</div></div>
-            <div class="field" id="f_email"><label for="eMail">Email Address</label><input type="email" id="eMail" autocomplete="email"><div class="ferr">Please enter a valid email address.</div></div>
-            <div class="field" id="f_phone"><label for="pPhone">Phone Number</label><input type="tel" id="pPhone" autocomplete="tel"><div class="ferr">Please enter your phone number.</div></div>
-            <button type="submit" class="msub" id="appSubmit">Submit My Application</button>
-            <p class="fineprint">By submitting you agree to be contacted by the GrowPro team. We do not sell or share your information.</p>
-          </form>
-        </div>
-
-        <!-- DECLINE PANEL -->
-        <div class="panel" id="declineView">
-          <h3>Thank You for Your Interest.</h3>
-          <p>When you are ready to move forward, we would love to connect.</p>
-          <button class="ig-btn" id="declineClose">Close</button>
-        </div>
-
-        <!-- SUCCESS PANEL -->
-        <div class="panel" id="successView">
-          <div class="check">&#10003;</div>
-          <h3>Application Received.</h3>
-          <p>Thank you. A member of the GrowPro Founder Partnerships team will be in touch within one business day. In the meantime, follow Jessica on Instagram for daily telehealth operator content.</p>
-          <a class="ig-btn" href="https://instagram.com/therealzenjessica" target="_blank" rel="noopener">Follow @therealzenjessica</a>
-        </div>
-
-        <!-- ERROR PANEL -->
-        <div class="panel" id="errorView">
-          <h3>Something Went Wrong.</h3>
-          <p>Please email us directly at <a class="mailto" href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a> and we will take it from there.</p>
-          <button class="ig-btn" id="errorRetry">Try Again</button>
-        </div>
-
-      </div>
-    </div>
-  </div>
-</div>
-
 <script>
 (function(){
+  // Lumi webhook endpoint (same as the GrowPro launch configurator)
   var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
-  var modal=document.getElementById('appModal');
-  var progBar=document.getElementById('progBar');
-  var sidebar=document.getElementById('modalSidebar');
-  var TOTAL=5;
-  var answers={background:'',readiness:'',investment_ready:'',goal:''};
+  // Lumi workflow: Telehealth Application - Score and Route
+  // Banger = investment_ready contains "ready now" AND commitment_score contains "8 to 10" AND readiness contains "now"
+  // Strong = investment_ready contains "ready now" AND commitment_score contains "5 to 7"
+  // Researcher = investment_ready contains "financing" OR commitment_score contains "5 to 7"
+  // Broke = filtered out at step 3 (not at this time) - never reaches contact step
+  var root=document.getElementById('apply');
+  var bar=document.getElementById('apBar');
+  var counter=document.getElementById('apCounter');
+  var chrome=document.getElementById('apChrome');
+  var TOTAL=6;
+  var answers={background:'',readiness:'',investment_ready:'',commitment_score:'',goal:''};
 
-  function panels(){return modal.querySelectorAll('.panel');}
-  function steps(){return modal.querySelectorAll('.mstep');}
-
+  function steps(){return root.querySelectorAll('.ap-step');}
+  function panels(){return root.querySelectorAll('.ap-panel');}
   function hideAll(){
     steps().forEach(function(s){s.classList.remove('active');});
     panels().forEach(function(p){p.classList.remove('active');});
   }
-
   function showStep(n){
     hideAll();
-    var el=modal.querySelector('.mstep[data-step="'+n+'"]');
+    var el=root.querySelector('.ap-step[data-step="'+n+'"]');
     if(el) el.classList.add('active');
-    progBar.style.width=(n/TOTAL*100)+'%';
-    modal.querySelectorAll('.ms-step').forEach(function(s){
-      s.classList.toggle('on', parseInt(s.getAttribute('data-s'),10)<=n);
-    });
-    sidebar.style.display='';
-    progBar.parentElement.style.display='';
+    bar.style.width=(n/TOTAL*100)+'%';
+    counter.textContent='Step '+n+' of '+TOTAL;
+    chrome.style.visibility='visible';
   }
-
-  function showPanel(id,hideChrome){
+  function showPanel(id){
     hideAll();
     document.getElementById(id).classList.add('active');
-    if(hideChrome){ sidebar.style.display='none'; progBar.parentElement.style.display='none'; }
+    chrome.style.visibility='hidden';
   }
-
-  function openModal(){
-    answers={background:'',readiness:'',investment_ready:'',goal:''};
-    modal.querySelectorAll('.opt.sel').forEach(function(o){o.classList.remove('sel');});
-    var f=document.getElementById('appForm'); if(f) f.reset();
-    modal.querySelectorAll('.field.bad').forEach(function(x){x.classList.remove('bad');});
-    var sb=document.getElementById('appSubmit'); if(sb){sb.disabled=false;sb.textContent='Submit My Application';}
-    modal.classList.add('show');
-    modal.setAttribute('aria-hidden','false');
-    document.body.style.overflow='hidden';
-    showStep(1);
-  }
-  function closeModal(){
-    modal.classList.remove('show');
-    modal.setAttribute('aria-hidden','true');
-    document.body.style.overflow='';
-  }
-
-  // Open from every CTA
-  document.querySelectorAll('[data-open-modal]').forEach(function(b){
-    b.addEventListener('click',function(e){e.preventDefault();openModal();});
-  });
-  document.getElementById('modalClose').addEventListener('click',closeModal);
-  document.getElementById('declineClose').addEventListener('click',closeModal);
-  document.getElementById('errorRetry').addEventListener('click',function(){showStep(5);});
-  modal.addEventListener('click',function(e){if(e.target===modal)closeModal();});
-  document.addEventListener('keydown',function(e){if(e.key==='Escape'&&modal.classList.contains('show'))closeModal();});
 
   // Option selection + auto-advance
-  modal.querySelectorAll('.opt').forEach(function(opt){
+  root.querySelectorAll('.ap-opt').forEach(function(opt){
     opt.addEventListener('click',function(){
       var step=parseInt(opt.getAttribute('data-step'),10);
       var key=opt.getAttribute('data-key');
-      var val=opt.getAttribute('data-val');
-      opt.parentElement.querySelectorAll('.opt').forEach(function(x){x.classList.remove('sel');});
+      opt.parentElement.querySelectorAll('.ap-opt').forEach(function(x){x.classList.remove('sel');});
       opt.classList.add('sel');
-      answers[key]=val;
-      if(opt.getAttribute('data-decline')==='1'){
-        setTimeout(function(){showPanel('declineView',true);},300);
+      answers[key]=opt.getAttribute('data-val');
+      var dec=opt.getAttribute('data-decline');
+      if(dec){
+        setTimeout(function(){
+          document.getElementById('apDeclineMsg').textContent = (dec==='invest')
+            ? 'Thank you for your interest. When you are ready to invest in your infrastructure, we would love to connect.'
+            : 'Thank you for reaching out. We would love to connect when you are ready to take the next step.';
+          showPanel('apDecline');
+        },300);
         return;
       }
       setTimeout(function(){ if(step<TOTAL) showStep(step+1); },300);
     });
   });
 
-  // Form submit
+  // Contact form submit
   var emailRe=/^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  function setBad(id,bad){document.getElementById(id).classList.toggle('bad',bad);}
-  document.getElementById('appForm').addEventListener('submit',function(e){
+  function setBad(id,b){document.getElementById(id).classList.toggle('bad',b);}
+  document.getElementById('apForm').addEventListener('submit',function(e){
     e.preventDefault();
-    var fn=document.getElementById('fName').value.trim();
-    var ln=document.getElementById('lName').value.trim();
-    var em=document.getElementById('eMail').value.trim();
-    var ph=document.getElementById('pPhone').value.trim();
+    var fn=document.getElementById('apFirst').value.trim();
+    var ln=document.getElementById('apLast').value.trim();
+    var em=document.getElementById('apEmail').value.trim();
+    var ph=document.getElementById('apPhone').value.trim();
     var ok=true;
-    setBad('f_first',!fn); if(!fn)ok=false;
-    setBad('f_last',!ln); if(!ln)ok=false;
-    var emOk=emailRe.test(em); setBad('f_email',!emOk); if(!emOk)ok=false;
-    setBad('f_phone',!ph); if(!ph)ok=false;
+    setBad('apf_first',!fn); if(!fn)ok=false;
+    setBad('apf_last',!ln); if(!ln)ok=false;
+    var emOk=emailRe.test(em); setBad('apf_email',!emOk); if(!emOk)ok=false;
+    setBad('apf_phone',!ph); if(!ph)ok=false;
     if(!ok) return;
 
     var payload={
@@ -721,14 +694,15 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       background:answers.background,
       readiness:answers.readiness,
       investment_ready:answers.investment_ready,
+      commitment_score:answers.commitment_score,
       goal:answers.goal,
       source:"success-page-application"
     };
-    var btn=document.getElementById('appSubmit');
+    var btn=document.getElementById('apSubmit');
     btn.disabled=true; btn.textContent='Submitting...';
     fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){ showPanel('successView',true); })
-      .catch(function(){ btn.disabled=false; btn.textContent='Submit My Application'; showPanel('errorView',true); });
+      .then(function(){ showPanel('apSuccess'); })
+      .catch(function(){ btn.disabled=false; btn.textContent='Submit My Application'; showPanel('apError'); });
   });
 })();
 </script>
