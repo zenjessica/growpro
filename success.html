@@ -220,6 +220,39 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 .ft-social{display:flex;justify-content:center;flex-wrap:wrap;gap:10px 22px;margin:14px 0}
 .ft-social a{display:inline-flex;align-items:center;gap:6px;color:var(--navy);font-weight:600;font-size:13px}
 .ft-disclaimer{max-width:760px;margin:18px auto 0;font-size:11px;color:#999;line-height:1.7;border-top:1px solid #E5E5EA;padding-top:16px}
+
+/* ---------- PRODUCT GALLERY VIDEOS ---------- */
+.vial-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:760px;margin:8px auto 0}
+.vial-grid video{width:100%;aspect-ratio:9/16;object-fit:cover;border-radius:12px;display:block;background:#000}
+@media(min-width:768px){.vial-grid{grid-template-columns:1fr 1fr}}
+
+/* ---------- COMPARISON SCROLL ANIMATION ---------- */
+.cmp.prep tbody td:nth-child(2){opacity:0;transition:opacity .5s ease}
+.cmp.prep tbody td.gp{opacity:0;transform:translateX(8px);transition:opacity .45s ease,transform .45s ease}
+.cmp.prep.in tbody td:nth-child(2){opacity:.4}
+.cmp.prep.in tbody td.gp{opacity:1;transform:none}
+.cmp.prep.in tbody tr:nth-child(1) td.gp{transition-delay:.15s}
+.cmp.prep.in tbody tr:nth-child(2) td.gp{transition-delay:.3s}
+.cmp.prep.in tbody tr:nth-child(3) td.gp{transition-delay:.45s}
+.cmp.prep.in tbody tr:nth-child(4) td.gp{transition-delay:.6s}
+.cmp.prep.in tbody tr:nth-child(5) td.gp{transition-delay:.75s}
+.cmp.prep.in tbody tr:nth-child(6) td.gp{transition-delay:.9s}
+.cmp.prep.in tbody tr:nth-child(7) td.gp{transition-delay:1.05s}
+.cmp.prep.in tbody tr:nth-child(8) td.gp{transition-delay:1.2s}
+.cmp.prep.in tbody tr:nth-child(9) td.gp{transition-delay:1.35s}
+.cmp.prep.in tbody tr:nth-child(10) td.gp{transition-delay:1.5s}
+
+/* ---------- FDA CALLOUT BORDER PULSE ---------- */
+@keyframes fdaBorderPulse{0%,100%{border-left-color:rgba(255,255,255,1)}50%{border-left-color:rgba(255,255,255,.6)}}
+.callout{animation:fdaBorderPulse 2s ease-in-out infinite}
+
+/* ---------- FLOATING URGENCY BAR (mobile only) ---------- */
+.urgency-bar{position:fixed;left:0;right:0;bottom:0;z-index:2000;background:var(--navy);color:#fff;display:flex;align-items:center;gap:10px;padding:9px 12px;font-size:12px;line-height:1.3}
+.ub-text{flex:1}
+.ub-apply{color:#fff;font-weight:700;text-decoration:underline;white-space:nowrap;flex-shrink:0}
+.ub-close{background:none;border:none;color:#fff;font-size:20px;line-height:1;cursor:pointer;flex-shrink:0;padding:0 4px}
+.urgency-bar.hidden{display:none}
+@media(min-width:768px){.urgency-bar{display:none}}
 </style>
 </head>
 <body>
@@ -235,7 +268,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 <!-- ============ SECTION 2: HERO ============ -->
 <header class="hero">
   <div class="hero-inner">
-    <h1>The Only Done-For-You Telehealth Launch Built on <span class="accent">Software We Own.</span></h1>
+    <h1>🚀 The Only Done-For-You Telehealth Launch Built on <span class="accent">Software We Own.</span></h1>
     <p class="sub">No rented platforms. No vendor middlemen. No hype.</p>
   </div>
 </header>
@@ -257,9 +290,9 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 <section class="sec sec-white trustbar">
   <div class="sec-inner">
     <div class="tb-pills">
-      <div class="tb-pill">80+ Brands Launched and Operational</div>
-      <div class="tb-pill">100% LegitScript Approval Rate</div>
-      <div class="tb-pill">100% Payment Processing Approval Rate</div>
+      <div class="tb-pill">✨ 80+ Brands Launched and Operational</div>
+      <div class="tb-pill">🛡️ 100% LegitScript Approval Rate</div>
+      <div class="tb-pill">🔒 100% Payment Processing Approval Rate</div>
     </div>
     <p class="tb-cred">Led by Jessica Lynne White, PT - licensed clinician with 27 years in healthcare. Every layer of your build controlled by one team.</p>
     <div class="press-row press-light">
@@ -396,14 +429,14 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     <h2 class="h-sec">The Window Is Open. The Question Is Who Builds Your Foundation.</h2>
     <p class="sub-sec">The telehealth and peptide market is not a trend. It is a structural shift in how Americans access healthcare.</p>
     <div class="statgrid">
-      <div class="statcard"><div class="n">$1.4T</div><div class="l">Global Telehealth Market by 2035</div></div>
-      <div class="statcard"><div class="n">$268B</div><div class="l">GLP-1 Market by 2030</div></div>
-      <div class="statcard"><div class="n">30M+</div><div class="l">Americans Projected on GLP-1 by 2030</div></div>
-      <div class="statcard"><div class="n">$47B</div><div class="l">Peptide Therapeutics Market by 2030</div></div>
+      <div class="statcard"><div class="n" data-target="1.4" data-decimals="1" data-prefix="$" data-suffix="T">$1.4T</div><div class="l">Global Telehealth Market by 2035</div></div>
+      <div class="statcard"><div class="n" data-target="268" data-decimals="0" data-prefix="$" data-suffix="B">$268B</div><div class="l">GLP-1 Market by 2030</div></div>
+      <div class="statcard"><div class="n" data-target="30" data-decimals="0" data-prefix="$" data-suffix="M+">$30M+</div><div class="l">Americans Projected on GLP-1 by 2030</div></div>
+      <div class="statcard"><div class="n" data-target="47" data-decimals="0" data-prefix="$" data-suffix="B">$47B</div><div class="l">Peptide Therapeutics Market by 2030</div></div>
     </div>
     <p class="big-statement">The brands winning right now are not the biggest. They are the most compliant, the most operationally sound, and the first to own their infrastructure.</p>
     <div class="callout">
-      <h4>The FDA PCAC Peptide Review Window Closes July 23-24, 2026.</h4>
+      <h4>⏰ The FDA PCAC Peptide Review Window Closes July 23-24, 2026.</h4>
       <p>Brands that are not LegitScript certified and operationally established before that window are going to scramble. Brands built right now, on compliant infrastructure, with the right pharmacy relationships already in place, are positioned to be the last ones standing when the dust settles.</p>
     </div>
     <p class="proof">We have never lost a LegitScript application. We have never failed to secure payment processing. 80+ brands launched and operational.</p>
@@ -455,11 +488,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 <section class="sec sec-dark">
   <div class="sec-inner">
     <div class="eyebrow">The Difference</div>
-    <h2 class="h-sec">What You Cannot Buy Anywhere Else.</h2>
+    <h2 class="h-sec">⚡ What You Cannot Buy Anywhere Else.</h2>
     <p class="sub-sec">Everything a telehealth brand needs to operate legally and profitably is already built, already negotiated, and already proven across 80+ live brands. You are not patient zero. You are joining infrastructure that is already working.</p>
     <div style="margin-top:24px">
       <div class="diff-block">
-        <h3>Pre-Negotiated Pharmacy Pricing Across 80+ Active Brands.</h3>
+        <h3>💊 Pre-Negotiated Pharmacy Pricing Across 80+ Active Brands.</h3>
         <p>Our pharmacy relationships are pre-negotiated across 80+ active brands. That volume gives your brand pricing and access that a solo founder cannot get on their own - on day one. You walk in with leverage we spent years building.</p>
       </div>
       <div class="diff-block">
@@ -471,7 +504,7 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
         <p>Every week you spend building instead of operating is revenue you are not collecting. Our 12-week build is engineered to get you to your first patient as fast as possible without sacrificing the compliance foundation that protects you long term.</p>
       </div>
       <div class="diff-block">
-        <h3>Built With an Exit in Mind From Day One.</h3>
+        <h3>📈 Built With an Exit in Mind From Day One.</h3>
         <p>If your goal is to build a telehealth brand with enterprise value - one that is auditable, compliant, and built on documented infrastructure - this is the only done-for-you program that thinks about your exit before your launch.</p>
       </div>
       <div class="diff-block">
@@ -515,11 +548,11 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
     <div class="eyebrow">Your Founder</div>
     <h2 class="h-sec">Built by Someone Who Operates in This Space Every Day.</h2>
     <img src="images/jessica-headshot.jpg" alt="Jessica Lynne White, PT" class="founder-photo">
-    <p class="founder-cap">Jessica Lynne White, PT | CEO, Kickstart Social | Founder, Wellie MD | Owner-Operator, KIN Meds and PauseRx</p>
+    <p class="founder-cap">Jessica Lynne White, PT | CEO, Kickstart Social | Founder, Wellie MD | Owner-Operator, Kin Meds and Pause Rx</p>
     <div class="founder-bio">
       <p>I am not a marketer who discovered telehealth. I am a licensed Physical Therapist with 27 years in clinical healthcare and a former Director of Rehabilitation at a sub-acute hospital.</p>
-      <p>I built GrowPro because I launched my own telehealth brands - KIN Meds and PauseRx - and realized the tools founders needed did not exist. So I built them. Wellie MD is our proprietary platform. We own it. We operate on it every single day.</p>
-      <p>KIN Meds and PauseRx are not case studies. They are live brands with real patients, real prescriptions processed through Wellie MD, and real orders fulfilled through the same pharmacy network you will access on day one. When something changes in this industry, I feel it before my clients do. That is not consulting. That is ownership.</p>
+      <p>I built GrowPro because I launched my own telehealth brands - Kin Meds and Pause Rx - and realized the tools founders needed did not exist. So I built them. Wellie MD is our proprietary platform. We own it. We operate on it every single day.</p>
+      <p>Kin Meds and Pause Rx are not case studies. They are live brands with real patients, real prescriptions processed through Wellie MD, and real orders fulfilled through the same pharmacy network you will access on day one. When something changes in this industry, I feel it before my clients do. That is not consulting. That is ownership.</p>
       <p>When you work with GrowPro, you are not buying access to a consultant's Rolodex. You are getting a team that controls every layer of your infrastructure - the platform, the pharmacy relationships, the LegitScript process, the payment processing, and the build itself.</p>
       <div class="founder-attr">Jessica Lynne White, PT<span>CEO, Kickstart Social | Founder, Wellie MD</span></div>
     </div>
@@ -531,6 +564,21 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       <img src="assets/voyage-la.png" alt="Voyage LA">
       <img src="assets/bold-journey.png" alt="Bold Journey">
       <img src="assets/ein-presswire.png" alt="EIN Presswire">
+    </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCT DESIGN GALLERY ============ -->
+<section class="sec sec-gray">
+  <div class="sec-inner wide7">
+    <div class="eyebrow">Product Design</div>
+    <h2 class="h-sec">🎨 Your Brand Deserves Premium Creative.</h2>
+    <p class="sub-sec">Cookie-cutter telehealth sites blend into the noise. GrowPro brands are built to stand out - from your website to your product photography to your patient experience.</p>
+    <div class="vial-grid">
+      <video autoplay muted loop playsinline><source src="images/vial-1.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline><source src="images/vial-2.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline><source src="images/vial-3.mp4" type="video/mp4"></video>
+      <video autoplay muted loop playsinline><source src="images/vial-4.mp4" type="video/mp4"></video>
     </div>
   </div>
 </section>
@@ -636,6 +684,19 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   </div>
 </section>
 
+<!-- ============ BRAND SHOWCASE ============ -->
+<section class="sec sec-dark">
+  <div class="sec-inner wide7">
+    <div class="eyebrow">The Standard</div>
+    <h2 class="h-sec">🏆 This Is What a Premium Telehealth Brand Looks Like.</h2>
+    <p class="sub-sec">GrowPro brands are not template sites. Every build is custom, compliant, and designed to compete at the highest level in the market.</p>
+    <video autoplay muted loop playsinline style="width:100%;max-width:700px;display:block;margin:32px auto;border-radius:12px;">
+      <source src="https://kickstartsocial.co/wp-content/uploads/2026/06/Kickstart-Social-Co.-VIdeo-2.mp4" type="video/mp4">
+    </video>
+    <a class="cta" href="#apply">Apply to Work With Us</a>
+  </div>
+</section>
+
 <!-- ============ FOOTER ============ -->
 <footer class="ft">
   <div>
@@ -649,6 +710,13 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
   </div>
   <p class="ft-disclaimer">GrowPro is a done-for-you telehealth infrastructure build program. We do not make income claims, revenue projections, or earnings guarantees of any kind. Results vary based on individual effort, market conditions, regulatory environment, and factors outside our control. The market statistics referenced on this page are sourced from publicly available industry research and are not projections of individual business performance. Testimonials represent individual experiences and are not typical results. This page is not an offer of employment, investment advice, legal advice, or medical advice. Kickstart Social LLC dba GrowPro. All rights reserved.</p>
 </footer>
+
+<!-- ============ FLOATING URGENCY BAR (mobile only) ============ -->
+<div class="urgency-bar" id="urgencyBar">
+  <span class="ub-text">⏰ FDA PCAC Peptide Review: July 23-24, 2026 - Apply Before Slots Fill</span>
+  <a class="ub-apply" href="#apply">Apply Now</a>
+  <button class="ub-close" id="ubClose" aria-label="Dismiss">&times;</button>
+</div>
 
 <script>
 (function(){
@@ -742,6 +810,57 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
       .then(function(){ showPanel('apSuccess'); })
       .catch(function(){ btn.disabled=false; btn.textContent='Submit My Application'; showPanel('apError'); });
   });
+})();
+</script>
+
+<script>
+(function(){
+  // ---- Scroll-triggered counter animation for market stat cards ----
+  function easeOutCubic(t){return 1-Math.pow(1-t,3);}
+  function animateCount(el){
+    var target=parseFloat(el.getAttribute('data-target'));
+    var dec=parseInt(el.getAttribute('data-decimals'),10)||0;
+    var prefix=el.getAttribute('data-prefix')||'';
+    var suffix=el.getAttribute('data-suffix')||'';
+    var dur=2000,start=null;
+    function frame(ts){
+      if(start===null)start=ts;
+      var t=Math.min((ts-start)/dur,1);
+      el.textContent=prefix+(target*easeOutCubic(t)).toFixed(dec)+suffix;
+      if(t<1){requestAnimationFrame(frame);}
+      else{el.textContent=prefix+target.toFixed(dec)+suffix;}
+    }
+    requestAnimationFrame(frame);
+  }
+  var nums=document.querySelectorAll('.statcard .n[data-target]');
+  if(nums.length && 'IntersectionObserver' in window){
+    nums.forEach(function(el){
+      var p=el.getAttribute('data-prefix')||'',s=el.getAttribute('data-suffix')||'',d=parseInt(el.getAttribute('data-decimals'),10)||0;
+      el.textContent=p+(0).toFixed(d)+s;
+    });
+    var statObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ animateCount(en.target); statObs.unobserve(en.target); } });
+    },{threshold:0.4});
+    nums.forEach(function(el){statObs.observe(el);});
+  }
+
+  // ---- Scroll-triggered row-by-row reveal for comparison table ----
+  var cmp=document.querySelector('table.cmp');
+  if(cmp && 'IntersectionObserver' in window){
+    cmp.classList.add('prep');
+    var cmpObs=new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); cmpObs.unobserve(en.target); } });
+    },{threshold:0.25});
+    cmpObs.observe(cmp);
+  }
+
+  // ---- Floating urgency bar dismiss (session-persistent) ----
+  var ub=document.getElementById('urgencyBar');
+  if(ub){
+    try{ if(sessionStorage.getItem('ubDismissed')==='1'){ ub.classList.add('hidden'); } }catch(e){}
+    var ubc=document.getElementById('ubClose');
+    if(ubc){ ubc.addEventListener('click',function(){ ub.classList.add('hidden'); try{sessionStorage.setItem('ubDismissed','1');}catch(e){} }); }
+  }
 })();
 </script>
 
