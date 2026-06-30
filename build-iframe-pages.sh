@@ -76,6 +76,7 @@ build_home() {
 build_configurator "launch"
 build_configurator "marketing"
 build_configurator "marketing-content-2026"
+build_configurator "full-stack"
 build_configurator "operator"
 build_home
 

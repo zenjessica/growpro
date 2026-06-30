@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowPro Full-stack Configurator</title>
+<meta name="robots" content="noindex">
+<style>html,body{margin:0;padding:0;background:#fff;font-family:Inter,system-ui,sans-serif}</style>
+<script>if("scrollRestoration" in history){history.scrollRestoration="manual"}window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}});</script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowPro Full Stack - Brand Growth System</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+:root{--p:#8B7EC8;--ph:#7a6db8;--pl:#E8E4F5;--pb:#F4F2FA;--n:#0d1b2a;--gb:#F7F7F9;--gbd:#E5E5EA;--gold:#D4A843;--w:#fff;--r:14px}
+body{font-family:'Inter',system-ui,sans-serif;color:#1a1a1a;line-height:1.6;background:#fff;overflow-x:hidden}
+h1,h2,h3{letter-spacing:-0.5px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px}
+img{max-width:100%}
+
+/* HERO */
+.fs-hero{background:var(--n);color:#fff;text-align:center;padding:72px 24px 80px}
+.fs-hero .badge{display:inline-block;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--p);border:1px solid rgba(139,126,200,.5);border-radius:999px;padding:7px 18px;margin-bottom:24px}
+.fs-hero h1{font-size:34px;font-weight:800;line-height:1.18;max-width:880px;margin:0 auto 18px}
+.fs-hero .sub{font-size:18px;color:#aeb8c2;max-width:680px;margin:0 auto;line-height:1.6}
+@media(min-width:768px){.fs-hero h1{font-size:48px}}
+
+/* SECTION SHELL */
+.fs-sec{padding:64px 0}
+.fs-eyebrow{font-size:12px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p);text-align:center;margin-bottom:12px}
+.fs-h2{font-size:28px;font-weight:800;text-align:center;color:var(--n);margin-bottom:10px;line-height:1.2}
+.fs-sub2{font-size:16px;color:#555;text-align:center;max-width:620px;margin:0 auto 40px}
+@media(min-width:768px){.fs-h2{font-size:34px}}
+
+/* TWO-COLUMN INCLUDED */
+.fs-cols{display:grid;grid-template-columns:1fr;gap:24px;max-width:980px;margin:0 auto}
+@media(min-width:860px){.fs-cols{grid-template-columns:1fr 1fr}}
+.fs-col{background:#fff;border:1px solid var(--gbd);border-radius:var(--r);padding:32px;box-shadow:0 8px 30px rgba(13,27,42,.06)}
+.fs-col.ongoing{background:var(--pb);border-color:var(--pl)}
+.fs-col-head{display:flex;align-items:baseline;justify-content:space-between;gap:12px;border-bottom:2px solid var(--n);padding-bottom:14px;margin-bottom:22px}
+.fs-col-head h3{font-size:20px;font-weight:800;color:var(--n)}
+.fs-col-head .tagx{font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p)}
+.fs-item{padding:16px 0;border-bottom:1px solid var(--gbd)}
+.fs-item:last-child{border-bottom:none;padding-bottom:0}
+.fs-item .it{font-size:16px;font-weight:700;color:var(--n);display:flex;align-items:flex-start;gap:10px;margin-bottom:6px}
+.fs-item .it::before{content:'\2713';color:var(--p);font-weight:800;flex-shrink:0}
+.fs-item .id{font-size:14px;color:#555;line-height:1.6;padding-left:24px}
+
+/* GOOGLE ADS ADD-ON CALLOUT */
+.fs-addon{max-width:980px;margin:32px auto 0;background:var(--gb);border:2px dashed var(--gbd);border-radius:var(--r);padding:28px 32px}
+.fs-addon .ax{font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#8B6914;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:999px;padding:5px 14px;display:inline-block;margin-bottom:14px}
+.fs-addon h3{font-size:21px;font-weight:800;color:var(--n);margin-bottom:8px}
+.fs-addon p{font-size:15px;color:#555;line-height:1.6}
+
+/* PRICING */
+.fs-pricing{background:var(--n);color:#fff;text-align:center;padding:64px 24px}
+.fs-pricing .pl{font-size:13px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--p);margin-bottom:14px}
+.fs-pricing .big{font-size:46px;font-weight:800;letter-spacing:-1px;line-height:1.1}
+@media(min-width:768px){.fs-pricing .big{font-size:60px}}
+.fs-pricing .pst{font-size:15px;color:#aeb8c2;max-width:560px;margin:16px auto 0;line-height:1.6}
+.fs-pricing .pgoog{font-size:16px;font-weight:600;color:#fff;margin-top:18px}
+
+/* DISCLAIMER */
+.fs-disc{max-width:760px;margin:0 auto;padding:32px 24px 0;font-size:13px;color:#888;line-height:1.7;text-align:center}
+
+/* CTA */
+.fs-cta{text-align:center;padding:48px 24px 72px}
+.fs-btn{display:inline-block;background:var(--p);color:#fff;text-decoration:none;font-size:17px;font-weight:700;padding:17px 44px;border-radius:12px;transition:background .2s;min-height:52px}
+.fs-btn:hover{background:var(--ph)}
+.fs-cta .cst{font-size:14px;color:#777;margin-top:14px}
+
+/* FOOTER */
+.fs-ft{background:var(--gb);border-top:1px solid var(--gbd);padding:28px 0;text-align:center;font-size:12px;color:#999;line-height:1.7}
+.fs-ft a{color:var(--p);text-decoration:none}
+</style>
+</head>
+
+<!-- HERO -->
+<section class="fs-hero">
+<div class="badge">By Application Only</div>
+<h1>The Full Stack: AI-native content, conversion, and paid media - built for regulated brands that want to own their category.</h1>
+<p class="sub">Not a starter package. Not a retainer. A complete brand growth system for operators serious about building a $10M+ telehealth brand.</p>
+</section>
+
+<!-- WHAT'S INCLUDED -->
+<section class="fs-sec">
+<div class="wrap">
+<div class="fs-eyebrow">What's Included</div>
+<h2 class="fs-h2">One System. Setup and Ongoing.</h2>
+<p class="fs-sub2">A 90-day build that stands up your entire growth engine, then a monthly engine that compounds it.</p>
+<div class="fs-cols">
+
+<div class="fs-col setup">
+<div class="fs-col-head"><h3>90-Day Setup</h3><span class="tagx">One-time build</span></div>
+<div class="fs-item">
+<div class="it">10 AI Avatars (swappable after 90 days)</div>
+<div class="id">Your creative engine. 10 branded AI avatars built for speed-to-market and angle testing across paid and organic.</div>
+</div>
+<div class="fs-item">
+<div class="it">5 Landing Pages</div>
+<div class="id">Built for conversion. Product launches, lead gen, and campaign-specific pages, compliance-aware from day one.</div>
+</div>
+<div class="fs-item">
+<div class="it">3 Quiz Funnels (across 3 verticals)</div>
+<div class="id">Custom logic branching to route patients to the right product based on their goals.</div>
+</div>
+<div class="fs-item">
+<div class="it">AI Conversion Engine</div>
+<div class="id">Compliant AI chat bot, 24-email nurture sequence, 24-email abandoned cart sequence, SMS drip campaign, and Meta and Google pixel conversion tracking set up inside your WellieMD platform. It sets up the ability to convert and track. It does not run or manage ad campaigns.</div>
+</div>
+</div>
+
+<div class="fs-col ongoing">
+<div class="fs-col-head"><h3>Monthly Ongoing</h3><span class="tagx">Compounds over time</span></div>
+<div class="fs-item">
+<div class="it">15 SEO Blogs / mo</div>
+<div class="id">Long-form, keyword-targeted content built for organic search dominance in the HRT, GLP-1, and peptide space.</div>
+</div>
+<div class="fs-item">
+<div class="it">Organic Social Management</div>
+<div class="id">Full posting, scheduling, and community management across Facebook, Instagram, TikTok, Pinterest, YouTube Shorts, LinkedIn, and Threads.</div>
+</div>
+<div class="fs-item">
+<div class="it">Meta Ads Management</div>
+<div class="id">In-house paid social management. We build the creative from your AI avatar library and manage your campaigns. Ad spend billed directly to client, separate from the management fee.</div>
+</div>
+</div>
+
+</div>
+
+<!-- GOOGLE ADS ADD-ON -->
+<div class="fs-addon">
+<span class="ax">Optional Add-On</span>
+<h3>Google Ads Management - Starting at +$5,000/mo</h3>
+<p>Managed search campaigns for your brand. Ad spend billed directly to client. Available as an add-on to Full Stack.</p>
+</div>
+</div>
+</section>
+
+<!-- PRICING -->
+<section class="fs-pricing">
+<div class="pl">The Investment</div>
+<div class="big">Starting at $24,500/mo</div>
+<p class="pst">90-day minimum commitment. Ad spend billed separately and directly to platforms.</p>
+<div class="pgoog">Google Ads add-on: starting at +$5,000/mo</div>
+</section>
+
+<!-- DISCLAIMER -->
+<div class="fs-disc">
+Full Stack is a brand-building and market positioning system. Results are built over time through content compounding, audience development, and conversion optimization. This is not a short-term lead generation play. It is infrastructure for operators building toward category ownership.
+</div>
+
+<!-- CTA -->
+<section class="fs-cta">
+<a class="fs-btn" href="#apply">Apply for Full Stack</a>
+<p class="cst">We review every application. Not every brand is the right fit.</p>
+</section>
+
+<footer class="fs-ft"><div class="wrap">
+<a href="https://growpro.co" target="_blank" rel="noopener">growpro.co</a> | <a href="https://kickstartsocial.co" target="_blank" rel="noopener">kickstartsocial.co</a>
+<div style="margin-top:6px">GrowPro by Kickstart Social LLC. Pricing subject to change.</div>
+</div></footer>
+<script>
+/* GrowPro Full Stack - single package display page.
+   No selection logic, no Stripe, no webhook. Only an iframe height
+   reporter so the Webflow wrapper can auto-size the embed. */
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight);
+    if(window.parent&&window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'full-stack',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+</script>
+</body>
+</html>

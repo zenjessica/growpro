@@ -1,0 +1,16 @@
+<script>
+/* GrowPro Full Stack - single package display page.
+   No selection logic, no Stripe, no webhook. Only an iframe height
+   reporter so the Webflow wrapper can auto-size the embed. */
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight);
+    if(window.parent&&window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'full-stack',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+</script>
