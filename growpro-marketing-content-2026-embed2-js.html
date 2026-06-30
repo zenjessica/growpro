@@ -45,15 +45,24 @@ function togItem(card){
   updateTally();
 }
 
+/* Adjusting a stepper includes that item in the quote (so its quantity
+   feeds the running total). Called only on user interaction, not on load. */
+function ensureSelected(item){
+  var c=cardFor(item);
+  if(c&&selected.indexOf(item)===-1){ c.classList.add('sel'); selected.push(item); }
+}
+
 /* SEO blog stepper */
 function blogStep(d){
   blogCount=Math.max(BLOG_MIN,blogCount+d);
+  ensureSelected('blogs');
   syncBlog();
 }
 function blogSet(){
   var v=parseInt(document.getElementById('blogQty').value,10);
   if(isNaN(v)||v<BLOG_MIN) v=BLOG_MIN;
   blogCount=v;
+  ensureSelected('blogs');
   syncBlog();
 }
 function syncBlog(){
@@ -64,17 +73,19 @@ function syncBlog(){
 
 function landingStep(d){
   landingCount=Math.max(LANDING_MIN,landingCount+d);
+  ensureSelected('landing');
   syncLanding();
 }
 function landingSet(){
   var v=parseInt(document.getElementById('landingQty').value,10);
   if(isNaN(v)||v<LANDING_MIN) v=LANDING_MIN;
   landingCount=v;
+  ensureSelected('landing');
   syncLanding();
 }
 function syncLanding(){
   document.getElementById('landingQty').value=landingCount;
-  document.getElementById('landingPrice').textContent='+'+fmt(landingCount*LANDING_PRICE);
+  document.getElementById('landingPrice').textContent='+'+fmt(LANDING_PRICE);
   updateTally();
 }
 
