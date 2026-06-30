@@ -1,0 +1,265 @@
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GrowPro - Marketing Pricing (Internal)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+/* GROWPRO INTERNAL MARKETING PRICING TOOL - closer-facing, no checkout */
+.wrap{max-width:1200px;margin:0 auto;padding:0 20px;box-sizing:border-box}
+.main{display:flex;gap:32px;padding:40px 0 120px;flex-wrap:nowrap}
+.ca{flex:1 1 auto;min-width:0}
+@media(max-width:1100px){.main{flex-wrap:wrap;gap:24px}.ca{flex:1 1 100%}.side{width:100%;position:static;top:auto}}
+@media(max-width:768px){.wrap{padding:0 16px}.main{gap:16px;padding:20px 0 60px}.h1{font-size:26px;line-height:1.15}.sub{font-size:15px}}
+body{overflow-x:hidden}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:#FFF;color:#0D1B2A;line-height:1.6;overflow-x:hidden}
+h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
+:root{--p:#8B7EC8;--pl:#E8E4F5;--pb:#F4F2FA;--n:#0D1B2A;--gb:#F7F7F9;--gbd:#E5E5EA;--g:#34C759;--gold:#D4A843;--gl:#FFF8E7;--w:#FFF;--sh:0 2px 12px rgba(13,27,42,0.06);--shh:0 4px 20px rgba(13,27,42,0.1);--r:12px;--t:0.25s ease}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+.hdr{padding:18px 0;border-bottom:1px solid var(--gbd);background:var(--w);position:sticky;top:0;z-index:100}
+.hdr .wrap{display:flex;align-items:center;justify-content:space-between}
+.logo{font-weight:800;font-size:24px;letter-spacing:4px;color:var(--n)}
+.logo span{color:var(--p)}
+.tag{font-size:13px;color:#888;letter-spacing:1px}
+.hero{padding:40px 0 8px}
+.h1{font-size:34px;font-weight:700;margin-bottom:10px;color:var(--n);line-height:1.2}
+.sub{font-size:16px;color:#555;max-width:720px;line-height:1.6}
+.internal-note{margin:20px 0 8px;background:var(--gb);border-left:4px solid var(--n);border-radius:0 8px 8px 0;padding:14px 18px;font-size:13px;color:#444;line-height:1.55}
+.internal-note strong{color:var(--n)}
+.gh{font-size:13px;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:#888;margin:34px 0 16px;padding-bottom:8px;border-bottom:1px solid var(--gbd)}
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:1fr 1fr}
+.g3{grid-template-columns:repeat(3,minmax(0,1fr))}
+@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
+.c{background:var(--w);border:2px solid var(--gbd);border-radius:var(--r);padding:24px;cursor:pointer;transition:var(--t);position:relative;box-shadow:var(--sh)}
+.c:hover{box-shadow:var(--shh);transform:translateY(-2px)}
+.c.sel{border-color:var(--p);background:var(--pb)}
+.csm{padding:20px}
+.bdg{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;margin-bottom:12px}
+.b-core{background:var(--pl);color:var(--p)}
+.b-pop{background:#E8F5E9;color:#2E7D32}
+.b-save{background:var(--gl);color:#8B6914}
+.b-long{background:linear-gradient(135deg,#F5E6D3,#E8D5B7);color:#6B4226}
+.ck{position:absolute;top:16px;right:16px;width:28px;height:28px;border-radius:50%;background:var(--p);color:var(--w);display:none;align-items:center;justify-content:center;font-size:14px;font-weight:700}
+.c.sel .ck{display:flex}
+.ct{font-size:22px;font-weight:700;margin-bottom:4px;color:var(--n)}
+.cp{font-size:24px;font-weight:700;color:var(--n);margin:6px 0 12px}
+.cp .sx{font-size:14px;font-weight:500;color:#888}
+.cp .ap{color:var(--p)}
+.cl{list-style:none;margin-bottom:4px}
+.cl li{font-size:13px;padding:3px 0;display:flex;align-items:flex-start;gap:8px;color:#444}
+.cl li::before{content:'\2713';color:var(--g);font-weight:700;flex-shrink:0}
+.cd{font-size:14px;color:#555;margin-bottom:8px;line-height:1.5}
+.longgame{margin-top:12px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px;padding:10px 14px;font-size:13px;color:#6B4226;line-height:1.5}
+.longgame strong{font-weight:700}
+.stepper{display:flex;align-items:center;gap:10px;margin-top:14px}
+.stepper button{width:38px;height:38px;border-radius:8px;border:2px solid var(--p);background:var(--w);color:var(--p);font-size:20px;font-weight:700;cursor:pointer;line-height:1;display:flex;align-items:center;justify-content:center}
+.stepper button:hover{background:var(--pb)}
+.stepper input{width:72px;height:38px;text-align:center;font-size:16px;font-weight:700;font-family:'Inter',sans-serif;border:2px solid var(--gbd);border-radius:8px;color:var(--n)}
+.stepper .su{font-size:13px;color:#888}
+.steplbl{font-size:12px;color:#999;margin-top:6px}
+.side{width:340px;flex-shrink:0;position:sticky;top:96px;align-self:flex-start;display:none}
+@media(min-width:1024px){.side{display:block}}
+.sc{background:var(--gb);border-radius:var(--r);padding:26px;border:1px solid var(--gbd)}
+.sct{font-size:20px;font-weight:700;margin-bottom:18px;color:var(--n)}
+.sl{display:flex;justify-content:space-between;font-size:14px;padding:7px 0;border-bottom:1px solid var(--gbd);gap:12px}
+.sl:last-of-type{border-bottom:none}
+.sl .lb{color:#555}
+.sl .vl{font-weight:600;white-space:nowrap}
+.sdv{height:2px;background:var(--n);margin:16px 0}
+.stot{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding:6px 0}
+.stot .vl{color:var(--p)}
+.ssi{font-size:12px;color:#999;text-align:center;margin-top:16px;line-height:1.5}
+.mbar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--w);border-top:1px solid var(--gbd);box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:200;transition:var(--t)}
+@media(max-width:1023px){.mbar{display:block}body{padding-bottom:84px}}
+.mbc{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer}
+.mbt{display:flex;gap:24px}
+.mbi{text-align:center}
+.mbi .am{font-size:18px;font-weight:700;color:var(--n)}
+.mbi .lb{font-size:11px;color:#888;text-transform:uppercase;letter-spacing:.5px}
+.mbx{font-size:18px;color:#888;transition:var(--t)}
+.mbar.exp .mbx{transform:rotate(180deg)}
+.mbe{display:none;padding:0 20px 18px;max-height:55vh;overflow-y:auto}
+.mbar.exp .mbe{display:block}
+.ft{background:var(--gb);border-top:1px solid var(--gbd);padding:28px 0;text-align:center;font-size:12px;color:#999;line-height:1.7}
+</style>
+</head>
+<header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Pricing Tool</div></div><div class="tag">Internal use only</div></div></header>
+
+<div class="wrap">
+<div class="hero">
+<h1 class="h1">AI-native content and conversion system, built for regulated brands.</h1>
+<p class="sub">AI avatars and graphics generate content, landing pages and quizzes convert it, blogs build organic presence over time.</p>
+<div class="internal-note"><strong>Internal tool.</strong> Walk the prospect through the menu, select what they want, and use the running total to build the quote. There is no payment here. Create the Stripe invoice manually based on the selected items.</div>
+</div>
+
+<div class="main"><div class="ca">
+
+<!-- MONTHLY PACKAGES (multi-select, no forced selection) -->
+<div class="gh">Monthly Packages</div>
+<div class="grid g3">
+
+<div class="c" data-item="pkg_core" data-price="4500" data-type="monthly" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-core">AI Avatars</span>
+<h3 class="ct">Core</h3>
+<div class="cp"><span class="ap">$4,500</span><span class="sx">/mo (90-day)</span></div>
+<p class="cd">Speed-to-market creative engine. AI avatars drive your content so you can test angles and turn creative around fast.</p>
+<ul class="cl">
+<li>10 AI avatars included</li>
+<li>AI-generated creative and graphics</li>
+<li>Fast creative testing and turnaround</li>
+<li>Built for speed-to-market</li>
+</ul>
+</div>
+
+<div class="c" data-item="pkg_influencers" data-price="3500" data-type="monthly" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-long">Long Game</span>
+<h3 class="ct">Human Influencers</h3>
+<div class="cp"><span class="ap">$3,500</span><span class="sx">/mo, bundle of 7 (90-day each)</span></div>
+<p class="cd">Real creators, real authenticity, long-term brand equity. The slow-build counterpart to Core's speed.</p>
+<ul class="cl">
+<li>Bundle of 7 human influencers</li>
+<li>Creator sourcing, contracting, comms</li>
+<li>Content calendar and campaign setup</li>
+<li>Authenticity and long-term brand building</li>
+</ul>
+<div class="longgame"><strong>LONG GAME:</strong> first content delivery takes up to 8 weeks. Need it fast? Use Core. Want real people and long-term brand equity? This is the long game.</div>
+</div>
+
+<div class="c" data-item="pkg_social" data-price="2500" data-type="monthly" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-pop">Organic</span>
+<h3 class="ct">Organic Social</h3>
+<div class="cp"><span class="ap">$2,500</span><span class="sx">/mo</span></div>
+<p class="cd">Full organic social management across every major platform. Organic only, no paid spend, no ad management.</p>
+<ul class="cl">
+<li>TikTok, Instagram, Facebook</li>
+<li>X, LinkedIn, Pinterest</li>
+<li>Posting, community, repurposing</li>
+<li>Organic only (no paid ads)</li>
+</ul>
+</div>
+
+</div>
+
+<!-- ADD-ONS -->
+<div class="gh">Add-On: SEO Blogs</div>
+<div class="grid">
+<div class="c csm" id="blogCard" data-item="blogs" data-type="monthly" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-pop">Organic Footprint</span>
+<h3 class="ct">SEO Blogs</h3>
+<div class="cp"><span class="ap" id="blogPrice">+$1,000</span><span class="sx">/mo</span></div>
+<p class="cd">Long-form, high-intent SEO blog posts. $100 per blog, minimum 10. Builds organic presence over time.</p>
+<div class="stepper">
+<button type="button" onclick="event.stopPropagation();blogStep(-1)">−</button>
+<input id="blogQty" type="number" min="10" value="10" onclick="event.stopPropagation()" oninput="blogSet()">
+<span class="su">blogs / mo</span>
+<button type="button" onclick="event.stopPropagation();blogStep(1)">+</button>
+</div>
+<div class="steplbl">$100 per blog, minimum 10. Tap the card to add or remove from the quote.</div>
+</div>
+</div>
+
+<div class="gh">Add-On: Quiz Funnels</div>
+<div class="grid g2">
+<div class="c csm" data-item="quiz_single" data-price="1500" data-type="onetime" data-group="quiz" onclick="togItem(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Single Lifestyle Quiz</h3>
+<p class="cd">Custom quiz routing patients to products based on goals. Logic branching included.</p>
+<div class="cp"><span class="ap">+$1,500</span></div>
+</div>
+<div class="c csm" data-item="quiz_dual" data-price="3000" data-type="onetime" data-group="quiz" onclick="togItem(this)">
+<div class="ck">✓</div><span class="bdg b-save">Best Value</span>
+<h3 class="ct">Dual Quiz Bundle</h3>
+<p class="cd">Two quiz forms (e.g., GLP-1 + metabolic). Best value for dual-program brands.</p>
+<div class="cp"><span class="ap">+$3,000</span></div>
+</div>
+<div class="c csm" data-item="quiz_triple" data-price="4000" data-type="onetime" data-group="quiz" onclick="togItem(this)">
+<div class="ck">✓</div><span class="bdg b-save">Save $500</span>
+<h3 class="ct">Triple Quiz Bundle</h3>
+<p class="cd">Three quiz forms. Saves $500 vs buying individually.</p>
+<div class="cp"><span class="ap">+$4,000</span></div>
+</div>
+<div class="c csm" data-item="extra_quiz" data-price="1200" data-type="onetime" onclick="togItem(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Additional Quiz Form</h3>
+<p class="cd">Each additional quiz beyond the triple bundle.</p>
+<div class="cp"><span class="ap">+$1,200</span></div>
+</div>
+</div>
+
+<div class="gh">Add-On: Landing Pages</div>
+<div class="grid">
+<div class="c csm" id="landingCard" data-item="landing" data-type="onetime" onclick="togItem(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Landing Page</h3>
+<div class="cp"><span class="ap" id="landingPrice">+$995</span><span class="sx">each</span></div>
+<p class="cd">Custom landing page for product launches, lead gen, or promo pages. Includes copy, design, and integration.</p>
+<div class="stepper">
+<button type="button" onclick="event.stopPropagation();landingStep(-1)">−</button>
+<input id="landingQty" type="number" min="1" value="1" onclick="event.stopPropagation()" oninput="landingSet()">
+<span class="su">pages</span>
+<button type="button" onclick="event.stopPropagation();landingStep(1)">+</button>
+</div>
+<div class="steplbl">$995 each, minimum 1. Tap the card to add or remove from the quote.</div>
+</div>
+</div>
+
+<div class="gh">Add-On: Conversion &amp; Automation</div>
+<div class="grid g2">
+<div class="c csm" data-item="ai_conversion" data-price="6500" data-type="onetime" onclick="togItem(this)">
+<div class="ck">✓</div><span class="bdg b-core">Proprietary</span>
+<h3 class="ct">AI Conversion Engine</h3>
+<div class="cp"><span class="ap">+$6,500</span><span class="sx">one-time</span></div>
+<p class="cd">Sets up the ability to convert and track the leads you already have. It does not run or manage ad campaigns.</p>
+<ul class="cl">
+<li>Compliant AI chat bot</li>
+<li>SMS drip campaign</li>
+<li>Automated email drip campaign</li>
+<li>Meta + Google pixel conversion tracking</li>
+</ul>
+</div>
+<div class="c csm" data-item="email" data-price="3000" data-type="monthly" data-onetime="1500" onclick="togItem(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Email Marketing</h3>
+<div class="cp"><span class="ap">+$3,000</span><span class="sx">/mo + $1,500 setup</span></div>
+<p class="cd">Ongoing, hands-on managed campaigns and newsletters. Continuous human-run sends, distinct from the Conversion Engine's automated set-and-forget drip.</p>
+<ul class="cl">
+<li>Ongoing campaign management</li>
+<li>Newsletters and broadcasts</li>
+<li>Segmentation and list management</li>
+<li>$1,500 one-time setup</li>
+</ul>
+</div>
+</div>
+
+</div>
+
+<aside class="side" id="sidebar"><div class="sc">
+<div class="sct">Quote Builder</div>
+<div id="sbC"><div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select items to build the quote...</span></div></div>
+<div class="sdv"></div>
+<div class="stot"><span>One-Time</span><span class="vl" id="sOT">$0</span></div>
+<div class="stot"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
+<div class="ssi">Closer reference only. Create the Stripe invoice manually from these totals.</div>
+</div></aside>
+
+</div></div>
+
+<div class="mbar" id="mBar">
+<div class="mbc" onclick="togMB()">
+<div class="mbt">
+<div class="mbi"><div class="am" id="mOT">$0</div><div class="lb">One-Time</div></div>
+<div class="mbi"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly</div></div>
+</div>
+<div class="mbx">▲</div>
+</div>
+<div class="mbe" id="mExp"></div>
+</div>
+
+<footer class="ft"><div class="wrap">
+Internal pricing reference for GrowPro by Kickstart Social LLC. Not a customer-facing offer. Pricing subject to change.
+</div></footer>

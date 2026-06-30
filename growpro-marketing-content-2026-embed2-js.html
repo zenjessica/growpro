@@ -1,0 +1,154 @@
+<script>
+/* GrowPro Internal Marketing Pricing Tool - selection + running tally only.
+   No webhook, no Stripe, no checkout, no lead capture. Closer reads totals
+   and creates the Stripe invoice manually elsewhere. */
+var selected=[];           // list of data-item keys currently selected
+var blogCount=10;          // SEO blogs quantity (min 10), $100/blog/mo
+var BLOG_MIN=10,BLOG_PRICE=100;
+var landingCount=1;        // Landing pages quantity (min 1), $995 each one-time
+var LANDING_MIN=1,LANDING_PRICE=995;
+
+var itemNames={
+  pkg_core:"Core (AI Avatars)",
+  pkg_influencers:"Human Influencers (bundle of 7)",
+  pkg_social:"Organic Social",
+  blogs:"SEO Blogs",
+  quiz_single:"Single Lifestyle Quiz",
+  quiz_dual:"Dual Quiz Bundle",
+  quiz_triple:"Triple Quiz Bundle",
+  extra_quiz:"Additional Quiz Form",
+  landing:"Landing Page",
+  ai_conversion:"AI Conversion Engine",
+  email:"Email Marketing"
+};
+
+function cardFor(item){return document.querySelector('[data-item="'+item+'"]');}
+function fmt(n){return '$'+n.toLocaleString('en-US');}
+
+function togItem(card){
+  var item=card.dataset.item,group=card.dataset.group,isSel=card.classList.contains('sel');
+  if(isSel){
+    card.classList.remove('sel');
+    selected=selected.filter(function(x){return x!==item;});
+    updateTally();
+    return;
+  }
+  // mutually-exclusive group (quiz bundles)
+  if(group){
+    document.querySelectorAll('[data-group="'+group+'"]').forEach(function(c){
+      c.classList.remove('sel');
+      selected=selected.filter(function(x){return x!==c.dataset.item;});
+    });
+  }
+  card.classList.add('sel');
+  selected.push(item);
+  updateTally();
+}
+
+/* SEO blog stepper */
+function blogStep(d){
+  blogCount=Math.max(BLOG_MIN,blogCount+d);
+  syncBlog();
+}
+function blogSet(){
+  var v=parseInt(document.getElementById('blogQty').value,10);
+  if(isNaN(v)||v<BLOG_MIN) v=BLOG_MIN;
+  blogCount=v;
+  syncBlog();
+}
+function syncBlog(){
+  document.getElementById('blogQty').value=blogCount;
+  document.getElementById('blogPrice').textContent='+'+fmt(blogCount*BLOG_PRICE);
+  updateTally();
+}
+
+function landingStep(d){
+  landingCount=Math.max(LANDING_MIN,landingCount+d);
+  syncLanding();
+}
+function landingSet(){
+  var v=parseInt(document.getElementById('landingQty').value,10);
+  if(isNaN(v)||v<LANDING_MIN) v=LANDING_MIN;
+  landingCount=v;
+  syncLanding();
+}
+function syncLanding(){
+  document.getElementById('landingQty').value=landingCount;
+  document.getElementById('landingPrice').textContent='+'+fmt(landingCount*LANDING_PRICE);
+  updateTally();
+}
+
+function itemPrice(item){
+  if(item==='blogs') return blogCount*BLOG_PRICE;
+  if(item==='landing') return landingCount*LANDING_PRICE;
+  var c=cardFor(item);
+  return c?parseInt(c.dataset.price,10):0;
+}
+
+function calcTotals(){
+  var ot=0,mo=0;
+  selected.forEach(function(item){
+    var c=cardFor(item);if(!c) return;
+    var type=c.dataset.type;
+    if(type==='monthly') mo+=itemPrice(item);
+    else ot+=itemPrice(item);
+    // monthly items may carry a one-time setup fee (e.g. Email Marketing)
+    if(c.dataset.onetime) ot+=parseInt(c.dataset.onetime,10);
+  });
+  return {ot:ot,mo:mo};
+}
+
+function lineItems(){
+  var rows=[];
+  selected.forEach(function(item){
+    var c=cardFor(item);if(!c) return;
+    var type=c.dataset.type,price=itemPrice(item);
+    var label=itemNames[item]||item;
+    if(item==='blogs') label='SEO Blogs ('+blogCount+'/mo)';
+    if(item==='landing') label='Landing Page'+(landingCount>1?'s (x'+landingCount+')':'');
+    rows.push({label:label,price:price,suffix:type==='monthly'?'/mo':''});
+    if(c.dataset.onetime) rows.push({label:itemNames[item]+' setup',price:parseInt(c.dataset.onetime,10),suffix:''});
+  });
+  return rows;
+}
+
+function updateTally(){
+  var t=calcTotals();
+  var rows=lineItems();
+  var h='';
+  if(rows.length===0){
+    h='<div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select items to build the quote...</span></div>';
+  } else {
+    rows.forEach(function(r){
+      h+='<div class="sl"><span class="lb">'+r.label+'</span><span class="vl">'+fmt(r.price)+r.suffix+'</span></div>';
+    });
+  }
+  document.getElementById('sbC').innerHTML=h;
+  document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>';
+  document.getElementById('sOT').textContent=fmt(t.ot);
+  document.getElementById('sMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('mOT').textContent=fmt(t.ot);
+  document.getElementById('mMO').textContent=fmt(t.mo)+'/mo';
+  reportHeightToParent();
+}
+
+function togMB(){document.getElementById('mBar').classList.toggle('exp');}
+
+/* Broadcast content height so the Webflow iframe wrapper can auto-resize. */
+function reportHeightToParent(){
+  try{
+    var h=Math.max(document.body.scrollHeight,document.documentElement.scrollHeight,document.body.offsetHeight);
+    if(window.parent&&window.parent!==window){
+      window.parent.postMessage({type:'growpro:resize',page:'marketing-content-2026',height:h},'*');
+    }
+  }catch(e){}
+}
+window.addEventListener('load',reportHeightToParent);
+window.addEventListener('resize',reportHeightToParent);
+if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(document.body);}catch(e){}}
+
+document.addEventListener('DOMContentLoaded',function(){
+  syncBlog();      // sets initial blog price label
+  syncLanding();   // sets initial landing price label and tally
+});
+</script>
