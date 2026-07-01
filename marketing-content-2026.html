@@ -80,6 +80,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .stot{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding:6px 0}
 .stot .vl{color:var(--p)}
 .ssi{font-size:12px;color:#999;text-align:center;margin-top:16px;line-height:1.5}
+.s90note{font-size:12px;color:#999;text-align:center;margin-top:8px;line-height:1.5}
 .mbar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--w);border-top:1px solid var(--gbd);box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:200;transition:var(--t)}
 @media(max-width:1023px){.mbar{display:block}body{padding-bottom:84px}}
 .mbc{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer}
@@ -252,9 +253,9 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="sct">Quote Builder</div>
 <div id="sbC"><div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select items to build the quote...</span></div></div>
 <div class="sdv"></div>
-<div class="stot"><span>One-Time</span><span class="vl" id="sOT">$0</span></div>
-<div class="stot"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
-<div class="ssi">Closer reference only. Create the Stripe invoice manually from these totals.</div>
+<div class="stot"><span>90-Day Package Value</span><span class="vl" id="sTotal">$0</span></div>
+<div class="s90note">Based on 90-day minimum commitment. Ad spend billed separately.</div>
+<div class="ssi">Closer reference only. Create the Stripe invoice manually from this total.</div>
 </div></aside>
 
 </div></div>
@@ -262,8 +263,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="mbar" id="mBar">
 <div class="mbc" onclick="togMB()">
 <div class="mbt">
-<div class="mbi"><div class="am" id="mOT">$0</div><div class="lb">One-Time</div></div>
-<div class="mbi"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly</div></div>
+<div class="mbi"><div class="am" id="mTotal">$0</div><div class="lb">90-Day Package Value</div></div>
 </div>
 <div class="mbx">▲</div>
 </div>
@@ -400,7 +400,7 @@ function lineItems(){
 
 /* When the running monthly total reaches this, surface the Full Stack nudge.
    Visible to closer AND prospect: a selling tool, not a system warning. */
-var FULLSTACK_THRESHOLD=14000;
+var FULLSTACK_THRESHOLD=44000;
 function fullStackNudge(id){
   return '<div'+(id?' id="'+id+'"':'')+' style="margin-top:16px;background:var(--pb);border:1.5px solid var(--p);border-radius:12px;padding:16px 18px">'
     +'<span style="display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;background:var(--pl);color:var(--p);margin-bottom:10px">Full Stack</span>'
@@ -422,14 +422,13 @@ function updateTally(){
     });
   }
   document.getElementById('sbC').innerHTML=h;
-  var over=t.mo>=FULLSTACK_THRESHOLD;
+  var total90=t.mo*3+t.ot;
+  var over=total90>=FULLSTACK_THRESHOLD;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>'+(over?fullStackNudge(''):'');
-  document.getElementById('sOT').textContent=fmt(t.ot);
-  document.getElementById('sMO').textContent=fmt(t.mo)+'/mo';
-  document.getElementById('mOT').textContent=fmt(t.ot);
-  document.getElementById('mMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('sTotal').textContent=fmt(total90);
+  document.getElementById('mTotal').textContent=fmt(total90);
   var existing=document.getElementById('fsNudge');
-  if(over){ if(!existing){ document.getElementById('sMO').parentElement.insertAdjacentHTML('afterend',fullStackNudge('fsNudge')); } }
+  if(over){ if(!existing){ document.getElementById('sTotal').parentElement.insertAdjacentHTML('afterend',fullStackNudge('fsNudge')); } }
   else if(existing){ existing.remove(); }
   reportHeightToParent();
 }

@@ -125,7 +125,7 @@ function lineItems(){
 
 /* When the running monthly total reaches this, surface the Full Stack nudge.
    Visible to closer AND prospect: a selling tool, not a system warning. */
-var FULLSTACK_THRESHOLD=14000;
+var FULLSTACK_THRESHOLD=44000;
 function fullStackNudge(id){
   return '<div'+(id?' id="'+id+'"':'')+' style="margin-top:16px;background:var(--pb);border:1.5px solid var(--p);border-radius:12px;padding:16px 18px">'
     +'<span style="display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;background:var(--pl);color:var(--p);margin-bottom:10px">Full Stack</span>'
@@ -147,14 +147,13 @@ function updateTally(){
     });
   }
   document.getElementById('sbC').innerHTML=h;
-  var over=t.mo>=FULLSTACK_THRESHOLD;
+  var total90=t.mo*3+t.ot;
+  var over=total90>=FULLSTACK_THRESHOLD;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>'+(over?fullStackNudge(''):'');
-  document.getElementById('sOT').textContent=fmt(t.ot);
-  document.getElementById('sMO').textContent=fmt(t.mo)+'/mo';
-  document.getElementById('mOT').textContent=fmt(t.ot);
-  document.getElementById('mMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('sTotal').textContent=fmt(total90);
+  document.getElementById('mTotal').textContent=fmt(total90);
   var existing=document.getElementById('fsNudge');
-  if(over){ if(!existing){ document.getElementById('sMO').parentElement.insertAdjacentHTML('afterend',fullStackNudge('fsNudge')); } }
+  if(over){ if(!existing){ document.getElementById('sTotal').parentElement.insertAdjacentHTML('afterend',fullStackNudge('fsNudge')); } }
   else if(existing){ existing.remove(); }
   reportHeightToParent();
 }
