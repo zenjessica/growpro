@@ -79,6 +79,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .sdv{height:2px;background:var(--n);margin:16px 0}
 .stot{display:flex;justify-content:space-between;font-size:18px;font-weight:700;padding:6px 0}
 .stot .vl{color:var(--p)}
+.sonetime{display:flex;justify-content:space-between;font-size:13px;color:#888;padding:2px 0;margin-top:2px}
 .mbar{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--w);border-top:1px solid var(--gbd);box-shadow:0 -4px 20px rgba(0,0,0,.08);z-index:200;transition:var(--t)}
 @media(max-width:1023px){.mbar{display:block}body{padding-bottom:84px}}
 .mbc{display:flex;justify-content:space-between;align-items:center;padding:14px 20px;cursor:pointer}
@@ -251,7 +252,8 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="sct">Quote Builder</div>
 <div id="sbC"><div class="sl"><span class="lb" style="color:#AAA;font-style:italic">Select items to build the quote...</span></div></div>
 <div class="sdv"></div>
-<div class="stot"><span>90-Day Package Value</span><span class="vl" id="sTotal">$0</span></div>
+<div class="stot"><span>Monthly Total</span><span class="vl" id="sMO">$0/mo</span></div>
+<div class="sonetime"><span>One-time</span><span id="sOT">$0</span></div>
 </div></aside>
 
 </div></div>
@@ -259,7 +261,8 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="mbar" id="mBar">
 <div class="mbc" onclick="togMB()">
 <div class="mbt">
-<div class="mbi"><div class="am" id="mTotal">$0</div><div class="lb">90-Day Package Value</div></div>
+<div class="mbi"><div class="am" id="mMO">$0/mo</div><div class="lb">Monthly Total</div></div>
+<div class="mbi"><div class="am" id="mOT">$0</div><div class="lb">One-time</div></div>
 </div>
 <div class="mbx">▲</div>
 </div>
@@ -394,9 +397,10 @@ function lineItems(){
   return rows;
 }
 
-/* When the 90-day package value reaches this, surface the Full Stack nudge.
+/* When the monthly recurring total reaches this, surface the Full Stack nudge.
+   One-time items do not count toward this threshold.
    Visible to closer AND prospect: a selling tool, not a system warning. */
-var FULLSTACK_THRESHOLD=44000;
+var FULLSTACK_THRESHOLD=14000;
 function fullStackNudge(id){
   return '<div'+(id?' id="'+id+'"':'')+' style="margin-top:16px;background:var(--pb);border:1.5px solid var(--p);border-radius:12px;padding:16px 18px">'
     +'<span style="display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;background:var(--pl);color:var(--p);margin-bottom:10px">Full Stack</span>'
@@ -418,13 +422,14 @@ function updateTally(){
     });
   }
   document.getElementById('sbC').innerHTML=h;
-  var total90=t.mo*3+t.ot;
-  var over=total90>=FULLSTACK_THRESHOLD;
+  var over=t.mo>=FULLSTACK_THRESHOLD;
   document.getElementById('mExp').innerHTML='<div style="padding-top:8px">'+h+'</div>'+(over?fullStackNudge(''):'');
-  document.getElementById('sTotal').textContent=fmt(total90);
-  document.getElementById('mTotal').textContent=fmt(total90);
+  document.getElementById('sMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('sOT').textContent=fmt(t.ot);
+  document.getElementById('mMO').textContent=fmt(t.mo)+'/mo';
+  document.getElementById('mOT').textContent=fmt(t.ot);
   var existing=document.getElementById('fsNudge');
-  if(over){ if(!existing){ document.getElementById('sTotal').parentElement.insertAdjacentHTML('afterend',fullStackNudge('fsNudge')); } }
+  if(over){ if(!existing){ document.getElementById('sOT').parentElement.insertAdjacentHTML('afterend',fullStackNudge('fsNudge')); } }
   else if(existing){ existing.remove(); }
   reportHeightToParent();
 }
