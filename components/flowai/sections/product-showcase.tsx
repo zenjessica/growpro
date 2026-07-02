@@ -15,7 +15,7 @@ export default function ProductShowcaseSection() {
             </p>
             <Button asChild className="bg-rose-600 hover:bg-rose-700 text-white">
               <a
-                href="https://link.lumifunnels.com/widget/bookings/jessicawhite"
+                href="https://link.lumifunnels.com/widget/bookings/growproprequalification"
                 target="_blank"
                 rel="noopener noreferrer"
               >
