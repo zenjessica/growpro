@@ -1,0 +1,87 @@
+<!-- GROWPRO /success EMBED (launch.kickstartsocial.co/success, Webflow page titled "SUCCESS") -->
+<!-- This is a version-controlled BACKUP of code that lives inside Webflow. -->
+<!-- Editing this file does NOT update the live site. You must paste changes into Webflow and Publish. -->
+<!-- growpro.co serves success.html directly and is NOT affected by anything in this file. -->
+
+<!-- =========================================================================
+     PART 1 - ON-CANVAS EMBED BLOCK
+     Where: the /success page canvas, inside an Embed element.
+     What:  builds the iframe and applies the dynamic DAILY cache-bust
+            (appends today's date as ?v=YYYYMMDD, auto-rolls, no manual bumping).
+     Status: unchanged / working. Included here for reference only.
+     ========================================================================= -->
+<div id="growpro-success"></div>
+<script>
+  (function() {
+    var cacheBust = new Date().toISOString().slice(0,10).replace(/-/g,'');
+    var iframe = document.createElement('iframe');
+    iframe.src = 'https://zenjessica.github.io/growpro/success.html?v=' + cacheBust;
+    iframe.style.width = '100%';
+    iframe.style.height = '100vh';
+    iframe.style.border = 'none';
+    iframe.style.display = 'block';
+    iframe.title = 'GrowPro';
+    document.getElementById('growpro-success').appendChild(iframe);
+  })();
+</script>
+
+<!-- =========================================================================
+     PART 2 - PAGE SETTINGS -> CUSTOM CODE -> "Before </body> tag"
+     Where: /success page Page Settings (gear icon) -> Custom Code -> Before </body> tag.
+     What:  listens for the height message success.html broadcasts and grows the
+            iframe to the full page height so it scrolls like a normal page instead
+            of a fixed 100vh frame with internal scrolling. Also handles scroll-to-top.
+     Cap:   iframe height clamp raised from 8000 to 40000 so the longer page does
+            not clip on mobile.
+     Note:  this REPLACES the previous Before-</body> script, which had syntax errors
+            (missing brace + a truncated scrollIntoView line) and therefore never ran.
+     ========================================================================= -->
+<script>
+(function(){
+  if (window.__growproResizeInstalled) return;
+  window.__growproResizeInstalled = true;
+
+  function isGrowProIframe(ifr){
+    return ifr && ifr.src && ifr.src.indexOf('zenjessica.github.io/growpro') !== -1;
+  }
+  function growproIframes(){
+    return Array.prototype.filter.call(document.querySelectorAll('iframe'), isGrowProIframe);
+  }
+
+  // Remove any scrolling attribute so the fallback inner scroll never engages.
+  function stripScrolling(){
+    growproIframes().forEach(function(ifr){
+      try { ifr.removeAttribute('scrolling'); } catch(e){}
+    });
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', stripScrolling);
+  } else {
+    stripScrolling();
+  }
+
+  window.addEventListener('message', function(e){
+    var d = e && e.data;
+    if (!d || typeof d !== 'object') return;
+
+    // 1) RESIZE: grow iframe to match full inner content height
+    if (d.type === 'growpro:resize' && typeof d.height === 'number') {
+      var h = Math.max(1500, Math.min(40000, d.height + 40));
+      growproIframes().forEach(function(ifr){
+        ifr.style.height = h + 'px';
+      });
+      return;
+    }
+
+    // 2) SCROLL TOP: bring the iframe top into view
+    if (d.type === 'growpro:scrollTop') {
+      var ifrs = growproIframes();
+      var target = ifrs.filter(function(ifr){ return ifr.contentWindow === e.source; })[0] || ifrs[0];
+      if (target && target.scrollIntoView) {
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+      return;
+    }
+  });
+})();
+</script>
