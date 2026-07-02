@@ -327,6 +327,35 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 /* comparison rows 11-12 stagger */
 .cmp.prep.in tbody tr:nth-child(11) td.gp{transition-delay:1.65s}
 .cmp.prep.in tbody tr:nth-child(12) td.gp{transition-delay:1.8s}
+/* ---------- HOW THIS WORKS TIMELINE ---------- */
+.tl{max-width:640px;margin:28px auto 0}
+.tl-step{display:flex;gap:16px;align-items:flex-start;background:#f8f8fb;border:1px solid #ececf1;border-left:4px solid var(--teal);border-radius:14px;padding:18px 20px;margin-bottom:14px;box-shadow:0 4px 16px rgba(13,27,42,.05)}
+.tl-num{flex-shrink:0;width:34px;height:34px;border-radius:50%;background:var(--teal);color:#fff;font-weight:800;font-size:15px;display:flex;align-items:center;justify-content:center}
+.tl-body{flex:1}
+.tl-body h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:3px;line-height:1.3;display:flex;align-items:center;gap:8px}
+.tl-body p{font-size:14px;color:#555;line-height:1.55}
+.tl-ico{font-size:18px;line-height:1}
+.tl-foot{font-size:15px;color:#555;text-align:center;max-width:560px;margin:22px auto 0;line-height:1.6}
+/* ---------- ICON CARD GRID: WHO THIS IS FOR ---------- */
+.who-grid{display:grid;grid-template-columns:1fr;gap:14px;max-width:900px;margin:28px auto 0}
+@media(min-width:560px){.who-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.who-grid{grid-template-columns:repeat(3,1fr)}}
+.who-card{background:#f8f8fb;border:1px solid #ececf1;border-radius:14px;padding:24px 20px;box-shadow:0 4px 16px rgba(13,27,42,.05);display:flex;flex-direction:column}
+.who-card::before{content:"";display:block;width:34px;height:4px;border-radius:999px;background:var(--teal);margin-bottom:14px}
+.who-card:nth-child(even)::before{background:var(--pink)}
+.who-ico{font-size:26px;line-height:1;margin-bottom:10px}
+.who-card h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.who-card p{font-size:14px;color:#555;line-height:1.55}
+.who-close{font-size:17px;font-weight:700;color:var(--navy);text-align:center;max-width:600px;margin:26px auto 0;line-height:1.5}
+/* ---------- PLATFORM MIGRATION ---------- */
+.mig-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:900px;margin:32px auto 0}
+@media(min-width:768px){.mig-grid{grid-template-columns:repeat(3,1fr)}}
+.mig-card{background:#f8f8fb;border:1px solid #ececf1;border-radius:14px;padding:26px 22px;box-shadow:0 4px 16px rgba(13,27,42,.05);display:flex;flex-direction:column}
+.mig-card::before{content:"";display:block;width:40px;height:4px;border-radius:999px;background:var(--teal);margin-bottom:16px}
+.mig-card:nth-child(2)::before{background:var(--pink)}
+.mig-ico{font-size:24px;line-height:1;margin-bottom:10px}
+.mig-card h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.3}
+.mig-card p{font-size:14px;color:#555;line-height:1.6}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -407,14 +436,15 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
         { "@type": "Question", "name": "Do I own my brand?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. You own your domain, your brand assets, your patient data, and your pharmacy relationships. GrowPro builds and hosts the infrastructure as part of your Wellie MD platform service." } },
         { "@type": "Question", "name": "What makes Wellie MD different from other telehealth platforms?", "acceptedAnswer": { "@type": "Answer", "text": "We own it. We built it. When something needs to change, we change it. You are not dependent on a third-party SaaS that can raise prices, change terms, or shut down." } },
         { "@type": "Question", "name": "Is LegitScript certification guaranteed?", "acceptedAnswer": { "@type": "Answer", "text": "We have a 100% success rate across 80+ brands. We cannot contractually guarantee a third-party decision, but we have never had a brand fail certification working with our process." } },
-        { "@type": "Question", "name": "How long does the build take?", "acceptedAnswer": { "@type": "Answer", "text": "Standard timeline is 12 weeks. Fast Track options are available at 4-6 weeks and 8 weeks for an additional investment." } },
+        { "@type": "Question", "name": "How long does the build take?", "acceptedAnswer": { "@type": "Answer", "text": "Standard timeline is 8 to 12 weeks. Fast Track options are available as fast as 4-6 weeks for an additional investment." } },
         { "@type": "Question", "name": "What happens after launch?", "acceptedAnswer": { "@type": "Answer", "text": "GrowPro offers post-launch support packages and Growth Partner consulting for founders who want continued strategic support. Your build team does not disappear at launch." } },
         { "@type": "Question", "name": "Is marketing included?", "acceptedAnswer": { "@type": "Answer", "text": "The GrowPro build covers your complete telehealth infrastructure. We can assist with paid media strategy and connect you with the right resources for patient acquisition. Ongoing marketing management is available as a separate engagement through Kickstart Social." } },
         { "@type": "Question", "name": "What is the AI Conversion Engine?", "acceptedAnswer": { "@type": "Answer", "text": "The AI Conversion Engine is our proprietary done-for-you patient nurture and conversion system. It automates your patient follow-up, reactivation, and conversion flows inside your CRM from day one. It is not an ad platform - it works on the leads you are already generating." } },
         { "@type": "Question", "name": "What is the FDA PCAC peptide review window?", "acceptedAnswer": { "@type": "Answer", "text": "The FDA Pharmacy Compounding Advisory Committee is reviewing peptide compounds on July 23-24, 2026. Brands that are LegitScript certified and operationally established before this window are significantly better positioned than those who wait. We are actively helping founders get compliant and launched before this date." } },
         { "@type": "Question", "name": "Who is this program for?", "acceptedAnswer": { "@type": "Answer", "text": "Entrepreneurs, investors, and healthcare professionals who want to enter the telehealth space on infrastructure they control, built by a team with 80+ successful launches and a 100% compliance record." } },
         { "@type": "Question", "name": "Do your brands run labs?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Wellie MD integrates wearable data, at-home blood draws, and lab results directly into the patient chart. This is what safe, compliant HRT, TRT, and peptide programs require - and it's what separates a real clinical brand from a questionnaire that ships medication. Most GLP-first platforms can't do this. Yours can, on day one." } },
-        { "@type": "Question", "name": "Do you handle marketing, or just the build?", "acceptedAnswer": { "@type": "Answer", "text": "Both. Kickstart Social is a full-service marketing agency first. Your build gets you launch-ready. From there our team can run your entire growth engine - paid media, organic social, creative, SEO, funnels - tuned for the HRT and peptide market. We scope marketing separately to your goals, but you're never left to figure out patient acquisition alone." } }
+        { "@type": "Question", "name": "Do you handle marketing, or just the build?", "acceptedAnswer": { "@type": "Answer", "text": "Both. Kickstart Social is a full-service marketing agency first. Your build gets you launch-ready. From there our team can run your entire growth engine - paid media, organic social, creative, SEO, funnels - tuned for the HRT and peptide market. We scope marketing separately to your goals, but you're never left to figure out patient acquisition alone." } },
+        { "@type": "Question", "name": "Do I have to do marketing with you?", "acceptedAnswer": { "@type": "Answer", "text": "Not at all. Many founders run their own ads or bring their own trusted agency, and we build the brand and content to support that. Others want our team to run their entire growth engine. Both work beautifully. Your build stands on its own, and marketing is always your choice." } }
       ]
     }
   ]
@@ -478,6 +508,73 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       <img src="https://zenjessica.github.io/growpro/assets/bold-journey.png" alt="Bold Journey">
       <img src="https://zenjessica.github.io/growpro/assets/ein-presswire.png" alt="EIN Presswire">
     </div>
+  </div>
+</section>
+
+<!-- ============ FEATURED ON (exact copy from home.html) ============ -->
+<div class="gp-featured-on">
+  <div class="gp-featured-header">
+    <h2>Featured On</h2>
+    <p>Media appearances and podcast features.</p>
+  </div>
+  <div class="gp-yt-grid">
+    <a href="https://www.youtube.com/watch?v=7sh5CxVYgqw" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/7sh5CxVYgqw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=llDaIcB_vSw" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/llDaIcB_vSw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+    <a href="https://www.youtube.com/watch?v=1dZKNJuBfkY" class="gp-yt-thumb" target="_blank" rel="noopener">
+      <img src="https://img.youtube.com/vi/1dZKNJuBfkY/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
+      <span class="gp-yt-play"></span>
+    </a>
+  </div>
+  <div class="gp-also-on">
+    <span class="gp-also-label">Also on</span>
+    <a href="https://podcasts.apple.com/us/podcast/telehealth-founder-reveals-the-exact-system-to-launch/id1662990704?i=1000746078210" class="gp-also-logo-link" target="_blank" rel="noopener">
+      <img src="https://zenjessica.github.io/growpro/assets/apple-podcasts.png" alt="Apple Podcasts" class="gp-also-logo">
+    </a>
+    <a href="https://insidesuccess.tv/programs/lme_jessica-white" class="gp-also-logo-link" target="_blank" rel="noopener">
+      <img src="https://zenjessica.github.io/growpro/assets/inside-success.png" alt="Inside Success" class="gp-also-logo">
+    </a>
+  </div>
+</div>
+
+<!-- ============ HOW THIS WORKS ============ -->
+<section class="sec sec-white">
+  <div class="sec-inner wide7">
+    <div class="eyebrow">How This Works</div>
+    <h2 class="h-sec">From Zero to Taking Patients. One Clear Path.</h2>
+    <p class="sub-sec">No guesswork, no piecing it together yourself. Here's exactly how we take you from idea to live, patient-accepting brand.</p>
+    <div class="tl">
+      <div class="tl-step"><div class="tl-num">1</div><div class="tl-body"><h4><span class="tl-ico">🤝</span>Onboarding</h4><p>We learn your vision, market, and goals.</p></div></div>
+      <div class="tl-step"><div class="tl-num">2</div><div class="tl-body"><h4><span class="tl-ico">🎨</span>Brand Assets</h4><p>Logo, identity, and creative built for your audience.</p></div></div>
+      <div class="tl-step"><div class="tl-num">3</div><div class="tl-body"><h4><span class="tl-ico">💻</span>Website Build</h4><p>Custom, conversion-ready, compliance-aware.</p></div></div>
+      <div class="tl-step"><div class="tl-num">4</div><div class="tl-body"><h4><span class="tl-ico">🛡️</span>LegitScript Certification</h4><p>Fully managed. 100% approval record.</p></div></div>
+      <div class="tl-step"><div class="tl-num">5</div><div class="tl-body"><h4><span class="tl-ico">💳</span>Merchant Processing</h4><p>Payment processing set up and approved.</p></div></div>
+      <div class="tl-step"><div class="tl-num">6</div><div class="tl-body"><h4><span class="tl-ico">⚙️</span>Wellie MD Portal</h4><p>Your platform configured, labs and monitoring ready.</p></div></div>
+      <div class="tl-step"><div class="tl-num">7</div><div class="tl-body"><h4><span class="tl-ico">🚀</span>Taking Patients</h4><p>You go live and start accepting patients.</p></div></div>
+    </div>
+    <p class="tl-foot">Typical build is 8 to 12 weeks. <span style="color:var(--teal);font-weight:700">Fast Track options available.</span></p>
+  </div>
+</section>
+
+<!-- ============ WHO THIS IS FOR ============ -->
+<section class="sec sec-white">
+  <div class="sec-inner wide8">
+    <div class="eyebrow">Who This Is For</div>
+    <h2 class="h-sec">Built for Operators Ready to Own Their Category.</h2>
+    <div class="who-grid">
+      <div class="who-card"><div class="who-ico">🚀</div><h4>Entrepreneurs</h4><p>Ready to build a real telehealth brand, not a side project.</p></div>
+      <div class="who-card"><div class="who-ico">📈</div><h4>Investors</h4><p>Looking for a proven, ownable infrastructure play.</p></div>
+      <div class="who-card"><div class="who-ico">🩺</div><h4>Providers &amp; Clinicians</h4><p>Physicians, NPs, and PAs ready to scale beyond one practice.</p></div>
+      <div class="who-card"><div class="who-ico">📣</div><h4>Influencers &amp; Audience Holders</h4><p>You have the community; we give you the compliant brand to serve them.</p></div>
+      <div class="who-card"><div class="who-ico">🏥</div><h4>Brick-and-Mortar Clinics</h4><p>Ready to take your practice national with telehealth.</p></div>
+      <div class="who-card"><div class="who-ico">🌿</div><h4>Med Spas &amp; Wellness Clinics</h4><p>Add hormone, peptide, and longevity programs to what you already offer.</p></div>
+    </div>
+    <p class="who-close">If you have the vision or the audience, we have the infrastructure.</p>
   </div>
 </section>
 
@@ -732,7 +829,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       </div>
       <div class="diff-block">
         <h3>⚡ Speed to Your First Patient Without Cutting Compliance Corners.</h3>
-        <p>Every week you spend building instead of operating is revenue you are not collecting. Our 12-week build is engineered to get you to your first patient as fast as possible without sacrificing the compliance foundation that protects you long term.</p>
+        <p>Every week you spend building instead of operating is revenue you are not collecting. Our 8 to 12 week build is engineered to get you to your first patient as fast as possible without sacrificing the compliance foundation that protects you long term.</p>
       </div>
       <div class="diff-block">
         <h3>📈 Built With an Exit in Mind From Day One.</h3>
@@ -877,37 +974,6 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
   </div>
 </section>
 
-<!-- ============ FEATURED ON (exact copy from home.html) ============ -->
-<div class="gp-featured-on">
-  <div class="gp-featured-header">
-    <h2>Featured On</h2>
-    <p>Media appearances and podcast features.</p>
-  </div>
-  <div class="gp-yt-grid">
-    <a href="https://www.youtube.com/watch?v=7sh5CxVYgqw" class="gp-yt-thumb" target="_blank" rel="noopener">
-      <img src="https://img.youtube.com/vi/7sh5CxVYgqw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
-      <span class="gp-yt-play"></span>
-    </a>
-    <a href="https://www.youtube.com/watch?v=llDaIcB_vSw" class="gp-yt-thumb" target="_blank" rel="noopener">
-      <img src="https://img.youtube.com/vi/llDaIcB_vSw/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
-      <span class="gp-yt-play"></span>
-    </a>
-    <a href="https://www.youtube.com/watch?v=1dZKNJuBfkY" class="gp-yt-thumb" target="_blank" rel="noopener">
-      <img src="https://img.youtube.com/vi/1dZKNJuBfkY/hqdefault.jpg" alt="Featured media appearance" loading="lazy">
-      <span class="gp-yt-play"></span>
-    </a>
-  </div>
-  <div class="gp-also-on">
-    <span class="gp-also-label">Also on</span>
-    <a href="https://podcasts.apple.com/us/podcast/telehealth-founder-reveals-the-exact-system-to-launch/id1662990704?i=1000746078210" class="gp-also-logo-link" target="_blank" rel="noopener">
-      <img src="https://zenjessica.github.io/growpro/assets/apple-podcasts.png" alt="Apple Podcasts" class="gp-also-logo">
-    </a>
-    <a href="https://insidesuccess.tv/programs/lme_jessica-white" class="gp-also-logo-link" target="_blank" rel="noopener">
-      <img src="https://zenjessica.github.io/growpro/assets/inside-success.png" alt="Inside Success" class="gp-also-logo">
-    </a>
-  </div>
-</div>
-
 <!-- ============ SECTION 13: HARD TRUTH ============ -->
 <section class="sec sec-gray">
   <div class="sec-inner">
@@ -935,6 +1001,23 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
   </div>
 </section>
 
+<!-- ============ PLATFORM MIGRATION ============ -->
+<section class="sec sec-dark">
+  <div class="sec-inner wide8">
+    <div class="eyebrow" style="color:var(--teal)">Already Have a Brand?</div>
+    <h2 class="h-sec">Switch to Wellie MD. We Make Moving Easy.</h2>
+    <p class="sub-sec" style="max-width:720px">Already launched, but stuck on a platform that's holding you back? Maybe your pharmacy pricing is eating your margin, your providers won't prescribe hormones or peptides, or your platform simply wasn't built for where the market is going. You don't have to start over. Wellie MD offers enterprise migration, and we handle the hard part: moving your brand, your data, and your patients over seamlessly, with no disruption to your revenue. The more layers between you and your platform, the more hands in your cookie jar. Bring it in-house, on infrastructure built for hormones, peptides, and labs.</p>
+    <div class="mig-grid">
+      <div class="mig-card"><div class="mig-ico">🔄</div><h4>Seamless Patient Migration</h4><p>We move your patients with zero disruption.</p></div>
+      <div class="mig-card"><div class="mig-ico">💰</div><h4>Better Margins</h4><p>Our pharmacy pricing and owned platform protect your profit.</p></div>
+      <div class="mig-card"><div class="mig-ico">🧬</div><h4>Hormone &amp; Peptide Ready</h4><p>Providers and labs built for where the market is going.</p></div>
+    </div>
+    <div class="cta-row">
+      <a class="cta" href="https://link.lumifunnels.com/widget/bookings/growproprequalification" target="_blank" rel="noopener">Switch Platforms</a>
+    </div>
+  </div>
+</section>
+
 <!-- ============ SECTION 14: FAQ ============ -->
 <section class="sec sec-white">
   <div class="sec-inner wide7">
@@ -944,7 +1027,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       <div class="faq-item"><input type="checkbox" id="faq1"><label for="faq1">Do I own my brand?</label><div class="faq-a"><p>Yes. You own your domain, your brand assets, your patient data, and your pharmacy relationships. GrowPro builds and hosts the infrastructure as part of your Wellie MD platform service.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq2"><label for="faq2">What makes Wellie MD different from other telehealth platforms?</label><div class="faq-a"><p>We own it. We built it. When something needs to change, we change it. You are not dependent on a third-party SaaS that can raise prices, change terms, or shut down.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq3"><label for="faq3">Is LegitScript certification guaranteed?</label><div class="faq-a"><p>We have a 100% success rate across 80+ brands. We cannot contractually guarantee a third-party decision, but we have never had a brand fail certification working with our process.</p></div></div>
-      <div class="faq-item"><input type="checkbox" id="faq4"><label for="faq4">How long does the build take?</label><div class="faq-a"><p>Standard timeline is 12 weeks. Fast Track options are available at 4-6 weeks and 8 weeks for an additional investment.</p></div></div>
+      <div class="faq-item"><input type="checkbox" id="faq4"><label for="faq4">How long does the build take?</label><div class="faq-a"><p>Standard timeline is 8 to 12 weeks. Fast Track options are available as fast as 4-6 weeks for an additional investment.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq5"><label for="faq5">What happens after launch?</label><div class="faq-a"><p>GrowPro offers post-launch support packages and Growth Partner consulting for founders who want continued strategic support. Your build team does not disappear at launch.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq6"><label for="faq6">Is marketing included?</label><div class="faq-a"><p>The GrowPro build covers your complete telehealth infrastructure. We can assist with paid media strategy and connect you with the right resources for patient acquisition. Ongoing marketing management is available as a separate engagement through Kickstart Social.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq7"><label for="faq7">What is the AI Conversion Engine?</label><div class="faq-a"><p>The AI Conversion Engine is our proprietary done-for-you patient nurture and conversion system. It automates your patient follow-up, reactivation, and conversion flows inside your CRM from day one. It is not an ad platform - it works on the leads you are already generating.</p></div></div>
@@ -952,6 +1035,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       <div class="faq-item"><input type="checkbox" id="faq9"><label for="faq9">Who is this program for?</label><div class="faq-a"><p>Entrepreneurs, investors, and healthcare professionals who want to enter the telehealth space on infrastructure they control, built by a team with 80+ successful launches and a 100% compliance record.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq10"><label for="faq10">Do your brands run labs?</label><div class="faq-a"><p>Yes. Wellie MD integrates wearable data, at-home blood draws, and lab results directly into the patient chart. This is what safe, compliant HRT, TRT, and peptide programs require - and it's what separates a real clinical brand from a questionnaire that ships medication. Most GLP-first platforms can't do this. Yours can, on day one.</p></div></div>
       <div class="faq-item"><input type="checkbox" id="faq11"><label for="faq11">Do you handle marketing, or just the build?</label><div class="faq-a"><p>Both. Kickstart Social is a full-service marketing agency first. Your build gets you launch-ready. From there our team can run your entire growth engine - paid media, organic social, creative, SEO, funnels - tuned for the HRT and peptide market. We scope marketing separately to your goals, but you're never left to figure out patient acquisition alone.</p></div></div>
+      <div class="faq-item"><input type="checkbox" id="faq12"><label for="faq12">Do I have to do marketing with you?</label><div class="faq-a"><p>Not at all. Many founders run their own ads or bring their own trusted agency, and we build the brand and content to support that. Others want our team to run their entire growth engine. Both work beautifully. Your build stands on its own, and marketing is always your choice.</p></div></div>
     </div>
   </div>
 </section>
