@@ -356,6 +356,30 @@ table.cmp td.gp{font-weight:700;color:var(--navy)}
 .mig-ico{font-size:24px;line-height:1;margin-bottom:10px}
 .mig-card h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:8px;line-height:1.3}
 .mig-card p{font-size:14px;color:#555;line-height:1.6}
+/* ---------- PRODUCTS YOU CAN OFFER ---------- */
+.prod-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:900px;margin:28px auto 0}
+@media(min-width:560px){.prod-grid{grid-template-columns:1fr 1fr}}
+@media(min-width:900px){.prod-grid{grid-template-columns:repeat(3,1fr)}}
+.prod-card{background:#f8f8fb;border:1px solid #ececf1;border-radius:14px;padding:24px 20px;box-shadow:0 4px 16px rgba(13,27,42,.05);display:flex;flex-direction:column}
+.prod-card::before{content:"";display:block;width:40px;height:4px;border-radius:999px;background:var(--teal);margin-bottom:14px}
+.prod-card.pink::before{background:var(--pink)}
+.prod-ico{font-size:26px;line-height:1;margin-bottom:10px}
+.prod-card h4{font-size:16px;font-weight:800;color:var(--navy);margin-bottom:6px;line-height:1.3}
+.prod-card p{font-size:14px;color:#555;line-height:1.55}
+.prod-foot{font-size:14px;color:#777;font-style:italic;text-align:center;max-width:640px;margin:22px auto 0;line-height:1.6}
+/* ---------- PROVIDER NETWORK STAT ---------- */
+.provstat-grid{display:grid;grid-template-columns:1fr;gap:16px;max-width:640px;margin:0 auto}
+@media(min-width:560px){.provstat-grid{grid-template-columns:1fr 1fr}}
+.provstat-card{background:var(--card);border-top:3px solid var(--teal);border-radius:14px;padding:30px 20px;text-align:center}
+.provstat-card .n{font-size:32px;font-weight:800;color:#fff;letter-spacing:-.5px;line-height:1.1}
+.provstat-card .l{font-size:13px;color:#aab4bf;margin-top:8px;line-height:1.4}
+@media(min-width:768px){.provstat-card .n{font-size:38px}}
+/* ---------- PHARMACY PARTNERS ---------- */
+.pharm-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;max-width:820px;margin:26px auto 0}
+@media(min-width:560px){.pharm-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:900px){.pharm-grid{grid-template-columns:repeat(6,1fr)}}
+.pharm-card{background:#f8f8fb;border:1px solid #ececf1;border-top:3px solid var(--teal);border-radius:12px;padding:20px 12px;box-shadow:0 4px 16px rgba(13,27,42,.05);display:flex;align-items:center;justify-content:center;text-align:center;font-weight:800;color:var(--navy);font-size:15px;min-height:72px}
+.pharm-foot{font-size:14px;color:#777;text-align:center;max-width:660px;margin:22px auto 0;line-height:1.6}
 </style>
 <!-- Meta Pixel Code -->
 <script>
@@ -719,6 +743,52 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       <a class="cta" href="#apply">Apply to Work With Us</a>
       <a class="cta2" href="https://link.lumifunnels.com/widget/bookings/growproprequalification" target="_blank" rel="noopener">Book a Call</a>
     </div>
+  </div>
+</section>
+
+<!-- ============ PRODUCTS YOU CAN OFFER ============ -->
+<section class="sec sec-gray">
+  <div class="sec-inner wide8">
+    <div class="eyebrow">Your Product Line</div>
+    <h2 class="h-sec">A Full Catalog Built for Where Medicine Is Going.</h2>
+    <p class="sub-sec" style="max-width:680px">You are not limited to one shrinking category. Your brand can offer the full spectrum of what today's patients actually want, across hormones, weight management, peptides, and more.</p>
+    <div class="prod-grid">
+      <div class="prod-card"><div class="prod-ico">🌸</div><h4>Hormone Therapy (HRT)</h4><p>Estrogen, progesterone, and testosterone optimization for women, with clinical labs.</p></div>
+      <div class="prod-card"><div class="prod-ico">💪</div><h4>Testosterone Therapy (TRT)</h4><p>Full testosterone optimization for men, monitored with labs.</p></div>
+      <div class="prod-card pink"><div class="prod-ico">⚖️</div><h4>Weight Management</h4><p>Medically supervised GLP-1 and metabolic weight loss programs.</p></div>
+      <div class="prod-card pink"><div class="prod-ico">🔥</div><h4>Sexual Health</h4><p>Oral and injectable ED treatment options.</p></div>
+      <div class="prod-card"><div class="prod-ico">🧬</div><h4>Peptides &amp; Longevity</h4><p>Peptide protocols for recovery, longevity, and healthspan, expanding as the market reclassifies.</p></div>
+      <div class="prod-card pink"><div class="prod-ico">✨</div><h4>Skin, Hair &amp; Beauty</h4><p>Aesthetic and longevity treatments for skin, hair, and anti-aging.</p></div>
+    </div>
+    <p class="prod-foot">Labs and monitoring are built in for every hormone and peptide protocol, because real clinical care requires it.</p>
+  </div>
+</section>
+
+<!-- ============ PROVIDER NETWORK STAT ============ -->
+<section class="sec sec-dark" style="padding-top:44px;padding-bottom:44px">
+  <div class="sec-inner">
+    <div class="provstat-grid">
+      <div class="provstat-card"><div class="n">1,500+</div><div class="l">Licensed Providers Nationwide</div></div>
+      <div class="provstat-card"><div class="n">All 50 States</div><div class="l">Fully Licensed and Compliant</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PHARMACY PARTNERS ============ -->
+<section class="sec sec-white">
+  <div class="sec-inner wide8">
+    <div class="eyebrow" style="color:var(--teal)">Our Pharmacy Network</div>
+    <h2 class="h-sec">Backed by a Real 503A Pharmacy Network.</h2>
+    <p class="sub-sec" style="max-width:680px">Your brand runs on established relationships with vetted compounding and dispensing pharmacies, so your patients get reliable fulfillment and you get pricing that protects your margin.</p>
+    <div class="pharm-grid">
+      <div class="pharm-card">DiRx</div>
+      <div class="pharm-card">Rush</div>
+      <div class="pharm-card">Artisan</div>
+      <div class="pharm-card">Strive</div>
+      <div class="pharm-card">Olympia</div>
+      <div class="pharm-card">Pharmacy Hub</div>
+    </div>
+    <p class="pharm-foot">Pre-negotiated pharmacy access across our network. The more layers between you and your pharmacy, the more it costs you. We bring those relationships in-house.</p>
   </div>
 </section>
 
