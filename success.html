@@ -1242,5 +1242,40 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
 
 <script src="https://player.vimeo.com/api/player.js"></script>
 
+<!-- ============ IFRAME AUTO-HEIGHT BROADCASTER ============ -->
+<!-- Only runs when this page is embedded in an iframe (e.g. launch.kickstartsocial.co/success).
+     Posts the full document height to the parent so the frame sizes to the whole page and
+     scrolls naturally. No-op when served directly (growpro.co) since there is no parent frame.
+     Invisible: adds no elements, changes no styles. -->
+<script>
+(function(){
+  if (window.self === window.top) return; // served directly (growpro.co): do nothing
+  var last = 0;
+  function docHeight(){
+    return Math.max(
+      document.body ? document.body.scrollHeight : 0,
+      document.documentElement ? document.documentElement.scrollHeight : 0,
+      document.body ? document.body.offsetHeight : 0,
+      document.documentElement ? document.documentElement.offsetHeight : 0
+    );
+  }
+  function send(){
+    var height = docHeight();
+    if (Math.abs(height - last) < 2) return; // skip if unchanged
+    last = height;
+    try { window.parent.postMessage({ type: 'growpro:resize', height: height }, '*'); } catch(e){}
+  }
+  window.addEventListener('load', send);
+  window.addEventListener('resize', send);
+  window.addEventListener('transitionend', send, true); // FAQ accordion open/close
+  if ('ResizeObserver' in window && document.body){
+    try { new ResizeObserver(send).observe(document.body); } catch(e){}
+  }
+  // Settle late-loading media (lazy iframes/videos) over the first ~10s.
+  var ticks = 0, timer = setInterval(function(){ send(); if (++ticks > 20) clearInterval(timer); }, 500);
+  send();
+})();
+</script>
+
 </body>
 </html>
