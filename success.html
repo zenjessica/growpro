@@ -1289,15 +1289,14 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       var launch=answers.how_soon_are_you_looking_to_launch;
       var res=answers.have_you_looked_into_starting_a_telehealth_or_med_based_business_before;
       var who=answers.what_best_describes_you;
-      if(inv==='Not right now') return 'KNOCKOUT';
+      if(inv==='Not right now') return 'BROKE';
       var investNow=(inv==="Yes — I'm ready to invest now");
       var invest30=(inv==="Yes — within the next 30 days");
       var launchSoon=(launch==="Yesterday — I'm ready now"||launch==='Within 30 days');
       var researched=(res==="Yes — I've researched it a lot"||res==='A little');
       if(investNow&&launchSoon&&researched) return 'BANGER';
       if(investNow||invest30) return 'STRONG';
-      if(who==="I'm just researching for now") return 'RESEARCHER';
-      return 'GRADE2';
+      return 'RESEARCHER';
     }
     var grade=computeGrade();
 
