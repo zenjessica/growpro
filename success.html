@@ -638,6 +638,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
         <h3 class="ap-q">Building a compliant telehealth business with us starts at $27,000. Are you in a position to invest at that level to get started?</h3>
         <p class="ap-note">This covers your complete infrastructure build. Marketing and ad spend are separate.</p>
         <button type="button" class="ap-opt" data-step="3" data-key="building_a_compliant_telehealth_business_with_us_starts_at_25_000_are_you_in_a_position_to_invest_at_that_level_to_get_started" data-val="Yes — I'm ready to invest now"><span class="ap-radio"></span><span>Yes — I'm ready to invest now</span></button>
+        <button type="button" class="ap-opt" data-step="3" data-key="building_a_compliant_telehealth_business_with_us_starts_at_25_000_are_you_in_a_position_to_invest_at_that_level_to_get_started" data-val="Yes — within the next 30 days"><span class="ap-radio"></span><span>Yes — within the next 30 days</span></button>
         <button type="button" class="ap-opt" data-step="3" data-key="building_a_compliant_telehealth_business_with_us_starts_at_25_000_are_you_in_a_position_to_invest_at_that_level_to_get_started" data-val="Not right now" data-decline="invest"><span class="ap-radio"></span><span>Not right now</span></button>
       </div>
 
@@ -675,6 +676,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       <!-- DECLINE PANEL (step 3 or step 4) -->
       <div class="ap-panel" id="apDecline">
         <p id="apDeclineMsg"></p>
+        <a class="ap-igbtn" href="https://8292-accounts.systeme.io/start-a-telehealth" target="_blank" rel="noopener">Get the Start-A-Telehealth Playbook</a>
         <a class="ap-igbtn" href="https://instagram.com/therealzenjessica" target="_blank" rel="noopener">Follow Us on Instagram</a>
       </div>
 
@@ -684,6 +686,14 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
         <h3>Application Received.</h3>
         <p>Thank you. Keep an eye on your phone - our team will be reaching out shortly.</p>
         <a class="ap-igbtn" href="https://instagram.com/therealzenjessica" target="_blank" rel="noopener">Follow @therealzenjessica on Instagram</a>
+      </div>
+
+      <!-- BANGER PANEL - top scorers book immediately -->
+      <div class="ap-panel" id="apBanger">
+        <div class="ap-check">&#10003;</div>
+        <h3>You Qualify. Book Your Call Now.</h3>
+        <p>Your application scored at the top of our range. Skip the line and lock in your strategy call right now, while it's fresh.</p>
+        <a class="ap-igbtn" href="https://link.lumifunnels.com/widget/bookings/jessicawhite" target="_blank" rel="noopener">Book Your Strategy Call Now</a>
       </div>
 
       <!-- ERROR PANEL -->
@@ -1177,11 +1187,12 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
   var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
   var SUCCESS_WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/878d8cd3-e98c-4e1c-bd4c-00783c659158";
   // Lumi workflow: Telehealth Application - Score and Route
-  // Scoring lives in the Lumi workflow, keyed on the exact posted field values below.
-  // Option labels and posted values are identical strings and must match Lumi character
-  // for character, including the em dashes and the en dash in "30-90 days".
+  // Grade is computed CLIENT-SIDE (computeGrade) and posted as funnel_grade so the
+  // Lumi workflow branches on one clean value (BANGER/STRONG/RESEARCHER/GRADE2)
+  // instead of exact-string-matching answers that contain em dashes and curly quotes.
+  // Raw answers still post alongside for records; legacy branches keep working.
   // Off-ramp: "Not right now" on the investment step (step 3) shows the decline panel
-  // and never reaches the contact step, so those leads are not submitted.
+  // (now with the Start-A-Telehealth playbook link) and does not submit.
   var root=document.getElementById('apply');
   var bar=document.getElementById('apBar');
   var counter=document.getElementById('apCounter');
@@ -1221,7 +1232,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       if(dec){
         setTimeout(function(){
           document.getElementById('apDeclineMsg').textContent = (dec==='invest')
-            ? 'Thank you for your interest. When you are ready to invest in your infrastructure, we would love to connect.'
+            ? 'Thank you for your honesty. The smartest next step for where you are right now is our Start-A-Telehealth playbook. Grab it below, and when you are ready to invest in your infrastructure, we would love to connect.'
             : 'Thank you for reaching out. We would love to connect when you are ready to take the next step.';
           showPanel('apDecline');
         },300);
@@ -1258,6 +1269,24 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
 
     var occ=document.getElementById('apOcc').value.trim();
 
+    // Grade computed here so Lumi branches on one clean field, not fragile strings.
+    function computeGrade(){
+      var inv=answers.building_a_compliant_telehealth_business_with_us_starts_at_25_000_are_you_in_a_position_to_invest_at_that_level_to_get_started;
+      var launch=answers.how_soon_are_you_looking_to_launch;
+      var res=answers.have_you_looked_into_starting_a_telehealth_or_med_based_business_before;
+      var who=answers.what_best_describes_you;
+      if(inv==='Not right now') return 'KNOCKOUT';
+      var investNow=(inv==="Yes — I'm ready to invest now");
+      var invest30=(inv==="Yes — within the next 30 days");
+      var launchSoon=(launch==="Yesterday — I'm ready now"||launch==='Within 30 days');
+      var researched=(res==="Yes — I've researched it a lot"||res==='A little');
+      if(investNow&&launchSoon&&researched) return 'BANGER';
+      if(investNow||invest30) return 'STRONG';
+      if(who==="I'm just researching for now") return 'RESEARCHER';
+      return 'GRADE2';
+    }
+    var grade=computeGrade();
+
     var payload={
       first_name:fn,
       last_name:ln,
@@ -1268,13 +1297,14 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
       building_a_compliant_telehealth_business_with_us_starts_at_25_000_are_you_in_a_position_to_invest_at_that_level_to_get_started:answers.building_a_compliant_telehealth_business_with_us_starts_at_25_000_are_you_in_a_position_to_invest_at_that_level_to_get_started,
       have_you_looked_into_starting_a_telehealth_or_med_based_business_before:answers.have_you_looked_into_starting_a_telehealth_or_med_based_business_before,
       whats_your_current_occupation:occ,
+      funnel_grade:grade,
       source:"success-page-application"
     };
     var btn=document.getElementById('apSubmit');
     btn.disabled=true; btn.textContent='Submitting...';
     fbq('track', 'InitiateCheckout');
     fetch(SUCCESS_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){ fbq('track', 'Lead'); fbq('track', 'CompleteRegistration'); showPanel('apSuccess'); })
+      .then(function(){ fbq('track', 'Lead'); fbq('track', 'CompleteRegistration'); showPanel(grade==='BANGER'?'apBanger':'apSuccess'); })
       .catch(function(){ btn.disabled=false; btn.textContent='Submit My Application'; showPanel('apError'); });
   });
 })();
