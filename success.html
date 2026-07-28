@@ -1329,7 +1329,7 @@ src="https://www.facebook.com/tr?id=751712832542138&ev=PageView&noscript=1"
     btn.disabled=true; btn.textContent='Submitting...';
     fbq('track', 'InitiateCheckout');
     fetch(SUCCESS_WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)})
-      .then(function(){ fbq('track', 'Lead'); fbq('track', 'CompleteRegistration'); showPanel(grade==='BANGER'?'apBanger':'apSuccess'); })
+      .then(function(){ fbq('track', 'Lead'); fbq('track', 'CompleteRegistration'); fbq('track', 'SubmitApplication'); showPanel(grade==='BANGER'?'apBanger':'apSuccess'); })
       .catch(function(){ btn.disabled=false; btn.textContent='Submit My Application'; showPanel('apError'); });
   });
 })();
