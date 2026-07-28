@@ -4,6 +4,41 @@ function $q(s){return document.querySelectorAll(s)}
 function $1(s){return document.querySelector(s)}
 var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
 var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
+var WHOP={
+full:{
+template:"https://whop.com/checkout/5qikQxn3TNq3cy6PRL-ee28-Acpl-fxPY-e2kKfBvcPboS/",
+template_b:"https://whop.com/checkout/3yN18XfI2eKDW9zPGh-dTG0-xGiD-4cIA-w7jrRnEmgxtG/",
+template_p:"https://whop.com/checkout/4QcwP0Vd5PF0PAMQud-RXTu-HTOn-rIWE-6vwtcHTsmVnP/",
+template_e:"https://whop.com/checkout/27cnAYVohZEsFs6klH-XMJP-60nE-wxNl-Rt4yWQu6B93k/",
+template_bp:"https://whop.com/checkout/2CqyYQJrKSCIoU8Ixj-sfmc-6f8A-a4uB-g55KaFp2jmKq/",
+template_be:"https://whop.com/checkout/3Aq2tsFkPDnMcelSsF-exRr-Ln7A-h9GS-PYEbAVgYA3gM/",
+template_pe:"https://whop.com/checkout/6fIrgpIheOPzYRcikN-Tw23-YhYn-bfPX-GvXhsIkGnL5F/",
+template_bpe:"https://whop.com/checkout/30YHpMnXWKWhstTwnn-alPe-Bdw1-BP3d-AP22qEgEnARP/",
+custom:"https://whop.com/checkout/6GEqWItOP3CZAe9oSR-S8pP-Fi3R-biO7-XD2foYwUkwd2/",
+custom_b:"https://whop.com/checkout/4Iz9c2MVLnqqmVoZPz-nzif-LBY1-ZpHh-inVX9fVvt42Y/",
+custom_p:"https://whop.com/checkout/8wnMvjVtOEe6LDdKN-wVoB-W0sC-QfvQ-kSQzjXaFy8I3/",
+custom_e:"https://whop.com/checkout/6zWV0mgNj1W7Z3BB5f-HO3v-sf1J-NOts-TagRBSXOUzja/",
+custom_bp:"https://whop.com/checkout/2o5qllvSOiJ87iFZeN-iNhF-T8PB-NYsa-T9NSsI1p0mnh/",
+custom_be:"https://whop.com/checkout/63wu1L6Fg3mJhoV7Bn-a1on-o5Bk-YBGE-MYIIhrh1Htpk/",
+custom_pe:"https://whop.com/checkout/63EMQCJhMBRnyGU0tr-Cl2w-AxOD-JgZt-sFABTAUIXRsA/",
+custom_bpe:"https://whop.com/checkout/1RhdVkhnaz4t4NL0Qh-7o01-3wj3-1UmY-wA5nZYbWjtnJ/",
+operator:"https://whop.com/checkout/1VavarBJlPxubEnqdb-ZQg8-lpit-qxqn-OzDrPPH0b5e5/"},
+split15:{template:"https://whop.com/checkout/4DNizMnYbWhsKahFLz-gLvC-YsVG-eaOI-MYJ00Y57Budt/",
+custom:"https://whop.com/checkout/Cpz3KJFDwM1qMfvwZ-yBox-2g7Y-Gzl4-p15oH1asE5ME/",
+operator:"https://whop.com/checkout/6xgynUL1j2OQFtGamB-7lZT-u1qe-HnWZ-6Q7ppjBQ9Nza/",
+fallback:"https://whop.com/checkout/8eBQYAirf8i1AggzD-zEYU-f25S-W1PQ-JHsfJ5UY92ZY/"},
+split10:{template:"https://whop.com/checkout/3ntbn37AUi0cxCk9Ox-AiiL-LFnC-tFpe-1tz7q0LkF2ea/",
+custom:"https://whop.com/checkout/1QUnxLCOSyeHMnF649-PD2G-Pk1G-ouhZ-epqEsRZfbo8O/",
+operator:"https://whop.com/checkout/1TbCTbXRA0JKkVdBnP-Cc1Y-7C2u-1OBN-vwTu7ELAI6Tw/",
+fallback:"https://whop.com/checkout/DPjRcuetPom0yKfHH-n1YY-WvWS-jNqO-HzAf80nmvtDy/"}};
+function whopUrl(){
+var s=(treats.indexOf('branded_med')>-1?'b':'')+(treats.indexOf('peptide_pkg')>-1?'p':'')+(addons.indexOf('ai_engine')>-1?'e':'');
+if(pkg==='operator') s='';
+if(payPlan==='split15') return (s?WHOP.split15.fallback:WHOP.split15[pkg])||null;
+if(payPlan==='split10') return (s?WHOP.split10.fallback:WHOP.split10[pkg])||null;
+return WHOP.full[pkg+(s?'_'+s:'')]||null;
+}
+
 var pkg=null,treats=[],addons=[],step=1;
 var payPlan='pif';
 var pkgPreSelected=false;
@@ -303,8 +338,10 @@ configurator_type:'launch',
 template_favorites:galPicks.length>0?galPicks.join(', '):'None selected'
 };
 if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
-fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)});
+fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(e){console.log('Webhook error:',e)});
 } else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
+var wu=whopUrl();
+if(wu){var sb=$i('submitBtn');if(sb){sb.disabled=true;sb.textContent='Opening secure checkout...';}setTimeout(function(){window.top.location.href=wu;},400);return;}
 $i('formV').classList.add('hid');
 $i('confV').classList.remove('hid');
 $i('sidebar').style.display='none';

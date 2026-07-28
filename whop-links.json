@@ -1,0 +1,29 @@
+{
+ "template": {
+  "base": "",
+  "b": "https://whop.com/checkout/3yN18XfI2eKDW9zPGh-dTG0-xGiD-4cIA-w7jrRnEmgxtG/",
+  "p": "https://whop.com/checkout/4QcwP0Vd5PF0PAMQud-RXTu-HTOn-rIWE-6vwtcHTsmVnP/",
+  "e": "https://whop.com/checkout/27cnAYVohZEsFs6klH-XMJP-60nE-wxNl-Rt4yWQu6B93k/",
+  "bp": "https://whop.com/checkout/2CqyYQJrKSCIoU8Ixj-sfmc-6f8A-a4uB-g55KaFp2jmKq/",
+  "be": "https://whop.com/checkout/3Aq2tsFkPDnMcelSsF-exRr-Ln7A-h9GS-PYEbAVgYA3gM/",
+  "pe": "https://whop.com/checkout/6fIrgpIheOPzYRcikN-Tw23-YhYn-bfPX-GvXhsIkGnL5F/",
+  "bpe": "https://whop.com/checkout/30YHpMnXWKWhstTwnn-alPe-Bdw1-BP3d-AP22qEgEnARP/"
+ },
+ "custom": {
+  "base": "https://whop.com/checkout/6GEqWItOP3CZAe9oSR-S8pP-Fi3R-biO7-XD2foYwUkwd2/",
+  "b": "https://whop.com/checkout/4Iz9c2MVLnqqmVoZPz-nzif-LBY1-ZpHh-inVX9fVvt42Y/",
+  "p": "https://whop.com/checkout/8wnMvjVtOEe6LDdKN-wVoB-W0sC-QfvQ-kSQzjXaFy8I3/",
+  "e": "https://whop.com/checkout/6zWV0mgNj1W7Z3BB5f-HO3v-sf1J-NOts-TagRBSXOUzja/",
+  "bp": "https://whop.com/checkout/2o5qllvSOiJ87iFZeN-iNhF-T8PB-NYsa-T9NSsI1p0mnh/",
+  "be": "https://whop.com/checkout/63wu1L6Fg3mJhoV7Bn-a1on-o5Bk-YBGE-MYIIhrh1Htpk/",
+  "pe": "https://whop.com/checkout/63EMQCJhMBRnyGU0tr-Cl2w-AxOD-JgZt-sFABTAUIXRsA/",
+  "bpe": "https://whop.com/checkout/1RhdVkhnaz4t4NL0Qh-7o01-3wj3-1UmY-wA5nZYbWjtnJ/"
+ },
+ "operator": {
+  "base": ""
+ },
+ "down15k": "",
+ "down10k": "",
+ "hold5k": "",
+ "hold2500": ""
+}
