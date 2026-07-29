@@ -25,5 +25,41 @@
  "down15k": "",
  "down10k": "",
  "hold5k": "",
- "hold2500": ""
+ "hold2500": "",
+ "plan15_combos": {
+  "template_b": "https://whop.com/checkout/ivWNDJVawsKkED0vT-ENGn-HovY-7QYB-XdVzt0a1d7Jg/",
+  "template_p": "https://whop.com/checkout/2USPTHLhOeTAStuqNr-NVou-eVCb-Jx9F-h23m5CQGGxNN/",
+  "template_e": "https://whop.com/checkout/5PA5gx2wnE6xwnkE9z-yAbc-xayN-vibM-3BxdReSDayxT/",
+  "template_bp": "https://whop.com/checkout/JE6mNTPAkzyw2VmhP-pqfT-LIKJ-x4sH-Ux4YPMMXDwZi/",
+  "template_be": "https://whop.com/checkout/pjkTN3AVEeyBU2ylj-gLn4-MbLz-5c1I-fDCVooqBhh04/",
+  "template_pe": "https://whop.com/checkout/21bd3vwfR34fqsrth7-KEWn-sJpI-Vo6y-xUQbylf9Frzi/",
+  "template_bpe": "https://whop.com/checkout/6EYTcFcJJNtSkLIenD-7KGa-eSeC-Xh0l-00GoX1Tj8GLI/"
+ },
+ "plan10_combos": {
+  "custom_b": "https://whop.com/checkout/plan_tk6ggZy5J0pxw",
+  "custom_p": "https://whop.com/checkout/plan_Q5fbufdh1OhpX",
+  "custom_e": "https://whop.com/checkout/plan_J68D75bKQswUO",
+  "custom_bp": "https://whop.com/checkout/plan_a0KCMs4rtU4vj",
+  "custom_be": "https://whop.com/checkout/plan_i9LVu6lHTRCdz",
+  "custom_pe": "https://whop.com/checkout/plan_da5kiAgasyrWP",
+  "custom_bpe": "https://whop.com/checkout/plan_YXio7AVG0QNL7"
+ },
+ "plan10_template": {
+  "template_b": "https://whop.com/checkout/plan_JLtlQu8qWjDZv/",
+  "template_p": "https://whop.com/checkout/plan_Q3uMoh9oQidEp/",
+  "template_e": "https://whop.com/checkout/plan_TCuPiTVZUgRlz/",
+  "template_bp": "https://whop.com/checkout/plan_nGRkoSXfD14bB/",
+  "template_be": "https://whop.com/checkout/plan_fF0eLXd32XTY4/",
+  "template_pe": "https://whop.com/checkout/plan_e7NqThljGGOpm/",
+  "template_bpe": "https://whop.com/checkout/plan_l28vV5Wy1PoCb/"
+ },
+ "plan15_custom": {
+  "custom_b": "https://whop.com/checkout/plan_Wh0ecXqM7IlLu/",
+  "custom_p": "https://whop.com/checkout/plan_s38h3EVUONHf9/",
+  "custom_e": "https://whop.com/checkout/plan_vnfSH2rR56JNK/",
+  "custom_bp": "https://whop.com/checkout/plan_Xf1yWkznk4b1J/",
+  "custom_be": "https://whop.com/checkout/plan_JW94NpQ6p4AKK/",
+  "custom_pe": "https://whop.com/checkout/plan_njNqi2iYUX0Vf/",
+  "custom_bpe": "https://whop.com/checkout/plan_Uag7v6oOr0EiU/"
+ }
 }
