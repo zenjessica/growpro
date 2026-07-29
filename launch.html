@@ -656,11 +656,13 @@ total_one_time:t.ot,total_monthly:t.mo,
 configurator_type:'launch',
 template_favorites:galPicks.length>0?galPicks.join(', '):'None selected'
 };
-if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
-fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload),keepalive:true}).catch(function(e){console.log('Webhook error:',e)});
-} else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
 var wu=whopUrl();
-if(wu){var sb=$i('submitBtn');if(sb){sb.disabled=true;sb.textContent='Opening secure checkout...';}setTimeout(function(){window.top.location.href=wu;},400);return;}
+var navDone=false;
+function goCheckout(){if(navDone||!wu)return;navDone=true;window.top.location.href=wu;}
+if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
+fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)}).finally(goCheckout);
+} else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
+if(wu){var sb=$i('submitBtn');if(sb){sb.disabled=true;sb.textContent='Opening secure checkout...';}setTimeout(goCheckout,1500);return;}
 $i('formV').classList.add('hid');
 $i('confV').classList.remove('hid');
 $i('sidebar').style.display='none';
