@@ -202,7 +202,7 @@
 <div class="suc" id="sumC"></div>
 <div style="background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:16px 20px;margin:24px 0 16px">
 <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:6px">What Happens Next</div>
-<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections, confirm your build, and get your invoice issued.</p>
+<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections, confirm your build, and walk through everything with you on your strategy call.</p>
 </div>
 <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--gbd);border-radius:var(--r);padding:16px 20px;margin-bottom:16px">
 <img src="assets/mike-b.jpg" alt="Mike B." style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--pl)">
@@ -229,39 +229,9 @@
 <div class="sec" id="step5">
 <div id="formV">
 <h1 class="h1">Let's Get You Started</h1>
-<p class="sub">Enter your details, then complete secure checkout.</p>
-<div class="pp-section" id="ppSection" style="display:none">
-<div class="pp-title">Choose Your Payment Plan</div>
-<div class="pp-sub">How would you like to pay? (You will complete secure checkout on the next step.)</div>
-<div class="pp-grid">
-<div class="pp-card pp-best pp-sel" data-plan="pif" onclick="selPlan('pif')">
-<div class="pp-ck">✓</div>
-<div class="pp-badge pp-b-best">Best Value</div>
-<div class="pp-name">Pay Build in Full</div>
-<div class="pp-amount" id="ppPifAmt">$18,000</div>
-<div class="pp-detail"><span style="color:#34C759;font-weight:700"><span id="ppPifToday">$18,000</span> due today</span></div>
-<div class="pp-fee">No financing fees</div>
-<div class="pp-total" id="ppPifTotal">Build total: $18,000</div>
-</div>
-<div class="pp-card" data-plan="split15" onclick="selPlan('split15')">
-<div class="pp-ck">✓</div>
-<div class="pp-badge pp-b-flex">5% Fee</div>
-<div class="pp-name">$15K Down</div>
-<div class="pp-amount">$15,000</div>
-<div class="pp-detail">$15,000 down today<br><span style="font-size:11px;color:#888">then 2 x <strong id="ppSplit15Amt">$X</strong> every 4 weeks</span></div>
-<div class="pp-fee">5% fee on build balance</div>
-<div class="pp-total" id="ppSplit15Total">Build total: $X</div>
-</div>
-<div class="pp-card" data-plan="split10" onclick="selPlan('split10')">
-<div class="pp-ck">✓</div>
-<div class="pp-badge pp-b-fin">Financing</div>
-<div class="pp-name">$10K Down</div>
-<div class="pp-amount">$10,000</div>
-<div class="pp-detail">$10,000 down today<br><span style="font-size:11px;color:#888">then 2 x <strong id="ppSplit10Amt">$X</strong> every 4 weeks</span></div>
-<div class="pp-fee">15% fee on build balance</div>
-<div class="pp-total" id="ppSplit10Total">Build total: $X</div>
-</div>
-</div>
+<p class="sub">Enter your details, then book your free strategy call.</p>
+<div style="padding:14px 16px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px;margin-bottom:24px">
+<p style="font-size:14px;color:#555;line-height:1.6;margin:0"><strong style="color:var(--n)">Flexible payment plans and financing options are available on your call.</strong></p>
 </div>
 <div class="fg">
 <div class="fi"><label class="fl">First Name <span class="rq">*</span></label><input type="text" class="fx" id="firstName" placeholder="First name"><span class="fe" id="fnE">First name is required</span></div>
@@ -271,13 +241,14 @@
 <div class="fi fw"><label class="fl">Business Name <span class="rq">*</span></label><input type="text" class="fx" id="bizName" placeholder="Business name"><span class="fe" id="bnE">Business name is required</span></div>
 <div class="fi fw"><label class="fl">How did you find us?</label><select class="fsel" id="source"><option value="">Select one...</option><option value="Brad Lea Podcast">Brad Lea Podcast</option><option value="Referral">Referral</option><option value="Social Media">Social Media</option><option value="Google">Google</option><option value="Other">Other</option></select></div>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Proceed to Secure Checkout →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Book My Strategy Call →</button></div>
 </div>
 <div class="conf hid" id="confV">
 <div class="conf-i">✓</div>
 <h1 class="display-font">You are in.</h1>
-<p>Your build has been submitted. A launch strategist will reach out within one business day to confirm your build and send your invoice.</p>
+<p>Your build has been submitted. Book your free strategy call and a launch strategist will walk through your build with you.</p>
 <div class="conf-r"><div class="suc" id="confSum"></div></div>
+<p style="margin-top:24px"><a class="btn btn-p" href="https://link.lumifunnels.com/widget/bookings/growproprequalification" target="_top" style="text-decoration:none">Book My Strategy Call →</a></p>
 <div class="conf-c"><a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a> | <a href="https://growpro.co" target="_blank">growpro.co</a></div>
 </div>
 </div>

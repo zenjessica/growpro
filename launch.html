@@ -214,7 +214,7 @@
 <div class="suc" id="sumC"></div>
 <div style="background:var(--pb);border:1px solid var(--pl);border-radius:var(--r);padding:16px 20px;margin:24px 0 16px">
 <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:6px">What Happens Next</div>
-<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections, confirm your build, and get your invoice issued.</p>
+<p style="font-size:14px;color:#555;line-height:1.6;margin:0">Submitting sends your build for review. No payment is taken now. A launch strategist will review your selections, confirm your build, and walk through everything with you on your strategy call.</p>
 </div>
 <div style="display:flex;align-items:flex-start;gap:14px;background:#fff;border:1px solid var(--gbd);border-radius:var(--r);padding:16px 20px;margin-bottom:16px">
 <img src="assets/mike-b.jpg" alt="Mike B." style="width:64px;height:64px;border-radius:50%;object-fit:cover;flex-shrink:0;border:2px solid var(--pl)">
@@ -241,39 +241,9 @@
 <div class="sec" id="step5">
 <div id="formV">
 <h1 class="h1">Let's Get You Started</h1>
-<p class="sub">Enter your details, then complete secure checkout.</p>
-<div class="pp-section" id="ppSection" style="display:none">
-<div class="pp-title">Choose Your Payment Plan</div>
-<div class="pp-sub">How would you like to pay? (You will complete secure checkout on the next step.)</div>
-<div class="pp-grid">
-<div class="pp-card pp-best pp-sel" data-plan="pif" onclick="selPlan('pif')">
-<div class="pp-ck">✓</div>
-<div class="pp-badge pp-b-best">Best Value</div>
-<div class="pp-name">Pay Build in Full</div>
-<div class="pp-amount" id="ppPifAmt">$18,000</div>
-<div class="pp-detail"><span style="color:#34C759;font-weight:700"><span id="ppPifToday">$18,000</span> due today</span></div>
-<div class="pp-fee">No financing fees</div>
-<div class="pp-total" id="ppPifTotal">Build total: $18,000</div>
-</div>
-<div class="pp-card" data-plan="split15" onclick="selPlan('split15')">
-<div class="pp-ck">✓</div>
-<div class="pp-badge pp-b-flex">5% Fee</div>
-<div class="pp-name">$15K Down</div>
-<div class="pp-amount">$15,000</div>
-<div class="pp-detail">$15,000 down today<br><span style="font-size:11px;color:#888">then 2 x <strong id="ppSplit15Amt">$X</strong> every 4 weeks</span></div>
-<div class="pp-fee">5% fee on build balance</div>
-<div class="pp-total" id="ppSplit15Total">Build total: $X</div>
-</div>
-<div class="pp-card" data-plan="split10" onclick="selPlan('split10')">
-<div class="pp-ck">✓</div>
-<div class="pp-badge pp-b-fin">Financing</div>
-<div class="pp-name">$10K Down</div>
-<div class="pp-amount">$10,000</div>
-<div class="pp-detail">$10,000 down today<br><span style="font-size:11px;color:#888">then 2 x <strong id="ppSplit10Amt">$X</strong> every 4 weeks</span></div>
-<div class="pp-fee">15% fee on build balance</div>
-<div class="pp-total" id="ppSplit10Total">Build total: $X</div>
-</div>
-</div>
+<p class="sub">Enter your details, then book your free strategy call.</p>
+<div style="padding:14px 16px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:8px;margin-bottom:24px">
+<p style="font-size:14px;color:#555;line-height:1.6;margin:0"><strong style="color:var(--n)">Flexible payment plans and financing options are available on your call.</strong></p>
 </div>
 <div class="fg">
 <div class="fi"><label class="fl">First Name <span class="rq">*</span></label><input type="text" class="fx" id="firstName" placeholder="First name"><span class="fe" id="fnE">First name is required</span></div>
@@ -283,13 +253,14 @@
 <div class="fi fw"><label class="fl">Business Name <span class="rq">*</span></label><input type="text" class="fx" id="bizName" placeholder="Business name"><span class="fe" id="bnE">Business name is required</span></div>
 <div class="fi fw"><label class="fl">How did you find us?</label><select class="fsel" id="source"><option value="">Select one...</option><option value="Brad Lea Podcast">Brad Lea Podcast</option><option value="Referral">Referral</option><option value="Social Media">Social Media</option><option value="Google">Google</option><option value="Other">Other</option></select></div>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Proceed to Secure Checkout →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><button id="submitBtn" class="btn btn-p" onclick="submitForm()">Book My Strategy Call →</button></div>
 </div>
 <div class="conf hid" id="confV">
 <div class="conf-i">✓</div>
 <h1 class="display-font">You are in.</h1>
-<p>Your build has been submitted. A launch strategist will reach out within one business day to confirm your build and send your invoice.</p>
+<p>Your build has been submitted. Book your free strategy call and a launch strategist will walk through your build with you.</p>
 <div class="conf-r"><div class="suc" id="confSum"></div></div>
+<p style="margin-top:24px"><a class="btn btn-p" href="https://link.lumifunnels.com/widget/bookings/growproprequalification" target="_top" style="text-decoration:none">Book My Strategy Call →</a></p>
 <div class="conf-c"><a href="mailto:hello@kickstartsocial.co">hello@kickstartsocial.co</a> | <a href="https://growpro.co" target="_blank">growpro.co</a></div>
 </div>
 </div>
@@ -322,75 +293,9 @@ function $i(id){return document.getElementById(id)}
 function $q(s){return document.querySelectorAll(s)}
 function $1(s){return document.querySelector(s)}
 var WEBHOOK_URL="https://services.leadconnectorhq.com/hooks/us7NjUIDufkMTLkmIPXQ/webhook-trigger/21bc9b49-ec90-4e61-a955-b852244d112f";
-var STRIPE_API_URL="https://growpro-stripe-api.vercel.app/api/create-checkout";
-var WHOP={
-full:{
-template:"https://whop.com/checkout/plan_mBRNFmgf4v9iB/",
-template_b:"https://whop.com/checkout/plan_fTIONDr9wOnWC/",
-template_p:"https://whop.com/checkout/plan_RVzHK4XVDYKMJ/",
-template_e:"https://whop.com/checkout/plan_PUF0axuSZNJS6/",
-template_bp:"https://whop.com/checkout/plan_tbZAApWvS4ryZ/",
-template_be:"https://whop.com/checkout/plan_6EQeI1d1CBdC3/",
-template_pe:"https://whop.com/checkout/plan_0RzX6hAeJ6G67/",
-template_bpe:"https://whop.com/checkout/plan_mWp0bg4jAJ0CG/",
-custom:"https://whop.com/checkout/plan_KailHzXoh8tSE/",
-custom_b:"https://whop.com/checkout/plan_j0fysgpJy9Ofx/",
-custom_p:"https://whop.com/checkout/plan_XYgNYf3tqZG52/",
-custom_e:"https://whop.com/checkout/plan_YdTMr9WCxxrgP/",
-custom_bp:"https://whop.com/checkout/plan_cyK63viO3LzBj/",
-custom_be:"https://whop.com/checkout/plan_9XxQfAo0Fih90/",
-custom_pe:"https://whop.com/checkout/plan_EA7DJQhxQkWIh/",
-custom_bpe:"https://whop.com/checkout/plan_aZF0uq3JJZp9T/",
-operator:"https://whop.com/checkout/plan_p3bi3539oN8nn/"},
-split15:{
-template:"https://whop.com/checkout/plan_IY27BvB9IagQd/",
-template_b:"https://whop.com/checkout/plan_8NA4Y3fkWRVsU/",
-template_p:"https://whop.com/checkout/plan_KhcstzeytZDZN/",
-template_e:"https://whop.com/checkout/plan_c6ZPVVwVtjvfb/",
-template_bp:"https://whop.com/checkout/plan_yVnfO045D0BeV/",
-template_be:"https://whop.com/checkout/plan_HOa89cz1DlGjF/",
-template_pe:"https://whop.com/checkout/plan_knTJRIxgkauoH/",
-template_bpe:"https://whop.com/checkout/plan_IhzK6WAFkFYbE/",
-custom:"https://whop.com/checkout/plan_Do6STnrC3coLg/",
-custom_b:"https://whop.com/checkout/plan_Wh0ecXqM7IlLu/",
-custom_p:"https://whop.com/checkout/plan_s38h3EVUONHf9/",
-custom_e:"https://whop.com/checkout/plan_vnfSH2rR56JNK/",
-custom_bp:"https://whop.com/checkout/plan_Xf1yWkznk4b1J/",
-custom_be:"https://whop.com/checkout/plan_JW94NpQ6p4AKK/",
-custom_pe:"https://whop.com/checkout/plan_njNqi2iYUX0Vf/",
-custom_bpe:"https://whop.com/checkout/plan_Uag7v6oOr0EiU/",
-operator:"https://whop.com/checkout/plan_Fwd65c0eaFOx1/",
-fallback:"https://whop.com/checkout/plan_SPacLp9VSNTOO/"},
-split10:{
-template:"https://whop.com/checkout/plan_305hNObw7N4Hp/",
-template_b:"https://whop.com/checkout/plan_JLtlQu8qWjDZv/",
-template_p:"https://whop.com/checkout/plan_Q3uMoh9oQidEp/",
-template_e:"https://whop.com/checkout/plan_TCuPiTVZUgRlz/",
-template_bp:"https://whop.com/checkout/plan_nGRkoSXfD14bB/",
-template_be:"https://whop.com/checkout/plan_fF0eLXd32XTY4/",
-template_pe:"https://whop.com/checkout/plan_e7NqThljGGOpm/",
-template_bpe:"https://whop.com/checkout/plan_l28vV5Wy1PoCb/",
-custom:"https://whop.com/checkout/plan_k5L4bcb5k6QNm/",
-custom_b:"https://whop.com/checkout/plan_tk6ggZy5J0pxw/",
-custom_p:"https://whop.com/checkout/plan_Q5fbufdh1OhpX/",
-custom_e:"https://whop.com/checkout/plan_J68D75bKQswUO/",
-custom_bp:"https://whop.com/checkout/plan_a0KCMs4rtU4vj/",
-custom_be:"https://whop.com/checkout/plan_i9LVu6lHTRCdz/",
-custom_pe:"https://whop.com/checkout/plan_da5kiAgasyrWP/",
-custom_bpe:"https://whop.com/checkout/plan_YXio7AVG0QNL7/",
-operator:"https://whop.com/checkout/plan_O5NyDtWERCSHc/",
-fallback:"https://whop.com/checkout/plan_gXprBz73lF4i3/"}};
-function whopUrl(){
-var s=(treats.indexOf('branded_med')>-1?'b':'')+(treats.indexOf('peptide_pkg')>-1?'p':'')+(addons.indexOf('ai_engine')>-1?'e':'');
-if(pkg==='operator') s='';
-var k=pkg+(s?'_'+s:'');
-if(payPlan==='split15') return WHOP.split15[k]||WHOP.split15.fallback||null;
-if(payPlan==='split10') return WHOP.split10[k]||WHOP.split10.fallback||null;
-return WHOP.full[k]||null;
-}
+var BOOKING_URL="https://link.lumifunnels.com/widget/bookings/growproprequalification";
 
 var pkg=null,treats=[],addons=[],step=1;
-var payPlan='pif';
 var pkgPreSelected=false;
 var galPicks=[];
 function togGal(el){
@@ -405,7 +310,6 @@ galPicks.push(tpl);
 }
 $i('galCount').textContent=galPicks.length;
 }
- // 'pif', 'split15', 'split10'
 var pkgPrices={template:18000,custom:27000,operator:40000};
 var pkgNames={template:'Template Launch',custom:'Custom Build',operator:'Operator Suite'};
 var treatPrices={hrt:2500,branded_med:2500,peptide_pkg:5000};
@@ -594,7 +498,6 @@ if(s===1){sb.style.display='none';mb.style.display='none'}
 else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
 step=s;
 if(s===4){buildSum();var pac=$i('platformAckCheck'),sb=$i('step4SubmitBtn');if(pac&&sb)sb.disabled=!pac.checked;}
-if(s===5){updatePayPlans();}
 window.scrollTo({top:0,behavior:'smooth'});
 reportHeightToParent();
 try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:'growpro:scrollTop',page:'launch'},'*');}}catch(e){}
@@ -679,7 +582,7 @@ email:em,phone:$i('phone').value.trim(),
 business_name:bn,
 source:$i('source').value,
 package:pkgNames[pkg],package_price:pkgPrices[pkg],
-payment_plan:payPlan==='pif'?'Pay in Full':payPlan==='split15'?'$15K Down - 5%':payPlan==='split10'?'$10K Down - 15%':'Pay in Full',
+payment_plan:'To be discussed on strategy call',
 treatments_added:treats.map(function(x){return treatNames[x]}),
 addons_one_time:otList,addons_monthly:moList,
 welliemd_setup:2000,welliemd_monthly:1500,
@@ -687,13 +590,12 @@ total_one_time:t.ot,total_monthly:t.mo,
 configurator_type:'launch',
 template_favorites:galPicks.length>0?galPicks.join(', '):'None selected'
 };
-var wu=whopUrl();
 var navDone=false;
-function goCheckout(){if(navDone||!wu)return;navDone=true;window.top.location.href=wu;}
+function goBooking(){if(navDone||!BOOKING_URL)return;navDone=true;window.top.location.href=BOOKING_URL;}
 if(WEBHOOK_URL&&WEBHOOK_URL!=="YOUR_GHL_WEBHOOK_URL_HERE"){
-fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)}).finally(goCheckout);
+fetch(WEBHOOK_URL,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(payload)}).catch(function(e){console.log('Webhook error:',e)}).finally(goBooking);
 } else {console.log('Webhook payload:',JSON.stringify(payload,null,2))}
-if(wu){var sb=$i('submitBtn');if(sb){sb.disabled=true;sb.textContent='Opening secure checkout...';}setTimeout(goCheckout,1500);return;}
+if(BOOKING_URL){var sb=$i('submitBtn');if(sb){sb.disabled=true;sb.textContent='Opening your booking calendar...';}setTimeout(goBooking,1500);return;}
 $i('formV').classList.add('hid');
 $i('confV').classList.remove('hid');
 $i('sidebar').style.display='none';
@@ -702,73 +604,6 @@ buildSum();
 $i('confSum').innerHTML=$i('sumC').innerHTML;
 $q('.pst').forEach(function(ps){ps.classList.remove('active');ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓'});
 $q('.pcon').forEach(function(c){c.classList.add('completed')});
-}
-function selPlan(plan){
-payPlan=plan;
-$q('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});
-$1('[data-plan="'+plan+'"]').classList.add('pp-sel');
-}
-function updatePayPlans(){
-var t=calcTotals();
-var ot=t.ot,mo=t.mo;
-var ppSec=$i('ppSection');
-// Show payment plan for any build with setup >= 15000 (template, custom, operator)
-if(!pkg||ot<15000){ppSec.style.display='none';payPlan='pif';return}
-ppSec.style.display='block';
-
-// Card 1: Pay Build in Full
-$i('ppPifAmt').textContent=fmt(ot);
-if($i('ppPifMo')) $i('ppPifMo').textContent=fmt(mo);
-if($i('ppPifToday')) $i('ppPifToday').textContent=fmt(ot);
-$i('ppPifTotal').textContent='Build total: '+fmt(ot);
-
-// Card 2: $15K Down
-var c15=$1('[data-plan="split15"]');
-if(ot>15000){
-  if(c15) c15.classList.remove('hid');
-  var bal15=ot-15000;
-  var bal15Fee=Math.round(bal15*1.05);
-  var inst15=Math.ceil(bal15Fee/2);
-  $i('ppSplit15Amt').textContent='$'+inst15.toLocaleString();
-  if($i('ppS15Mo')) $i('ppS15Mo').textContent=fmt(mo);
-  if($i('ppS15Today')) $i('ppS15Today').textContent=fmt(15000);
-  $i('ppSplit15Total').textContent='Build total: '+fmt(15000+bal15Fee);
-} else { if(c15) c15.classList.add('hid'); if(payPlan==='split15') payPlan='pif'; }
-
-// Card 3: $10K Down
-var c10=$1('[data-plan="split10"]');
-if(ot>10000){
-  if(c10) c10.classList.remove('hid');
-  var bal10=ot-10000;
-  var bal10Fee=Math.round(bal10*1.15);
-  var inst10=Math.ceil(bal10Fee/2);
-  $i('ppSplit10Amt').textContent='$'+inst10.toLocaleString();
-  if($i('ppS10Mo')) $i('ppS10Mo').textContent=fmt(mo);
-  if($i('ppS10Today')) $i('ppS10Today').textContent=fmt(10000);
-  $i('ppSplit10Total').textContent='Build total: '+fmt(10000+bal10Fee);
-} else { if(c10) c10.classList.add('hid'); if(payPlan==='split10') payPlan='pif'; }
-
-// Re-apply selection visual
-document.querySelectorAll('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});
-var sel=$1('[data-plan="'+payPlan+'"]');
-if(sel) sel.classList.add('pp-sel');
-}
-function getStripeItemsForPlan(t,em,fn,bn){
-var ot=t.ot;
-if(payPlan==='pif'||!pkg||ot<15000){
-return null; // use default logic (PIF) for small builds or no package
-}
-var down=payPlan==='split15'?15000:10000;
-var bal=ot-down;
-var feeRate=payPlan==='split10'?0.15:0.05;
-var balWithFee=Math.round(bal*(1+feeRate));
-var installment=Math.ceil(balWithFee/2);
-var planLabel=payPlan==='split15'?'$15K Down, 5% Fee':'$10K Down, 15% Financing';
-var items=[
-{name:pkgNames[pkg]+': Down Payment ('+planLabel+')',amount_cents:down*100,recurring:false}
-];
-items.push({name:pkgNames[pkg]+': Installment ('+planLabel+')',amount_cents:installment*100,recurring:true});
-return{items:items,mode:'subscription',installment:installment,down:down,planLabel:planLabel,totalWithFee:down+balWithFee,trialDays:28};
 }
 document.addEventListener('DOMContentLoaded',function(){
 $i('sidebar').style.display='none';
