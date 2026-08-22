@@ -235,19 +235,19 @@
 <h1 class="h1">Ways To Pay</h1>
 <p class="sub">Nothing is charged online. Your launch strategist finalizes your build and your payment plan with you on your strategy call.</p>
 <div class="pp-grid" style="margin-bottom:28px">
-<div class="pp-card pp-best" style="cursor:default">
+<div class="pp-card pp-best" onclick="ppPick(this)"><div class="pp-ck">✓</div>
 <span class="pp-badge pp-b-best">Most Popular</span>
 <div class="pp-name">Pay In Full</div>
 <div class="pp-amount" id="ppFullAmt">$0</div>
 <div class="pp-detail">One payment. Fastest path to launch with <strong>priority scheduling</strong>.</div>
 </div>
-<div class="pp-card" style="cursor:default">
+<div class="pp-card" onclick="ppPick(this)"><div class="pp-ck">✓</div>
 <span class="pp-badge pp-b-flex">Flexible</span>
 <div class="pp-name">Split Pay</div>
 <div class="pp-amount" style="font-size:18px;padding:3px 0">Deposit + Balance</div>
 <div class="pp-detail">Start your build with a deposit today, pay the balance on a simple schedule.</div>
 </div>
-<div class="pp-card" style="cursor:default">
+<div class="pp-card" onclick="ppPick(this)"><div class="pp-ck">✓</div>
 <span class="pp-badge pp-b-fin">Available</span>
 <div class="pp-name">Financing</div>
 <div class="pp-amount" style="font-size:18px;padding:3px 0">Monthly Payments</div>
@@ -258,7 +258,7 @@
 <div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--p);margin-bottom:6px">What Happens Next</div>
 <p style="font-size:14px;color:#555;line-height:1.6;margin:0">Book your free strategy call. A launch strategist will review your build, walk through your payment options, and map your launch timeline with you.</p>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><a class="btn btn-p" href="https://link.lumifunnels.com/widget/bookings/growproprequalification" target="_top" style="text-decoration:none">Book My Strategy Call →</a></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(4)">← Back</button><div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end"><a class="btn btn-s" href="https://kss-build-desk.vercel.app" target="_blank" rel="noopener" style="text-decoration:none">Go to Build Desk</a><a class="btn btn-p" href="https://link.lumifunnels.com/widget/bookings/growproprequalification" target="_top" style="text-decoration:none">Book My Strategy Call →</a></div></div>
 </div>
 </div>
 <aside class="side" id="sidebar"><div class="sc">
@@ -505,6 +505,7 @@ if(pkgPreSelected){goTo(2);return;}
 if(pkg==='template'){goTo('1b');return}
 goTo(2);
 }
+function ppPick(el){$q('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});el.classList.add('pp-sel');}
 function goTo(s){
 if(s==='1b'){
 $q('.sec').forEach(function(x){x.classList.remove('active')});
