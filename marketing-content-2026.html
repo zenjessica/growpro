@@ -184,12 +184,19 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="ck">✓</div>
 <span class="bdg b-pop">Add-On</span>
 <h3 class="ct">YouTube Shorts</h3>
-<div class="cp"><span class="ap">+$1,000</span><span class="sx">/mo</span></div>
+<div class="cp"><span class="ap" id="ytPrice">+$1,000</span><span class="sx">/mo</span></div>
 <p class="cd">YouTube Shorts editing and posting, layered on top of any package. Your existing content, cut and published as Shorts.</p>
 <ul class="cl">
-<li>15 Shorts per month</li>
+<li>10 Shorts per month included</li>
 <li>Editing from your content, posting, channel upkeep</li>
 </ul>
+<div class="stepper">
+<button type="button" onclick="event.stopPropagation();ytStep(-1)">&minus;</button>
+<input id="ytQty" type="number" min="10" value="10" onclick="event.stopPropagation()" oninput="ytSet()">
+<span class="su">Shorts / mo</span>
+<button type="button" onclick="event.stopPropagation();ytStep(1)">+</button>
+</div>
+<div class="steplbl">$1,000/mo for 10 Shorts, +$125/mo per additional Short.</div>
 </div>
 <div class="c csm" id="blogCard" data-item="blogs" data-type="monthly" onclick="togItem(this)">
 <div class="ck">✓</div>
@@ -274,6 +281,16 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="mbe" id="mExp"></div>
 </div>
 
+<div id="mkToolbar" style="max-width:900px;margin:30px auto 8px;padding:18px 20px;background:#0D1B2A;border-radius:14px">
+<div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;color:#8B7EC8;font-weight:800;padding-bottom:10px">CLOSER TOOLBAR &middot; INTERNAL &middot; CREATE THE CLIENT PROPOSAL</div>
+<div style="display:flex;gap:10px;flex-wrap:wrap">
+<input id="mkClient" placeholder="Client full name" style="flex:1;min-width:180px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
+<input id="mkEmail" placeholder="Client email" style="flex:1;min-width:200px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
+<input id="mkCode" type="password" placeholder="Your closer code" style="width:170px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
+<button type="button" onclick="mkProposal(this)" style="padding:11px 20px;border-radius:10px;border:none;background:#8B7EC8;color:#fff;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">Create Marketing Proposal</button>
+</div>
+<div id="mkOut" style="margin-top:10px;font-size:13px;color:#B9AEED;line-height:1.6;word-break:break-all"></div>
+</div>
 <div style="max-width:900px;margin:26px auto 4px;padding:14px 18px;background:#F8F6FF;border:1.5px solid #E5E5EA;border-radius:12px;font-size:13px;color:#555;line-height:1.6"><b style="color:#5F4FB3">Human influencer campaigns and full-length YouTube editing:</b> offered case by case. Inquire with your Account Management Team for availability and pricing.</div>
 <footer class="ft"><div class="wrap">
 All plans are month-to-month recurring subscriptions, cancel with 14 days written notice. Ad spend is never included in any package. No performance results are guaranteed or implied. Internal pricing reference for GrowPro by Kickstart Social LLC. Pricing subject to change.
@@ -288,6 +305,7 @@ var BLOG_MIN=10,BLOG_PRICE=100;
 var avatarCount=10;        // AI avatars in Content Engine (min 10 included)
 var AV_MIN=10,AV_EXTRA=400;  // +$400/mo per avatar beyond 10
 var brandCount=1;           // multi-brand: 5% off each additional brand, cap 15%
+var ytCount=10; var YT_MIN=10, YT_BASE=1000, YT_EXTRA=125;
 
 var itemNames={
   pkg_social:"Social Engine",
@@ -359,6 +377,10 @@ function syncAv(){
   document.getElementById('contentPrice').textContent=fmt(6500+(avatarCount-AV_MIN)*AV_EXTRA);
   updateTally();
 }
+/* YouTube Shorts stepper */
+function ytStep(d){ytCount=Math.max(YT_MIN,ytCount+d);ensureSelected('youtube_shorts');syncYt();}
+function ytSet(){var v=parseInt(document.getElementById('ytQty').value,10);if(isNaN(v)||v<YT_MIN)v=YT_MIN;ytCount=v;ensureSelected('youtube_shorts');syncYt();}
+function syncYt(){document.getElementById('ytQty').value=ytCount;document.getElementById('ytPrice').textContent='+'+fmt(YT_BASE+(ytCount-YT_MIN)*YT_EXTRA);updateTally();}
 /* Brand stepper: brand 1 full price, brand 2 at 95%, brand 3 at 90%, 4+ at 85% */
 function brandFactor(){
   var f=0;
@@ -376,6 +398,7 @@ function syncBrand(){
 function itemPrice(item){
   if(item==='blogs') return blogCount*BLOG_PRICE;
   if(item==='pkg_content') return 6500+(avatarCount-AV_MIN)*AV_EXTRA;
+  if(item==='youtube_shorts') return YT_BASE+(ytCount-YT_MIN)*YT_EXTRA;
   var c=cardFor(item);
   return c?parseInt(c.dataset.price,10):0;
 }
@@ -403,6 +426,7 @@ function lineItems(){
     var label=itemNames[item]||item;
     if(item==='blogs') label='SEO Blogs ('+blogCount+'/mo)';
     if(item==='pkg_content') label='Content Engine ('+avatarCount+' AI avatars)';
+    if(item==='youtube_shorts') label='YouTube Shorts ('+ytCount+'/mo)';
     rows.push({label:label,price:price,suffix:type==='monthly'?'/mo':''});
     if(c.dataset.onetime) rows.push({label:itemNames[item]+' setup',price:parseInt(c.dataset.onetime,10),suffix:''});
   });
@@ -451,6 +475,49 @@ function updateTally(){
   reportHeightToParent();
 }
 
+
+/* CLOSER TOOLBAR: mints one Whop subscription per brand + one-time link,
+   creates the pipeline deal, builds the terms-gated client proposal URL. */
+var CHECKOUT='https://kss-build-desk.vercel.app/api/checkout';
+var PIPE='https://kss-build-desk.vercel.app/api/pipeline';
+function b64u(str){return btoa(unescape(encodeURIComponent(str))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=+$/,'');}
+function mkProposal(btn){
+  var client=(document.getElementById('mkClient').value||'').trim();
+  var email=(document.getElementById('mkEmail').value||'').trim();
+  var code=(document.getElementById('mkCode').value||'').trim();
+  var out=document.getElementById('mkOut');
+  var t=calcTotals();
+  if(!client||!email||!code){out.textContent='Fill client name, email, and your closer code first.';return;}
+  if(selected.length===0||t.baseMo<=0){out.textContent='Select at least one monthly package first.';return;}
+  btn.disabled=true;out.textContent='Minting subscription link'+(brandCount>1?'s':'')+' and creating the deal...';
+  var rung=selected.filter(function(x){return x.indexOf('pkg_')===0})[0]||'pkg_social';
+  var rungName=itemNames[rung]||'Marketing';
+  var jobs=[];
+  for(var i=1;i<=brandCount;i++){
+    (function(i){
+      var m=i===1?1:i===2?0.95:i===3?0.90:0.85;
+      var amt=Math.round(t.baseMo*m);
+      jobs.push(fetch(CHECKOUT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,amount:amt,kind:'marketing_recurring',client:client,build:rungName+' brand '+i+'/'+brandCount})}).then(function(r){return r.json()}).then(function(j){return {i:i,amt:amt,link:j.link,err:j.error}}));
+    })(i);
+  }
+  if(t.ot>0){jobs.push(fetch(CHECKOUT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,amount:t.ot,kind:'marketing_onetime',client:client,build:rungName+' one-time items'})}).then(function(r){return r.json()}).then(function(j){return {onetime:true,link:j.link,err:j.error}}));}
+  Promise.all(jobs).then(function(res){
+    var bad=res.filter(function(x){return !x.link});
+    if(bad.length){btn.disabled=false;out.textContent='Link minting failed: '+(bad[0].err||'unknown')+'. Check your code and try again.';return;}
+    var subs=res.filter(function(x){return !x.onetime}).map(function(x){return [rungName+(brandCount>1?' - Brand '+x.i:''),x.amt,x.link]});
+    var otl=(res.filter(function(x){return x.onetime})[0]||{}).link||'';
+    return fetch(PIPE,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'create',c:code,lead:{client_name:client,email:email,build_label:'Marketing: '+rungName+(brandCount>1?' x'+brandCount+' brands':''),amount_cents:Math.round(t.mo*100),source:'marketing-builder',payment_structure:'recurring monthly'}})}).then(function(r){return r.json()}).then(function(deal){
+      var id=deal&&(deal.id||(deal.proposal&&deal.proposal.id));
+      var payload={c:client,cl:'',id:id?String(id):'',brands:brandCount,mo:t.mo,ot:t.ot,otl:otl,subs:subs,lines:lineItems().map(function(r){return [r.label,r.price,r.suffix]})};
+      var url='https://kss-build-desk.vercel.app/marketing-proposal.html#'+b64u(JSON.stringify(payload));
+      if(id){fetch(PIPE,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'update',c:code,id:id,patch:{proposal_url:url}})}).catch(function(){});}
+      out.innerHTML='<b style="color:#34C759">Proposal ready'+(id?' and tracked in the pipeline (deal '+id+')':'')+'.</b><br><a href="'+url+'" target="_blank" rel="noopener" style="color:#7FE7DC">Open proposal</a> &middot; <button type="button" id="mkCopyBtn" style="background:#34C759;border:none;color:#fff;border-radius:8px;padding:4px 12px;font-weight:800;cursor:pointer;font-family:inherit">Copy link</button>';
+      document.getElementById('mkCopyBtn').onclick=function(){var b=this;navigator.clipboard.writeText(url).then(function(){b.textContent='Copied!';});};
+      btn.disabled=false;
+    });
+  }).catch(function(e){btn.disabled=false;out.textContent='Network error: '+e.message;});
+}
+
 function togMB(){document.getElementById('mBar').classList.toggle('exp');}
 
 /* Broadcast content height so the Webflow iframe wrapper can auto-resize. */
@@ -469,6 +536,7 @@ if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(d
 document.addEventListener('DOMContentLoaded',function(){
   syncBlog();      // sets initial blog price label
   syncAv();        // sets initial avatar price label
+  syncYt();        // sets initial shorts price label
   syncBrand();     // sets initial brand label and tally
 });
 </script>
