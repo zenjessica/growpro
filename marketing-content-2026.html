@@ -67,6 +67,9 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .stepper button:hover{background:var(--pb)}
 .stepper input{width:72px;height:38px;text-align:center;font-size:16px;font-weight:700;font-family:'Inter',sans-serif;border:2px solid var(--gbd);border-radius:8px;color:var(--n)}
 .stepper .su{font-size:13px;color:#888}
+.avtier{text-align:left;border:1.5px solid var(--gbd,#E5E5EA);background:#fff;border-radius:10px;padding:8px 12px;font-size:12px;font-weight:700;color:#555;cursor:pointer;font-family:inherit;transition:all .2s}
+.avtier:hover{border-color:var(--p)}
+.avtier.on{border-color:var(--p);background:var(--pb,#F4F2FA);color:var(--p)}
 .steplbl{font-size:12px;color:#999;margin-top:6px}
 .side{width:340px;flex-shrink:0;position:sticky;top:96px;align-self:flex-start;display:none}
 @media(min-width:1024px){.side{display:block}}
@@ -139,21 +142,14 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="ck">✓</div>
 <span class="bdg b-core">Most Popular</span>
 <h3 class="ct">Content Engine</h3>
-<div class="cp"><span class="ap" id="contentPrice">$6,500</span><span class="sx">/mo</span></div>
-<p class="cd">Everything in Social Engine, plus AI avatars producing your creative. You never film a thing.</p>
-<ul class="cl">
-<li>Everything in Social Engine</li>
-<li>AI avatars drive your content</li>
-<li>Fast creative testing and turnaround</li>
-</ul>
-<div class="stepper">
-<button type="button" onclick="event.stopPropagation();avStep(-1)">&minus;</button>
-<input id="avQty" type="number" min="10" value="10" onclick="event.stopPropagation()" oninput="avSet()">
-<span class="su">AI avatars</span>
-<button type="button" onclick="event.stopPropagation();avStep(1)">+</button>
+<div class="cp"><span class="ap" id="contentPrice">$2,500</span><span class="sx">/mo + avatar package</span></div>
+<p class="cd">Everything in Social Engine, plus your AI Avatar package producing the creative. You never film a thing. Pick the package that matches the avatar page:</p>
+<div style="display:flex;flex-direction:column;gap:6px;margin:10px 0" onclick="event.stopPropagation()">
+<button type="button" class="avtier" data-tier="starter" onclick="avPick('starter')">Starter &middot; $3,500 one-time &middot; 4 avatars, 12 videos</button>
+<button type="button" class="avtier on" data-tier="growth" onclick="avPick('growth')">Growth &middot; $9,500 one-time &middot; 6 avatars, 30 videos</button>
+<button type="button" class="avtier" data-tier="authority" onclick="avPick('authority')">Authority &middot; $18,500 setup + $4,500/mo &middot; 12 avatars, 60 videos + 20/mo</button>
 </div>
-<div class="steplbl">10 avatars included. Additional avatars +$400/mo each.</div>
-<div class="steplbl"><a href="https://launch.kickstartsocial.co/avatar" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">See how the avatars work &rarr;</a></div>
+<div class="steplbl"><a href="https://launch.kickstartsocial.co/avatar" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">Full avatar package details &rarr;</a></div>
 </div>
 
 <div class="c" data-item="pkg_fullstack" data-price="24500" data-type="monthly" data-group="rung" onclick="togItem(this)">
@@ -302,8 +298,12 @@ All plans are month-to-month recurring subscriptions, cancel with 14 days writte
 var selected=[];           // list of data-item keys currently selected
 var blogCount=10;          // SEO blogs quantity (min 10), $100/blog/mo
 var BLOG_MIN=10,BLOG_PRICE=100;
-var avatarCount=10;        // AI avatars in Content Engine (min 10 included)
-var AV_MIN=10,AV_EXTRA=400;  // +$400/mo per avatar beyond 10
+var avTier='growth';       // Content Engine avatar package, mirrors the /avatar page
+var AV_TIERS={
+  starter:{ot:3500,mo:0,label:'Avatar Starter (4 avatars, 12 videos)'},
+  growth:{ot:9500,mo:0,label:'Avatar Growth (6 avatars, 30 videos)'},
+  authority:{ot:18500,mo:4500,label:'Avatar Authority (12 avatars, 60 + 20/mo)'}
+};
 var brandCount=1;           // multi-brand: 5% off each additional brand, cap 15%
 var ytCount=10; var YT_MIN=10, YT_BASE=1000, YT_EXTRA=125;
 
@@ -369,12 +369,16 @@ function syncBlog(){
   updateTally();
 }
 
-/* Avatar stepper (Content Engine) */
-function avStep(d){avatarCount=Math.max(AV_MIN,avatarCount+d);ensureSelected('pkg_content');syncAv();}
-function avSet(){var v=parseInt(document.getElementById('avQty').value,10);if(isNaN(v)||v<AV_MIN)v=AV_MIN;avatarCount=v;ensureSelected('pkg_content');syncAv();}
+/* Avatar tier picker (Content Engine), mirrors the /avatar page packages */
+function avPick(t){
+  avTier=t;
+  document.querySelectorAll('.avtier').forEach(function(b){b.classList.toggle('on',b.dataset.tier===t);});
+  ensureSelected('pkg_content');
+  syncAv();
+}
 function syncAv(){
-  document.getElementById('avQty').value=avatarCount;
-  document.getElementById('contentPrice').textContent=fmt(6500+(avatarCount-AV_MIN)*AV_EXTRA);
+  var tier=AV_TIERS[avTier];
+  document.getElementById('contentPrice').textContent=fmt(2500+tier.mo);
   updateTally();
 }
 /* YouTube Shorts stepper */
@@ -397,7 +401,7 @@ function syncBrand(){
 
 function itemPrice(item){
   if(item==='blogs') return blogCount*BLOG_PRICE;
-  if(item==='pkg_content') return 6500+(avatarCount-AV_MIN)*AV_EXTRA;
+  if(item==='pkg_content') return 2500+AV_TIERS[avTier].mo;
   if(item==='youtube_shorts') return YT_BASE+(ytCount-YT_MIN)*YT_EXTRA;
   var c=cardFor(item);
   return c?parseInt(c.dataset.price,10):0;
@@ -410,8 +414,8 @@ function calcTotals(){
     var type=c.dataset.type;
     if(type==='monthly') mo+=itemPrice(item);
     else ot+=itemPrice(item);
-    // monthly items may carry a one-time setup fee (e.g. Email Marketing)
     if(c.dataset.onetime) ot+=parseInt(c.dataset.onetime,10);
+    if(item==='pkg_content') ot+=AV_TIERS[avTier].ot;
   });
   var baseMo=mo;
   mo=Math.round(mo*brandFactor());
@@ -425,9 +429,10 @@ function lineItems(){
     var type=c.dataset.type,price=itemPrice(item);
     var label=itemNames[item]||item;
     if(item==='blogs') label='SEO Blogs ('+blogCount+'/mo)';
-    if(item==='pkg_content') label='Content Engine ('+avatarCount+' AI avatars)';
+    if(item==='pkg_content') label='Content Engine (Social + avatars)';
     if(item==='youtube_shorts') label='YouTube Shorts ('+ytCount+'/mo)';
     rows.push({label:label,price:price,suffix:type==='monthly'?'/mo':''});
+    if(item==='pkg_content') rows.push({label:AV_TIERS[avTier].label,price:AV_TIERS[avTier].ot,suffix:' one-time'});
     if(c.dataset.onetime) rows.push({label:itemNames[item]+' setup',price:parseInt(c.dataset.onetime,10),suffix:''});
   });
   return rows;
