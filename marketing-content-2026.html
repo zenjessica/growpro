@@ -121,7 +121,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 
 <div class="gh">The Packages (pick one)</div>
-<div class="grid g3">
+<div class="grid g2">
 
 <div class="c" data-item="pkg_social" data-price="2500" data-type="monthly" data-group="rung" onclick="togItem(this)">
 <div class="ck">✓</div>
@@ -136,20 +136,6 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <li>Posting and scheduling, done for you</li>
 <li>Organic only. Ad spend never included.</li>
 </ul>
-</div>
-
-<div class="c" data-item="pkg_content" data-price="6500" data-type="monthly" data-group="rung" onclick="togItem(this)">
-<div class="ck">✓</div>
-<span class="bdg b-core">Most Popular</span>
-<h3 class="ct">Content Engine</h3>
-<div class="cp"><span class="ap" id="contentPrice">$2,500</span><span class="sx">/mo + avatar package</span></div>
-<p class="cd">Everything in Social Engine, plus your AI Avatar package producing the creative. You never film a thing. Pick the package that matches the avatar page:</p>
-<div style="display:flex;flex-direction:column;gap:6px;margin:10px 0" onclick="event.stopPropagation()">
-<button type="button" class="avtier" data-tier="starter" onclick="avPick('starter')">Starter &middot; $3,500 one-time &middot; 4 avatars, 12 videos</button>
-<button type="button" class="avtier on" data-tier="growth" onclick="avPick('growth')">Growth &middot; $9,500 one-time &middot; 6 avatars, 30 videos</button>
-<button type="button" class="avtier" data-tier="authority" onclick="avPick('authority')">Authority &middot; $18,500 setup + $4,500/mo &middot; 12 avatars, 60 videos + 20/mo</button>
-</div>
-<div class="steplbl"><a href="https://launch.kickstartsocial.co/avatar" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">Full avatar package details &rarr;</a></div>
 </div>
 
 <div class="c" data-item="pkg_fullstack" data-price="24500" data-type="monthly" data-group="rung" onclick="togItem(this)">
@@ -170,6 +156,31 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 
 <!-- ADD-ONS -->
+<div class="gh">AI Avatar Packages (pick one, optional)</div>
+<p class="sub" style="margin-bottom:14px">Your creative engine: custom AI avatars producing the content. Most brands pair <b>Growth</b> with Social Engine. Avatar packages are per brand and quoted once here; packages for additional brands are quoted separately. <a href="https://launch.kickstartsocial.co/avatar" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">Full avatar details &rarr;</a></p>
+<div class="grid g3">
+<div class="c csm" data-item="av_starter" data-price="3500" data-type="onetime" data-group="avatar" onclick="togItem(this)">
+<div class="ck">✓</div>
+<h3 class="ct">Avatar Starter</h3>
+<div class="cp"><span class="ap">$3,500</span><span class="sx">one-time</span></div>
+<ul class="cl"><li>4 custom AI avatars</li><li>12 videos total</li><li>Test the model, validate hooks</li></ul>
+</div>
+<div class="c csm" data-item="av_growth" data-price="9500" data-type="onetime" data-group="avatar" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-pop">Most Popular</span>
+<h3 class="ct">Avatar Growth</h3>
+<div class="cp"><span class="ap">$9,500</span><span class="sx">one-time</span></div>
+<ul class="cl"><li>6 custom AI avatars</li><li>30 videos total</li><li>Full funnel coverage</li></ul>
+</div>
+<div class="c csm" data-item="av_authority" data-price="4500" data-type="monthly" data-onetime="18500" data-nobrand="1" data-group="avatar" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-hv">Recurring Engine</span>
+<h3 class="ct">Avatar Authority</h3>
+<div class="cp"><span class="ap">$18,500</span><span class="sx">setup + $4,500/mo</span></div>
+<ul class="cl"><li>12 custom AI avatars</li><li>60 videos upfront + 20/mo</li><li>Monthly performance review</li></ul>
+</div>
+</div>
+
 <div style="background:#FFF1F4;border:2px solid #F4A6B8;border-radius:12px;padding:16px 20px;margin:6px 0 22px">
 <div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;color:#D6336C;font-weight:800;padding-bottom:6px">THE PLATFORM REALITY CHECK &#128149;</div>
 <div style="font-size:13.5px;line-height:1.7;color:#7A2E42">We take EVERY community guideline and every posting precaution the platforms publish. And still, the platforms do what the platforms do. <b>We are not responsible if an account gets restricted or banned.</b> And the straight-talk part: <b>if your account gets brought down, you still pay for that month. No exceptions.</b> If that does not work for you, you are more than welcome to post it all yourself. &#128139;</div>
@@ -298,18 +309,15 @@ All plans are month-to-month recurring subscriptions, cancel with 14 days writte
 var selected=[];           // list of data-item keys currently selected
 var blogCount=10;          // SEO blogs quantity (min 10), $100/blog/mo
 var BLOG_MIN=10,BLOG_PRICE=100;
-var avTier='growth';       // Content Engine avatar package, mirrors the /avatar page
-var AV_TIERS={
-  starter:{ot:3500,mo:0,label:'Avatar Starter (4 avatars, 12 videos)'},
-  growth:{ot:9500,mo:0,label:'Avatar Growth (6 avatars, 30 videos)'},
-  authority:{ot:18500,mo:4500,label:'Avatar Authority (12 avatars, 60 + 20/mo)'}
-};
+
 var brandCount=1;           // multi-brand: 5% off each additional brand, cap 15%
 var ytCount=10; var YT_MIN=10, YT_BASE=1000, YT_EXTRA=125;
 
 var itemNames={
   pkg_social:"Social Engine",
-  pkg_content:"Content Engine",
+  av_starter:"Avatar Starter (4 avatars, 12 videos)",
+  av_growth:"Avatar Growth (6 avatars, 30 videos)",
+  av_authority:"Avatar Authority (12 avatars, 60 + 20/mo)",
   pkg_fullstack:"Full Stack (90-day build phase)",
   youtube_shorts:"YouTube Shorts (editing + posting)",
   blogs:"SEO Blogs",
@@ -369,18 +377,7 @@ function syncBlog(){
   updateTally();
 }
 
-/* Avatar tier picker (Content Engine), mirrors the /avatar page packages */
-function avPick(t){
-  avTier=t;
-  document.querySelectorAll('.avtier').forEach(function(b){b.classList.toggle('on',b.dataset.tier===t);});
-  ensureSelected('pkg_content');
-  syncAv();
-}
-function syncAv(){
-  var tier=AV_TIERS[avTier];
-  document.getElementById('contentPrice').textContent=fmt(2500+tier.mo);
-  updateTally();
-}
+
 /* YouTube Shorts stepper */
 function ytStep(d){ytCount=Math.max(YT_MIN,ytCount+d);ensureSelected('youtube_shorts');syncYt();}
 function ytSet(){var v=parseInt(document.getElementById('ytQty').value,10);if(isNaN(v)||v<YT_MIN)v=YT_MIN;ytCount=v;ensureSelected('youtube_shorts');syncYt();}
@@ -401,25 +398,22 @@ function syncBrand(){
 
 function itemPrice(item){
   if(item==='blogs') return blogCount*BLOG_PRICE;
-  if(item==='pkg_content') return 2500+AV_TIERS[avTier].mo;
   if(item==='youtube_shorts') return YT_BASE+(ytCount-YT_MIN)*YT_EXTRA;
   var c=cardFor(item);
   return c?parseInt(c.dataset.price,10):0;
 }
 
 function calcTotals(){
-  var ot=0,mo=0;
+  var ot=0,moBrand=0,moFlat=0;
   selected.forEach(function(item){
     var c=cardFor(item);if(!c) return;
     var type=c.dataset.type;
-    if(type==='monthly') mo+=itemPrice(item);
+    if(type==='monthly'){ if(c.dataset.nobrand) moFlat+=itemPrice(item); else moBrand+=itemPrice(item); }
     else ot+=itemPrice(item);
     if(c.dataset.onetime) ot+=parseInt(c.dataset.onetime,10);
-    if(item==='pkg_content') ot+=AV_TIERS[avTier].ot;
   });
-  var baseMo=mo;
-  mo=Math.round(mo*brandFactor());
-  return {ot:ot,mo:mo,baseMo:baseMo};
+  var mo=Math.round(moBrand*brandFactor())+moFlat;
+  return {ot:ot,mo:mo,baseMo:moBrand,moFlat:moFlat};
 }
 
 function lineItems(){
@@ -429,10 +423,8 @@ function lineItems(){
     var type=c.dataset.type,price=itemPrice(item);
     var label=itemNames[item]||item;
     if(item==='blogs') label='SEO Blogs ('+blogCount+'/mo)';
-    if(item==='pkg_content') label='Content Engine (Social + avatars)';
     if(item==='youtube_shorts') label='YouTube Shorts ('+ytCount+'/mo)';
     rows.push({label:label,price:price,suffix:type==='monthly'?'/mo':''});
-    if(item==='pkg_content') rows.push({label:AV_TIERS[avTier].label,price:AV_TIERS[avTier].ot,suffix:' one-time'});
     if(c.dataset.onetime) rows.push({label:itemNames[item]+' setup',price:parseInt(c.dataset.onetime,10),suffix:''});
   });
   return rows;
@@ -505,11 +497,13 @@ function mkProposal(btn){
       jobs.push(fetch(CHECKOUT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,amount:amt,kind:'marketing_recurring',client:client,build:rungName+' brand '+i+'/'+brandCount})}).then(function(r){return r.json()}).then(function(j){return {i:i,amt:amt,link:j.link,err:j.error}}));
     })(i);
   }
+  if(selected.indexOf('av_authority')>-1){jobs.push(fetch(CHECKOUT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,amount:4500,kind:'marketing_recurring',client:client,build:'Avatar Authority ongoing'})}).then(function(r){return r.json()}).then(function(j){return {flat:'Avatar Authority (ongoing)',amt:4500,link:j.link,err:j.error}}));}
   if(t.ot>0){jobs.push(fetch(CHECKOUT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,amount:t.ot,kind:'marketing_onetime',client:client,build:rungName+' one-time items'})}).then(function(r){return r.json()}).then(function(j){return {onetime:true,link:j.link,err:j.error}}));}
   Promise.all(jobs).then(function(res){
     var bad=res.filter(function(x){return !x.link});
     if(bad.length){btn.disabled=false;out.textContent='Could not create the links: '+(bad[0].err||'unknown')+'. Check your access code and try again.';return;}
-    var subs=res.filter(function(x){return !x.onetime}).map(function(x){return [rungName+(brandCount>1?' - Brand '+x.i:''),x.amt,x.link]});
+    var subs=res.filter(function(x){return !x.onetime&&!x.flat}).map(function(x){return [rungName+(brandCount>1?' - Brand '+x.i:''),x.amt,x.link]});
+    res.filter(function(x){return x.flat}).forEach(function(x){subs.push([x.flat,x.amt,x.link]);});
     var otl=(res.filter(function(x){return x.onetime})[0]||{}).link||'';
     return fetch(PIPE,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'create',c:code,lead:{client_name:client,email:email,build_label:'Marketing: '+rungName+(brandCount>1?' x'+brandCount+' brands':''),amount_cents:Math.round(t.mo*100),source:'marketing-builder',payment_structure:'recurring monthly'}})}).then(function(r){return r.json()}).then(function(deal){
       var id=deal&&(deal.id||(deal.proposal&&deal.proposal.id));
@@ -556,7 +550,6 @@ if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(d
 
 document.addEventListener('DOMContentLoaded',function(){
   syncBlog();      // sets initial blog price label
-  syncAv();        // sets initial avatar price label
   syncYt();        // sets initial shorts price label
   syncBrand();     // sets initial brand label and tally
 });
