@@ -511,7 +511,11 @@ function mkProposal(btn){
       var payload={c:client,cl:'',id:id?String(id):'',brands:brandCount,mo:t.mo,ot:t.ot,otl:otl,subs:subs,lines:lineItems().map(function(r){return [r.label,r.price,r.suffix]})};
       var url='https://kss-build-desk.vercel.app/marketing-proposal.html#'+b64u(JSON.stringify(payload));
       if(id){fetch(PIPE,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'update',c:code,id:id,patch:{proposal_url:url}})}).catch(function(){});}
-      out.innerHTML='<b style="color:#34C759">Proposal ready'+(id?' and tracked in the pipeline (deal '+id+')':'')+'.</b><br><a href="'+url+'" target="_blank" rel="noopener" style="color:#7FE7DC">Open proposal</a> &middot; <button type="button" id="mkCopyBtn" style="background:#34C759;border:none;color:#fff;border-radius:8px;padding:4px 12px;font-weight:800;cursor:pointer;font-family:inherit">Copy link</button>';
+      var linksHtml='';
+      subs.forEach(function(sb){linksHtml+='<div style="margin-top:4px;font-size:12px">'+sb[0]+' &middot; $'+sb[1].toLocaleString()+'/mo &middot; <a href="'+sb[2]+'" target="_blank" rel="noopener" style="color:#7FE7DC">direct payment link</a></div>';});
+      if(otl){linksHtml+='<div style="margin-top:4px;font-size:12px">One-time items &middot; <a href="'+otl+'" target="_blank" rel="noopener" style="color:#7FE7DC">direct payment link</a></div>';}
+      out.innerHTML='<b style="color:#34C759">Proposal ready'+(id?' and tracked in the pipeline (deal '+id+')':'')+'.</b><br><a href="'+url+'" target="_blank" rel="noopener" style="color:#7FE7DC;font-weight:800">Open proposal</a> &middot; <button type="button" id="mkCopyBtn" style="background:#34C759;border:none;color:#fff;border-radius:8px;padding:4px 12px;font-weight:800;cursor:pointer;font-family:inherit">Copy proposal link</button>'
+        +'<div style="margin-top:8px;font-size:11px;letter-spacing:1.5px;color:#8B7EC8;font-weight:800">RAW PAYMENT LINKS (send the proposal instead, it carries the terms)</div>'+linksHtml;
       document.getElementById('mkCopyBtn').onclick=function(){var b=this;navigator.clipboard.writeText(url).then(function(){b.textContent='Copied!';});};
       btn.disabled=false;
     });
