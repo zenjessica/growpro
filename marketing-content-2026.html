@@ -105,56 +105,88 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="main"><div class="ca">
 
 <!-- MONTHLY PACKAGES (multi-select, no forced selection) -->
-<div class="gh">Monthly Packages</div>
-<div class="grid g3">
-
-<div class="c" data-item="pkg_core" data-price="4500" data-type="monthly" onclick="togItem(this)">
-<div class="ck">✓</div>
-<span class="bdg b-core">AI Avatars</span>
-<h3 class="ct">Core</h3>
-<div class="cp"><span class="ap">$4,500</span><span class="sx">/mo (90-day)</span></div>
-<p class="cd">Speed-to-market creative engine. AI avatars drive your content so you can test angles and turn creative around fast.</p>
-<ul class="cl">
-<li>10 AI avatars included</li>
-<li>AI-generated creative and graphics</li>
-<li>Fast creative testing and turnaround</li>
-<li>Built for speed-to-market</li>
-</ul>
+<div class="gh">How Many Brands?</div>
+<div class="c csm" style="cursor:default">
+<p class="cd" style="margin-bottom:8px">Running more than one brand? Each additional brand gets 5% off its monthly stack (5% off brand two, 10% off brand three, capped at 15% for brand four and beyond). One-time items are quoted once.</p>
+<div class="stepper">
+<button type="button" onclick="brStep(-1)">&minus;</button>
+<input id="brandQty" type="number" min="1" max="10" value="1" oninput="brSet()">
+<span class="su">brand(s)</span>
+<button type="button" onclick="brStep(1)">+</button>
+</div>
+<div class="steplbl" id="brandLbl">Single brand pricing.</div>
 </div>
 
-<div class="c" data-item="pkg_social" data-price="2500" data-type="monthly" onclick="togItem(this)">
+<div class="gh">The Packages (pick one)</div>
+<div class="grid g3">
+
+<div class="c" data-item="pkg_social" data-price="2500" data-type="monthly" data-group="rung" onclick="togItem(this)">
 <div class="ck">✓</div>
-<span class="bdg b-pop">Organic</span>
-<h3 class="ct">Organic Social</h3>
+<span class="bdg b-pop">Take It Or Leave It</span>
+<h3 class="ct">Social Engine</h3>
 <div class="cp"><span class="ap">$2,500</span><span class="sx">/mo</span></div>
-<p class="cd">Full organic social management across every major platform. Organic only, no paid spend, no ad management.</p>
+<p class="cd">Organic social, completely done for you. Month to month, cancel anytime.</p>
 <ul class="cl">
 <li>TikTok, Instagram, Facebook</li>
 <li>Threads, LinkedIn, Pinterest</li>
 <li>20 total posts per month across all platforms</li>
-<li>Posting, community, repurposing</li>
-<li>Organic only (no paid ads)</li>
+<li>Posting and scheduling, done for you</li>
+<li>Organic only. Ad spend never included.</li>
 </ul>
 </div>
 
-<div class="c" data-item="youtube_shorts" data-price="1000" data-type="monthly" onclick="togItem(this)">
+<div class="c" data-item="pkg_content" data-price="6500" data-type="monthly" data-group="rung" onclick="togItem(this)">
 <div class="ck">✓</div>
-<span class="bdg b-pop">Add-On to Organic</span>
-<h3 class="ct">YouTube Shorts</h3>
-<div class="cp"><span class="ap">+$1,000</span><span class="sx">/mo</span></div>
-<p class="cd">YouTube Shorts editing and posting, layered on top of Organic Social. Your existing content, cut and published as Shorts.</p>
+<span class="bdg b-core">Most Popular</span>
+<h3 class="ct">Content Engine</h3>
+<div class="cp"><span class="ap" id="contentPrice">$6,500</span><span class="sx">/mo</span></div>
+<p class="cd">Everything in Social Engine, plus AI avatars producing your creative. You never film a thing.</p>
 <ul class="cl">
-<li>Shorts editing from your content</li>
-<li>Posting and channel upkeep</li>
-<li>Pairs with Organic Social</li>
+<li>Everything in Social Engine</li>
+<li>AI avatars drive your content</li>
+<li>Fast creative testing and turnaround</li>
 </ul>
+<div class="stepper">
+<button type="button" onclick="event.stopPropagation();avStep(-1)">&minus;</button>
+<input id="avQty" type="number" min="10" value="10" onclick="event.stopPropagation()" oninput="avSet()">
+<span class="su">AI avatars</span>
+<button type="button" onclick="event.stopPropagation();avStep(1)">+</button>
+</div>
+<div class="steplbl">10 avatars included. Additional avatars +$400/mo each.</div>
+<div class="steplbl"><a href="https://launch.kickstartsocial.co/avatar" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">See how the avatars work &rarr;</a></div>
+</div>
+
+<div class="c" data-item="pkg_fullstack" data-price="14500" data-type="monthly" data-group="rung" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-save">The Mega</span>
+<h3 class="ct">Full Stack</h3>
+<div class="cp"><span class="ap">$14,500</span><span class="sx">/mo, 90-day build phase</span></div>
+<p class="cd">The whole machine: content, conversion, and paid media management for regulated brands that want to own their category.</p>
+<ul class="cl">
+<li>90-day build phase at $14,500/mo</li>
+<li>Then ongoing growth from $24,500/mo</li>
+<li>Google Ads management from +$5,000/mo</li>
+<li>Ad spend always excluded</li>
+</ul>
+<div class="steplbl"><a href="https://launch.kickstartsocial.co/full-stack" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">See the Full Stack &rarr;</a> Phase two is finalized with your strategist.</div>
 </div>
 
 </div>
 
 <!-- ADD-ONS -->
-<div class="gh">Add-On: SEO Blogs</div>
-<div class="grid">
+<div class="gh">Monthly Add-Ons</div>
+<div class="grid g2">
+<div class="c csm" data-item="youtube_shorts" data-price="1000" data-type="monthly" onclick="togItem(this)">
+<div class="ck">✓</div>
+<span class="bdg b-pop">Add-On</span>
+<h3 class="ct">YouTube Shorts</h3>
+<div class="cp"><span class="ap">+$1,000</span><span class="sx">/mo</span></div>
+<p class="cd">YouTube Shorts editing and posting, layered on top of any package. Your existing content, cut and published as Shorts.</p>
+<ul class="cl">
+<li>Shorts editing from your content</li>
+<li>Posting and channel upkeep</li>
+</ul>
+</div>
 <div class="c csm" id="blogCard" data-item="blogs" data-type="monthly" onclick="togItem(this)">
 <div class="ck">✓</div>
 <span class="bdg b-pop">Organic Footprint</span>
@@ -199,25 +231,8 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 </div>
 
-<div class="gh">Add-On: Landing Pages</div>
-<div class="grid">
-<div class="c csm" id="landingCard" data-item="landing" data-type="onetime" onclick="togItem(this)">
-<div class="ck">✓</div>
-<h3 class="ct">Landing Page</h3>
-<div class="cp"><span class="ap" id="landingPrice">+$995</span><span class="sx">each</span></div>
-<p class="cd">Custom landing page for product launches, lead gen, or promo pages. Includes copy, design, and integration.</p>
-<div class="stepper">
-<button type="button" onclick="event.stopPropagation();landingStep(-1)">−</button>
-<input id="landingQty" type="number" min="1" value="1" onclick="event.stopPropagation()" oninput="landingSet()">
-<span class="su">pages</span>
-<button type="button" onclick="event.stopPropagation();landingStep(1)">+</button>
-</div>
-<div class="steplbl">$995 each, minimum 1. Tap the card to add or remove from the quote.</div>
-</div>
-</div>
-
 <div class="gh">Add-On: Conversion &amp; Automation</div>
-<div class="grid g2">
+<div class="grid">
 <div class="c csm" data-item="ai_conversion" data-price="6500" data-type="onetime" onclick="togItem(this)">
 <div class="ck">✓</div><span class="bdg b-core">Proprietary</span>
 <h3 class="ct">AI Conversion Engine</h3>
@@ -228,19 +243,6 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <li>SMS drip campaign</li>
 <li>Automated email drip campaign</li>
 <li>Meta + Google pixel conversion tracking</li>
-</ul>
-</div>
-<div class="c csm" data-item="email" data-price="3000" data-type="monthly" data-onetime="1500" onclick="togItem(this)">
-<div class="ck">✓</div>
-<h3 class="ct">Email Marketing</h3>
-<div class="cp"><span class="ap">+$3,000</span><span class="sx">/mo + $1,500 setup</span></div>
-<p class="cd">Full nurture ecosystem setup and ongoing management. Includes abandoned cart sequences, lead nurture flows, broadcast campaigns, and list segmentation. The $1,500 setup covers initial flow build; $3,000/mo covers ongoing sends and optimization.</p>
-<ul class="cl">
-<li>Abandoned cart recovery sequences</li>
-<li>Lead nurture flows</li>
-<li>Broadcast campaigns and newsletters</li>
-<li>List segmentation and management</li>
-<li>$1,500 one-time flow setup included</li>
 </ul>
 </div>
 </div>
@@ -270,7 +272,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 
 <div style="max-width:900px;margin:26px auto 4px;padding:14px 18px;background:#F8F6FF;border:1.5px solid #E5E5EA;border-radius:12px;font-size:13px;color:#555;line-height:1.6"><b style="color:#5F4FB3">Human influencer campaigns:</b> offered case by case. Inquire with your Account Management Team for availability and pricing.</div>
 <footer class="ft"><div class="wrap">
-Internal pricing reference for GrowPro by Kickstart Social LLC. Not a customer-facing offer. Pricing subject to change.
+All plans are month-to-month recurring subscriptions, cancel with 14 days written notice. Ad spend is never included in any package. No performance results are guaranteed or implied. Internal pricing reference for GrowPro by Kickstart Social LLC. Pricing subject to change.
 </div></footer>
 <script>
 /* GrowPro Internal Marketing Pricing Tool - selection + running tally only.
@@ -279,21 +281,21 @@ Internal pricing reference for GrowPro by Kickstart Social LLC. Not a customer-f
 var selected=[];           // list of data-item keys currently selected
 var blogCount=10;          // SEO blogs quantity (min 10), $100/blog/mo
 var BLOG_MIN=10,BLOG_PRICE=100;
-var landingCount=1;        // Landing pages quantity (min 1), $995 each one-time
-var LANDING_MIN=1,LANDING_PRICE=995;
+var avatarCount=10;        // AI avatars in Content Engine (min 10 included)
+var AV_MIN=10,AV_EXTRA=400;  // +$400/mo per avatar beyond 10
+var brandCount=1;           // multi-brand: 5% off each additional brand, cap 15%
 
 var itemNames={
-  pkg_core:"Core (AI Avatars)",
-  pkg_social:"Organic Social",
+  pkg_social:"Social Engine",
+  pkg_content:"Content Engine",
+  pkg_fullstack:"Full Stack (90-day build phase)",
   youtube_shorts:"YouTube Shorts (editing + posting)",
   blogs:"SEO Blogs",
   quiz_single:"Single Lifestyle Quiz",
   quiz_dual:"Dual Quiz Bundle",
   quiz_triple:"Triple Quiz Bundle",
   extra_quiz:"Additional Quiz Form",
-  landing:"Landing Page",
-  ai_conversion:"AI Conversion Engine",
-  email:"Email Marketing"
+  ai_conversion:"AI Conversion Engine"
 };
 
 function cardFor(item){return document.querySelector('[data-item="'+item+'"]');}
@@ -345,27 +347,31 @@ function syncBlog(){
   updateTally();
 }
 
-function landingStep(d){
-  landingCount=Math.max(LANDING_MIN,landingCount+d);
-  ensureSelected('landing');
-  syncLanding();
+/* Avatar stepper (Content Engine) */
+function avStep(d){avatarCount=Math.max(AV_MIN,avatarCount+d);ensureSelected('pkg_content');syncAv();}
+function avSet(){var v=parseInt(document.getElementById('avQty').value,10);if(isNaN(v)||v<AV_MIN)v=AV_MIN;avatarCount=v;ensureSelected('pkg_content');syncAv();}
+function syncAv(){
+  document.getElementById('avQty').value=avatarCount;
+  document.getElementById('contentPrice').textContent=fmt(6500+(avatarCount-AV_MIN)*AV_EXTRA);
+  updateTally();
 }
-function landingSet(){
-  var v=parseInt(document.getElementById('landingQty').value,10);
-  if(isNaN(v)||v<LANDING_MIN) v=LANDING_MIN;
-  landingCount=v;
-  ensureSelected('landing');
-  syncLanding();
+/* Brand stepper: brand 1 full price, brand 2 at 95%, brand 3 at 90%, 4+ at 85% */
+function brandFactor(){
+  var f=0;
+  for(var i=1;i<=brandCount;i++){f+= i===1?1 : i===2?0.95 : i===3?0.90 : 0.85;}
+  return f;
 }
-function syncLanding(){
-  document.getElementById('landingQty').value=landingCount;
-  document.getElementById('landingPrice').textContent='+'+fmt(LANDING_PRICE);
+function brStep(d){brandCount=Math.max(1,Math.min(10,brandCount+d));syncBrand();}
+function brSet(){var v=parseInt(document.getElementById('brandQty').value,10);if(isNaN(v)||v<1)v=1;if(v>10)v=10;brandCount=v;syncBrand();}
+function syncBrand(){
+  document.getElementById('brandQty').value=brandCount;
+  document.getElementById('brandLbl').textContent=brandCount===1?'Single brand pricing.':(brandCount+' brands: monthly stack repeats per brand with the multi-brand discount (5% off brand two, 10% off brand three, 15% off brand four and up).');
   updateTally();
 }
 
 function itemPrice(item){
   if(item==='blogs') return blogCount*BLOG_PRICE;
-  if(item==='landing') return landingCount*LANDING_PRICE;
+  if(item==='pkg_content') return 6500+(avatarCount-AV_MIN)*AV_EXTRA;
   var c=cardFor(item);
   return c?parseInt(c.dataset.price,10):0;
 }
@@ -380,7 +386,9 @@ function calcTotals(){
     // monthly items may carry a one-time setup fee (e.g. Email Marketing)
     if(c.dataset.onetime) ot+=parseInt(c.dataset.onetime,10);
   });
-  return {ot:ot,mo:mo};
+  var baseMo=mo;
+  mo=Math.round(mo*brandFactor());
+  return {ot:ot,mo:mo,baseMo:baseMo};
 }
 
 function lineItems(){
@@ -390,7 +398,7 @@ function lineItems(){
     var type=c.dataset.type,price=itemPrice(item);
     var label=itemNames[item]||item;
     if(item==='blogs') label='SEO Blogs ('+blogCount+'/mo)';
-    if(item==='landing') label='Landing Page'+(landingCount>1?'s (x'+landingCount+')':'');
+    if(item==='pkg_content') label='Content Engine ('+avatarCount+' AI avatars)';
     rows.push({label:label,price:price,suffix:type==='monthly'?'/mo':''});
     if(c.dataset.onetime) rows.push({label:itemNames[item]+' setup',price:parseInt(c.dataset.onetime,10),suffix:''});
   });
@@ -420,6 +428,11 @@ function updateTally(){
     rows.forEach(function(r){
       h+='<div class="sl"><span class="lb">'+r.label+'</span><span class="vl">'+fmt(r.price)+r.suffix+'</span></div>';
     });
+  }
+  if(rows.length>0&&brandCount>1){
+    var parts=[];for(var i=1;i<=brandCount;i++){var m=i===1?1:i===2?0.95:i===3?0.90:0.85;parts.push('Brand '+i+' '+fmt(Math.round(t.baseMo*m))+'/mo');}
+    h+='<div class="sl"><span class="lb">&times;'+brandCount+' brands (multi-brand discount)</span><span class="vl">&#10003;</span></div>';
+    h+='<div class="sl"><span class="lb" style="font-size:11px;color:#888">'+parts.join(' &middot; ')+'</span></div>';
   }
   document.getElementById('sbC').innerHTML=h;
   var over=t.mo>=FULLSTACK_THRESHOLD;
@@ -451,7 +464,8 @@ if(window.ResizeObserver){try{new ResizeObserver(reportHeightToParent).observe(d
 
 document.addEventListener('DOMContentLoaded',function(){
   syncBlog();      // sets initial blog price label
-  syncLanding();   // sets initial landing price label and tally
+  syncAv();        // sets initial avatar price label
+  syncBrand();     // sets initial brand label and tally
 });
 </script>
 </body>
