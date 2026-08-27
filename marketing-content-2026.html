@@ -282,11 +282,11 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 
 <div id="mkToolbar" style="max-width:900px;margin:30px auto 8px;padding:18px 20px;background:#0D1B2A;border-radius:14px">
-<div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;color:#8B7EC8;font-weight:800;padding-bottom:10px">CLOSER TOOLBAR &middot; INTERNAL &middot; CREATE THE CLIENT PROPOSAL</div>
+<div style="font-family:'DM Sans',sans-serif;font-size:11px;letter-spacing:2px;color:#8B7EC8;font-weight:800;padding-bottom:10px">SENIOR STRATEGIST &middot; CREATE THE CLIENT PROPOSAL</div>
 <div style="display:flex;gap:10px;flex-wrap:wrap">
 <input id="mkClient" placeholder="Client full name" style="flex:1;min-width:180px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
 <input id="mkEmail" placeholder="Client email" style="flex:1;min-width:200px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
-<input id="mkCode" type="password" placeholder="Your closer code" style="width:170px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
+<input id="mkCode" type="password" placeholder="Team access code" style="width:170px;padding:11px 14px;border-radius:10px;border:none;font-size:14px;font-family:inherit">
 <button type="button" onclick="mkProposal(this)" style="padding:11px 20px;border-radius:10px;border:none;background:#8B7EC8;color:#fff;font-weight:800;font-size:14px;cursor:pointer;font-family:inherit">Create Marketing Proposal</button>
 </div>
 <div id="mkOut" style="margin-top:10px;font-size:13px;color:#B9AEED;line-height:1.6;word-break:break-all"></div>
@@ -476,7 +476,7 @@ function updateTally(){
 }
 
 
-/* CLOSER TOOLBAR: mints one Whop subscription per brand + one-time link,
+/* STRATEGIST TOOLBAR: mints one Whop subscription per brand + one-time link,
    creates the pipeline deal, builds the terms-gated client proposal URL. */
 var CHECKOUT='https://kss-build-desk.vercel.app/api/checkout';
 var PIPE='https://kss-build-desk.vercel.app/api/pipeline';
@@ -487,7 +487,7 @@ function mkProposal(btn){
   var code=(document.getElementById('mkCode').value||'').trim();
   var out=document.getElementById('mkOut');
   var t=calcTotals();
-  if(!client||!email||!code){out.textContent='Fill client name, email, and your closer code first.';return;}
+  if(!client||!email||!code){out.textContent='Fill client name, email, and your team access code first.';return;}
   if(selected.length===0||t.baseMo<=0){out.textContent='Select at least one monthly package first.';return;}
   btn.disabled=true;out.textContent='Minting subscription link'+(brandCount>1?'s':'')+' and creating the deal...';
   var rung=selected.filter(function(x){return x.indexOf('pkg_')===0})[0]||'pkg_social';
@@ -503,7 +503,7 @@ function mkProposal(btn){
   if(t.ot>0){jobs.push(fetch(CHECKOUT,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({code:code,amount:t.ot,kind:'marketing_onetime',client:client,build:rungName+' one-time items'})}).then(function(r){return r.json()}).then(function(j){return {onetime:true,link:j.link,err:j.error}}));}
   Promise.all(jobs).then(function(res){
     var bad=res.filter(function(x){return !x.link});
-    if(bad.length){btn.disabled=false;out.textContent='Link minting failed: '+(bad[0].err||'unknown')+'. Check your code and try again.';return;}
+    if(bad.length){btn.disabled=false;out.textContent='Could not create the links: '+(bad[0].err||'unknown')+'. Check your access code and try again.';return;}
     var subs=res.filter(function(x){return !x.onetime}).map(function(x){return [rungName+(brandCount>1?' - Brand '+x.i:''),x.amt,x.link]});
     var otl=(res.filter(function(x){return x.onetime})[0]||{}).link||'';
     return fetch(PIPE,{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({action:'create',c:code,lead:{client_name:client,email:email,build_label:'Marketing: '+rungName+(brandCount>1?' x'+brandCount+' brands':''),amount_cents:Math.round(t.mo*100),source:'marketing-builder',payment_structure:'recurring monthly'}})}).then(function(r){return r.json()}).then(function(deal){
