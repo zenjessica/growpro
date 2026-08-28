@@ -87,6 +87,37 @@ details.desc[open] summary::after{content:' ▴'}
 .mk4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
 @media(max-width:1000px){.mk4{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){.mk4{grid-template-columns:1fr}}
+/* COMPACT BUILDER CARDS + POPUP DETAILS + BOTTOM TALLY (Aug 28, 2026) */
+.c.bcard{padding:18px 18px 14px}
+.c.bcard .ct{font-size:21px;margin-bottom:2px}
+.c.bcard .cs{font-size:13px;margin-bottom:10px}
+.c.bcard .cp{font-size:24px;margin-bottom:6px}
+.c.bcard .cn{font-size:12px;margin-top:10px}
+.c.bcard .bdg{margin-bottom:8px;font-size:10px;padding:3px 10px}
+.c.bcard .chsect{margin:10px 0 5px}
+.c.bcard .chip{padding:6px 9px;font-size:12px}
+.c.bcard .medp{font-size:10.5px;padding:2px 8px}
+.pathlink{display:inline-block;font-size:12.5px;font-weight:700;color:#5F4FB3;cursor:pointer;margin:0 0 6px}
+.pathlink:hover{text-decoration:underline}
+#bmOverlay{display:none;position:absolute;top:0;left:0;right:0;min-height:100%;background:rgba(13,27,42,.55);z-index:500}
+#bmCard{position:absolute;left:50%;transform:translateX(-50%);width:min(560px,calc(100vw - 32px));background:#fff;border-radius:14px;padding:24px 26px;box-shadow:0 24px 64px rgba(13,27,42,.35)}
+#bmClose{position:absolute;top:12px;right:14px;border:none;background:var(--pb);color:var(--n);width:30px;height:30px;border-radius:50%;font-size:14px;font-weight:800;cursor:pointer}
+#bmTitle{font-family:'Cormorant Garamond',serif;font-size:23px;font-weight:700;margin-bottom:2px;padding-right:30px}
+#bmPrice{font-size:13px;font-weight:800;color:#5F4FB3;margin-bottom:10px}
+#bmBody{font-size:14px;color:#444;line-height:1.65}
+#bmBody ul{list-style:none;margin:8px 0 0;padding:0}
+#bmBody li{font-size:13.5px;padding:3px 0;display:flex;gap:8px}
+#bmBody li::before{content:'✓';color:var(--g);font-weight:700}
+.btally{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--w);border-top:2px solid var(--pl);box-shadow:0 -6px 24px rgba(13,27,42,.10);z-index:300}
+.btc{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 24px}
+.btlbl{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.5px;font-weight:800;color:#999;text-transform:uppercase}
+.btamt{font-size:22px;font-weight:800;color:var(--n)}
+.btitems{flex:1;min-width:0;font-size:12px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+@media(max-width:768px){.btitems{display:none}}
+.main{padding-top:24px}
+#step1 .h1{font-size:27px;margin-bottom:4px}
+#step1 .sub{font-size:14px;margin-bottom:16px}
+.c.bcard .cn{display:none}
 </style>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Build Your Telehealth Brand</div></div></div></header>
 <nav class="pbar"><div class="wrap"><div class="psteps">
@@ -103,66 +134,43 @@ details.desc[open] summary::after{content:' ▴'}
 <div class="sec active" id="step1">
 <h1 class="h1">Build Your Launch</h1>
 <p class="sub">Pick your path and tap your add-ons. Your core 5 medications are included in every build, and your total updates live as you build.</p>
-<div class="grid">
-<div class="c" data-package="template" onclick="selPkg('template')">
+<div class="grid g3">
+<div class="c bcard" data-package="template" onclick="selPkg('template')">
 <div class="ck">✓</div>
 <span class="bdg b-new">LOWER ENTRY POINT</span>
 <h3 class="ct">Template Launch</h3>
 <p class="cs">Get to market fast with a proven framework.</p>
 <div style="font-family:inherit;font-size:14px;color:#999;text-decoration:line-through;font-weight:600;margin-bottom:2px">$23,500+ total value</div>
 <div class="cp">$18,000 <span class="sx">one-time</span></div>
-<details class="desc" onclick="event.stopPropagation()"><summary>What this path is</summary>
-<ul class="cl" style="margin-top:8px">
-<li>Pre-built WordPress template</li>
-<li>Wellie MD Telehealth Platform setup</li>
-<li>LegitScript application management</li>
-<li>Payment processing setup</li>
-<li>GHL/Lumi Funnels setup</li>
-<li>Up to 12-week launch timeline</li>
-<li>No strategy calls included</li>
-</ul></details>
+<span class="pathlink" onclick="event.stopPropagation();pkgInfo('template',event)">What this path is ▸</span>
 <div class="chsect">Core 5 medications, included</div>
 <div class="medrow"><span class="medp">Semaglutide</span><span class="medp">Tirzepatide</span><span class="medp">NAD+</span><span class="medp">Sermorelin</span><span class="medp">Glutathione</span></div>
 <div class="chsect">Add-ons, tap to add</div>
 <div class="chipwrap" data-pkg="template"></div>
 <p class="cn">Perfect for operators who are ready to move fast.</p>
 </div>
-<div class="c rec" data-package="custom" onclick="selPkg('custom')">
+<div class="c rec bcard" data-package="custom" onclick="selPkg('custom')">
 <div class="ck">✓</div>
 <span class="bdg b-pop">MOST POPULAR</span>
 <h3 class="ct">Custom Build</h3>
 <p class="cs">Full white-glove brand launch with strategy.</p>
 <div style="font-family:inherit;font-size:14px;color:#999;text-decoration:line-through;font-weight:600;margin-bottom:2px">$32,500+ total value</div>
 <div class="cp">$27,000 <span class="sx">one-time</span></div>
-<details class="desc" onclick="event.stopPropagation()"><summary>What this path is</summary>
-<ul class="cl" style="margin-top:8px">
-<li>Everything in Template Launch</li>
-<li>Custom WordPress or Webflow site design</li>
-<li>Brand identity (logo, colors, typography)</li>
-<li>Kickoff strategy call with Jessica</li>
-<li>Monthly 1:1 check-ins</li>
-</ul></details>
+<span class="pathlink" onclick="event.stopPropagation();pkgInfo('custom',event)">What this path is ▸</span>
 <div class="chsect">Core 5 medications, included</div>
 <div class="medrow"><span class="medp">Semaglutide</span><span class="medp">Tirzepatide</span><span class="medp">NAD+</span><span class="medp">Sermorelin</span><span class="medp">Glutathione</span></div>
 <div class="chsect">Add-ons, tap to add</div>
 <div class="chipwrap" data-pkg="custom"></div>
 <p class="cn">For founders who want a strategic partner, not just a vendor.</p>
 </div>
-<div class="c" data-package="operator" onclick="selPkg('operator')">
+<div class="c bcard" data-package="operator" onclick="selPkg('operator')">
 <div class="ck">✓</div>
 <span class="bdg b-prem">PREMIUM, ALL BELLS AND WHISTLES</span>
 <h3 class="ct">Operator Suite</h3>
 <p class="cs">VIP launch with everything included, built for scale.</p>
 <div style="font-family:inherit;font-size:14px;color:#999;text-decoration:line-through;font-weight:600;margin-bottom:2px">$49,000+ total value</div>
 <div class="cp">$40,000 <span class="sx">one-time</span></div>
-<details class="desc" onclick="event.stopPropagation()"><summary>What this path is</summary>
-<ul class="cl" style="margin-top:8px">
-<li>Everything in Custom Build</li>
-<li>Lifestyle quiz</li>
-<li>30 days of SEO-optimized blogs</li>
-<li>90 days of social graphics, 20 per month</li>
-<li>Priority build slot</li>
-</ul></details>
+<span class="pathlink" onclick="event.stopPropagation();pkgInfo('operator',event)">What this path is ▸</span>
 <div class="chsect">Core 5 medications, included</div>
 <div class="medrow"><span class="medp">Semaglutide</span><span class="medp">Tirzepatide</span><span class="medp">NAD+</span><span class="medp">Sermorelin</span><span class="medp">Glutathione</span></div>
 <div class="chsect">Power-ups, all included</div>
@@ -170,12 +178,8 @@ details.desc[open] summary::after{content:' ▴'}
 <p class="cn">For operators who want it all, fast, branded, and fully loaded.</p>
 </div>
 </div>
-<div class="plat-box" style="margin-top:24px">
-<div class="plat-title">Required platform costs, billed separately, not included in today's total</div>
-<div class="plat-line"><span class="lb">Wellie MD Telehealth Platform: $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.</span></div>
-<div class="plat-line"><span class="lb">Lumi Funnels (CRM, funnels, automations): $499/mo. Activates around week 5 when your site build is complete and you are preparing to launch.</span></div>
-</div>
-<div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goToFromStep1()">Continue →</button></div>
+<div style="margin-top:14px;text-align:center"><span class="pathlink" onclick="platInfo(event)" style="font-size:12px;color:#888">Required platform costs, billed separately ▸</span></div>
+<button id="s1n" disabled onclick="goToFromStep1()" style="display:none"></button>
 </div>
 <div class="sec" id="step1b">
 <h1 class="h1">Pick Your Favorites</h1>
@@ -320,6 +324,21 @@ details.desc[open] summary::after{content:' ▴'}
 </div>
 <div class="mbe" id="mExp"></div>
 </div>
+<div id="bmOverlay" onclick="if(event.target===this)closeBM()">
+<div id="bmCard">
+<button id="bmClose" onclick="closeBM()">✕</button>
+<div id="bmTitle"></div>
+<div id="bmPrice"></div>
+<div id="bmBody"></div>
+</div>
+</div>
+<div class="btally" id="bTally">
+<div class="btc">
+<div><div class="btlbl">Your Build, One-Time</div><div class="btamt" id="btAmt">$0</div></div>
+<div class="btitems" id="btItems">Select a package to start building</div>
+<button class="btn btn-p" id="btGo" disabled onclick="goToFromStep1()" style="padding:11px 26px;font-size:14px">Continue →</button>
+</div>
+</div>
 <div class="wrap" style="max-width:1100px;margin:26px auto 10px;padding:0 20px"><style>.mkc{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}.mkc:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(13,27,42,.14);border-color:#8B7EC8!important;background:#FCFBFF!important}</style><section id="marketRoom" style="margin:10px 0 6px">
     <details style="background:#fff;border:2px solid #E5E5EA;border-radius:14px;box-shadow:0 2px 12px rgba(13,27,42,.06);padding:0;overflow:hidden">
       <summary style="cursor:pointer;list-style:none;padding:20px 22px;background:linear-gradient(120deg,#0D1B2A,#5F4FB3 65%,#8B7EC8 130%);display:flex;align-items:center;gap:14px"><span style="width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.16);display:inline-flex;align-items:center;justify-content:center;flex-shrink:0"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2"><path d="M3 21h18M6 17v-6M11 17V7M16 17v-9M21 17V4"/></svg></span><span style="flex:1;min-width:200px"><span style="display:block;font-family:'DM Sans',sans-serif;font-size:15px;font-weight:800;color:#fff;letter-spacing:.5px">THE MARKET, IN PUBLIC NUMBERS</span><span style="display:block;font-size:12.5px;color:rgba(255,255,255,.75);padding-top:2px">Projected market size and real demand data, all from public third-party sources.</span></span><span style="color:#fff;font-size:13px;font-weight:800;background:rgba(255,255,255,.16);border-radius:99px;padding:6px 14px;flex-shrink:0">Open &#9662;</span></summary>
@@ -430,11 +449,45 @@ var cls='chip '+(op?'chInc':lock?'chLock':d.cls);
 var pr=op?'Included':lock?'Operator only':d.price;
 var nm=op?'✓ '+d.name:(lock?d.name:'+ '+d.name);
 h+='<div class="'+cls+'" data-chkey="'+d.key+'" onclick="chipTog(\''+cardPkg+'\',\''+d.kind+'\',\''+d.key+'\',event)">'
-+'<div class="chrow"><span class="chname">'+nm+'</span><span class="chpr">'+pr+'</span><span class="chdet" onclick="chipDet(event,this)">details ▾</span></div>'
-+'<div class="chbody" hidden>'+d.desc+(lock?'<div style="margin-top:6px;font-weight:700;color:#8B7EC8">Available with the Operator Suite.</div>':'')+'</div></div>';
++'<div class="chrow"><span class="chname">'+nm+'</span><span class="chpr">'+pr+'</span><span class="chdet" onclick="chipInfo(event,\''+d.key+'\',\''+cardPkg+'\')">details ▸</span></div></div>';
 });
 w.innerHTML=h;
 });
+}
+var PKGINFO={
+template:{t:'Template Launch',p:'$18,000 one-time',b:'<p>Get to market fast with a proven framework, refined across 75+ launches.</p><ul><li>Pre-built WordPress template</li><li>Wellie MD Telehealth Platform setup</li><li>LegitScript application management</li><li>Payment processing setup</li><li>GHL/Lumi Funnels setup</li><li>Up to 12-week launch timeline</li><li>No strategy calls included</li></ul>'},
+custom:{t:'Custom Build',p:'$27,000 one-time',b:'<p>Full white-glove brand launch with strategy.</p><ul><li>Everything in Template Launch</li><li>Custom WordPress or Webflow site design</li><li>Brand identity (logo, colors, typography)</li><li>Kickoff strategy call with Jessica</li><li>Monthly 1:1 check-ins</li></ul>'},
+operator:{t:'Operator Suite',p:'$40,000 one-time, all-in',b:'<p>VIP launch with everything included, built for scale. Every power-up below is included.</p><ul><li>Everything in Custom Build</li><li>HRT Program (Men and Women), with included clinical labs</li><li>Brand Name Medication Pathway</li><li>Peptide Package (12 peptides)</li><li>AI Conversion Engine</li><li>Lifestyle quiz</li><li>30 days of SEO-optimized blogs</li><li>90 days of social graphics, 20 per month</li><li>Priority build slot</li></ul>'}
+};
+function openBM(title,price,body,ev){
+$i('bmTitle').innerHTML=title;
+$i('bmPrice').innerHTML=price;
+$i('bmBody').innerHTML=body;
+var ov=$i('bmOverlay');
+ov.style.display='block';
+var y=20;
+if(ev&&typeof ev.pageY==='number'){y=Math.max(20,ev.pageY-160)}
+else{y=Math.max(20,(window.pageYOffset||0)+120)}
+$i('bmCard').style.top=y+'px';
+}
+function closeBM(){$i('bmOverlay').style.display='none'}
+document.addEventListener('keydown',function(e){if(e.key==='Escape')closeBM()});
+function pkgInfo(k,ev){
+var d=PKGINFO[k];if(!d)return;
+openBM(d.t,d.p,d.b,ev||window.event);
+}
+function platInfo(ev){
+openBM('Required Platform Costs','Billed separately, not included in today&#39;s total','<p><b>Wellie MD Telehealth Platform:</b> $2,000 one-time setup, then $1,500/mo. Activates after LegitScript approval.</p><p style="margin-top:8px"><b>Lumi Funnels</b> (CRM, funnels, automations): $499/mo. Activates around week 5 when your site build is complete and you are preparing to launch.</p>',ev);
+}
+function chipInfo(ev,key,cardPkg){
+if(ev)ev.stopPropagation();
+var d=null;for(var i=0;i<CHIPDEFS.length;i++){if(CHIPDEFS[i].key===key)d=CHIPDEFS[i]}
+if(!d)return;
+var op=cardPkg==='operator';
+var lock=(!op&&key==='hrt');
+var pr=op?'Included with the Operator Suite':lock?'Operator Suite only':d.price+' one-time';
+var body=d.desc+(lock?'<div style="margin-top:10px;font-weight:700;color:#8B7EC8">Available with the Operator Suite.</div>':'');
+openBM(d.name,pr,body,ev);
 }
 function chipTog(cardPkg,kind,key,ev){
 if(ev){ev.stopPropagation()}
@@ -444,14 +497,6 @@ if(key==='hrt'){return}
 var el=kind==='treat'?$1('[data-treatment="'+key+'"]'):$1('[data-addon="'+key+'"]');
 if(!el)return;
 if(kind==='treat'){togTreat(el)}else{togAddon(el)}
-}
-function chipDet(ev,el){
-ev.stopPropagation();
-var chip=el.closest('.chip');if(!chip)return;
-var body=chip.querySelector('.chbody');if(!body)return;
-if(body.hasAttribute('hidden')){body.removeAttribute('hidden');el.textContent='details ▴'}
-else{body.setAttribute('hidden','');el.textContent='details ▾'}
-reportHeightToParent();
 }
 function syncChips(){
 $q('.chipwrap').forEach(function(w){
@@ -567,6 +612,18 @@ $i('sOT').textContent=fmt(t.ot);
 $i('sMO').textContent=fmt(t.mo)+'/mo';
 $i('mOT').textContent=fmt(t.ot);
 $i('mMO').textContent=fmt(t.mo)+'/mo';
+var ba=$i('btAmt'),bi=$i('btItems'),bg=$i('btGo');
+if(ba)ba.textContent=fmt(t.ot);
+if(bi){
+if(!pkg){bi.textContent='Select a package to start building'}
+else{
+var parts=[pkgNames[pkg]];
+treats.forEach(function(tr){var inc=pkg==='operator'&&operatorIncludesTreat.indexOf(tr)!==-1;parts.push(treatNames[tr]+(inc?' (included)':''))});
+addons.forEach(function(a){var inc=pkg==='operator'&&operatorIncludes.indexOf(a)!==-1;if(addonNames[a])parts.push(addonNames[a]+(inc?' (included)':''))});
+bi.textContent=parts.join('  ·  ');
+}
+}
+if(bg)bg.disabled=!pkg;
 updateSB();
 syncChips();
 }
@@ -595,6 +652,21 @@ if(!pkg) return;
 if(pkg==='template'){goTo('1b');return}
 goTo(4);
 }
+// Chrome per step: builder (step 1) uses the fixed bottom tally, later steps use the right sidebar
+function setChrome(s){
+var sb=$i('sidebar'),mb=$i('mBar'),bt=$i('bTally');
+if(s===1){
+sb.style.display='none';
+mb.style.display='none';
+if(bt)bt.style.display='block';
+document.body.style.paddingBottom='96px';
+}else{
+if(bt)bt.style.display='none';
+document.body.style.paddingBottom='';
+if(window.innerWidth>=1024){sb.style.display='block'}else{sb.style.display=''}
+if(window.innerWidth<1024){mb.style.display='block'}else{mb.style.display='none'}
+}
+}
 function ppPick(el){$q('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});el.classList.add('pp-sel');}
 function goTo(s){
 if(s==='1b'){
@@ -603,9 +675,7 @@ $i('step1b').classList.add('active');
 $q('.pst').forEach(function(ps,i){ps.classList.remove('active','completed');if(i===0){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='&#10003;'}else{ps.querySelector('.pdot').textContent=i+1}});
 $q('.pcon').forEach(function(c){c.classList.remove('completed')});
 $i('sSI').textContent='Browse Templates';
-var sb=$i('sidebar'),mb=$i('mBar');
-if(window.innerWidth>=1024) sb.style.display='block';
-if(window.innerWidth<1024) mb.style.display='block';
+setChrome('1b');
 step='1b';
 window.scrollTo({top:0,behavior:'smooth'});
 reportHeightToParent();
@@ -630,9 +700,7 @@ else ps.querySelector('.pdot').textContent=dispNum;
 $q('.pcon').forEach(function(c,i){if(i<sIdx) c.classList.add('completed');else c.classList.remove('completed')});
 var _dispMap={1:1,4:2,5:3};
 $i('sSI').textContent='Step '+(_dispMap[s]||s)+' of 3';
-var sb=$i('sidebar'),mb=$i('mBar');
-if(window.innerWidth>=1024) sb.style.display='block';
-if(window.innerWidth<1024) mb.style.display='block';
+setChrome(s);
 step=s;
 if(s===4){buildSum();}
 if(s===5){var t5=calcTotals(),pf=$i('ppFullAmt');if(pf)pf.textContent=fmt(t5.ot);}
@@ -705,8 +773,7 @@ $i('sumC').innerHTML=h;
 
 document.addEventListener('DOMContentLoaded',function(){
 renderChips();
-if(window.innerWidth>=1024) $i('sidebar').style.display='block';
-if(window.innerWidth<1024) $i('mBar').style.display='block';
+setChrome(1);
 updatePrice();
 // HRT is Operator Suite only — grey out the hidden legacy card on initial load
 var hrtEl=$i('hrtCard');
