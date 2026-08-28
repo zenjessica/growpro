@@ -108,8 +108,8 @@ details.desc[open] summary::after{content:' ▴'}
 #bmBody ul{list-style:none;margin:8px 0 0;padding:0}
 #bmBody li{font-size:13.5px;padding:3px 0;display:flex;gap:8px}
 #bmBody li::before{content:'✓';color:var(--g);font-weight:700}
-.btally{display:none;position:fixed;bottom:0;left:0;right:0;background:var(--w);border-top:2px solid var(--pl);box-shadow:0 -6px 24px rgba(13,27,42,.10);z-index:300}
-.btc{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:18px;padding:12px 24px}
+.btally{display:none;background:var(--pb);border:2px solid var(--p);border-radius:12px;margin-top:16px}
+.btc{display:flex;align-items:center;gap:18px;padding:12px 20px;flex-wrap:wrap}
 .btlbl{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.5px;font-weight:800;color:#999;text-transform:uppercase}
 .btamt{font-size:22px;font-weight:800;color:var(--n)}
 .btitems{flex:1;min-width:0;font-size:12px;color:#666;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
@@ -178,7 +178,14 @@ details.desc[open] summary::after{content:' ▴'}
 <p class="cn">For operators who want it all, fast, branded, and fully loaded.</p>
 </div>
 </div>
-<div style="margin-top:14px;text-align:center"><span class="pathlink" onclick="platInfo(event)" style="font-size:12px;color:#888">Required platform costs, billed separately ▸</span></div>
+<div class="btally" id="bTally">
+<div class="btc">
+<div><div class="btlbl">Your Build, One-Time</div><div class="btamt" id="btAmt">$0</div></div>
+<div class="btitems" id="btItems">Select a package to start building</div>
+<button class="btn btn-p" id="btGo" disabled onclick="goToFromStep1()" style="padding:11px 26px;font-size:14px">Continue →</button>
+</div>
+</div>
+<div style="margin-top:12px;text-align:center"><span class="pathlink" onclick="platInfo(event)" style="font-size:12px;color:#888">Required platform costs, billed separately ▸</span></div>
 <button id="s1n" disabled onclick="goToFromStep1()" style="display:none"></button>
 </div>
 <div class="sec" id="step1b">
@@ -330,13 +337,6 @@ details.desc[open] summary::after{content:' ▴'}
 <div id="bmTitle"></div>
 <div id="bmPrice"></div>
 <div id="bmBody"></div>
-</div>
-</div>
-<div class="btally" id="bTally">
-<div class="btc">
-<div><div class="btlbl">Your Build, One-Time</div><div class="btamt" id="btAmt">$0</div></div>
-<div class="btitems" id="btItems">Select a package to start building</div>
-<button class="btn btn-p" id="btGo" disabled onclick="goToFromStep1()" style="padding:11px 26px;font-size:14px">Continue →</button>
 </div>
 </div>
 <div class="wrap" style="max-width:1100px;margin:26px auto 10px;padding:0 20px"><style>.mkc{transition:transform .22s ease,box-shadow .22s ease,border-color .22s ease,background .22s ease}.mkc:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(13,27,42,.14);border-color:#8B7EC8!important;background:#FCFBFF!important}</style><section id="marketRoom" style="margin:10px 0 6px">
@@ -501,10 +501,11 @@ if(kind==='treat'){togTreat(el)}else{togAddon(el)}
 function syncChips(){
 $q('.chipwrap').forEach(function(w){
 if(w.dataset.pkg==='operator')return;
+var isSelCard=w.dataset.pkg===pkg;
 w.querySelectorAll('.chip').forEach(function(ch){
 var key=ch.dataset.chkey;
 if(key==='hrt')return;
-var on=treats.indexOf(key)!==-1||addons.indexOf(key)!==-1;
+var on=isSelCard&&(treats.indexOf(key)!==-1||addons.indexOf(key)!==-1);
 ch.classList.toggle('on',on);
 var nm=ch.querySelector('.chname');
 var d=null;for(var i=0;i<CHIPDEFS.length;i++){if(CHIPDEFS[i].key===key)d=CHIPDEFS[i]}
@@ -658,10 +659,8 @@ if(s===1){
 sb.style.display='none';
 mb.style.display='none';
 if(bt)bt.style.display='block';
-document.body.style.paddingBottom='96px';
 }else{
 if(bt)bt.style.display='none';
-document.body.style.paddingBottom='';
 if(window.innerWidth>=1024){sb.style.display='block'}else{sb.style.display=''}
 if(window.innerWidth<1024){mb.style.display='block'}else{mb.style.display='none'}
 }
