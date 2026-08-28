@@ -59,14 +59,40 @@
 .gal-counter strong{color:var(--p);font-size:20px}
 .gal-note{text-align:center;padding:16px;background:var(--pb);border-radius:var(--r);border:1px solid var(--pl);margin-top:16px;font-size:14px;color:#555;line-height:1.6}
 @media(max-width:600px){.trs-row{flex-direction:column!important}}
+/* ONE-SCREEN BUILDER (Aug 28, 2026) */
+details.desc{margin:2px 0 6px}
+details.desc summary{cursor:pointer;list-style:none;font-size:13px;font-weight:700;color:#5F4FB3}
+details.desc summary::-webkit-details-marker{display:none}
+details.desc summary::after{content:' ▾'}
+details.desc[open] summary::after{content:' ▴'}
+.chsect{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:1.6px;font-weight:800;color:#999;text-transform:uppercase;margin:14px 0 6px}
+.medrow{display:flex;flex-wrap:wrap;gap:5px}
+.medp{background:#E8F5E9;color:#1B6E2E;border:1px solid #C8E6C9;border-radius:99px;padding:3px 10px;font-size:11px;font-weight:700}
+.medp::before{content:'✓ '}
+.chipwrap{display:flex;flex-direction:column;gap:6px}
+.chip{border:1.5px solid var(--gbd);border-radius:10px;padding:8px 10px;font-size:12.5px;font-weight:700;cursor:pointer;background:var(--w);user-select:none;transition:var(--t)}
+.chrow{display:flex;align-items:center;gap:8px}
+.chname{flex:1;min-width:0}
+.chpr{flex-shrink:0}
+.chdet{font-size:10.5px;opacity:.65;flex-shrink:0;padding:2px 4px;font-weight:700}
+.chdet:hover{opacity:1}
+.chbody{font-weight:500;font-size:12px;color:#666;margin-top:6px;line-height:1.55}
+.chip.chB{border-color:#9EC3E8;color:#1565C0}.chip.chB.on{background:#E3F2FD}
+.chip.chG{border-color:#E8D5A0;color:#8B6914}.chip.chG.on{background:var(--gl)}
+.chip.chV{border-color:#C7BFE8;color:#5F4FB3}.chip.chV.on{background:var(--pl)}
+.chip.chLock{border-color:var(--gbd);color:#AAA;cursor:default}
+.chip.chLock .chbody{color:#999}
+.chip.chInc{border-color:#C8E6C9;color:#1B6E2E;background:#F0FFF4;cursor:default}
+.chip.chInc .chbody{color:#4A6B52}
+.mk4{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+@media(max-width:1000px){.mk4{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){.mk4{grid-template-columns:1fr}}
 </style>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Build Your Telehealth Brand</div></div></div></header>
 <nav class="pbar"><div class="wrap"><div class="psteps">
-<div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Launch Path</span></div><div class="pcon"></div>
-<div class="pst" data-step="2"><div class="pdot">2</div><span class="plbl">Treatments</span></div><div class="pcon"></div>
-<div class="pst" data-step="3" style="display:none"><div class="pdot">3</div><span class="plbl">Power-Ups</span></div><div class="pcon" style="display:none"></div>
-<div class="pst" data-step="4"><div class="pdot">4</div><span class="plbl">Review</span></div><div class="pcon"></div>
-<div class="pst" data-step="5"><div class="pdot">5</div><span class="plbl">Payment Options</span></div>
+<div class="pst active" data-step="1"><div class="pdot">1</div><span class="plbl">Build</span></div><div class="pcon"></div>
+<div class="pst" data-step="4"><div class="pdot">2</div><span class="plbl">Review</span></div><div class="pcon"></div>
+<div class="pst" data-step="5"><div class="pdot">3</div><span class="plbl">Payment Options</span></div>
 </div></div></nav>
 <div class="tbar"><div class="tbi">
 <span class="ti">LegitScript Application Managed</span><span class="ti">75+ Brands Launched</span><span class="ti">100% LegitScript Success Rate</span><span class="ti">Direct Pharmacy Access</span><span class="ti">100% Merchant Processing Success Rate</span>
@@ -75,8 +101,8 @@
 </div></div>
 <div class="wrap"><div class="main"><div class="ca">
 <div class="sec active" id="step1">
-<h1 class="h1">Choose Your Launch Path</h1>
-<p class="sub">Choose your package.</p>
+<h1 class="h1">Build Your Launch</h1>
+<p class="sub">Pick your path and tap your add-ons. Your core 5 medications are included in every build, and your total updates live as you build.</p>
 <div class="grid g3">
 <div class="c" data-package="template" onclick="selPkg('template')">
 <div class="ck">✓</div>
@@ -85,16 +111,20 @@
 <p class="cs">Get to market fast with a proven framework.</p>
 <div style="font-family:inherit;font-size:14px;color:#999;text-decoration:line-through;font-weight:600;margin-bottom:2px">$23,500+ total value</div>
 <div class="cp">$18,000 <span class="sx">one-time</span></div>
-<ul class="cl">
+<details class="desc" onclick="event.stopPropagation()"><summary>What this path is</summary>
+<ul class="cl" style="margin-top:8px">
 <li>Pre-built WordPress template</li>
 <li>Wellie MD Telehealth Platform setup</li>
-<li>5 core treatments included</li>
 <li>LegitScript application management</li>
 <li>Payment processing setup</li>
 <li>GHL/Lumi Funnels setup</li>
 <li>Up to 12-week launch timeline</li>
 <li>No strategy calls included</li>
-</ul>
+</ul></details>
+<div class="chsect">Core 5 medications, included</div>
+<div class="medrow"><span class="medp">Semaglutide</span><span class="medp">Tirzepatide</span><span class="medp">NAD+</span><span class="medp">Sermorelin</span><span class="medp">Glutathione</span></div>
+<div class="chsect">Add-ons, tap to add</div>
+<div class="chipwrap" data-pkg="template"></div>
 <p class="cn">Perfect for operators who are ready to move fast.</p>
 </div>
 <div class="c rec" data-package="custom" onclick="selPkg('custom')">
@@ -104,13 +134,18 @@
 <p class="cs">Full white-glove brand launch with strategy.</p>
 <div style="font-family:inherit;font-size:14px;color:#999;text-decoration:line-through;font-weight:600;margin-bottom:2px">$32,500+ total value</div>
 <div class="cp">$27,000 <span class="sx">one-time</span></div>
-<ul class="cl">
+<details class="desc" onclick="event.stopPropagation()"><summary>What this path is</summary>
+<ul class="cl" style="margin-top:8px">
 <li>Everything in Template Launch</li>
 <li>Custom WordPress or Webflow site design</li>
 <li>Brand identity (logo, colors, typography)</li>
 <li>Kickoff strategy call with Jessica</li>
 <li>Monthly 1:1 check-ins</li>
-</ul>
+</ul></details>
+<div class="chsect">Core 5 medications, included</div>
+<div class="medrow"><span class="medp">Semaglutide</span><span class="medp">Tirzepatide</span><span class="medp">NAD+</span><span class="medp">Sermorelin</span><span class="medp">Glutathione</span></div>
+<div class="chsect">Add-ons, tap to add</div>
+<div class="chipwrap" data-pkg="custom"></div>
 <p class="cn">For founders who want a strategic partner, not just a vendor.</p>
 </div>
 <div class="c" data-package="operator" onclick="selPkg('operator')">
@@ -120,14 +155,18 @@
 <p class="cs">VIP launch with everything included, built for scale.</p>
 <div style="font-family:inherit;font-size:14px;color:#999;text-decoration:line-through;font-weight:600;margin-bottom:2px">$49,000+ total value</div>
 <div class="cp">$40,000 <span class="sx">one-time</span></div>
-<ul class="cl">
+<details class="desc" onclick="event.stopPropagation()"><summary>What this path is</summary>
+<ul class="cl" style="margin-top:8px">
 <li>Everything in Custom Build</li>
-<li>HRT Program (Men and Women), with included clinical labs</li>
 <li>Lifestyle quiz</li>
 <li>30 days of SEO-optimized blogs</li>
 <li>90 days of social graphics, 20 per month</li>
 <li>Priority build slot</li>
-</ul>
+</ul></details>
+<div class="chsect">Core 5 medications, included</div>
+<div class="medrow"><span class="medp">Semaglutide</span><span class="medp">Tirzepatide</span><span class="medp">NAD+</span><span class="medp">Sermorelin</span><span class="medp">Glutathione</span></div>
+<div class="chsect">Power-ups, all included</div>
+<div class="chipwrap" data-pkg="operator"></div>
 <p class="cn">For operators who want it all, fast, branded, and fully loaded.</p>
 </div>
 </div>
@@ -138,7 +177,6 @@
 </div>
 <div class="bnav"><div></div><button class="btn btn-p" id="s1n" disabled onclick="goToFromStep1()">Continue →</button></div>
 </div>
-<script>(function(){try{var p=new URLSearchParams(window.location.search).get('pkg');if(p&&(p==='template'||p==='custom'||p==='operator')){var el=document.getElementById('step1');if(el)el.classList.remove('active')}}catch(e){}})();</script>
 <div class="sec" id="step1b">
 <h1 class="h1">Pick Your Favorites</h1>
 <p class="sub">Tap up to 3 templates you love. Your final pick is made on the kick-off call.</p>
@@ -158,7 +196,7 @@
 <div class="gal-tile" data-tpl="Prime Meds" onclick="togGal(this)"><div class="gal-heart">&#9825;</div><img class="gal-img" src="https://files.manuscdn.com/user_upload_by_module/session_file/310519663361679442/DhiEvIpokwhXmzcs.png" alt="Prime Meds" loading="lazy"><div class="gal-info"><div class="gal-name">Prime Meds</div><a href="https://joinprimemeds.com" target="_blank" class="gal-visit" onclick="event.stopPropagation()">Preview &rarr;</a></div></div>
 </div>
 <div class="gal-note">Every site is custom-built with your branding, treatments, and market positioning. These are just starting points.</div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">&#8592; Back</button><button class="btn btn-p" onclick="goTo(2)">Continue &#8594;</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">&#8592; Back</button><button class="btn btn-p" onclick="goTo(4)">Continue &#8594;</button></div>
 </div>
 <div class="sec" id="step2">
 <h1 class="h1">What will you offer your patients?</h1>
@@ -231,7 +269,7 @@
 <span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px;min-width:0;flex-shrink:1"><span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>Direct pharmacy and physician network</span>
 <span style="font-size:12px;color:#555;display:flex;align-items:center;gap:5px;min-width:0;flex-shrink:1"><span style="color:var(--g);font-weight:700;flex-shrink:0">✓</span>We manage your application and work until you're approved</span>
 </div>
-<div class="bnav"><button class="btn btn-s" onclick="goTo(2)">← Back</button><button id="step4SubmitBtn" class="btn btn-p" onclick="goTo(5)">See Payment Options →</button></div>
+<div class="bnav"><button class="btn btn-s" onclick="goTo(1)">← Back</button><button id="step4SubmitBtn" class="btn btn-p" onclick="goTo(5)">See Payment Options →</button></div>
 </div>
 <div class="sec" id="step5">
 <h1 class="h1">Ways To Pay</h1>
@@ -269,7 +307,7 @@
 <div class="sdv"></div>
 <div class="stot"><span>One-Time</span><span class="vl" id="sOT">$0</span></div>
 <div class="stot" style="display:none"><span>Monthly</span><span class="vl" id="sMO">$0/mo</span></div>
-<div class="ssi" id="sSI">Step 1 of 5</div>
+<div class="ssi" id="sSI">Step 1 of 3</div>
 </div></aside>
 </div></div>
 <div class="mbar" id="mBar">
@@ -293,7 +331,7 @@
           <div style="color:rgba(255,255,255,.75);font-size:13px;line-height:1.7;padding-top:8px">So we do not do fantasy math, and you should sprint from anyone in this space who does. What we can do is show you the publicly reported market data, the demand signals advertisers pay real money against, and let you do your own math. Your results depend on your offer, your effort, and your market.</div>
         </div>
 
-        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:12px">
+        <div class="mk4">
           <div style="background:#F8F6FF;border:1.5px solid #E5E5EA;border-radius:12px;padding:16px 18px">
             <div style="font-family:'DM Sans',sans-serif;font-size:10.5px;letter-spacing:2px;color:#5F4FB3;font-weight:800;padding-bottom:6px">GLP-1 &amp; WEIGHT LOSS</div>
             <div style="font-size:22px;font-weight:800;color:#0D1B2A">$100B+ by 2030</div>
@@ -372,8 +410,62 @@ $1('[data-package="'+p+'"]').classList.add('sel');
 $i('s1n').disabled=false;
 applyOperatorLocks();
 updatePrice();
-// Auto-advance after short delay (routes to 1b for template, Step 2 for custom/operator)
-setTimeout(function(){if(step===1&&pkg===p) goToFromStep1();},500);
+}
+// ONE-SCREEN BUILDER: add-on chips rendered on each build card. Chips proxy to the
+// hidden legacy treatment/addon cards so pricing, locks, and summaries stay untouched.
+var CHIPDEFS=[
+{key:'branded_med',kind:'treat',cls:'chB',name:'Brand Name Meds',price:'+$2,500',desc:'Brand-name medication options: Foundayo (pill), Wegovy (pill and pen), and Zepbound (pen and vial). Includes provider protocol setup.'},
+{key:'peptide_pkg',kind:'treat',cls:'chG',name:'Peptide Package',price:'+$5,000',desc:'Full peptide infrastructure for the 12 peptides currently scheduled for FDA PCAC review. Be ready the moment the regulatory window opens.<div style="margin-top:8px"><b>PCAC Meeting, July 23, 2026:</b> BPC-157, KPV, MOTS-C, TB-500 (Thymosin Beta-4 fragment)<br><b>PCAC Meeting, July 24, 2026:</b> DSIP (Emideltide), Epitalon, Semax<br><b>Future PCAC meetings (by February 2027):</b> LL-37 (Cathelicidin), Dihexa, PEG-MGF, Melanotan II, GHK-Cu (incl. injectable forms)</div><div style="margin-top:8px;font-style:italic">Schedule per the FDA Pharmacy Compounding Advisory Committee. Dates and outcomes are set by the FDA and may change. You are paying for launch-ready setup, not for the medications themselves. Regulatory timelines are outside our control. This package is non-refundable regardless of if or when any peptide receives approval.</div>'},
+{key:'ai_engine',kind:'addon',cls:'chV',name:'AI Conversion Engine',price:'+$6,500',desc:'Your brand&#39;s automated growth layer: a proprietary, compliant AI chat bot, abandoned cart and checkout recovery with Meta and Google Pixel conversion tracking, automated SMS flows, automated email flows, and conversational AI.<div style="margin-top:6px;font-style:italic">The AI Conversion Engine works the leads and patients your brand attracts. It does not run ads or generate traffic. It converts and retains the audience you bring.</div>'},
+{key:'hrt',kind:'treat',cls:'chH',name:'HRT (Men &amp; Women)',price:'+$2,500',desc:'Testosterone, ED, Progesterone, and Estradiol. Full hormone therapy program for men and women, with included clinical labs.'}
+];
+function renderChips(){
+$q('.chipwrap').forEach(function(w){
+var cardPkg=w.dataset.pkg;
+var h='';
+CHIPDEFS.forEach(function(d){
+var op=cardPkg==='operator';
+var lock=(!op&&d.key==='hrt');
+var cls='chip '+(op?'chInc':lock?'chLock':d.cls);
+var pr=op?'Included':lock?'Operator only':d.price;
+var nm=op?'✓ '+d.name:(lock?d.name:'+ '+d.name);
+h+='<div class="'+cls+'" data-chkey="'+d.key+'" onclick="chipTog(\''+cardPkg+'\',\''+d.kind+'\',\''+d.key+'\',event)">'
++'<div class="chrow"><span class="chname">'+nm+'</span><span class="chpr">'+pr+'</span><span class="chdet" onclick="chipDet(event,this)">details ▾</span></div>'
++'<div class="chbody" hidden>'+d.desc+(lock?'<div style="margin-top:6px;font-weight:700;color:#8B7EC8">Available with the Operator Suite.</div>':'')+'</div></div>';
+});
+w.innerHTML=h;
+});
+}
+function chipTog(cardPkg,kind,key,ev){
+if(ev){ev.stopPropagation()}
+if(pkg!==cardPkg){selPkg(cardPkg)}
+if(cardPkg==='operator'){return}
+if(key==='hrt'){return}
+var el=kind==='treat'?$1('[data-treatment="'+key+'"]'):$1('[data-addon="'+key+'"]');
+if(!el)return;
+if(kind==='treat'){togTreat(el)}else{togAddon(el)}
+}
+function chipDet(ev,el){
+ev.stopPropagation();
+var chip=el.closest('.chip');if(!chip)return;
+var body=chip.querySelector('.chbody');if(!body)return;
+if(body.hasAttribute('hidden')){body.removeAttribute('hidden');el.textContent='details ▴'}
+else{body.setAttribute('hidden','');el.textContent='details ▾'}
+reportHeightToParent();
+}
+function syncChips(){
+$q('.chipwrap').forEach(function(w){
+if(w.dataset.pkg==='operator')return;
+w.querySelectorAll('.chip').forEach(function(ch){
+var key=ch.dataset.chkey;
+if(key==='hrt')return;
+var on=treats.indexOf(key)!==-1||addons.indexOf(key)!==-1;
+ch.classList.toggle('on',on);
+var nm=ch.querySelector('.chname');
+var d=null;for(var i=0;i<CHIPDEFS.length;i++){if(CHIPDEFS[i].key===key)d=CHIPDEFS[i]}
+if(nm&&d)nm.innerHTML=(on?'✓ ':'+ ')+d.name;
+});
+});
 }
 function applyOperatorLocks(){
 var isOp=pkg==='operator';
@@ -476,6 +568,7 @@ $i('sMO').textContent=fmt(t.mo)+'/mo';
 $i('mOT').textContent=fmt(t.ot);
 $i('mMO').textContent=fmt(t.mo)+'/mo';
 updateSB();
+syncChips();
 }
 function updateSB(){
 var h='';
@@ -499,9 +592,8 @@ $i('mExp').innerHTML=h?'<div style="padding-top:8px">'+h+'</div>':'';
 }
 function goToFromStep1(){
 if(!pkg) return;
-if(pkgPreSelected){goTo(2);return;}
 if(pkg==='template'){goTo('1b');return}
-goTo(2);
+goTo(4);
 }
 function ppPick(el){$q('.pp-card').forEach(function(c){c.classList.remove('pp-sel')});el.classList.add('pp-sel');}
 function goTo(s){
@@ -523,24 +615,24 @@ return;
 if(s===2&&!pkg) return;
 $q('.sec').forEach(function(x){x.classList.remove('active')});
 document.getElementById('step'+s).classList.add('active');
-var _stepOrder=[1,2,4,5];
+var _stepOrder=[1,4,5];
+var sIdx=_stepOrder.indexOf(s);
 $q('.pst').forEach(function(ps){
 var dsn=parseInt(ps.dataset.step);
 var dIdx=_stepOrder.indexOf(dsn);
 if(dIdx===-1){ps.classList.remove('active','completed');return;}
-var sIdx=_stepOrder.indexOf(s);
 var dispNum=dIdx+1;
 ps.classList.remove('active','completed');
 if(dIdx===sIdx) ps.classList.add('active');
 else if(dIdx<sIdx){ps.classList.add('completed');ps.querySelector('.pdot').innerHTML='✓';}
 else ps.querySelector('.pdot').textContent=dispNum;
 });
-$q('.pcon').forEach(function(c,i){if(i<s-1) c.classList.add('completed');else c.classList.remove('completed')});
-var _dispMap={1:1,2:2,4:3,5:4};
-$i('sSI').textContent='Step '+(_dispMap[s]||s)+' of 4';
+$q('.pcon').forEach(function(c,i){if(i<sIdx) c.classList.add('completed');else c.classList.remove('completed')});
+var _dispMap={1:1,4:2,5:3};
+$i('sSI').textContent='Step '+(_dispMap[s]||s)+' of 3';
 var sb=$i('sidebar'),mb=$i('mBar');
-if(s===1){sb.style.display='none';mb.style.display='none'}
-else{if(window.innerWidth>=1024) sb.style.display='block';if(window.innerWidth<1024) mb.style.display='block'}
+if(window.innerWidth>=1024) sb.style.display='block';
+if(window.innerWidth<1024) mb.style.display='block';
 step=s;
 if(s===4){buildSum();}
 if(s===5){var t5=calcTotals(),pf=$i('ppFullAmt');if(pf)pf.textContent=fmt(t5.ot);}
@@ -612,23 +704,22 @@ $i('sumC').innerHTML=h;
 }
 
 document.addEventListener('DOMContentLoaded',function(){
-$i('sidebar').style.display='none';
-$i('mBar').style.display='none';
+renderChips();
+if(window.innerWidth>=1024) $i('sidebar').style.display='block';
+if(window.innerWidth<1024) $i('mBar').style.display='block';
 updatePrice();
-// HRT is Operator Suite only — grey it out on initial load
+// HRT is Operator Suite only — grey out the hidden legacy card on initial load
 var hrtEl=$i('hrtCard');
 if(hrtEl){
   hrtEl.classList.add('dis');hrtEl.onclick=null;
   var hrtLbl=hrtEl.querySelector('.hrt-oplabel');if(hrtLbl) hrtLbl.style.display='';
   var hrtPr=hrtEl.querySelector('.hrt-price');if(hrtPr) hrtPr.style.display='none';
 }
-// Pre-select tier from ?pkg= URL param (front-page card click-through)
+// Pre-select tier from ?pkg= URL param (front-page card click-through) — stays on the builder
 var urlParams=new URLSearchParams(window.location.search);
 var pkgParam=urlParams.get('pkg');
 if(pkgParam&&pkgPrices[pkgParam]){
-  pkgPreSelected=true;
   selPkg(pkgParam);
-  goTo(2);
 }
 });
 var sigCanvas,sigCtx,sigDrawing=false,sigHasData=false;
