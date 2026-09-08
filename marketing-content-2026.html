@@ -95,6 +95,73 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .mbe{display:none;padding:0 20px 18px;max-height:55vh;overflow-y:auto}
 .mbar.exp .mbe{display:block}
 .xpl{padding:8px 0 4px}
+/* --- jump rail --- */
+.jump{display:flex;gap:8px;flex-wrap:wrap;align-items:center;padding:14px 0 2px;font-size:12.5px;color:#888}
+.jump a{display:inline-block;padding:6px 13px;border-radius:20px;border:1px solid var(--gbd);background:#fff;color:#5B4C9B;font-weight:700;text-decoration:none;transition:all .2s}
+.jump a:hover{border-color:var(--p);background:var(--pb)}
+
+/* --- production journey --- */
+.jrn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.jstep{position:relative;background:#fff;border:1.5px solid var(--gbd);border-radius:12px;padding:18px;box-shadow:var(--sh)}
+.jstep .jn{position:absolute;top:15px;right:17px;font-size:11px;font-weight:800;color:#CDC7DE;letter-spacing:1.5px}
+.jico{width:38px;height:38px;border-radius:10px;background:var(--pb);border:1px solid var(--pl);display:flex;align-items:center;justify-content:center;color:var(--p);margin-bottom:12px}
+.jico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.jt{font-size:16px;font-weight:700;color:var(--n);margin-bottom:3px;letter-spacing:-.2px}
+.jd{font-size:13px;color:#555;line-height:1.6}
+.jstep.jhero{background:var(--pb);border-color:var(--p);border-width:2px}
+.jstep.jhero .jico{background:#fff}
+.jtag{display:inline-block;margin-top:9px;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--p);color:#fff}
+@media(max-width:900px){.jrn{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.jrn{grid-template-columns:1fr}}
+
+/* --- attribution card --- */
+.attrb{margin-top:16px;background:#0D1B2A;border-radius:14px;padding:24px 26px;color:#fff}
+.attrt{display:flex;align-items:center;gap:10px;font-size:17px;font-weight:700;letter-spacing:-.2px;margin-bottom:6px}
+.attrt svg{width:20px;height:20px;fill:none;stroke:#7FE7D2;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.attrq{font-size:14px;color:#AEB8C4;line-height:1.65;margin-bottom:18px;max-width:760px}
+.attrg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.attri{background:rgba(255,255,255,.055);border:1px solid rgba(255,255,255,.1);border-radius:10px;padding:15px 16px}
+.attri b{display:block;font-size:13.5px;color:#7FE7D2;margin-bottom:5px;letter-spacing:.1px}
+.attri span{font-size:12.5px;color:#C4CCD6;line-height:1.6}
+@media(max-width:900px){.attrg{grid-template-columns:1fr}}
+
+/* --- three jobs, compact --- */
+.jobs{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.job{background:#fff;border:1.5px solid var(--gbd);border-radius:12px;padding:18px;box-shadow:var(--sh)}
+.jobh{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.jobh svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
+.jobn{font-size:15.5px;font-weight:700;color:var(--n)}
+.jobk{font-size:10.5px;font-weight:800;letter-spacing:1.2px;text-transform:uppercase;margin-left:auto}
+.jobd{font-size:13px;color:#555;line-height:1.6}
+.jobd b{color:var(--n)}
+.job.j1{border-left:4px solid #8B7EC8}.job.j1 .jobh{color:#8B7EC8}.job.j1 .jobk{color:#8B7EC8}
+.job.j2{border-left:4px solid #2E7D32}.job.j2 .jobh{color:#2E7D32}.job.j2 .jobk{color:#2E7D32}
+.job.j3{border-left:4px solid #B7791F}.job.j3 .jobh{color:#B7791F}.job.j3 .jobk{color:#B7791F}
+@media(max-width:900px){.jobs{grid-template-columns:1fr}}
+
+/* --- order note --- */
+.ordnote{margin-top:14px;background:#FFF8E7;border:1px solid #E8D5B7;border-radius:10px;padding:13px 17px;font-size:13px;line-height:1.7;color:#6B4226}
+
+/* --- compact fee card --- */
+.feepill{margin-top:16px;background:var(--pb);border:1.5px solid #D9D2F0;border-radius:12px;padding:17px 20px}
+.feepillt{font-size:11px;font-weight:800;letter-spacing:1.6px;text-transform:uppercase;color:#5B4C9B;margin-bottom:7px}
+.feepillb{font-size:13.5px;line-height:1.7;color:#3F3568;margin-bottom:12px}
+.feerow{display:flex;gap:9px;flex-wrap:wrap;align-items:center}
+.feep{display:inline-flex;align-items:baseline;gap:6px;background:#fff;border:1px solid #D9D2F0;border-radius:20px;padding:6px 14px;font-size:12.5px;color:#6B6486}
+.feep b{font-size:13.5px;font-weight:800;color:var(--n)}
+.feep i{font-style:normal;font-weight:800;color:#B7791F}
+.feep.on i{color:#2E7D32}
+.feenote{font-size:11.5px;color:#8A82A8}
+
+/* --- tier icon chip --- */
+.tico{width:32px;height:32px;border-radius:9px;background:var(--pb);border:1px solid var(--pl);display:inline-flex;align-items:center;justify-content:center;color:var(--p);margin-bottom:10px}
+.tico svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.c.sel .tico{background:#fff}
+
+/* --- ladder header row inside feature lists --- */
+.cl li.lihd{font-size:12px;font-weight:800;letter-spacing:.8px;text-transform:uppercase;color:var(--p);padding:2px 0 6px;display:block}
+.cl li.lihd::before{content:'';display:none}
+.clfoot{font-size:11.5px;color:#8E96A3;line-height:1.55;margin-top:9px;padding-top:9px;border-top:1px dashed var(--gbd)}
 .ratiobox{margin:22px 0 6px;background:#F4F2FA;border:2px solid #D9D2F0;border-radius:12px;padding:18px 22px}
 .ratiot{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:2px;color:#5B4C9B;font-weight:800;padding-bottom:8px}
 .ratiob{font-size:14px;line-height:1.75;color:#3F3568;margin-bottom:16px}
@@ -132,53 +199,57 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <p class="sub">AI avatars and graphics generate content, landing pages and quizzes convert it, blogs build organic presence over time.</p>
 </div>
 
-<!-- ORGANIC VS PAID EXPLAINER (novice objection handler) -->
+<!-- HOW IT WORKS: production line, attribution, the three jobs -->
 <div class="xpl">
 <div id="xplVideo"></div>
-<div class="gh" style="margin-top:26px">First, The Part Nobody Explains</div>
-<p class="sub" style="margin-bottom:18px">Marketing is not one thing you buy. It is three different jobs, and they work on completely different timelines. Knowing which job you are paying for is how you build a budget that makes sense instead of a budget that scares you.</p>
-<div class="grid g3">
-  <div class="c csm" style="cursor:default">
-    <span class="bdg b-core">Job 1 &middot; Trust</span>
-    <h3 class="ct" style="font-size:19px">Organic social</h3>
-    <p class="cd">Somebody hears about you and looks you up before they ever buy. Your feed is what tells them you are a real company. <b>This is your business card and your digital footprint.</b> It is how patients get to know you, like you, and trust you.</p>
-    <div class="longgame" style="background:#F4F2FA;border-color:#D9D2F0;color:#4A3F7A">Organic does not buy traffic. It converts the traffic you already earned.</div>
-  </div>
-  <div class="c csm" style="cursor:default">
-    <span class="bdg b-pop">Job 2 &middot; Traffic</span>
-    <h3 class="ct" style="font-size:19px">Paid ads</h3>
-    <p class="cd">This is the faucet. Turn it on and people who have never heard of you land on your site today. Turn it off and that stops the same day. <b>Paid is the only lever that creates demand on command.</b></p>
-    <div class="longgame" style="background:#E8F5E9;border-color:#B6DDB9;color:#1F5C23">Two separate numbers: the management fee you pay us, and the ad spend you pay Meta or Google directly.</div>
-  </div>
-  <div class="c csm" style="cursor:default">
-    <span class="bdg b-save">Job 3 &middot; Compounding</span>
-    <h3 class="ct" style="font-size:19px">Blogs, Shorts, email</h3>
-    <p class="cd">Assets that keep working after you publish them. A blog written today can still be found a year from now, and an email list you own costs nothing to mail again. <b>This is the layer that lowers your cost per patient over time.</b></p>
-    <div class="longgame">Slowest to start, cheapest to run. This is a month six through twenty four play, not a week one play.</div>
-  </div>
+
+<div class="jump">Jump to:
+<a href="#pkgs">The packages</a>
+<a href="#paid">Paid media</a>
+<a href="#addons">Add-ons</a>
 </div>
 
-<div class="ratiobox">
-<div class="ratiot">Flat Fee vs Percentage Of Spend &middot; The Question Every Founder Asks</div>
-<div class="ratiob">Most agencies quote 15 to 20 percent of ad spend, and that model has a floor. Fifteen percent of a $5,000 test budget is $750 a month, which is why every one of those agencies also carries a minimum retainer, usually $2,500 to $5,000. Our managed-ads number is <b>$5,000/mo flat</b>, and flat means it never grows when your spend does. Percentage models charge you more for scaling. Flat gets cheaper every time you turn the budget up.</div>
-<div class="ratiogrid">
-  <div class="ratiohd">Your monthly ad spend</div>
-  <div class="ratiohd">Our flat fee</div>
-  <div class="ratiohd">Effective % of spend</div>
-  <div class="ratiohd">A 15% agency would bill</div>
-
-  <div class="ratioc">$5,000</div><div class="ratioc">$5,000</div><div class="ratioc rbad">100%</div><div class="ratioc">$750 <span class="rnote">(below their own minimum)</span></div>
-  <div class="ratioc">$10,000</div><div class="ratioc">$5,000</div><div class="ratioc rmid">50%</div><div class="ratioc">$1,500 <span class="rnote">(still under minimum)</span></div>
-  <div class="ratioc">$20,000</div><div class="ratioc">$5,000</div><div class="ratioc rmid">25%</div><div class="ratioc">$3,000</div>
-  <div class="ratioc">$34,000</div><div class="ratioc">$5,000</div><div class="ratioc rgood">15%</div><div class="ratioc">$5,100 <span class="rnote">(they pass us here)</span></div>
-  <div class="ratioc">$60,000</div><div class="ratioc">$5,000</div><div class="ratioc rgood">8%</div><div class="ratioc">$9,000 <span class="rnote">(80% more than us)</span></div>
-</div>
-<div class="ratiofoot">Read the top row honestly: at a $5,000 test budget any real management arrangement looks expensive as a percentage, ours included. That is an argument about the size of the test budget, not about the fee. It is also why the tiers below let you start with organic plus one platform instead of buying everything at once. Numbers here illustrate fee structure only. They are math, not a promise, and nothing here forecasts results.</div>
+<div class="gh" style="margin-top:20px">How It Actually Works &middot; Nothing Publishes Without You</div>
+<div class="jrn">
+<div class="jstep"><div class="jn">STEP 01</div><div class="jico"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0l-7.2-7.2A2 2 0 0 1 3 12V4a1 1 0 0 1 1-1h8a2 2 0 0 1 1.4.6l7.2 7.2a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></div><div class="jt">Your brand</div><div class="jd">We start from your brand, your voice, and your offer. Not a template and not a generic content calendar.</div></div>
+<div class="jstep"><div class="jn">STEP 02</div><div class="jico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></div><div class="jt">Strategy, both lanes</div><div class="jd">Organic and paid mapped together: platforms, cadence, hooks, YouTube, blogs, email. One plan, not two disconnected ones.</div></div>
+<div class="jstep"><div class="jn">STEP 03</div><div class="jico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m21 16.5-5.5-5.5L5.5 21"/></svg></div><div class="jt">Our team produces</div><div class="jd">Graphics, videos, captions, blogs, all built by our team. You are not writing anything and you are not editing anything.</div></div>
+<div class="jstep jhero"><div class="jn">STEP 04</div><div class="jico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.6 2.6L16.2 9.4"/></svg></div><div class="jt">You approve</div><div class="jd">Everything lands in your Google Drive: images, videos, and the captions that go with them. You review it on your schedule.</div><div class="jtag">Nothing goes live until you say yes</div></div>
+<div class="jstep"><div class="jn">STEP 05</div><div class="jico"><svg viewBox="0 0 24 24"><path d="M21.5 2.5 11 13"/><path d="M21.5 2.5 15 21l-4-8-8-4Z"/></svg></div><div class="jt">We post for you</div><div class="jd">Every platform, on your behalf, on the calendar. You never touch a scheduler or log into six apps.</div></div>
+<div class="jstep"><div class="jn">STEP 06</div><div class="jico"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-6M22 20H2"/></svg></div><div class="jt">You see it working</div><div class="jd">Monthly reporting on what published, what it reached, and what it produced. Full visibility across every platform.</div></div>
 </div>
 
-<div class="xplwarn">
-<div class="xplwarnt">The Fear Every Founder Has, Said Out Loud &#128171;</div>
-<div class="xplwarnb"><b>&ldquo;What if I am six months in, deep in marketing spend, and barely have any patients?&rdquo;</b> That fear is correct, and it comes from buying the wrong job first. Loading up on the compounding layer before the faucet is on means paying for reach you have not created yet. So the order matters: get the trust layer credible, open the faucet on one platform, read the actual numbers, and only then buy the compounding layer with data instead of hope. That is exactly how these three tiers are stacked, and it is why you can start on one and move up when the numbers tell you to. Everything here is month to month unless it says otherwise, so you are never locked into a bet you cannot revisit.</div>
+<div class="attrb">
+<div class="attrt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.6"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>Attribution: yes, we can tell</div>
+<div class="attrq">The two questions every operator asks. <b style="color:#fff">Do we know if somebody clicks? Do we know if somebody converts?</b> Yes to both, and this is exactly the plumbing that answers it.</div>
+<div class="attrg">
+<div class="attri"><b>Every click, tagged</b><span>Each ad, post, and email carries its own tracking tag, so a visit traces back to the exact creative that produced it.</span></div>
+<div class="attri"><b>Every conversion, fired</b><span>A pixel on your site records the real actions: form started, form submitted, call booked, checkout completed.</span></div>
+<div class="attri"><b>Every month, reported</b><span>The numbers by platform and by creative, sitting next to the spend that produced them. You hold the ad account.</span></div>
+</div>
+</div>
+
+<div class="gh">Marketing Is Three Different Jobs</div>
+<div class="jobs">
+<div class="job j1"><div class="jobh"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7.5" r="3.5"/><path d="M17 4.2a3.5 3.5 0 0 1 0 6.6M22 20v-1.5a4 4 0 0 0-3-3.8"/></svg><span class="jobn">Organic social</span><span class="jobk">Trust</span></div>
+<div class="jobd">People look you up before they ever buy. <b>This is your business card and your digital footprint.</b> It does not buy traffic. It converts the traffic you already earned.</div></div>
+<div class="job j2"><div class="jobh"><svg viewBox="0 0 24 24"><path d="M22 7 13.5 15.5l-4-4L2 19"/><path d="M16 7h6v6"/></svg><span class="jobn">Paid ads</span><span class="jobk">Traffic</span></div>
+<div class="jobd">The faucet. <b>On today, off today.</b> The only lever that creates demand on command. Two separate numbers: our management fee, and the ad spend you pay the platform directly.</div></div>
+<div class="job j3"><div class="jobh"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M12 7v5.5l3.5 2"/></svg><span class="jobn">Blogs, Shorts, email</span><span class="jobk">Compounding</span></div>
+<div class="jobd">Assets that keep working after you publish them. <b>Slowest to start, cheapest to run.</b> This is a month six play, not a week one play.</div></div>
+</div>
+
+<div class="ordnote"><b>The order matters more than the budget.</b> Founders get burned buying the compounding layer before the faucet is on, which means paying for reach they have not created yet. Get the trust layer credible, open the faucet on one platform, read the real numbers, then buy compounding with data instead of hope. The tiers below stack in exactly that order, and everything is month to month unless it says otherwise.</div>
+
+<div class="feepill">
+<div class="feepillt">Flat Fee, Not A Percentage Of Your Spend</div>
+<div class="feepillb">Ads management is <b>$5,000/mo flat</b> and it never grows when your budget does. A 15% agency has to see you spending <b>$34,000/mo</b> before they cost you less, and under roughly $17,000/mo they fall below their own minimum retainer anyway. Percentage models charge you more for scaling. Flat gets cheaper every time you turn the budget up.</div>
+<div class="feerow">
+<span class="feep"><b>$5K</b> spend <i>100%</i></span>
+<span class="feep"><b>$20K</b> spend <i>25%</i></span>
+<span class="feep on"><b>$60K</b> spend <i>8%</i></span>
+<span class="feenote">Our fee as a percentage of your spend. Math, not a promise.</span>
+</div>
 </div>
 </div>
 
@@ -197,11 +268,12 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="steplbl" id="brandLbl">Single brand pricing.</div>
 </div>
 
-<div class="gh">The Packages (pick one)</div>
+<div class="gh" id="pkgs">The Packages (pick one)</div>
 <div class="grid g3">
 
 <div class="c" data-item="pkg_social" data-price="2500" data-type="monthly" data-group="rung" onclick="togItem(this)">
 <div class="ck">&#10003;</div>
+<div class="tico"><svg viewBox="0 0 24 24"><path d="M16 20v-1.5a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4V20"/><circle cx="9" cy="7.5" r="3.5"/><path d="M17 4.2a3.5 3.5 0 0 1 0 6.6M22 20v-1.5a4 4 0 0 0-3-3.8"/></svg></div>
 <span class="bdg b-core">The Foundation</span>
 <h3 class="ct">Social Engine</h3>
 <div class="cp"><span class="ap">$2,500</span><span class="sx">/mo</span></div>
@@ -218,17 +290,19 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 
 <div class="c" data-item="pkg_growth" data-price="7000" data-type="monthly" data-group="rung" onclick="togItem(this)">
 <div class="ck">&#10003;</div>
+<div class="tico"><svg viewBox="0 0 24 24"><path d="M22 7 13.5 15.5l-4-4L2 19"/><path d="M16 7h6v6"/></svg></div>
 <span class="bdg b-pop">Most Founders Start Here</span>
 <h3 class="ct">Growth Engine</h3>
 <div class="cp"><span class="ap">$7,000</span><span class="sx">/mo</span></div>
 <p class="cd">The trust layer and the traffic layer together. Organic social plus one fully managed ads platform, your pick.</p>
 <ul class="cl">
-<li>Everything in Social Engine (20 posts/mo)</li>
+<li class="lihd">Everything in Social Engine, plus</li>
 <li>One ads platform fully managed: Meta or Google</li>
 <li>Strategy, campaign builds, creative rotation, optimization</li>
+<li>Conversion tracking and monthly attribution reporting</li>
 <li>Month to month, cancel anytime</li>
-<li>Ad spend paid by you directly to the platform, never included</li>
 </ul>
+<div class="clfoot">Ad spend is paid by you directly to Meta or Google and is never included here.</div>
 <div class="platpick">
 <div class="steplbl" style="margin-bottom:6px;color:#666;font-weight:700">Pick your platform</div>
 <div class="platrow">
@@ -241,21 +315,21 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 
 <div class="c" data-item="pkg_fullstack" data-price="14500" data-type="monthly" data-group="rung" onclick="togItem(this)">
 <div class="ck">&#10003;</div>
+<div class="tico"><svg viewBox="0 0 24 24"><path d="m12 2.5 9.5 5-9.5 5-9.5-5Z"/><path d="m2.5 12.5 9.5 5 9.5-5M2.5 17l9.5 5 9.5-5"/></svg></div>
 <span class="bdg b-save">Ads Management Included</span>
 <h3 class="ct">Full Stack</h3>
 <div class="cp"><span class="ap">$14,500</span><span class="sx">/mo</span></div>
 <p class="cd">The entire content and conversion team on one number, with a managed ads platform built in.</p>
 <ul class="cl">
-<li>90-day minimum, then month to month</li>
-<li>Everything in Social Engine (20 posts/mo)</li>
-<li>One ads platform fully managed: Meta or Google</li>
-<li>Creative production: 20 custom graphics + 10 edited videos/mo from your footage</li>
+<li class="lihd">Everything in Growth Engine, plus</li>
+<li>Creative production: 20 custom graphics + 10 edited videos/mo</li>
 <li>YouTube Shorts: 10/mo</li>
 <li>SEO blogs: 20/mo</li>
-<li>Email marketing: nurture flows + broadcasts (Full Stack exclusive)</li>
-<li>Monthly strategy + performance review, priority queue</li>
-<li>Ad spend paid by you directly to the platform, never included</li>
+<li>Email marketing: nurture flows + broadcasts, exclusive to this tier</li>
+<li>Monthly strategy session + priority queue</li>
+<li>90-day minimum, then month to month</li>
 </ul>
+<div class="clfoot">Ad spend is paid by you directly to Meta or Google and is never included here.</div>
 <div class="platpick">
 <div class="steplbl" style="margin-bottom:6px;color:#666;font-weight:700">Pick your platform</div>
 <div class="platrow">
@@ -268,7 +342,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 
 </div>
 
-<div class="gh">Paid Media Management</div>
+<div class="gh" id="paid">Paid Media Management</div>
 <p class="sub" style="margin-bottom:14px">Growth Engine and Full Stack each include one managed platform already. This is where you add the second one, or bolt paid media onto Social Engine. Two separate numbers always: the management fee below, and the ad spend you pay Meta or Google directly. <b>Ad spend is never included here.</b></p>
 <div class="grid g2">
 <div class="c csm" data-item="meta_ads" data-price="5000" data-type="monthly" onclick="togItem(this)">
@@ -288,7 +362,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 
 <!-- ADD-ONS -->
-<div class="gh">AI Avatar Packages (pick one, optional)</div>
+<div class="gh" id="addons">AI Avatar Packages (pick one, optional)</div>
 <p class="sub" style="margin-bottom:14px">Your creative engine: custom AI avatars producing the content. Pairs with Social Engine or Full Stack. Most brands start with <b>Growth</b>. Avatar packages are per brand and quoted once here; packages for additional brands are quoted separately. <a href="https://launch.kickstartsocial.co/avatar" target="_blank" rel="noopener" style="color:var(--p);font-weight:700">Full avatar details &rarr;</a></p>
 <div class="grid g3">
 <div class="c csm" data-item="av_starter" data-price="3500" data-type="onetime" data-group="avatar" onclick="togItem(this)">
