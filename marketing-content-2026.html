@@ -549,6 +549,18 @@ body{padding-bottom:92px}
 .mbjump{display:none}
 .mbar.exp .mbjump{display:block;max-width:1200px;margin:0 auto;padding:0 24px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--vio);text-decoration:none}
 .mbar.exp .mbjump:hover{text-decoration:underline}
+
+/* --- self-hosted explainer player --- */
+.vidbox{max-width:940px;margin:0 auto 8px}
+.vidshell{position:relative;border-radius:1.6rem;overflow:hidden;background:#0E0B1E;box-shadow:0 34px 80px -38px rgba(67,55,127,.6);border:1px solid rgba(34,29,54,.08)}
+.vidnative{display:block;width:100%;aspect-ratio:16/9;background:#0E0B1E}
+.vidplay{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:opacity .4s cubic-bezier(.32,.72,0,1)}
+.vidplay span{width:82px;height:82px;border-radius:999px;background:linear-gradient(115deg,var(--viod),var(--vio) 55%,#C4498F);box-shadow:0 22px 48px -16px rgba(95,79,179,.85),inset 0 1px 1px rgba(255,255,255,.3);display:flex;align-items:center;justify-content:center;transition:transform .4s cubic-bezier(.32,.72,0,1)}
+.vidplay span::after{content:'';margin-left:5px;border-left:22px solid #fff;border-top:14px solid transparent;border-bottom:14px solid transparent}
+.vidplay:hover span{transform:scale(1.07)}
+.vidplay.gone{opacity:0;pointer-events:none}
+.vidcap{text-align:center;font-size:12.5px;color:var(--mut);margin-top:12px}
+@media(max-width:640px){.vidplay span{width:64px;height:64px}.vidplay span::after{border-left-width:17px;border-top-width:11px;border-bottom-width:11px}}
 </style>
 </head>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Pricing Tool</div></div></div></header>
@@ -905,8 +917,12 @@ var ytCount=10; var YT_MIN=10, YT_BASE=1000, YT_EXTRA=125;
 
 /* EXPLAINER VIDEO: paste the YouTube id here to publish the video at the top.
    Empty string hides the player and shows the written explainer only. */
-var XPL_VIDEO_ID='';
-var XPL_VIDEO_CAP='How organic, paid, and compounding content each work, in plain English.';
+var XPL_VIDEO_ID='';   /* optional YouTube id, only if we ever want the YT player */
+/* Self-hosted MP4. Kept off YouTube on purpose: no channel, no suggested
+   videos, no public search. Served from launch.kickstartsocial.co. */
+var XPL_VIDEO_SRC='https://launch.kickstartsocial.co/assets/marketing-explainer.mp4';
+var XPL_VIDEO_POSTER='https://launch.kickstartsocial.co/assets/marketing-explainer-poster.jpg';
+var XPL_VIDEO_CAP='Three and a half minutes on how the marketing actually works. Sound on.';
 
 /* Which ads platform the included-management tiers are set to: "meta" or "google" */
 var platform='meta';
@@ -975,6 +991,21 @@ function syncAdsCards(){
 }
 function renderXplVideo(){
   var box=document.getElementById('xplVideo'); if(!box) return;
+  if(XPL_VIDEO_SRC){
+    box.innerHTML='<div class="vidbox"><div class="vidshell"><video id="xplV" class="vidnative" preload="metadata" playsinline controls'
+      +(XPL_VIDEO_POSTER?' poster="'+XPL_VIDEO_POSTER+'"':'')
+      +'><source src="'+XPL_VIDEO_SRC+'" type="video/mp4">Your browser cannot play this video.</video>'
+      +'<button type="button" class="vidplay" id="xplPlay" aria-label="Play the explainer"><span></span></button>'
+      +'</div><div class="vidcap">'+XPL_VIDEO_CAP+'</div></div>';
+    var v=document.getElementById('xplV'), pb=document.getElementById('xplPlay');
+    if(v&&pb){
+      pb.addEventListener('click',function(){v.play();});
+      v.addEventListener('play',function(){pb.classList.add('gone');});
+      v.addEventListener('pause',function(){if(!v.ended)pb.classList.remove('gone');});
+      v.addEventListener('ended',function(){pb.classList.remove('gone');});
+    }
+    return;
+  }
   if(!XPL_VIDEO_ID){box.innerHTML='';return;}
   box.innerHTML='<div class="vidbox"><iframe src="https://www.youtube.com/embed/'+XPL_VIDEO_ID+'" title="How marketing actually works" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="vidcap">'+XPL_VIDEO_CAP+'</div></div>';
 }
