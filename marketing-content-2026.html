@@ -94,6 +94,33 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .mbar.exp .mbx{transform:rotate(180deg)}
 .mbe{display:none;padding:0 20px 18px;max-height:55vh;overflow-y:auto}
 .mbar.exp .mbe{display:block}
+.xpl{padding:8px 0 4px}
+.ratiobox{margin:22px 0 6px;background:#F4F2FA;border:2px solid #D9D2F0;border-radius:12px;padding:18px 22px}
+.ratiot{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:2px;color:#5B4C9B;font-weight:800;padding-bottom:8px}
+.ratiob{font-size:14px;line-height:1.75;color:#3F3568;margin-bottom:16px}
+.ratiogrid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:0;border:1px solid #D9D2F0;border-radius:10px;overflow:hidden;background:#fff}
+.ratiohd{font-size:11px;font-weight:800;letter-spacing:.6px;text-transform:uppercase;color:#5B4C9B;background:#EDE9F8;padding:10px 12px;line-height:1.3}
+.ratioc{font-size:13.5px;font-weight:600;color:#0D1B2A;padding:11px 12px;border-top:1px solid #EFECF9}
+.ratioc .rnote{display:block;font-size:11px;font-weight:500;color:#8A82A8}
+.rbad{color:#C0392B}
+.rmid{color:#B7791F}
+.rgood{color:#2E7D32}
+.ratiofoot{font-size:12.5px;line-height:1.7;color:#6B6486;margin-top:12px}
+@media(max-width:760px){
+.ratiogrid{grid-template-columns:1fr 1fr}
+.ratiohd:nth-child(4),.ratioc:nth-child(4n+0){display:none}
+.ratiohd:nth-child(3){display:none}
+.ratioc:nth-child(4n+3){display:none}
+}
+.xplwarn{margin:22px 0 6px;background:#FFF8E7;border:2px solid #E8D5B7;border-radius:12px;padding:18px 22px}
+.xplwarnt{font-family:'Inter',sans-serif;font-size:11px;letter-spacing:2px;color:#8B6914;font-weight:800;padding-bottom:8px}
+.xplwarnb{font-size:14px;line-height:1.75;color:#6B4226}
+.platrow{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.platpick{margin-top:16px;padding-top:14px;border-top:1px dashed var(--gbd)}
+.inclpill{display:inline-block;margin-top:8px;font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 12px;border-radius:20px;background:#E8F5E9;color:#2E7D32}
+.vidbox{max-width:900px;margin:0 auto}
+.vidbox iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;display:block;box-shadow:var(--shh)}
+.vidcap{text-align:center;font-size:13px;color:#888;margin-top:10px}
 .ft{background:var(--gb);border-top:1px solid var(--gbd);padding:28px 0;text-align:center;font-size:12px;color:#999;line-height:1.7}
 </style>
 </head>
@@ -103,6 +130,56 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <div class="hero">
 <h1 class="h1">AI-native content and conversion system, built for regulated brands.</h1>
 <p class="sub">AI avatars and graphics generate content, landing pages and quizzes convert it, blogs build organic presence over time.</p>
+</div>
+
+<!-- ORGANIC VS PAID EXPLAINER (novice objection handler) -->
+<div class="xpl">
+<div id="xplVideo"></div>
+<div class="gh" style="margin-top:26px">First, The Part Nobody Explains</div>
+<p class="sub" style="margin-bottom:18px">Marketing is not one thing you buy. It is three different jobs, and they work on completely different timelines. Knowing which job you are paying for is how you build a budget that makes sense instead of a budget that scares you.</p>
+<div class="grid g3">
+  <div class="c csm" style="cursor:default">
+    <span class="bdg b-core">Job 1 &middot; Trust</span>
+    <h3 class="ct" style="font-size:19px">Organic social</h3>
+    <p class="cd">Somebody hears about you and looks you up before they ever buy. Your feed is what tells them you are a real company. <b>This is your business card and your digital footprint.</b> It is how patients get to know you, like you, and trust you.</p>
+    <div class="longgame" style="background:#F4F2FA;border-color:#D9D2F0;color:#4A3F7A">Organic does not buy traffic. It converts the traffic you already earned.</div>
+  </div>
+  <div class="c csm" style="cursor:default">
+    <span class="bdg b-pop">Job 2 &middot; Traffic</span>
+    <h3 class="ct" style="font-size:19px">Paid ads</h3>
+    <p class="cd">This is the faucet. Turn it on and people who have never heard of you land on your site today. Turn it off and that stops the same day. <b>Paid is the only lever that creates demand on command.</b></p>
+    <div class="longgame" style="background:#E8F5E9;border-color:#B6DDB9;color:#1F5C23">Two separate numbers: the management fee you pay us, and the ad spend you pay Meta or Google directly.</div>
+  </div>
+  <div class="c csm" style="cursor:default">
+    <span class="bdg b-save">Job 3 &middot; Compounding</span>
+    <h3 class="ct" style="font-size:19px">Blogs, Shorts, email</h3>
+    <p class="cd">Assets that keep working after you publish them. A blog written today can still be found a year from now, and an email list you own costs nothing to mail again. <b>This is the layer that lowers your cost per patient over time.</b></p>
+    <div class="longgame">Slowest to start, cheapest to run. This is a month six through twenty four play, not a week one play.</div>
+  </div>
+</div>
+
+<div class="ratiobox">
+<div class="ratiot">Flat Fee vs Percentage Of Spend &middot; The Question Every Founder Asks</div>
+<div class="ratiob">Most agencies quote 15 to 20 percent of ad spend, and that model has a floor. Fifteen percent of a $5,000 test budget is $750 a month, which is why every one of those agencies also carries a minimum retainer, usually $2,500 to $5,000. Our managed-ads number is <b>$5,000/mo flat</b>, and flat means it never grows when your spend does. Percentage models charge you more for scaling. Flat gets cheaper every time you turn the budget up.</div>
+<div class="ratiogrid">
+  <div class="ratiohd">Your monthly ad spend</div>
+  <div class="ratiohd">Our flat fee</div>
+  <div class="ratiohd">Effective % of spend</div>
+  <div class="ratiohd">A 15% agency would bill</div>
+
+  <div class="ratioc">$5,000</div><div class="ratioc">$5,000</div><div class="ratioc rbad">100%</div><div class="ratioc">$750 <span class="rnote">(below their own minimum)</span></div>
+  <div class="ratioc">$10,000</div><div class="ratioc">$5,000</div><div class="ratioc rmid">50%</div><div class="ratioc">$1,500 <span class="rnote">(still under minimum)</span></div>
+  <div class="ratioc">$20,000</div><div class="ratioc">$5,000</div><div class="ratioc rmid">25%</div><div class="ratioc">$3,000</div>
+  <div class="ratioc">$34,000</div><div class="ratioc">$5,000</div><div class="ratioc rgood">15%</div><div class="ratioc">$5,100 <span class="rnote">(they pass us here)</span></div>
+  <div class="ratioc">$60,000</div><div class="ratioc">$5,000</div><div class="ratioc rgood">8%</div><div class="ratioc">$9,000 <span class="rnote">(80% more than us)</span></div>
+</div>
+<div class="ratiofoot">Read the top row honestly: at a $5,000 test budget any real management arrangement looks expensive as a percentage, ours included. That is an argument about the size of the test budget, not about the fee. It is also why the tiers below let you start with organic plus one platform instead of buying everything at once. Numbers here illustrate fee structure only. They are math, not a promise, and nothing here forecasts results.</div>
+</div>
+
+<div class="xplwarn">
+<div class="xplwarnt">The Fear Every Founder Has, Said Out Loud &#128171;</div>
+<div class="xplwarnb"><b>&ldquo;What if I am six months in, deep in marketing spend, and barely have any patients?&rdquo;</b> That fear is correct, and it comes from buying the wrong job first. Loading up on the compounding layer before the faucet is on means paying for reach you have not created yet. So the order matters: get the trust layer credible, open the faucet on one platform, read the actual numbers, and only then buy the compounding layer with data instead of hope. That is exactly how these three tiers are stacked, and it is why you can start on one and move up when the numbers tell you to. Everything here is month to month unless it says otherwise, so you are never locked into a bet you cannot revisit.</div>
+</div>
 </div>
 
 <div class="main"><div class="ca">
@@ -121,11 +198,11 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 
 <div class="gh">The Packages (pick one)</div>
-<div class="grid g2">
+<div class="grid g3">
 
 <div class="c" data-item="pkg_social" data-price="2500" data-type="monthly" data-group="rung" onclick="togItem(this)">
-<div class="ck">✓</div>
-<span class="bdg b-pop">Take It Or Leave It</span>
+<div class="ck">&#10003;</div>
+<span class="bdg b-core">The Foundation</span>
 <h3 class="ct">Social Engine</h3>
 <div class="cp"><span class="ap">$2,500</span><span class="sx">/mo</span></div>
 <p class="cd">Organic social, completely done for you. Month to month, cancel anytime.</p>
@@ -136,26 +213,78 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <li>Posting and scheduling, done for you</li>
 <li>Organic only. Ad spend never included.</li>
 </ul>
+<div class="longgame" style="background:#F4F2FA;border-color:#D9D2F0;color:#4A3F7A"><strong>This is your business card.</strong> It builds the digital footprint that lets a potential patient look you up, know you, like you, and trust you before they ever book.</div>
+</div>
+
+<div class="c" data-item="pkg_growth" data-price="7000" data-type="monthly" data-group="rung" onclick="togItem(this)">
+<div class="ck">&#10003;</div>
+<span class="bdg b-pop">Most Founders Start Here</span>
+<h3 class="ct">Growth Engine</h3>
+<div class="cp"><span class="ap">$7,000</span><span class="sx">/mo</span></div>
+<p class="cd">The trust layer and the traffic layer together. Organic social plus one fully managed ads platform, your pick.</p>
+<ul class="cl">
+<li>Everything in Social Engine (20 posts/mo)</li>
+<li>One ads platform fully managed: Meta or Google</li>
+<li>Strategy, campaign builds, creative rotation, optimization</li>
+<li>Month to month, cancel anytime</li>
+<li>Ad spend paid by you directly to the platform, never included</li>
+</ul>
+<div class="platpick">
+<div class="steplbl" style="margin-bottom:6px;color:#666;font-weight:700">Pick your platform</div>
+<div class="platrow">
+<button type="button" class="avtier platbtn on" data-plat="meta" onclick="pickPlat('meta',event)">Meta</button>
+<button type="button" class="avtier platbtn" data-plat="google" onclick="pickPlat('google',event)">Google</button>
+</div>
+</div>
+<div class="longgame" style="background:#E8F5E9;border-color:#B6DDB9;color:#1F5C23"><strong>Bought separately that is $7,500.</strong> Bundled here it is $7,000, so you keep $500 every single month.</div>
 </div>
 
 <div class="c" data-item="pkg_fullstack" data-price="14500" data-type="monthly" data-group="rung" onclick="togItem(this)">
-<div class="ck">✓</div>
-<span class="bdg b-save">The Mega</span>
+<div class="ck">&#10003;</div>
+<span class="bdg b-save">Ads Management Included</span>
 <h3 class="ct">Full Stack</h3>
 <div class="cp"><span class="ap">$14,500</span><span class="sx">/mo</span></div>
-<p class="cd">The entire content and conversion team on one number. Everything below, every month.</p>
+<p class="cd">The entire content and conversion team on one number, with a managed ads platform built in.</p>
 <ul class="cl">
 <li>90-day minimum, then month to month</li>
 <li>Everything in Social Engine (20 posts/mo)</li>
+<li>One ads platform fully managed: Meta or Google</li>
 <li>Creative production: 20 custom graphics + 10 edited videos/mo from your footage</li>
 <li>YouTube Shorts: 10/mo</li>
 <li>SEO blogs: 20/mo</li>
 <li>Email marketing: nurture flows + broadcasts (Full Stack exclusive)</li>
 <li>Monthly strategy + performance review, priority queue</li>
-<li>Ads management available as add-ons below. Ad spend never included.</li>
+<li>Ad spend paid by you directly to the platform, never included</li>
 </ul>
+<div class="platpick">
+<div class="steplbl" style="margin-bottom:6px;color:#666;font-weight:700">Pick your platform</div>
+<div class="platrow">
+<button type="button" class="avtier platbtn on" data-plat="meta" onclick="pickPlat('meta',event)">Meta</button>
+<button type="button" class="avtier platbtn" data-plat="google" onclick="pickPlat('google',event)">Google</button>
+</div>
+</div>
+<div class="longgame"><strong>The same components à la carte run $19,500/mo.</strong> Full Stack is $14,500, so the $5,000/mo ads management comes included.</div>
 </div>
 
+</div>
+
+<div class="gh">Paid Media Management</div>
+<p class="sub" style="margin-bottom:14px">Growth Engine and Full Stack each include one managed platform already. This is where you add the second one, or bolt paid media onto Social Engine. Two separate numbers always: the management fee below, and the ad spend you pay Meta or Google directly. <b>Ad spend is never included here.</b></p>
+<div class="grid g2">
+<div class="c csm" data-item="meta_ads" data-price="5000" data-type="monthly" onclick="togItem(this)">
+<div class="ck">&#10003;</div>
+<h3 class="ct">Meta Ads Management</h3>
+<div class="cp"><span class="ap">+$5,000</span><span class="sx">/mo</span></div>
+<p class="cd">Facebook and Instagram: strategy, campaign builds, creative rotation, and ongoing optimization.</p>
+<div id="metaNote"></div>
+</div>
+<div class="c csm" data-item="google_ads" data-price="5000" data-type="monthly" onclick="togItem(this)">
+<div class="ck">&#10003;</div>
+<h3 class="ct">Google Ads Management</h3>
+<div class="cp"><span class="ap">+$5,000</span><span class="sx">/mo</span></div>
+<p class="cd">Search, PMax, and YouTube placements with ongoing optimization.</p>
+<div id="googleNote"></div>
+</div>
 </div>
 
 <!-- ADD-ONS -->
@@ -221,22 +350,6 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 <button type="button" onclick="event.stopPropagation();blogStep(1)">+</button>
 </div>
 <div class="steplbl">$100 per blog, minimum 10. Tap the card to add or remove from the quote.</div>
-</div>
-</div>
-
-<div class="gh">Add-On: Paid Media Management (pairs with Full Stack)</div>
-<div class="grid g2">
-<div class="c csm" data-item="meta_ads" data-price="5000" data-type="monthly" onclick="togItem(this)">
-<div class="ck">✓</div>
-<h3 class="ct">Meta Ads Management</h3>
-<div class="cp"><span class="ap">+$5,000</span><span class="sx">/mo</span></div>
-<p class="cd">Full Meta campaign management: strategy, builds, creative rotation, and optimization. Ad spend paid by you directly to Meta, never included.</p>
-</div>
-<div class="c csm" data-item="google_ads" data-price="5000" data-type="monthly" onclick="togItem(this)">
-<div class="ck">✓</div>
-<h3 class="ct">Google Ads Management</h3>
-<div class="cp"><span class="ap">+$5,000</span><span class="sx">/mo</span></div>
-<p class="cd">Full Google campaign management: search, PMax, and YouTube placements with ongoing optimization. Ad spend paid by you directly to Google, never included.</p>
 </div>
 </div>
 
@@ -332,8 +445,17 @@ var BLOG_MIN=10,BLOG_PRICE=100;
 var brandCount=1;           // multi-brand: 5% off each additional brand, cap 15%
 var ytCount=10; var YT_MIN=10, YT_BASE=1000, YT_EXTRA=125;
 
+/* EXPLAINER VIDEO: paste the YouTube id here to publish the video at the top.
+   Empty string hides the player and shows the written explainer only. */
+var XPL_VIDEO_ID='';
+var XPL_VIDEO_CAP='How organic, paid, and compounding content each work, in plain English.';
+
+/* Which ads platform the included-management tiers are set to: "meta" or "google" */
+var platform='meta';
+
 var itemNames={
   pkg_social:"Social Engine",
+  pkg_growth:"Growth Engine",
   av_starter:"Avatar Starter (4 avatars, 12 videos)",
   av_growth:"Avatar Growth (6 avatars, 30 videos)",
   av_authority:"Avatar Authority (12 avatars, 60 + 20/mo)",
@@ -350,6 +472,50 @@ var itemNames={
 };
 
 function cardFor(item){return document.querySelector('[data-item="'+item+'"]');}
+function platLabel(p){return p==='google'?'Google':'Meta';}
+function tierWithPlatform(){
+  if(selected.indexOf('pkg_fullstack')>-1) return 'pkg_fullstack';
+  if(selected.indexOf('pkg_growth')>-1) return 'pkg_growth';
+  return null;
+}
+function pickPlat(which,ev){
+  if(ev){ev.stopPropagation();}
+  platform=which;
+  document.querySelectorAll('.platbtn').forEach(function(b){
+    b.classList.toggle('on', b.dataset.plat===which);
+  });
+  updateTally();
+}
+/* Keeps the standalone ads cards honest: the platform already bundled into the
+   selected tier cannot also be billed as an add-on. */
+function syncAdsCards(){
+  var tier=tierWithPlatform();
+  var pairs=[['meta','meta_ads','metaNote'],['google','google_ads','googleNote']];
+  pairs.forEach(function(p){
+    var key=p[0],item=p[1],noteId=p[2];
+    var note=document.getElementById(noteId); if(!note) return;
+    var card=cardFor(item);
+    var included=!!tier && platform===key;
+    if(included){
+      if(selected.indexOf(item)>-1){
+        selected=selected.filter(function(x){return x!==item;});
+        if(card) card.classList.remove('sel');
+      }
+      note.innerHTML='<span class="inclpill">Already included in your package</span>';
+      if(card){card.style.opacity='0.55';}
+    } else {
+      note.innerHTML = tier
+        ? '<div class="steplbl">Adds '+platLabel(key)+' as your second managed platform.</div>'
+        : '<div class="steplbl">Social Engine plus one platform à la carte is $7,500. Growth Engine is $7,000.</div>';
+      if(card){card.style.opacity='1';}
+    }
+  });
+}
+function renderXplVideo(){
+  var box=document.getElementById('xplVideo'); if(!box) return;
+  if(!XPL_VIDEO_ID){box.innerHTML='';return;}
+  box.innerHTML='<div class="vidbox"><iframe src="https://www.youtube.com/embed/'+XPL_VIDEO_ID+'" title="How marketing actually works" loading="lazy" allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe><div class="vidcap">'+XPL_VIDEO_CAP+'</div></div>';
+}
 function fmt(n){return '$'+n.toLocaleString('en-US');}
 
 function togItem(card){
@@ -443,6 +609,8 @@ function lineItems(){
     var c=cardFor(item);if(!c) return;
     var type=c.dataset.type,price=itemPrice(item);
     var label=itemNames[item]||item;
+    if(item==='pkg_growth') label='Growth Engine (Social + '+platLabel(platform)+' Ads managed)';
+    if(item==='pkg_fullstack') label='Full Stack (incl. '+platLabel(platform)+' Ads managed)';
     if(item==='blogs') label='SEO Blogs ('+blogCount+'/mo)';
     if(item==='youtube_shorts') label='YouTube Shorts ('+ytCount+'/mo)';
     rows.push({label:label,price:price,suffix:type==='monthly'?'/mo':''});
@@ -459,11 +627,12 @@ function fullStackNudge(id){
   return '<div'+(id?' id="'+id+'"':'')+' style="margin-top:16px;background:var(--pb);border:1.5px solid var(--p);border-radius:12px;padding:16px 18px">'
     +'<span style="display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;padding:4px 12px;border-radius:20px;background:var(--pl);color:var(--p);margin-bottom:10px">Full Stack</span>'
     +'<div style="font-size:15px;font-weight:700;color:var(--n);line-height:1.3;margin-bottom:8px">This quote is approaching Full Stack territory.</div>'
-    +'<div style="font-size:13px;color:#555;line-height:1.55;margin-bottom:12px">Full Stack is $14,500/mo flat and includes 20 posts/mo social, 20 custom graphics + 10 edited videos/mo, 10 Shorts/mo, 20 blogs/mo, exclusive email marketing. AI avatars stack on top as an add-on. Meta and Google ads management are +$5,000/mo each. Show them the full picture before presenting this quote.</div>'
+    +'<div style="font-size:13px;color:#555;line-height:1.55;margin-bottom:12px">Full Stack is $14,500/mo flat and includes 20 posts/mo social, 20 custom graphics + 10 edited videos/mo, 10 Shorts/mo, 20 blogs/mo, exclusive email marketing, and one fully managed ads platform (a $5,000/mo value). AI avatars stack on top as an add-on, and the second ads platform is +$5,000/mo. Show them the full picture before presenting this quote.</div>'
     +'</div>';
 }
 
 function updateTally(){
+  syncAdsCards();
   var t=calcTotals();
   var rows=lineItems();
   var h='';
@@ -572,6 +741,8 @@ document.addEventListener('DOMContentLoaded',function(){
   syncBlog();      // sets initial blog price label
   syncYt();        // sets initial shorts price label
   syncBrand();     // sets initial brand label and tally
+  renderXplVideo();// explainer video at top (only if XPL_VIDEO_ID is set)
+  updateTally();
 });
 </script>
 </body>
