@@ -462,6 +462,8 @@ h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;color:
 
 .jobwhy{margin-top:13px;padding-top:12px;border-top:1px dashed rgba(156,122,46,.28);font-size:12.5px;line-height:1.65;color:#6B4226}
 .jobwhy b{color:#5A3418}
+
+html[data-view="client"] #mkToolbar{display:none !important}
 </style>
 </head>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Pricing Tool</div></div></div></header>
@@ -1126,6 +1128,26 @@ document.addEventListener('DOMContentLoaded',function(){
   renderXplVideo();// explainer video at top (only if XPL_VIDEO_ID is set)
   updateTally();
 });
+
+/* ---------------------------------------------------------------
+   VIEW MODE.  ?view=client renders the prospect-safe page: the senior
+   strategist toolbar is removed from the DOM entirely (not just hidden,
+   so it cannot be un-hidden with devtools) and the header stops calling
+   itself an internal tool.  No query string = the full team view.
+   --------------------------------------------------------------- */
+(function(){
+  var qs = new URLSearchParams(window.location.search);
+  if (qs.get('view') !== 'client') return;
+  document.documentElement.setAttribute('data-view','client');
+  function strip(){
+    var t = document.getElementById('mkToolbar');
+    if (t && t.parentNode) t.parentNode.removeChild(t);
+    var tag = document.querySelector('.hdr .tag');
+    if (tag) tag.textContent = 'Marketing Packages';
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', strip);
+  else strip();
+})();
 </script>
 </body>
 </html>
