@@ -100,19 +100,43 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .jump a{display:inline-block;padding:6px 13px;border-radius:20px;border:1px solid var(--gbd);background:#fff;color:#5B4C9B;font-weight:700;text-decoration:none;transition:all .2s}
 .jump a:hover{border-color:var(--p);background:var(--pb)}
 
-/* --- production journey --- */
-.jrn{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
-.jstep{position:relative;background:#fff;border:1.5px solid var(--gbd);border-radius:12px;padding:18px;box-shadow:var(--sh)}
-.jstep .jn{position:absolute;top:15px;right:17px;font-size:11px;font-weight:800;color:#CDC7DE;letter-spacing:1.5px}
-.jico{width:38px;height:38px;border-radius:10px;background:var(--pb);border:1px solid var(--pl);display:flex;align-items:center;justify-content:center;color:var(--p);margin-bottom:12px}
-.jico svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.jt{font-size:16px;font-weight:700;color:var(--n);margin-bottom:3px;letter-spacing:-.2px}
-.jd{font-size:13px;color:#555;line-height:1.6}
-.jstep.jhero{background:var(--pb);border-color:var(--p);border-width:2px}
-.jstep.jhero .jico{background:#fff}
-.jtag{display:inline-block;margin-top:9px;font-size:10.5px;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:3px 10px;border-radius:20px;background:var(--p);color:#fff}
-@media(max-width:900px){.jrn{grid-template-columns:1fr 1fr}}
-@media(max-width:600px){.jrn{grid-template-columns:1fr}}
+/* --- production trail (matches the growpro.co launch path) --- */
+.trail{position:relative;height:392px;margin-top:26px}
+.tpath{position:absolute;inset:0;width:100%;height:100%}
+.tnode{position:absolute;width:158px;background:#fff;border:1px solid #ECE7F7;border-radius:16px;padding:15px 12px 13px;text-align:center;box-shadow:0 18px 40px -20px rgba(67,55,127,.42);transform:rotate(-1.6deg);transition:transform .5s cubic-bezier(.32,.72,0,1);z-index:2}
+.tnode:nth-of-type(odd){transform:rotate(1.4deg)}
+.tnode:hover{transform:translateY(-6px) rotate(0) scale(1.04);z-index:6}
+.tic{position:relative;width:40px;height:40px;margin:0 auto 9px;border-radius:11px;background:var(--pb);border:1px solid var(--pl);display:flex;align-items:center;justify-content:center;color:var(--p)}
+.tic svg{width:20px;height:20px;fill:none;stroke:currentColor;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+.tnum{position:absolute;top:-8px;right:-8px;width:20px;height:20px;border-radius:50%;background:linear-gradient(115deg,var(--p),#7A6BBF);color:#fff;font-size:10.5px;font-weight:800;font-style:normal;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 9px -3px rgba(139,126,200,.85)}
+.tnode b{display:block;font-size:13.5px;font-weight:800;line-height:1.25;color:var(--n);letter-spacing:-.2px}
+.tnode small{font-size:10.5px;color:#8A82A8;display:block;margin-top:3px;line-height:1.4}
+/* the control step */
+.tnode.tkey{border:2px solid var(--p);background:var(--pb);box-shadow:0 24px 50px -20px rgba(139,126,200,.7)}
+.tnode.tkey .tic{background:#fff}
+.tkeypill{display:block;margin-top:9px;font-size:9px;font-weight:800;letter-spacing:.9px;text-transform:uppercase;padding:4px 8px;border-radius:20px;background:var(--p);color:#fff;line-height:1.35}
+/* the payoff step */
+.tnode.tx{width:172px;border:2px solid transparent;background-image:linear-gradient(#fff,#fff),linear-gradient(105deg,#F0D9A0,#9C7A2E);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 26px 54px -22px rgba(156,122,46,.55)}
+.tnode.tx .tic{background:#FFF8E7;border-color:#E8D5B7;color:#9C7A2E}
+.tnode.tx .tnum{background:linear-gradient(115deg,#D4B36A,#9C7A2E)}
+.spk{position:absolute;width:8px;height:8px;background:linear-gradient(115deg,#F0D9A0,#D4B36A);clip-path:polygon(50% 0,62% 38%,100% 50%,62% 62%,50% 100%,38% 62%,0 50%,38% 38%);animation:twinkle 2.6s ease-in-out infinite}
+.spk.k1{top:-10px;right:18px}
+.spk.k2{top:26px;right:-12px;width:12px;height:12px;animation-delay:.6s}
+.spk.k3{bottom:-8px;left:14px;width:6px;height:6px;animation-delay:1.2s}
+@keyframes twinkle{0%,100%{opacity:.35;transform:scale(.8)}50%{opacity:1;transform:scale(1.15)}}
+.trailfoot{margin-top:14px;font-size:13px;color:#555;line-height:1.7;text-align:center;max-width:820px;margin-left:auto;margin-right:auto}
+.trailfoot b{color:var(--n)}
+@media(max-width:1000px){
+.trail{height:auto;display:flex;flex-direction:column;gap:32px;padding:8px 0;margin-top:10px}
+.tpath{display:none}
+.trail::before{content:'';position:absolute;left:50%;top:0;bottom:0;width:3px;transform:translateX(-50%);background:linear-gradient(180deg,#9CCDEE,#8B7EC8 50%,#E5B7D6);opacity:.45;border-radius:2px}
+.tnode{position:relative;left:0 !important;top:0 !important;width:74%;transform:rotate(-1.2deg)}
+.tnode:nth-of-type(odd){transform:rotate(1.2deg);align-self:flex-end}
+.tnode:nth-of-type(even){align-self:flex-start}
+.tnode:not(.tx)::after{content:'\2193';position:absolute;bottom:-28px;left:50%;transform:translateX(-50%);font-size:16px;color:#8B7EC8;opacity:.6}
+.tnode.tx{align-self:center;width:92%;transform:none}
+}
+@media(max-width:560px){.tnode{width:86%}.tnode.tx{width:96%}}
 
 /* --- attribution card --- */
 .attrb{margin-top:16px;background:#0D1B2A;border-radius:14px;padding:24px 26px;color:#fff}
@@ -210,14 +234,19 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 </div>
 
 <div class="gh" style="margin-top:20px">How It Actually Works &middot; Nothing Publishes Without You</div>
-<div class="jrn">
-<div class="jstep"><div class="jn">STEP 01</div><div class="jico"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0l-7.2-7.2A2 2 0 0 1 3 12V4a1 1 0 0 1 1-1h8a2 2 0 0 1 1.4.6l7.2 7.2a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg></div><div class="jt">Your brand</div><div class="jd">We start from your brand, your voice, and your offer. Not a template and not a generic content calendar.</div></div>
-<div class="jstep"><div class="jn">STEP 02</div><div class="jico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg></div><div class="jt">Strategy, both lanes</div><div class="jd">Organic and paid mapped together: platforms, cadence, hooks, YouTube, blogs, email. One plan, not two disconnected ones.</div></div>
-<div class="jstep"><div class="jn">STEP 03</div><div class="jico"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m21 16.5-5.5-5.5L5.5 21"/></svg></div><div class="jt">Our team produces</div><div class="jd">Graphics, videos, captions, blogs, all built by our team. You are not writing anything and you are not editing anything.</div></div>
-<div class="jstep jhero"><div class="jn">STEP 04</div><div class="jico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.6 2.6L16.2 9.4"/></svg></div><div class="jt">You approve</div><div class="jd">Everything lands in your Google Drive: images, videos, and the captions that go with them. You review it on your schedule.</div><div class="jtag">Nothing goes live until you say yes</div></div>
-<div class="jstep"><div class="jn">STEP 05</div><div class="jico"><svg viewBox="0 0 24 24"><path d="M21.5 2.5 11 13"/><path d="M21.5 2.5 15 21l-4-8-8-4Z"/></svg></div><div class="jt">We post for you</div><div class="jd">Every platform, on your behalf, on the calendar. You never touch a scheduler or log into six apps.</div></div>
-<div class="jstep"><div class="jn">STEP 06</div><div class="jico"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-6M22 20H2"/></svg></div><div class="jt">You see it working</div><div class="jd">Monthly reporting on what published, what it reached, and what it produced. Full visibility across every platform.</div></div>
+<div class="trail">
+<svg class="tpath" viewBox="0 0 1120 400" preserveAspectRatio="none" aria-hidden="true">
+<defs><linearGradient id="mtg" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stop-color="#9CCDEE"/><stop offset=".5" stop-color="#8B7EC8"/><stop offset="1" stop-color="#E5B7D6"/></linearGradient></defs>
+<path d="M90 282 C148 214 210 134 281 138 C350 142 400 246 460 258 C520 270 570 138 639 124 C700 112 758 234 818 242 C880 250 942 168 1004 76" fill="none" stroke="url(#mtg)" stroke-width="4" stroke-linecap="round" stroke-dasharray="2 16"/>
+</svg>
+<div class="tnode" style="left:1%;top:58%"><div class="tic"><svg viewBox="0 0 24 24"><path d="M20.6 13.4 13.4 20.6a2 2 0 0 1-2.8 0l-7.2-7.2A2 2 0 0 1 3 12V4a1 1 0 0 1 1-1h8a2 2 0 0 1 1.4.6l7.2 7.2a2 2 0 0 1 0 2.6Z"/><circle cx="7.5" cy="7.5" r="1.4"/></svg><i class="tnum">1</i></div><b>Your brand</b><small>your voice, your offer</small></div>
+<div class="tnode" style="left:18%;top:22%"><div class="tic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4"/></svg><i class="tnum">2</i></div><b>Strategy</b><small>organic + paid, one plan</small></div>
+<div class="tnode" style="left:34%;top:52%"><div class="tic"><svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><circle cx="8.5" cy="9.5" r="1.6"/><path d="m21 16.5-5.5-5.5L5.5 21"/></svg><i class="tnum">3</i></div><b>We produce</b><small>graphics, video, captions</small></div>
+<div class="tnode tkey" style="left:50%;top:16%"><div class="tic"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="m8 12.4 2.6 2.6L16.2 9.4"/></svg><i class="tnum">4</i></div><b>You approve</b><small>your Drive, your call</small><span class="tkeypill">Nothing goes live until you say yes</span></div>
+<div class="tnode" style="left:66%;top:48%"><div class="tic"><svg viewBox="0 0 24 24"><path d="M21.5 2.5 11 13"/><path d="M21.5 2.5 15 21l-4-8-8-4Z"/></svg><i class="tnum">5</i></div><b>We post for you</b><small>every platform, on your behalf</small></div>
+<div class="tnode tx" style="left:82%;top:6%"><div class="tic"><svg viewBox="0 0 24 24"><path d="M4 20V11M10 20V4M16 20v-6M22 20H2"/></svg><i class="tnum">6</i></div><b>You see it all</b><small>reporting + attribution</small><span class="spk k1"></span><span class="spk k2"></span><span class="spk k3"></span></div>
 </div>
+<p class="trailfoot"><b>You never touch a scheduler.</b> Everything our team makes lands in your Google Drive with the images, the videos, and the captions that go with them. You review it on your schedule, we publish on the calendar, and every month you get the numbers back.</p>
 
 <div class="attrb">
 <div class="attrt"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8.5"/><circle cx="12" cy="12" r="2.6"/><path d="M12 1.5v4M12 18.5v4M1.5 12h4M18.5 12h4"/></svg>Attribution: yes, we can tell</div>
