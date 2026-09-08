@@ -561,6 +561,38 @@ body{padding-bottom:92px}
 .vidplay.gone{opacity:0;pointer-events:none}
 .vidcap{text-align:center;font-size:12.5px;color:var(--mut);margin-top:12px}
 @media(max-width:640px){.vidplay span{width:64px;height:64px}.vidplay span::after{border-left-width:17px;border-top-width:11px;border-bottom-width:11px}}
+
+/* --- watch us work: ported from the growpro.co feed section --- */
+.feedgrid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.ytcard{background:rgba(254,253,251,.9);border:1px solid rgba(34,29,54,.08);border-radius:1.35rem;padding:12px;box-shadow:var(--sh);transition:transform var(--t),box-shadow var(--t)}
+.ytcard:hover{transform:translateY(-3px);box-shadow:var(--shh)}
+.ytcard iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:1rem;display:block}
+.ytcard .fcap{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:11px 6px 2px;flex-wrap:wrap}
+.ytcard .fcap b{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;letter-spacing:-.01em;color:var(--ink)}
+.ytcard .fcap span{font-size:11.5px;color:var(--mut)}
+.igrow{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:18px}
+.igcard{position:relative;display:block;background:rgba(254,253,251,.9);border:1px solid rgba(34,29,54,.08);border-radius:1.35rem;padding:9px;overflow:hidden;text-decoration:none;box-shadow:var(--sh);transition:transform var(--t),box-shadow var(--t)}
+.igcard:hover{transform:translateY(-3px);box-shadow:var(--shh)}
+.igcard img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:1rem;display:block}
+.igcard .igtag{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:7px;background:rgba(20,16,38,.74);backdrop-filter:blur(6px);color:#fff;border-radius:999px;padding:7px 13px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:11.5px}
+.igcard .igtag svg{width:13px;height:13px;flex-shrink:0}
+.feedcta{display:flex;gap:13px;justify-content:center;margin-top:24px;flex-wrap:wrap}
+.feedcta a{display:inline-flex;align-items:center;gap:9px;border-radius:999px;padding:13px 24px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:13.5px;text-decoration:none;transition:transform var(--t),box-shadow var(--t)}
+.feedcta a:hover{transform:translateY(-2px)}
+.feedcta .fig{background:linear-gradient(115deg,var(--viod),var(--vio) 55%,#C4498F);color:#fff;box-shadow:0 16px 34px -16px rgba(95,79,179,.7)}
+.feedcta .fyt{background:#fff;color:var(--ink);border:1.5px solid rgba(34,29,54,.12)}
+.feedcta .fyt:hover{border-color:var(--vio)}
+@media(max-width:920px){.feedgrid{grid-template-columns:1fr}.igrow{grid-template-columns:1fr 1fr}}
+@media(max-width:620px){.igrow{grid-template-columns:1fr}}
+
+/* thumbnail cards instead of nested YouTube iframes (Error 153 inside an iframe) */
+.ytcard{display:block;text-decoration:none}
+.ytthumb{position:relative;display:block;border-radius:1rem;overflow:hidden;background:#0E0B1E}
+.ytthumb img{width:100%;aspect-ratio:16/9;object-fit:cover;display:block}
+.ytplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:62px;height:62px;border-radius:999px;background:#FF0000;display:flex;align-items:center;justify-content:center;box-shadow:0 14px 30px -10px rgba(0,0,0,.6);transition:transform var(--t)}
+.ytplay svg{width:30px;height:30px;margin-left:2px}
+.ytcard:hover .ytplay{transform:translate(-50%,-50%) scale(1.09)}
+.ytcard .fcap span{color:var(--vio);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:11.5px}
 </style>
 </head>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Pricing Tool</div></div></div></header>
@@ -580,6 +612,7 @@ body{padding-bottom:92px}
 <a href="#paid">Paid media</a>
 <a href="#addons">Add-ons</a>
 <a href="#tally">Your quote</a>
+<a href="#content">Our content</a>
 </div>
 
 <div class="gh ghflex" style="margin-top:20px"><span>How It Actually Works</span><span class="ghown">You own every piece of it</span></div>
@@ -875,6 +908,23 @@ body{padding-bottom:92px}
 <div class="riskfoot">If that is not a risk you want to carry, we would far rather you know it today than find out in month three. It is written the same way in your agreement, so nothing here is a surprise later.</div>
 </div>
 
+
+<div class="gh" id="content">Watch Us Work &middot; New Content Every Week</div>
+<div class="whatis"><span class="whatisk">Why this is here</span>
+<div class="whatisb">The engine we would run for you is the same one we run on ourselves, in public, every week. <b>Follow along before you commit to anything.</b> If the content does not look like something you would want on your own brand, you will know that in about two minutes.</div></div>
+<div class="feedgrid">
+<a class="ytcard" href="https://www.youtube.com/watch?v=Fi4gT9NWKrY" target="_blank" rel="noopener"><span class="ytthumb"><img src="https://i.ytimg.com/vi/Fi4gT9NWKrY/maxresdefault.jpg" alt="Telehealth website design, marketing" loading="lazy"><span class="ytplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#fff" d="M9.6 15.6V8.4l6.25 3.6-6.25 3.6Z"/></svg></span></span><span class="fcap"><b>Telehealth website design, marketing</b><span>Watch on YouTube &rarr;</span></span></a>
+<a class="ytcard" href="https://www.youtube.com/watch?v=JKjuZvAfeM8" target="_blank" rel="noopener"><span class="ytthumb"><img src="https://i.ytimg.com/vi/JKjuZvAfeM8/hqdefault.jpg" alt="Telehealth launch strategy" loading="lazy"><span class="ytplay" aria-hidden="true"><svg viewBox="0 0 24 24"><path fill="#fff" d="M9.6 15.6V8.4l6.25 3.6-6.25 3.6Z"/></svg></span></span><span class="fcap"><b>Telehealth launch strategy</b><span>Watch on YouTube &rarr;</span></span></a>
+</div>
+<div class="igrow">
+<a class="igcard" href="https://www.instagram.com/therealzenjessica/" target="_blank" rel="noopener"><img src="https://growpro.co/assets/ig-reel-1.jpg" alt="Your brand, your launch" loading="lazy"><span class="igtag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@therealzenjessica</span></a>
+<a class="igcard" href="https://www.instagram.com/therealzenjessica/" target="_blank" rel="noopener"><img src="https://growpro.co/assets/ig-reel-2.jpg" alt="Your telehealth brand, built to connect" loading="lazy"><span class="igtag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@therealzenjessica</span></a>
+<a class="igcard" href="https://www.instagram.com/therealzenjessica/" target="_blank" rel="noopener"><img src="https://growpro.co/assets/ig-reel-3.jpg" alt="What does telehealth really cost" loading="lazy"><span class="igtag"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4.5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>@therealzenjessica</span></a>
+</div>
+<div class="feedcta">
+<a class="fig" href="https://www.instagram.com/therealzenjessica/" target="_blank" rel="noopener">Follow @therealzenjessica</a>
+<a class="fyt" href="https://www.youtube.com/channel/UCm7fwZFp3ogEUOehHC2MYjQ?sub_confirmation=1" target="_blank" rel="noopener">Subscribe on YouTube</a>
+</div>
 
 </div></div>
 
