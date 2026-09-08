@@ -516,8 +516,12 @@ body{padding-bottom:96px}
    inline: a full-width panel under the three packages, plus a compact
    repeat after the add-ons.
    ================================================================ */
-.mbar{display:none !important}
-body{padding-bottom:0}
+/* the sticky bar works again now that the wrapper gives the iframe a real
+   viewport to scroll inside, so it pins to the bottom of the screen */
+.mbar{display:block !important;position:fixed;left:0;right:0;bottom:0;z-index:200}
+body{padding-bottom:92px}
+/* the end-of-page repeat is redundant once the total follows you down */
+.tallyend{display:none !important}
 .tally{background:linear-gradient(150deg,#221D36,#191430 58%,#2A2350);border-radius:1.6rem;padding:22px 26px;margin:4px 0 26px;box-shadow:0 34px 78px -34px rgba(34,29,54,.7);position:relative;overflow:hidden}
 .tally::before{content:'';position:absolute;inset:-50% -20% auto auto;width:60%;height:220%;background:radial-gradient(42% 38% at 72% 22%,rgba(127,231,210,.16),transparent 68%),radial-gradient(40% 34% at 96% 64%,rgba(176,166,232,.24),transparent 70%);pointer-events:none}
 .tally > *{position:relative;z-index:1}
@@ -541,6 +545,10 @@ body{padding-bottom:0}
 .tallyendv em{font-style:normal;font-family:'DM Sans',sans-serif;font-weight:500;font-size:12.5px;color:var(--mut);letter-spacing:0}
 .tallyendup{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--vio);text-decoration:none;border:1.5px solid rgba(95,79,179,.28);border-radius:999px;padding:9px 17px;background:#fff;transition:all var(--t)}
 .tallyendup:hover{border-color:var(--vio);transform:translateY(-1px)}
+
+.mbjump{display:none}
+.mbar.exp .mbjump{display:block;max-width:1200px;margin:0 auto;padding:0 24px 18px;font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12.5px;color:var(--vio);text-decoration:none}
+.mbar.exp .mbjump:hover{text-decoration:underline}
 </style>
 </head>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Pricing Tool</div></div></div></header>
@@ -867,6 +875,7 @@ body{padding-bottom:0}
 <div class="mbhint"><span>Quote breakdown</span><span class="mbx">▲</span></div>
 </div>
 <div class="mbe" id="mExp"></div>
+<a class="mbjump" href="#tally">See the itemized quote &uarr;</a>
 </div>
 
 <div id="mkToolbar" style="max-width:900px;margin:30px auto 8px;padding:18px 20px;background:#0D1B2A;border-radius:14px">
