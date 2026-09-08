@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>GrowPro Marketing-content-2026 Configurator</title>
 <meta name="robots" content="noindex">
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;700;800&family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
 <style>html,body{margin:0;padding:0;background:#fff;font-family:Inter,system-ui,sans-serif}</style>
 <script>if("scrollRestoration" in history){history.scrollRestoration="manual"}window.addEventListener("load",function(){window.scrollTo(0,0);try{if(window.parent&&window.parent!==window){window.parent.postMessage({type:"growpro-loaded",scrollTop:true},"*")}}catch(e){}});</script>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -178,7 +179,7 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .feenote{font-size:11.5px;color:#8A82A8}
 
 /* --- tier icon chip --- */
-.tico{width:32px;height:32px;border-radius:9px;background:var(--pb);border:1px solid var(--pl);display:inline-flex;align-items:center;justify-content:center;color:var(--p);margin-bottom:10px}
+.tico{width:34px;height:34px;border-radius:10px;background:var(--pb);border:1px solid var(--pl);display:flex;align-items:center;justify-content:center;color:var(--p);margin-bottom:10px}
 .tico svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .c.sel .tico{background:#fff}
 
@@ -213,13 +214,173 @@ h1,h2,h3{font-family:'Inter',sans-serif;letter-spacing:-0.5px}
 .vidbox iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:12px;display:block;box-shadow:var(--shh)}
 .vidcap{text-align:center;font-size:13px;color:#888;margin-top:10px}
 .ft{background:var(--gb);border-top:1px solid var(--gbd);padding:28px 0;text-align:center;font-size:12px;color:#999;line-height:1.7}
+
+/* ================================================================
+   GROWPRO DESIGN SYSTEM  ported from growpro.co (final.html)
+   Appended as an override layer: no existing rule is deleted and no
+   class name changes, so the quote engine keeps working untouched.
+   ================================================================ */
+:root{
+--sky:#9CCDEE;--lav:#B0A6E8;--pink:#E5B7D6;--sea:#7FE7D2;--sead:#22B3A2;
+--ink:#221D36;--vio:#5F4FB3;--viod:#43377F;--mut:#6F6987;
+--paper:#FEFDFB;--porce:#F7F5FB;
+--gold1:#F0D9A0;--gold2:#D4B36A;--gold3:#9C7A2E;
+--grad:linear-gradient(105deg,var(--sky) 0%,var(--lav) 48%,var(--pink) 100%);
+--ease:cubic-bezier(.32,.72,0,1);
+/* remap the legacy tokens this page was built on */
+--p:#5F4FB3;--pl:#E6E0F8;--pb:#F4F2FA;--n:#221D36;
+--gb:#F7F5FB;--gbd:rgba(34,29,54,.09);--g:#22B3A2;--w:#FEFDFB;
+--gold:#D4B36A;--gl:#FFF8E7;
+--sh:0 18px 44px -26px rgba(67,55,127,.34);
+--shh:0 30px 68px -30px rgba(67,55,127,.5);
+--r:1.15rem;--t:.5s cubic-bezier(.32,.72,0,1);
+}
+html{scroll-behavior:smooth;overflow-x:hidden}
+body{position:relative;overflow-x:hidden;font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink)}
+/* aurora washes, the growpro.co atmosphere */
+body::before{content:'';position:absolute;top:-140px;left:0;right:0;height:1180px;z-index:0;pointer-events:none;background:
+radial-gradient(42% 34% at 86% 8%,rgba(229,183,214,.42) 0%,transparent 64%),
+radial-gradient(38% 32% at 4% 4%,rgba(156,205,238,.44) 0%,transparent 62%),
+radial-gradient(46% 34% at 44% 76%,rgba(176,166,232,.34) 0%,transparent 66%),
+radial-gradient(18% 16% at 30% 44%,rgba(127,231,210,.26) 0%,transparent 70%)}
+body::after{content:'';position:absolute;top:1600px;left:0;right:0;height:1500px;z-index:0;pointer-events:none;background:
+radial-gradient(40% 30% at 12% 20%,rgba(156,205,238,.3) 0%,transparent 66%),
+radial-gradient(44% 32% at 88% 62%,rgba(229,183,214,.32) 0%,transparent 66%),
+radial-gradient(30% 24% at 50% 96%,rgba(127,231,210,.2) 0%,transparent 70%)}
+.hdr,.wrap,.main,.side,.mbar,.ft{position:relative;z-index:1}
+
+h1,h2,h3{font-family:'Plus Jakarta Sans',sans-serif;letter-spacing:-.03em;color:var(--ink)}
+.gtext{background:linear-gradient(105deg,#3E93D6 0%,var(--vio) 48%,#C4498F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* header: floating glass instead of a flat bar */
+.hdr{background:rgba(254,253,251,.72);backdrop-filter:blur(14px);border-bottom:1px solid rgba(34,29,54,.07);padding:16px 0}
+.logo{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:5px;color:var(--ink)}
+.logo span{background:linear-gradient(105deg,#3E93D6 0%,var(--vio) 48%,#C4498F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.tag{font-size:10px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--mut)}
+
+/* hero type */
+.hero{padding:52px 0 10px}
+.h1{font-family:'Plus Jakarta Sans',sans-serif;font-size:clamp(30px,4.1vw,50px);font-weight:800;line-height:1.04;letter-spacing:-.03em}
+.hero .sub{font-size:17px;color:var(--mut);max-width:640px;line-height:1.68}
+.sub b{color:var(--ink)}
+
+/* section headers get a gradient rule instead of a grey line */
+.gh{font-family:'Plus Jakarta Sans',sans-serif;font-size:11px;font-weight:800;letter-spacing:.22em;color:var(--mut);border-bottom:none;position:relative;padding-bottom:14px;margin:44px 0 18px}
+.gh::after{content:'';position:absolute;left:0;bottom:0;width:100%;height:2px;border-radius:2px;background:linear-gradient(90deg,var(--sky),var(--lav) 42%,var(--pink) 78%,transparent)}
+
+/* jump rail as glass pills */
+.jump a{background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border:1px solid rgba(95,79,179,.2);color:var(--vio);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:11.5px;letter-spacing:.04em;box-shadow:0 8px 20px -14px rgba(67,55,127,.5)}
+.jump a:hover{background:#fff;border-color:var(--vio);transform:translateY(-1px)}
+
+/* cards: deeper radius, soft lift, gradient border when chosen */
+.c{background:rgba(254,253,251,.86);backdrop-filter:blur(3px);border:1px solid rgba(34,29,54,.08);border-radius:1.35rem;box-shadow:var(--sh);transition:transform var(--t),box-shadow var(--t),border-color var(--t)}
+.c:hover{transform:translateY(-4px);box-shadow:var(--shh)}
+.c.sel{border:2px solid transparent;background-image:linear-gradient(var(--pb),var(--pb)),var(--grad);background-origin:border-box;background-clip:padding-box,border-box;box-shadow:0 30px 66px -28px rgba(95,79,179,.62)}
+.ck{background:linear-gradient(115deg,var(--viod),var(--vio) 60%,#8A5FC2);box-shadow:0 8px 18px -8px rgba(95,79,179,.8)}
+
+/* the three tiers sit on a gradient panel */
+#pkgs + .grid{background:linear-gradient(160deg,rgba(156,205,238,.16),rgba(176,166,232,.14) 45%,rgba(229,183,214,.16));border:1px solid rgba(34,29,54,.06);border-radius:1.9rem;padding:20px;box-shadow:inset 0 1px 1px rgba(255,255,255,.7)}
+#pkgs + .grid .c{background:rgba(255,255,255,.94)}
+
+/* typography inside cards */
+.ct{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em}
+.cp{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em;font-size:30px}
+.cp .ap{background:linear-gradient(105deg,#3E93D6 0%,var(--vio) 48%,#C4498F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+.cp .sx{font-family:'DM Sans',sans-serif;font-weight:500;color:var(--mut)}
+.cd{color:var(--mut);font-size:14px}
+.cl li{color:#4B4468}
+.cl li::before{color:var(--sead)}
+
+/* badges */
+.bdg{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:10px;letter-spacing:.16em;padding:5px 13px;border:1px solid transparent}
+.b-core{background:rgba(255,255,255,.8);border-color:rgba(95,79,179,.22);color:var(--vio)}
+.b-pop{background:rgba(127,231,210,.16);border-color:rgba(34,179,162,.32);color:#178375}
+.b-save{background:linear-gradient(105deg,rgba(240,217,160,.34),rgba(212,179,106,.24));border-color:rgba(156,122,46,.34);color:#7C5F1F}
+
+/* platform + tier pill buttons */
+.avtier{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;font-size:12px;border-radius:999px;padding:9px 18px;border:1.5px solid rgba(34,29,54,.12);background:rgba(255,255,255,.85);color:var(--mut);transition:all var(--t)}
+.avtier:hover{border-color:var(--vio);color:var(--vio);transform:translateY(-1px)}
+.avtier.on{background:linear-gradient(115deg,var(--viod),var(--vio) 55%,#8A5FC2);border-color:transparent;color:#fff;box-shadow:0 12px 26px -14px rgba(95,79,179,.75)}
+
+/* steppers */
+.stepper button{border-radius:999px;border:1.5px solid rgba(95,79,179,.3);color:var(--vio);background:rgba(255,255,255,.9);transition:all var(--t)}
+.stepper button:hover{background:var(--vio);color:#fff;border-color:transparent;transform:translateY(-1px)}
+.stepper input{border-radius:12px;border:1.5px solid rgba(34,29,54,.12);font-family:'Plus Jakarta Sans',sans-serif;font-weight:800}
+.steplbl{color:#9A94B5;font-size:12px}
+
+/* the running quote panel: double bezel, like growpro.co shells */
+.sc{background:rgba(34,29,54,.045);border:1px solid rgba(34,29,54,.07);border-radius:1.6rem;padding:.4rem;box-shadow:0 34px 80px -42px rgba(67,55,127,.45)}
+.sc > *{position:relative;z-index:1}
+.sct{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.03em}
+.sc{position:relative}
+.sc::before{content:'';position:absolute;inset:.4rem;border-radius:1.2rem;background:var(--paper);box-shadow:inset 0 1px 1px rgba(255,255,255,.7);z-index:0}
+.sc{padding:1.15rem}
+.sl{border-bottom:1px solid rgba(34,29,54,.07)}
+.sl .lb{color:var(--mut)}
+.sdv{height:2px;background:linear-gradient(90deg,var(--sky),var(--lav) 48%,var(--pink));border-radius:2px}
+.stot{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em}
+.stot .vl{background:linear-gradient(105deg,#3E93D6 0%,var(--vio) 48%,#C4498F 100%);-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* mobile total bar: glass */
+.mbar{background:rgba(254,253,251,.86);backdrop-filter:blur(14px);border-top:1px solid rgba(34,29,54,.08);box-shadow:0 -10px 34px -16px rgba(67,55,127,.4)}
+.mbi .am{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em}
+.mbi .lb{color:var(--mut);letter-spacing:.14em;font-size:10px;font-weight:700}
+
+/* journey trail refinements on the new palette */
+.tnode{background:rgba(255,255,255,.94);backdrop-filter:blur(3px);border-color:rgba(34,29,54,.07)}
+.tnode b{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em}
+.tnum{font-family:'Plus Jakarta Sans',sans-serif}
+.trailfoot{color:var(--mut);font-size:13.5px}
+.trailfoot b{color:var(--ink)}
+
+/* attribution card: brand ink with an aurora bloom */
+.attrb{position:relative;overflow:hidden;background:linear-gradient(150deg,#221D36,#191430 55%,#2A2350);border-radius:1.6rem;box-shadow:0 34px 78px -34px rgba(34,29,54,.72)}
+.attrb::before{content:'';position:absolute;inset:-40% -20% auto auto;width:70%;height:220%;background:radial-gradient(45% 40% at 70% 20%,rgba(127,231,210,.2),transparent 68%),radial-gradient(40% 34% at 96% 66%,rgba(176,166,232,.26),transparent 70%);pointer-events:none}
+.attrb > *{position:relative;z-index:1}
+.attrt{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em;font-size:18px}
+.attri{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.13);border-radius:.95rem}
+.attri b{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.01em}
+
+/* three jobs */
+.job{background:rgba(254,253,251,.9);backdrop-filter:blur(3px);border-color:rgba(34,29,54,.08);border-radius:1.15rem;box-shadow:var(--sh);transition:transform var(--t),box-shadow var(--t)}
+.job:hover{transform:translateY(-3px);box-shadow:var(--shh)}
+.jobn{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:-.02em}
+.jobk{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800}
+.jobd{color:#4B4468}
+.job.j1{border-left:4px solid var(--lav)}.job.j1 .jobh{color:var(--vio)}.job.j1 .jobk{color:var(--vio)}
+.job.j2{border-left:4px solid var(--sea)}.job.j2 .jobh{color:var(--sead)}.job.j2 .jobk{color:var(--sead)}
+.job.j3{border-left:4px solid var(--gold2)}.job.j3 .jobh{color:var(--gold3)}.job.j3 .jobk{color:var(--gold3)}
+
+/* order note + fee strip */
+.ordnote{background:linear-gradient(105deg,rgba(240,217,160,.22),rgba(255,248,231,.9));border:1px solid rgba(156,122,46,.24);border-radius:1.15rem;color:#6B4226;padding:15px 19px}
+.feepill{background:rgba(255,255,255,.72);backdrop-filter:blur(6px);border:1px solid rgba(95,79,179,.18);border-radius:1.15rem;box-shadow:var(--sh)}
+.feepillt{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.2em;color:var(--vio)}
+.feepillb{color:#4B4468}
+.feep{background:rgba(255,255,255,.94);border:1px solid rgba(34,29,54,.09);box-shadow:0 8px 20px -16px rgba(67,55,127,.5)}
+.feep b{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800}
+.feep i{color:var(--gold3)}
+.feep.on i{color:var(--sead)}
+
+/* the strategist toolbar reads as brand ink */
+#mkToolbar{background:linear-gradient(150deg,#221D36,#191430 60%,#2A2350) !important;border-radius:1.35rem !important;box-shadow:0 30px 70px -34px rgba(34,29,54,.7)}
+
+/* ladder header + footnote */
+.cl li.lihd{font-family:'Plus Jakarta Sans',sans-serif;font-weight:800;letter-spacing:.14em;color:var(--vio)}
+.clfoot{color:#9A94B5;border-top:1px dashed rgba(34,29,54,.13)}
+
+/* long-game callouts */
+.longgame{border-radius:.9rem}
+
+/* footer */
+.ft{background:transparent;border-top:1px solid rgba(34,29,54,.08);color:var(--mut)}
+
 </style>
 </head>
 <header class="hdr"><div class="wrap"><div><div class="logo">GROW<span>PRO</span></div><div class="tag">Marketing Pricing Tool</div></div></div></header>
 
 <div class="wrap">
 <div class="hero">
-<h1 class="h1">AI-native content and conversion system, built for regulated brands.</h1>
+<h1 class="h1">AI-native content and conversion system, <span class="gtext">built for regulated brands.</span></h1>
 <p class="sub">AI avatars and graphics generate content, landing pages and quizzes convert it, blogs build organic presence over time.</p>
 </div>
 
