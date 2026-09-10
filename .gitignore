@@ -28,3 +28,32 @@ next-env.d.ts
 
 # generated at build: growpro.co serves this, copied from root success.html
 /public/success.html
+
+# ---------------------------------------------------------------
+# GitHub Pages publishes everything committed in this repo, and this
+# folder is also used as a working directory for legal and client work.
+# These patterns keep contracts, BAAs, redlines and drafts out of the
+# public site. Verified 2026-09-09: the site itself references no local
+# .pdf or .docx, only external menopause.org citations.
+# ---------------------------------------------------------------
+*.docx
+*.pdf
+*.bak
+*.bak.html
+*.pre-skin-*.html
+*.diff
+RECAP-*.md
+*-DRAFT-*.md
+*Agreement*
+*Disposition-Chart*
+*Amendment-No*
+*REDLINE*
+*-CLEAN.docx
+.claude/
+.impeccable/
+*.xlsx
+*-Memo-*.md
+make_*.py
+negotiation-menu.html
+whop-verify-results.json
+tiers-*.png
